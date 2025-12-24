@@ -1,9 +1,9 @@
 package com.centros_sass.app.model.incidents;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 import com.centros_sass.app.model.Worker;
+import com.centros_sass.app.model.base.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +18,7 @@ import lombok.Setter;
 @MappedSuperclass
 @Getter
 @Setter
-public abstract class Comment implements Serializable {
+public abstract class Comment extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,12 +32,6 @@ public abstract class Comment implements Serializable {
 
     @Column(name = "comment", nullable = false, columnDefinition = "TEXT")
     private String comment;
-
-    @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMP")
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at",nullable = false, columnDefinition = "TIMESTAMP")
-    private LocalDateTime updatedAt;
 
     @Override
     public int hashCode() {
@@ -66,7 +60,8 @@ public abstract class Comment implements Serializable {
 
     @Override
     public String toString() {
-        return "Comment [id=" + id + ", createdBy=" + createdBy + ", comment=" + comment +
-        ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+        return "Comment [id=" + id + ", createdBy=" + createdBy + ", comment=" + comment + "]";
     }
+
+
 }

@@ -2,6 +2,8 @@ package com.centros_sass.app.model.catalogs.incidents;
 
 import java.io.Serializable;
 
+import com.centros_sass.app.model.base.BaseEntity;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +21,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CdSignificanceType implements Serializable {
+public class CdSignificanceType extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id

@@ -56,3 +56,60 @@ LEFT JOIN schema_template.workers_schedules_records wr
     AND wr.clock_in::time BETWEEN ws.start_at AND ws.end_at
 WHERE w.id = 3
 ORDER BY d.id, wr.clock_in;
+
+------------------
+
+-- Incidencias del Centro
+SELECT
+    i.id AS "ID",
+    cat.incident_name AS "Tipo Problema",
+    sig.significance_name AS "Gravedad",
+    w_creator.first_name AS "Reportado Por",
+    i.comment AS "Descripción",
+    w_comment.first_name AS "Respondió",
+    c.comment AS "Solución"
+FROM schema_template.cd_incidents i
+JOIN schema_template.incident_cd_enum cat ON i.incident_cd_id = cat.id
+JOIN schema_template.significance_cd_enum sig ON i.significance_cd_id = sig.id
+JOIN schema_template.workers w_creator ON i.created_by_worker_id = w_creator.id
+LEFT JOIN schema_template.incidents_cd_comments c ON c.cd_incident_id = i.id
+LEFT JOIN schema_template.workers w_comment ON c.worker_id = w_comment.id
+ORDER BY i.id;
+
+-- Incidencias del Usuario
+SELECT
+    TO_CHAR(i.created_at, 'DD/MM/YYYY HH24:MI') AS "Fecha Hora Incidencia",
+    u.first_name || ' ' || u.first_surname AS "Usuario",
+    cat.incident_name AS "Tipo",
+    sig.significance_name AS "Gravedad",
+    w_creator.first_name AS "Creada Por",
+    LEFT(i.comment, 40) || '...' AS "Resumen Incidencia",
+    TO_CHAR(c.created_at, 'DD/MM/YYYY HH24:MI') AS "Fecha Hora Comentario",
+    w_comment.first_name AS "Comentada Por",
+    c.comment AS "Texto Comentario"
+FROM schema_template.users_incidents i
+JOIN schema_template.users u ON i.user_id = u.id
+JOIN schema_template.incident_user_enum cat ON i.incident_user_id = cat.id
+JOIN schema_template.significance_user_enum sig ON i.significance_user_id = sig.id
+JOIN schema_template.workers w_creator ON i.created_by_worker_id = w_creator.id
+LEFT JOIN schema_template.incidents_users_comments c ON c.user_incident_id = i.id
+LEFT JOIN schema_template.workers w_comment ON c.worker_id = w_comment.id
+ORDER BY i.created_at DESC, c.created_at ASC;
+
+-- Incidencias del Centro con fechas
+SELECT
+    TO_CHAR(i.created_at, 'DD/MM/YYYY HH24:MI') AS "Fecha Hora Incidencia",
+    cat.incident_name AS "Tipo",
+    sig.significance_name AS "Gravedad",
+    w_creator.first_name AS "Creada Por",
+    i.comment AS "Problema Completo",
+    TO_CHAR(c.created_at, 'DD/MM/YYYY HH24:MI') AS "Fecha Hora Comentario",
+    w_comment.first_name AS "Comentada Por",
+    c.comment AS "Respuesta"
+FROM schema_template.cd_incidents i
+JOIN schema_template.incident_cd_enum cat ON i.incident_cd_id = cat.id
+JOIN schema_template.significance_cd_enum sig ON i.significance_cd_id = sig.id
+JOIN schema_template.workers w_creator ON i.created_by_worker_id = w_creator.id
+LEFT JOIN schema_template.incidents_cd_comments c ON c.cd_incident_id = i.id
+LEFT JOIN schema_template.workers w_comment ON c.worker_id = w_comment.id
+ORDER BY i.created_at DESC, c.created_at ASC;
