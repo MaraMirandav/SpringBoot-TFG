@@ -193,3 +193,200 @@ VALUES
     (5, 34, '2025-01-16 08:16', '2025-01-16 18:33', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     -- Viernes (solo mañana, abierto)
     (5, 35, '2025-01-17 08:14', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- CATÁLOGOS DE CENTRO (Tipos y Gravedad)
+-- --------------------------------------------------------
+INSERT INTO incident_cd_enum (incident_name) VALUES
+('Mantenimiento'),
+('Limpieza'),
+('Suministros');
+
+INSERT INTO significance_cd_enum (significance_name) VALUES 
+('Baja'),             -- ID 1
+('Media'),            -- ID 2
+('Alta');             -- ID 3
+
+-- --------------------------------------------------------
+-- CATÁLOGOS DE USUARIO (Tipos y Gravedad)
+-- --------------------------------------------------------
+INSERT INTO incident_user_enum (incident_name) VALUES 
+('Salud / Caída'),    -- ID 1
+('Comportamiento'),   -- ID 2
+('Medicación');       -- ID 3
+
+INSERT INTO significance_user_enum (significance_name) VALUES 
+('Leve'),             -- ID 1
+('Moderada'),         -- ID 2
+('Crítica');          -- ID 3
+
+-- --------------------------------------------------------
+-- INCIDENCIAS DE CENTRO (cd_incidents)
+-- --------------------------------------------------------
+INSERT INTO schema_template.cd_incidents (
+    incident_cd_id, 
+    significance_cd_id, 
+    created_by_worker_id, -- <--- NOMBRE CORREGIDO
+    comment, 
+    created_at, updated_at, is_active
+) VALUES (
+    1, 3, 1, 
+    'La caldera hace un ruido extraño y pierde agua.', 
+    NOW(), NOW(), true
+);
+
+INSERT INTO schema_template.cd_incidents (
+    incident_cd_id, 
+    significance_cd_id, 
+    created_by_worker_id, -- <--- NOMBRE CORREGIDO
+    comment, 
+    created_at, updated_at, is_active
+) VALUES (
+    2, 1, 5, 
+    'Se ha derramado café en la sala de estar.', 
+    NOW(), NOW(), true
+);
+-- --------------------------------------------------------
+-- INCIDENCIAS DE USUARIO (users_incidents)
+-- --------------------------------------------------------
+INSERT INTO schema_template.users_incidents (
+    user_id, 
+    incident_user_id, 
+    significance_user_id, 
+    created_by_worker_id, -- <--- NOMBRE CORREGIDO
+    comment, 
+    created_at, updated_at, is_active
+) VALUES (
+    1, 1, 3, 3, 
+    'Antonio se ha mareado y ha caído al suelo en el comedor.', 
+    NOW(), NOW(), true
+);
+
+INSERT INTO schema_template.users_incidents (
+    user_id, 
+    incident_user_id, 
+    significance_user_id, 
+    created_by_worker_id, -- <--- NOMBRE CORREGIDO
+    comment, 
+    created_at, updated_at, is_active
+) VALUES (
+    2, 2, 2, 2, 
+    'María está muy agitada y se niega a comer.', 
+    NOW(), NOW(), true
+);
+
+-- ========================================================
+-- INSERTAR COMENTARIOS EN INCIDENCIAS DE CENTRO
+-- ========================================================
+
+INSERT INTO schema_template.incidents_cd_comments (cd_incident_id, worker_id, comment, created_at, updated_at) VALUES 
+-- INCIDENCIA 1: La Caldera (ID 1)
+-- Hilo: Elena ayuda, Carlos coordina, Ana cierra.
+(1, 5, 'He cerrado la llave de paso general por si acaso.', NOW() + interval '5 minutes', NOW()),
+(1, 2, 'El fontanero confirma que llega en 20 minutos.', NOW() + interval '15 minutes', NOW()),
+(1, 1, 'Perfecto, gracias a los dos. Estaré pendiente en recepción.', NOW() + interval '30 minutes', NOW()),
+
+-- INCIDENCIA 2: Café derramado (ID 2)
+-- Hilo: Lucía ofrece ayuda, Elena avisa que ya está, Lucía confirma.
+(2, 3, 'Voy a por el cubo y la fregona, ahora voy.', NOW() + interval '2 minutes', NOW()),
+(2, 5, 'Tranquila Lucía, ya lo he limpiado yo con papel.', NOW() + interval '5 minutes', NOW()),
+(2, 3, 'Ah vale, genial entonces. Queda aviso cerrado.', NOW() + interval '10 minutes', NOW());
+
+
+-- ========================================================
+-- INSERTAR COMENTARIOS EN INCIDENCIAS DE USUARIO
+-- ========================================================
+
+INSERT INTO schema_template.incidents_users_comments (user_incident_id, worker_id, comment, created_at, updated_at) VALUES 
+-- INCIDENCIA 1: Caída de Antonio (ID 1)
+-- Hilo: Carlos pregunta, Lucía informa, Ana anota.
+(1, 2, '¿Tiene alguna herida visible en la cabeza?', NOW() + interval '5 minutes', NOW()),
+(1, 3, 'No, le he revisado y está bien. Solo el susto.', NOW() + interval '10 minutes', NOW()),
+(1, 1, 'De acuerdo, lo dejaré anotado en el libro de relevos para el turno de noche.', NOW() + interval '45 minutes', NOW()),
+
+-- INCIDENCIA 2: María agitada (ID 2)
+-- Hilo: Ana pregunta medicación, Carlos confirma, Elena propone solución.
+(2, 1, '¿Se ha tomado la pastilla de las 18:00?', NOW() + interval '10 minutes', NOW()),
+(2, 2, 'Sí, se la dí yo mismo, pero parece que tarda en hacer efecto.', NOW() + interval '20 minutes', NOW()),
+(2, 5, 'Voy a probar a ponerle su música favorita a ver si se calma un poco.', NOW() + interval '35 minutes', NOW());
+
+
+SELECT 
+    i.id AS "ID",
+    cat.incident_name AS "Tipo Problema", 
+    sig.significance_name AS "Gravedad",
+    w_creator.first_name AS "Reportado Por",
+    i.comment AS "Descripción",
+    
+    '--->' AS "RSP",
+    w_comment.first_name AS "Respondió",
+    c.comment AS "Solución"
+
+FROM schema_template.cd_incidents i
+
+-- CORRECCIÓN 1: 'incident_cd_enum' (Singular)
+JOIN schema_template.incident_cd_enum cat ON i.incident_cd_id = cat.id
+
+-- CORRECCIÓN 2: 'significance_cd_enum' (Singular)
+JOIN schema_template.significance_cd_enum sig ON i.significance_cd_id = sig.id
+
+JOIN schema_template.workers w_creator ON i.created_by_worker_id = w_creator.id
+LEFT JOIN schema_template.incidents_cd_comments c ON c.cd_incident_id = i.id
+LEFT JOIN schema_template.workers w_comment ON c.worker_id = w_comment.id
+
+ORDER BY i.id;
+
+
+
+SELECT 
+    -- 1. DATOS DE LA INCIDENCIA (PADRE)
+    TO_CHAR(i.created_at, 'DD/MM/YYYY HH24:MI') AS "Fecha Hora Incidencia",
+    u.first_name || ' ' || u.first_surname AS "Paciente",
+    cat.incident_name AS "Tipo",
+    sig.significance_name AS "Gravedad",
+    w_creator.first_name AS "Creada Por",
+    LEFT(i.comment, 40) || '...' AS "Resumen Incidencia", -- Cortamos el texto largo
+    
+    -- 2. DATOS DEL COMENTARIO (HIJO)
+    ' >> ' AS " ", -- Separador visual
+    TO_CHAR(c.created_at, 'DD/MM/YYYY HH24:MI') AS "Fecha Hora Comentario",
+    w_comment.first_name AS "Comentada Por",
+    c.comment AS "Texto Comentario"
+
+FROM schema_template.users_incidents i
+-- JOINS Incidencia
+JOIN schema_template.users u ON i.user_id = u.id
+JOIN schema_template.incident_user_enum cat ON i.incident_user_id = cat.id
+JOIN schema_template.significance_user_enum sig ON i.significance_user_id = sig.id
+JOIN schema_template.workers w_creator ON i.created_by_worker_id = w_creator.id
+-- JOINS Comentarios
+LEFT JOIN schema_template.incidents_users_comments c ON c.user_incident_id = i.id
+LEFT JOIN schema_template.workers w_comment ON c.worker_id = w_comment.id
+
+-- ORDEN: Primero las incidencias más recientes, y dentro de ellas, sus comentarios en orden cronológico
+ORDER BY i.created_at DESC, c.created_at ASC;
+
+
+SELECT 
+    TO_CHAR(i.created_at, 'DD/MM/YYYY HH24:MI') AS "Fecha Hora Incidencia",
+    'INSTALACIONES' AS "Ubicación",
+    cat.incident_name AS "Tipo",
+    sig.significance_name AS "Gravedad",
+    w_creator.first_name AS "Creada Por",
+    i.comment AS "Problema Completo",
+    
+    ' >> ' AS " ",
+    TO_CHAR(c.created_at, 'DD/MM/YYYY HH24:MI') AS "Fecha Hora Comentario",
+    w_comment.first_name AS "Comentada Por",
+    c.comment AS "Respuesta"
+
+FROM schema_template.cd_incidents i
+-- JOINS Incidencia
+JOIN schema_template.incident_cd_enum cat ON i.incident_cd_id = cat.id
+JOIN schema_template.significance_cd_enum sig ON i.significance_cd_id = sig.id
+JOIN schema_template.workers w_creator ON i.created_by_worker_id = w_creator.id
+-- JOINS Comentarios
+LEFT JOIN schema_template.incidents_cd_comments c ON c.cd_incident_id = i.id
+LEFT JOIN schema_template.workers w_comment ON c.worker_id = w_comment.id
+
+ORDER BY i.created_at DESC, c.created_at ASC;
