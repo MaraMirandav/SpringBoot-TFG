@@ -193,3 +193,81 @@ VALUES
     (5, 34, '2025-01-16 08:16', '2025-01-16 18:33', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     -- Viernes (solo mañana, abierto)
     (5, 35, '2025-01-17 08:14', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- CATÁLOGOS DE CENTRO (Tipos y Gravedad)
+-- --------------------------------------------------------
+-- Tipos de Incidencia de CENTRO
+INSERT INTO schema_template.incident_cd_enum (incident_name, created_at, updated_at) VALUES
+    ('Mantenimiento', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Limpieza', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Suministros', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- Gravedad de CENTRO
+INSERT INTO schema_template.significance_cd_enum (significance_name, created_at, updated_at) VALUES
+    ('Baja', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Media', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Alta', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- CATÁLOGOS DE USUARIO (Tipos y Gravedad)
+-- --------------------------------------------------------
+-- Tipos de Incidencia de USUARIO
+INSERT INTO schema_template.incident_user_enum (incident_name, created_at, updated_at) VALUES
+    ('Salud / Caída', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Comportamiento', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Medicación', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- Gravedad de USUARIO
+INSERT INTO schema_template.significance_user_enum (significance_name, created_at, updated_at) VALUES
+    ('Leve', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Moderada', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Crítica', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- INCIDENCIAS DE CENTRO (cd_incidents)
+-- --------------------------------------------------------
+INSERT INTO schema_template.cd_incidents (incident_cd_id, significance_cd_id, created_by_worker_id,comment, created_at, updated_at, is_active)
+VALUES
+    (1, 3, 1, 'La caldera hace un ruido extraño y pierde agua.', '2025-01-14 09:00:00', CURRENT_TIMESTAMP, true);
+
+INSERT INTO schema_template.cd_incidents (incident_cd_id, significance_cd_id, created_by_worker_id,comment, created_at, updated_at, is_active)
+VALUES
+    (2, 1, 5, 'Se ha derramado café en la sala de estar.', '2025-01-14 16:00:00', CURRENT_TIMESTAMP, true);
+
+-- --------------------------------------------------------
+-- INCIDENCIAS DE USUARIO (users_incidents)
+-- --------------------------------------------------------
+INSERT INTO schema_template.users_incidents (user_id, incident_user_id, significance_user_id, created_by_worker_id, comment, created_at, updated_at, is_active)
+VALUES
+    (1, 1, 3, 3, 'Antonio se ha mareado y ha caído al suelo en el comedor.', '2025-01-15 11:00:00', CURRENT_TIMESTAMP, true);
+
+INSERT INTO schema_template.users_incidents (user_id, incident_user_id, significance_user_id, created_by_worker_id, comment, created_at, updated_at, is_active)
+VALUES
+    (2, 2, 2, 2, 'María está muy agitada y se niega a comer.', '2025-01-15 20:00:00', CURRENT_TIMESTAMP, true);
+
+-- --------------------------------------------------------
+-- INSERTAR COMENTARIOS EN INCIDENCIAS DE CENTRO
+-- --------------------------------------------------------
+
+INSERT INTO schema_template.incidents_cd_comments (cd_incident_id, worker_id, comment, created_at, updated_at)
+VALUES
+    (1, 5, 'He cerrado la llave de paso general por si acaso.', '2025-01-14 09:05:00', CURRENT_TIMESTAMP),
+    (1, 2, 'El fontanero confirma que llega en 20 minutos.', '2025-01-14 09:15:00', CURRENT_TIMESTAMP),
+    (1, 1, 'Perfecto, gracias. Estaré en recepción.', '2025-01-14 09:30:00', CURRENT_TIMESTAMP),
+    (2, 3, 'Voy a por el cubo y la fregona.', '2025-01-14 16:02:00', CURRENT_TIMESTAMP),
+    (2, 5, 'Tranquila, ya lo he limpiado con papel.', '2025-01-14 16:05:00', CURRENT_TIMESTAMP),
+    (2, 3, 'Ah vale, genial. Cierro aviso.', '2025-01-14 16:10:00', CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- INSERTAR COMENTARIOS EN INCIDENCIAS DE USUARIO
+-- --------------------------------------------------------
+
+INSERT INTO schema_template.incidents_users_comments (user_incident_id, worker_id, comment, created_at, updated_at)
+VALUES
+    (1, 2, '¿Tiene alguna herida visible?', '2025-01-15 11:05:00', CURRENT_TIMESTAMP),
+    (1, 3, 'No, revisado y sin sangre. Solo susto.', '2025-01-15 11:10:00', CURRENT_TIMESTAMP),
+    (1, 1, 'Anotado en el libro de relevos.', '2025-01-15 11:45:00', CURRENT_TIMESTAMP),
+    (2, 1, '¿Se ha tomado la pastilla?', '2025-01-15 20:10:00', CURRENT_TIMESTAMP),
+    (2, 2, 'Sí, se la dí yo, pero tarda en hacer efecto.', '2025-01-15 20:20:00', CURRENT_TIMESTAMP),
+    (2, 5, 'Le pondré música suave.', '2025-01-15 20:35:00', CURRENT_TIMESTAMP);
