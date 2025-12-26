@@ -113,3 +113,19 @@ JOIN schema_template.workers w_creator ON i.created_by_worker_id = w_creator.id
 LEFT JOIN schema_template.incidents_cd_comments c ON c.cd_incident_id = i.id
 LEFT JOIN schema_template.workers w_comment ON c.worker_id = w_comment.id
 ORDER BY i.created_at DESC, c.created_at ASC;
+
+------------------
+-- Roles y posiciones
+
+SELECT
+    w.id,
+    CONCAT(w.first_name, ' ', w.first_surname) AS nombre_completo,
+    STRING_AGG(DISTINCT p.position_name, ' - ') AS cargos,
+    STRING_AGG(DISTINCT r.role_name, ' - ') AS roles_app
+FROM schema_template.workers w
+LEFT JOIN schema_template.workers_positions wp ON w.id = wp.worker_id
+LEFT JOIN schema_template.positions_enum p ON wp.position_id = p.id
+LEFT JOIN schema_template.workers_roles wr ON w.id = wr.worker_id
+LEFT JOIN schema_template.roles_enum r ON wr.role_id = r.id
+GROUP BY w.id, w.first_name, w.first_surname
+ORDER BY w.id ASC;

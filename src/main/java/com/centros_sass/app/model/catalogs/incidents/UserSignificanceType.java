@@ -39,6 +39,7 @@ public class UserSignificanceType extends BaseEntity implements Serializable {
         return result;
     }
 
+    // hashCode / equals / toString
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

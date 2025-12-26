@@ -2,8 +2,8 @@ package com.centros_sass.app.model.incidents;
 
 import java.io.Serializable;
 
-import com.centros_sass.app.model.Worker;
 import com.centros_sass.app.model.base.BaseEntity;
+import com.centros_sass.app.model.profiles.Worker;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -33,6 +33,7 @@ public abstract class Comment extends BaseEntity implements Serializable {
     @Column(name = "comment", nullable = false, columnDefinition = "TEXT")
     private String comment;
 
+    // hashCode / equals / toString
     @Override
     public int hashCode() {
         final int prime = 31;

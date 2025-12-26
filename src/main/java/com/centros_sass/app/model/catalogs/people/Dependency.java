@@ -1,4 +1,4 @@
-package com.centros_sass.app.model.catalogs;
+package com.centros_sass.app.model.catalogs.people;
 
 import java.io.Serializable;
 

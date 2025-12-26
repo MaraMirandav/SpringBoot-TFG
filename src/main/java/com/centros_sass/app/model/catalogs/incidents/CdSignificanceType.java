@@ -31,6 +31,7 @@ public class CdSignificanceType extends BaseEntity implements Serializable {
     @Column(name = "significance_name", nullable = false, columnDefinition = "TEXT", unique = true)
     private String significanceName;
 
+    // hashCode / equals / toString
     @Override
     public int hashCode() {
         final int prime = 31;

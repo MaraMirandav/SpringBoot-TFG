@@ -1,4 +1,4 @@
-package com.centros_sass.app.model.catalogs;
+package com.centros_sass.app.model.catalogs.organization;
 
 import java.io.Serializable;
 
@@ -16,21 +16,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "sex_enum")
+@Table(name = "roles_enum")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Sex extends BaseEntity implements Serializable {
+public class Role extends BaseEntity implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "sex", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String sex;
 
-    // hashCode / equals / toString
+    @Column(name = "role_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    private String name;
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -47,7 +48,7 @@ public class Sex extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Sex other = (Sex) obj;
+        Role other = (Role) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -58,6 +59,7 @@ public class Sex extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "Sex [id=" + id + ", sex=" + sex + "]";
+        return "Role [id=" + id + ", name=" + name + "]";
     }
 }
+
