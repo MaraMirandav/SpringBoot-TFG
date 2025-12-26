@@ -1,14 +1,22 @@
-package com.centros_sass.app.model;
+package com.centros_sass.app.model.profiles;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
+import com.centros_sass.app.model.catalogs.organization.Position;
+import com.centros_sass.app.model.catalogs.organization.Role;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -55,6 +63,40 @@ public class Worker extends BaseEntity implements Serializable {
 
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
+
+    // Roles
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+        name = "workers_roles",
+        joinColumns = @JoinColumn(name = "worker_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
+
+    public void addRole(Role role) {
+        this.roles.add(role);
+    }
+
+    public void removeRole(Role role) {
+        this.roles.remove(role);
+    }
+
+    // Positions
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+        name = "workers_positions",
+        joinColumns = @JoinColumn(name = "worker_id"),
+        inverseJoinColumns = @JoinColumn(name = "position_id")
+    )
+    private Set<Position> positions = new HashSet<>();
+
+    public void addPosition(Position position) {
+        this.positions.add(position);
+    }
+
+    public void removePosition(Position position) {
+        this.positions.remove(position);
+    }
 
     // hashCode / equals / toString
     @Override

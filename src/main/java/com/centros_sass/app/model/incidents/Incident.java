@@ -1,8 +1,8 @@
 package com.centros_sass.app.model.incidents;
 import java.io.Serializable;
 
-import com.centros_sass.app.model.Worker;
 import com.centros_sass.app.model.base.BaseEntity;
+import com.centros_sass.app.model.profiles.Worker;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +35,7 @@ public abstract class Incident extends BaseEntity implements Serializable {
     @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
     private boolean isActive;
 
+    // hashCode / equals / toString
     @Override
     public int hashCode() {
         final int prime = 31;

@@ -1,11 +1,10 @@
-package com.centros_sass.app.model;
+package com.centros_sass.app.model.schedules;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.Dependency;
-import com.centros_sass.app.model.catalogs.Sex;
+import com.centros_sass.app.model.profiles.Worker;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,12 +21,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "users")
+@Table(name = "workers_schedules_records")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends BaseEntity implements Serializable {
+public class WorkerScheduleRecord extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -34,34 +34,19 @@ public class User extends BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "first_name", nullable = false, columnDefinition = "TEXT")
-    private String firstName;
-
-    @Column(name = "second_name", columnDefinition = "TEXT")
-    private String secondName;
-
-    @Column(name = "first_surname", nullable = false, columnDefinition = "TEXT")
-    private String firstSurname;
-
-    @Column(name = "second_surname", columnDefinition = "TEXT")
-    private String secondSurname;
-
-    @Column(name = "alias", columnDefinition = "TEXT")
-    private String alias;
-
-    @Column(name = "dni", nullable = false, columnDefinition = "TEXT")
-    private String dni;
-
     @ManyToOne
-    @JoinColumn(name = "sex_id", nullable = false)
-    private Sex sex;
+    @JoinColumn(name = "worker_id", nullable = false, columnDefinition = "INTEGER" )
+    private Worker worker;
 
-    @Column(name = "birth_date", nullable = false)
-    private LocalDate birthDate;
+    @OneToOne
+    @JoinColumn(name = "schedule_id", nullable = false, columnDefinition = "INTEGER" )
+    private WorkerSchedule schedule;
 
-    @ManyToOne
-    @JoinColumn(name = "dependency_id", nullable = false)
-    private Dependency dependency;
+    @Column(name = "clock_in", nullable = false, columnDefinition = "TIMESTAMP")
+    private LocalDateTime clockIn;
+
+    @Column(name = "clock_out", columnDefinition = "TIMESTAMP")
+    private LocalDateTime clockOut;
 
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
@@ -83,7 +68,7 @@ public class User extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        User other = (User) obj;
+        WorkerScheduleRecord other = (WorkerScheduleRecord) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -94,9 +79,7 @@ public class User extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", firstSurname="
-                + firstSurname + ", secondSurname=" + secondSurname + ", alias=" + alias + ", dni=" + dni + ", sex="
-                + sex + ", birthDate=" + birthDate + ", dependency=" + dependency + ", isActive=" + isActive + "]";
+        return "WorkerScheduleRecord [id=" + id + ", worker=" + worker + ", schedule=" + schedule + ", clockIn="
+                + clockIn + ", clockOut=" + clockOut + ", isActive=" + isActive + "]";
     }
-
 }

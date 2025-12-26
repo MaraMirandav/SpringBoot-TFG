@@ -1,13 +1,13 @@
-package com.centros_sass.app.model.catalogs;
+package com.centros_sass.app.model.catalogs.people;
 
 import java.io.Serializable;
-import java.time.LocalTime;
 
 import com.centros_sass.app.model.base.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -16,27 +16,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "open_days")
+@Table(name = "sex_enum")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OpenDay extends BaseEntity implements Serializable {
-
+public class Sex extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "day", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String day;
-
-    @Column(name = "open_at", nullable = false, columnDefinition = "TIME", unique = false)
-    private LocalTime openAt;
-
-    @Column(name = "close_at", nullable = false, columnDefinition = "TIME", unique = false)
-    private LocalTime closeAt;
+    @Column(name = "sex", nullable = false, columnDefinition = "TEXT", unique = true)
+    private String sex;
 
     // hashCode / equals / toString
     @Override
@@ -55,7 +47,7 @@ public class OpenDay extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        OpenDay other = (OpenDay) obj;
+        Sex other = (Sex) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -66,6 +58,6 @@ public class OpenDay extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "OpenDay [id=" + id + ", day=" + day + ", openAt=" + openAt + ", closeAt=" + closeAt + "]";
+        return "Sex [id=" + id + ", sex=" + sex + "]";
     }
 }

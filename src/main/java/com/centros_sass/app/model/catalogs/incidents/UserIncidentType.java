@@ -31,6 +31,7 @@ public class UserIncidentType extends BaseEntity implements Serializable {
     @Column(name = "incident_name", nullable = false, columnDefinition = "TEXT", unique = true)
     private String incidentName;
 
+    // hashCode / equals / toString
     @Override
     public int hashCode() {
         final int prime = 31;

@@ -1,10 +1,11 @@
-package com.centros_sass.app.model;
+package com.centros_sass.app.model.schedules;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.OpenDay;
+import com.centros_sass.app.model.catalogs.calendar.OpenDay;
+import com.centros_sass.app.model.profiles.Worker;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
