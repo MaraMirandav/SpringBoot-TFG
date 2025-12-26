@@ -41,7 +41,7 @@ public class UserContact extends BaseEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "contact_relationship_id", nullable = false)
-    private Relationship contactRelation;
+    private Relationship contactRelationship;
 
     @Column(name = "contact_phone", nullable = false, columnDefinition = "TEXT")
     private String contactPhone;
@@ -84,7 +84,7 @@ public class UserContact extends BaseEntity implements Serializable {
     @Override
     public String toString() {
         return "UserContact [id=" + id + ", user=" + user + ", contactName=" + contactName + ", contactRelation="
-                + contactRelation + ", contactPhone=" + contactPhone + ", contactEmail=" + contactEmail
+                + contactRelationship + ", contactPhone=" + contactPhone + ", contactEmail=" + contactEmail
                 + ", isContactMain=" + isContactMain + ", contactNote=" + contactNote + "]";
     }
 }

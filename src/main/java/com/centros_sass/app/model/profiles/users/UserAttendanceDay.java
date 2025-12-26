@@ -1,10 +1,12 @@
 package com.centros_sass.app.model.profiles.users;
 
 import java.io.Serializable;
+import java.time.LocalTime;
 
 import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.calendar.OpenDay;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -39,6 +41,12 @@ public class UserAttendanceDay extends BaseEntity implements Serializable {
     @JoinColumn(name = "day_id", nullable = false)
     private OpenDay day;
 
+    @Column(name = "start_at", nullable = false, columnDefinition = "TIME", unique = false)
+    private LocalTime startAt;
+
+    @Column(name = "end_at", nullable = false, columnDefinition = "TIME", unique = false)
+    private LocalTime endAt;
+
     // hashCode / equals / toString
     @Override
     public int hashCode() {
@@ -67,6 +75,7 @@ public class UserAttendanceDay extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "UserAttendanceDay [id=" + id + ", user=" + user + ", day=" + day + "]";
+        return "UserAttendanceDay [id=" + id + ", user=" + user + ", day=" + day + ", startAt=" + startAt + ", endAt="
+                + endAt + "]";
     }
 }

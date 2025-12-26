@@ -161,9 +161,11 @@ WHERE uc.is_contact_main = true;
 SELECT
     od.day AS "Día Semana",
     CONCAT(u.first_name, ' ', u.first_surname) AS "Usuario",
-    u.dni
+    u.dni,
+    uad.start_at AS "Hora Entrada",
+    uad.end_at AS "Hora Salida"
 FROM user_attendance_days uad
 JOIN users u ON uad.user_id = u.id
 JOIN open_days od ON uad.day_id = od.id
-WHERE od.day = 'Viernes'
+WHERE od.day = 'Lunes'
 ORDER BY u.first_surname;
