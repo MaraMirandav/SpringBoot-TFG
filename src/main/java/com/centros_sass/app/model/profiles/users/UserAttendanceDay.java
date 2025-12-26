@@ -1,10 +1,10 @@
-package com.centros_sass.app.model.schedules;
+package com.centros_sass.app.model.profiles.users;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.profiles.Worker;
+import com.centros_sass.app.model.catalogs.calendar.OpenDay;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,7 +13,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,12 +20,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "workers_schedules_records")
+@Table(name = "user_attendance_days")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class WorkerScheduleRecord extends BaseEntity implements Serializable {
+public class UserAttendanceDay extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -35,21 +34,18 @@ public class WorkerScheduleRecord extends BaseEntity implements Serializable {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "worker_id", nullable = false, columnDefinition = "INTEGER" )
-    private Worker worker;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    @OneToOne
-    @JoinColumn(name = "schedule_id", nullable = false, columnDefinition = "INTEGER" )
-    private WorkerSchedule schedule;
+    @ManyToOne
+    @JoinColumn(name = "day_id", nullable = false)
+    private OpenDay day;
 
-    @Column(name = "clock_in", nullable = false, columnDefinition = "TIMESTAMP")
-    private LocalDateTime clockIn;
+    @Column(name = "start_at", nullable = false, columnDefinition = "TIME", unique = false)
+    private LocalTime startAt;
 
-    @Column(name = "clock_out", columnDefinition = "TIMESTAMP")
-    private LocalDateTime clockOut;
-
-    @Column(name = "is_active", nullable = false)
-    private boolean isActive;
+    @Column(name = "end_at", nullable = false, columnDefinition = "TIME", unique = false)
+    private LocalTime endAt;
 
     // hashCode / equals / toString
     @Override
@@ -68,7 +64,7 @@ public class WorkerScheduleRecord extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        WorkerScheduleRecord other = (WorkerScheduleRecord) obj;
+        UserAttendanceDay other = (UserAttendanceDay) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -79,7 +75,7 @@ public class WorkerScheduleRecord extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "WorkerScheduleRecord [id=" + id + ", worker=" + worker + ", schedule=" + schedule + ", clockIn="
-                + clockIn + ", clockOut=" + clockOut + ", isActive=" + isActive + "]";
+        return "UserAttendanceDay [id=" + id + ", user=" + user + ", day=" + day + ", startAt=" + startAt + ", endAt="
+                + endAt + "]";
     }
 }

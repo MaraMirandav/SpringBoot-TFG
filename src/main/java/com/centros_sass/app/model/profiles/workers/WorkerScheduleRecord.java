@@ -1,6 +1,7 @@
-package com.centros_sass.app.model.catalogs.organization;
+package com.centros_sass.app.model.profiles.workers;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import com.centros_sass.app.model.base.BaseEntity;
 
@@ -9,6 +10,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,12 +20,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "roles_enum")
+@Table(name = "workers_schedules_records")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role extends BaseEntity implements Serializable {
+public class WorkerScheduleRecord extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,9 +33,24 @@ public class Role extends BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "role_name", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String roleName;
+    @ManyToOne
+    @JoinColumn(name = "worker_id", nullable = false, columnDefinition = "INTEGER" )
+    private Worker worker;
 
+    @OneToOne
+    @JoinColumn(name = "schedule_id", nullable = false, columnDefinition = "INTEGER" )
+    private WorkerSchedule schedule;
+
+    @Column(name = "clock_in", nullable = false, columnDefinition = "TIMESTAMP")
+    private LocalDateTime clockIn;
+
+    @Column(name = "clock_out", columnDefinition = "TIMESTAMP")
+    private LocalDateTime clockOut;
+
+    @Column(name = "is_active", nullable = false)
+    private boolean isActive;
+
+    // hashCode / equals / toString
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -48,7 +67,7 @@ public class Role extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Role other = (Role) obj;
+        WorkerScheduleRecord other = (WorkerScheduleRecord) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -59,7 +78,7 @@ public class Role extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "Role [id=" + id + ", name=" + roleName + "]";
+        return "WorkerScheduleRecord [id=" + id + ", worker=" + worker + ", schedule=" + schedule + ", clockIn="
+                + clockIn + ", clockOut=" + clockOut + ", isActive=" + isActive + "]";
     }
 }
-

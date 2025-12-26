@@ -1,4 +1,4 @@
-package com.centros_sass.app.model.profiles;
+package com.centros_sass.app.model.profiles.users;
 
 import java.io.Serializable;
 import java.time.LocalDate;

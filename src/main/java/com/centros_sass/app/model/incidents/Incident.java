@@ -2,7 +2,7 @@ package com.centros_sass.app.model.incidents;
 import java.io.Serializable;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.profiles.Worker;
+import com.centros_sass.app.model.profiles.workers.Worker;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;

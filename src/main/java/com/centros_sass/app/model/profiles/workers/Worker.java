@@ -1,4 +1,4 @@
-package com.centros_sass.app.model.profiles;
+package com.centros_sass.app.model.profiles.workers;
 
 import java.io.Serializable;
 import java.util.HashSet;

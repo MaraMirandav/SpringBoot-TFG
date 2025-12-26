@@ -1,4 +1,4 @@
-package com.centros_sass.app.model.catalogs.organization;
+package com.centros_sass.app.model.catalogs.address;
 
 import java.io.Serializable;
 
@@ -16,12 +16,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "roles_enum")
+@Table(name = "region_enum")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role extends BaseEntity implements Serializable {
+public class Region extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,9 +29,10 @@ public class Role extends BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "role_name", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String roleName;
+    @Column(name = "region_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    private String regionName;
 
+    // hashCode / equals / toString
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -48,7 +49,7 @@ public class Role extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Role other = (Role) obj;
+        Region other = (Region) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -59,7 +60,6 @@ public class Role extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "Role [id=" + id + ", name=" + roleName + "]";
+        return "Region [id=" + id + ", regionName=" + regionName + "]";
     }
 }
-

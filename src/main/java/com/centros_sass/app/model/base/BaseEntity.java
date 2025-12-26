@@ -28,7 +28,7 @@ public abstract class BaseEntity {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    // Muteadas hazta entender bien el funcionamiento
+    // Muteadas hasta entender bien el funcionamiento
     // @CreatedBy
     // @Column(name = "created_by", nullable = false, updatable = false)
     // private String createdBy;

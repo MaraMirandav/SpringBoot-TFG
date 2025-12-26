@@ -129,3 +129,43 @@ LEFT JOIN schema_template.workers_roles wr ON w.id = wr.worker_id
 LEFT JOIN schema_template.roles_enum r ON wr.role_id = r.id
 GROUP BY w.id, w.first_name, w.first_surname
 ORDER BY w.id ASC;
+
+------------------
+-- Direcciones
+
+SELECT
+    CONCAT(u.first_name, ' ', u.first_surname) AS nombre_completo,
+    ua.address AS "Dirección",
+    c.city_name AS "Ciudad",
+    p.province_name AS "Provincia"
+FROM users u
+JOIN user_addresses ua ON u.id = ua.user_id
+JOIN cities_enum c ON ua.city_id = c.id
+JOIN province_enum p ON ua.province_id = p.id;
+
+------------------
+-- Contactos
+SELECT
+    u.first_name AS "Usuario",
+    uc.contact_name AS "Contacto",
+    r.relationship_name AS "Relación",
+    uc.contact_phone AS "Teléfono",
+    uc.contact_note AS "Notas Importantes"
+FROM user_contacts uc
+JOIN users u ON uc.user_id = u.id
+JOIN user_relationships_enum r ON uc.contact_relationship_id = r.id
+WHERE uc.is_contact_main = true;
+
+------------------
+-- Horarios Asistencia
+SELECT
+    od.day AS "Día Semana",
+    CONCAT(u.first_name, ' ', u.first_surname) AS "Usuario",
+    u.dni,
+    uad.start_at AS "Hora Entrada",
+    uad.end_at AS "Hora Salida"
+FROM user_attendance_days uad
+JOIN users u ON uad.user_id = u.id
+JOIN open_days od ON uad.day_id = od.id
+WHERE od.day = 'Lunes'
+ORDER BY u.first_surname;

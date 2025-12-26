@@ -1,19 +1,14 @@
-package com.centros_sass.app.model.schedules;
+package com.centros_sass.app.model.catalogs.address;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.calendar.OpenDay;
-import com.centros_sass.app.model.profiles.Worker;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,12 +16,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "workers_schedules")
+@Table(name = "cities_enum")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class WorkerSchedule extends BaseEntity implements Serializable {
+public class City extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -34,19 +29,8 @@ public class WorkerSchedule extends BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "worker_id", nullable = false, columnDefinition = "INTEGER" )
-    private Worker worker;
-
-    @ManyToOne
-    @JoinColumn(name = "day_id", nullable = false, columnDefinition = "INTEGER" )
-    private OpenDay openDay;
-
-    @Column(name = "start_at", nullable = false, columnDefinition = "TIMESTAMP")
-    private LocalDateTime startAt;
-
-    @Column(name = "end_at", nullable = false, columnDefinition = "TIMESTAMP")
-    private LocalDateTime endAt;
+    @Column(name = "city_name", nullable = false, columnDefinition = "TEXT")
+    private String cityName;
 
     // hashCode / equals / toString
     @Override
@@ -65,7 +49,7 @@ public class WorkerSchedule extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        WorkerSchedule other = (WorkerSchedule) obj;
+        City other = (City) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -76,7 +60,6 @@ public class WorkerSchedule extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "WorkerSchedule [id=" + id + ", worker=" + worker + ", openDay=" + openDay + ", startAt=" + startAt
-                + ", endAt=" + endAt + "]";
+        return "City [id=" + id + ", CityName=" + cityName + "]";
     }
 }
