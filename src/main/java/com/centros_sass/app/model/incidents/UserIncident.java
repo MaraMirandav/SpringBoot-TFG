@@ -2,7 +2,7 @@ package com.centros_sass.app.model.incidents;
 
 import com.centros_sass.app.model.catalogs.incidents.UserIncidentType;
 import com.centros_sass.app.model.catalogs.incidents.UserSignificanceType;
-import com.centros_sass.app.model.profiles.User;
+import com.centros_sass.app.model.profiles.users.User;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;

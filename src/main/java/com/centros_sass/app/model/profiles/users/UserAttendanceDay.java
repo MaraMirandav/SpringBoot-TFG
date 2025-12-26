@@ -1,14 +1,16 @@
-package com.centros_sass.app.model.catalogs.organization;
+package com.centros_sass.app.model.profiles.users;
 
 import java.io.Serializable;
 
 import com.centros_sass.app.model.base.BaseEntity;
+import com.centros_sass.app.model.catalogs.calendar.OpenDay;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,12 +18,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "roles_enum")
+@Table(name = "user_attendance_days")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role extends BaseEntity implements Serializable {
+public class UserAttendanceDay extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,9 +31,15 @@ public class Role extends BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "role_name", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String roleName;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "day_id", nullable = false)
+    private OpenDay day;
+
+    // hashCode / equals / toString
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -48,7 +56,7 @@ public class Role extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Role other = (Role) obj;
+        UserAttendanceDay other = (UserAttendanceDay) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -59,7 +67,6 @@ public class Role extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "Role [id=" + id + ", name=" + roleName + "]";
+        return "UserAttendanceDay [id=" + id + ", user=" + user + ", day=" + day + "]";
     }
 }
-

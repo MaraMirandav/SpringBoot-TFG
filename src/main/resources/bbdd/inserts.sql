@@ -2,7 +2,7 @@
 -- TABLA DE TRABAJADORES (WORKERS)
 -- Tabla: schema_template.workers
 -- --------------------------------------------------------
-INSERT INTO schema_template.workers
+INSERT INTO workers
 (first_name, second_name, first_surname, second_surname, email, password, main_phone, second_phone, is_active, created_at, updated_at)
 VALUES
     -- 1. Trabajadora con todos los datos completos
@@ -78,7 +78,8 @@ VALUES
     ('Martes', '08:15', '18:30', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Miércoles', '08:15', '18:30', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Jueves', '08:15', '18:30', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Viernes', '08:15', '18:30', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+    ('Viernes', '08:15', '18:30', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    ON CONFLICT (day) DO NOTHING;
 
 
 -- --------------------------------------------------------
@@ -226,9 +227,7 @@ VALUES
 
 -- --------------------------------------------------------
 -- TABLA DE WORKERS_SCHEDULES_RECORDS
--- Tabla: schema_template.workers_schedules_records
 -- --------------------------------------------------------
-
 -- ANA GARCÍA (ID 1)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at)
 VALUES
@@ -422,51 +421,55 @@ VALUES
 -- CATÁLOGOS DE CENTRO (Tipos y Gravedad)
 -- --------------------------------------------------------
 -- Tipos de Incidencia de CENTRO
-INSERT INTO schema_template.incident_cd_enum (incident_name, created_at, updated_at) VALUES
+INSERT INTO incident_cd_enum (incident_name, created_at, updated_at) VALUES
     ('Mantenimiento', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Limpieza', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Suministros', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+    ('Suministros', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    ON CONFLICT (incident_name) DO NOTHING;
 
 -- Gravedad de CENTRO
-INSERT INTO schema_template.significance_cd_enum (significance_name, created_at, updated_at) VALUES
+INSERT INTO significance_cd_enum (significance_name, created_at, updated_at) VALUES
     ('Baja', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Media', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Alta', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+    ('Alta', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    ON CONFLICT (significance_name) DO NOTHING;
 
 -- --------------------------------------------------------
 -- CATÁLOGOS DE USUARIO (Tipos y Gravedad)
 -- --------------------------------------------------------
 -- Tipos de Incidencia de USUARIO
-INSERT INTO schema_template.incident_user_enum (incident_name, created_at, updated_at) VALUES
+INSERT INTO incident_user_enum (incident_name, created_at, updated_at) VALUES
     ('Salud / Caída', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Comportamiento', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Medicación', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+    ('Medicación', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    ON CONFLICT (incident_name) DO NOTHING;
 
 -- Gravedad de USUARIO
-INSERT INTO schema_template.significance_user_enum (significance_name, created_at, updated_at) VALUES
+INSERT INTO significance_user_enum (significance_name, created_at, updated_at) VALUES
     ('Leve', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Moderada', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Crítica', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+    ('Crítica', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    ON CONFLICT (significance_name) DO NOTHING;
 
 -- --------------------------------------------------------
 -- INCIDENCIAS DE CENTRO (cd_incidents)
 -- --------------------------------------------------------
-INSERT INTO schema_template.cd_incidents (incident_cd_id, significance_cd_id, created_by_worker_id,comment, created_at, updated_at, is_active)
+INSERT INTO cd_incidents (incident_cd_id, significance_cd_id, created_by_worker_id,comment, created_at, updated_at, is_active)
 VALUES
     (1, 3, 1, 'La caldera hace un ruido extraño y pierde agua.', '2025-01-14 09:00:00', CURRENT_TIMESTAMP, true);
 
-INSERT INTO schema_template.cd_incidents (incident_cd_id, significance_cd_id, created_by_worker_id,comment, created_at, updated_at, is_active)
+INSERT INTO cd_incidents (incident_cd_id, significance_cd_id, created_by_worker_id,comment, created_at, updated_at, is_active)
 VALUES
     (2, 1, 5, 'Se ha derramado café en la sala de estar.', '2025-01-14 16:00:00', CURRENT_TIMESTAMP, true);
 
 -- --------------------------------------------------------
 -- INCIDENCIAS DE USUARIO (users_incidents)
 -- --------------------------------------------------------
-INSERT INTO schema_template.users_incidents (user_id, incident_user_id, significance_user_id, created_by_worker_id, comment, created_at, updated_at, is_active)
+INSERT INTO users_incidents (user_id, incident_user_id, significance_user_id, created_by_worker_id, comment, created_at, updated_at, is_active)
 VALUES
     (1, 1, 3, 3, 'Antonio se ha mareado y ha caído al suelo en el comedor.', '2025-01-15 11:00:00', CURRENT_TIMESTAMP, true);
 
-INSERT INTO schema_template.users_incidents (user_id, incident_user_id, significance_user_id, created_by_worker_id, comment, created_at, updated_at, is_active)
+INSERT INTO users_incidents (user_id, incident_user_id, significance_user_id, created_by_worker_id, comment, created_at, updated_at, is_active)
 VALUES
     (2, 2, 2, 2, 'María está muy agitada y se niega a comer.', '2025-01-15 20:00:00', CURRENT_TIMESTAMP, true);
 
@@ -474,7 +477,7 @@ VALUES
 -- INSERTAR COMENTARIOS EN INCIDENCIAS DE CENTRO
 -- --------------------------------------------------------
 
-INSERT INTO schema_template.incidents_cd_comments (cd_incident_id, worker_id, comment, created_at, updated_at)
+INSERT INTO incidents_cd_comments (cd_incident_id, worker_id, comment, created_at, updated_at)
 VALUES
     (1, 5, 'He cerrado la llave de paso general por si acaso.', '2025-01-14 09:05:00', CURRENT_TIMESTAMP),
     (1, 2, 'El fontanero confirma que llega en 20 minutos.', '2025-01-14 09:15:00', CURRENT_TIMESTAMP),
@@ -487,7 +490,7 @@ VALUES
 -- INSERTAR COMENTARIOS EN INCIDENCIAS DE USUARIO
 -- --------------------------------------------------------
 
-INSERT INTO schema_template.incidents_users_comments (user_incident_id, worker_id, comment, created_at, updated_at)
+INSERT INTO incidents_users_comments (user_incident_id, worker_id, comment, created_at, updated_at)
 VALUES
     (1, 2, '¿Tiene alguna herida visible?', '2025-01-15 11:05:00', CURRENT_TIMESTAMP),
     (1, 3, 'No, revisado y sin sangre. Solo susto.', '2025-01-15 11:10:00', CURRENT_TIMESTAMP),
@@ -499,8 +502,6 @@ VALUES
 -- --------------------------------------------------------
 -- TABLA DE ROLES
 -- --------------------------------------------------------
-TRUNCATE TABLE roles_enum CASCADE;
-
 INSERT INTO roles_enum (role_name, created_at, updated_at) VALUES
 -- Jefatura
 ('ROLE_ADMIN', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
@@ -516,14 +517,12 @@ INSERT INTO roles_enum (role_name, created_at, updated_at) VALUES
 ('ROLE_TAS', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 -- Servicios
 ('ROLE_CONDUCTOR', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-('ROLE_COPILOTO', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+('ROLE_COPILOTO', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+ON CONFLICT (role_name) DO NOTHING;
 
 -- --------------------------------------------------------
 -- TABLA DE POSICIONES
 -- --------------------------------------------------------
--- Limpiamos la tabla primero para evitar duplicados
-TRUNCATE TABLE positions_enum CASCADE;
-
 INSERT INTO positions_enum (position_name, created_at, updated_at) VALUES
 -- Dirección
 ('Director/a', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
@@ -544,7 +543,8 @@ INSERT INTO positions_enum (position_name, created_at, updated_at) VALUES
 -- Servicios
 ('Conductor/a', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Copiloto', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-('Personal de Limpieza', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+('Personal de Limpieza', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+ON CONFLICT (position_name) DO NOTHING;
 
 -- --------------------------------------------------------
 -- TABLA DE WORKERS_ROLES
@@ -605,3 +605,102 @@ INSERT INTO schema_template.workers_positions (worker_id, position_id) VALUES
 (14, 13),-- Manuel -> Conductor/a
 (15, 14),-- Julián -> Copiloto
 (16, 15);-- Rosa -> Personal de Limpieza
+
+-- --------------------------------------------------------
+-- CATÁLOGO: REGIONES (Comunidades Autónomas)
+-- --------------------------------------------------------
+INSERT INTO region_enum (region_name, created_at, updated_at) VALUES
+('Comunidad de Madrid', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Andalucía', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Cataluña', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+ON CONFLICT (region_name) DO NOTHING;
+
+-- --------------------------------------------------------
+-- CATÁLOGO: PROVINCIAS
+-- --------------------------------------------------------
+INSERT INTO province_enum (province_name, created_at, updated_at) VALUES
+('Madrid', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Sevilla', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Barcelona', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+ON CONFLICT (province_name) DO NOTHING;
+
+-- --------------------------------------------------------
+-- CATÁLOGO: CIUDADES / POBLACIONES
+-- --------------------------------------------------------
+INSERT INTO cities_enum (city_name, created_at, updated_at) VALUES
+('Móstoles', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Alcalá de Henares', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Sevilla Capital', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('L''Hospitalet', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- CATÁLOGO: RELACIONES FAMILIARES
+-- --------------------------------------------------------
+INSERT INTO user_relationships_enum (relationship_name, created_at, updated_at) VALUES
+('Hijo/a', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Cónyuge (Esposo/a)', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Hermano/a', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Nieto/a', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Sobrino/a', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Amigo/a / Vecino/a', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Tutor Legal', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+ON CONFLICT (relationship_name) DO NOTHING;
+
+
+-- --------------------------------------------------------
+-- DIRECCIONES DE USUARIOS
+-- --------------------------------------------------------
+INSERT INTO user_addresses (user_id, address, postal_code, city_id, province_id, region_id, created_at, updated_at)
+VALUES
+    -- 1. Antonio (Vive en Móstoles, Madrid)
+    (1, 'Calle de la Libertad, 45, 3ºA', '28931', 1, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 2. María (Vive en Alcalá, Madrid)
+    (2, 'Av. Complutense, 12, Bajo B', '28801', 2, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 3. José (Vive en Sevilla, Andalucía)
+    (3, 'Calle Betis, 8, 1º Izq', '41010', 3, 2, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 4. Dolores (Vive en Móstoles también)
+    (4, 'Plaza del Pradillo, 2', '28932', 1, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- CONTACTOS DE USUARIOS
+-- --------------------------------------------------------
+INSERT INTO user_contacts (user_id, contact_name, contact_phone, contact_email, contact_relationship_id, is_contact_main, contact_note, created_at, updated_at)
+VALUES
+    -- Contactos de Antonio (ID 1)
+    (1, 'Laura Martínez', '600111222', 'laura.mtz@email.com', 1, true, 'Tiene llaves del domicilio principal.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (1, 'Pedro Martínez', '600333444', 'pedro.mtz@email.com', 1, false, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- Contactos de María (ID 2)
+    (2, 'Juan López', '611222333', 'juan.lopez@email.com', 2, true, 'Suele estar en casa a partir de las 17:00h.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- Contactos de José (ID 3)
+    (3, 'Manuel Hernández', '622444555', 'manuel.hdez@email.com', 3, true, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (3, 'Ana Hernández', '622555666', 'ana.hdez@email.com', 5, false, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- Contactos de Dolores (ID 4)
+    (4, 'Marta Gómez', '633777888', 'marta.gomez@email.com', 4, true, 'Contactar por WhatsApp si no responde.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- DÍAS DE ASISTENCIA DE USUARIOS
+-- --------------------------------------------------------
+
+INSERT INTO user_attendance_days (user_id, day_id, created_at, updated_at)
+VALUES
+    -- 1. ANTONIO (ID 1): Viene TODOS los días (L-V)
+    (1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (1, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (1, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (1, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (1, 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+
+    -- 2. MARÍA (ID 2): Días alternos (L-X-V)
+    (2, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (2, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (2, 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+
+    -- 3. JOSÉ (ID 3): Solo Martes y Jueves
+    (3, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (3, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+
+    -- 4. DOLORES (ID 4): Lunes a Jueves
+    (4, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (4, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (4, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (4, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
