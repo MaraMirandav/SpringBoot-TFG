@@ -169,3 +169,25 @@ JOIN users u ON uad.user_id = u.id
 JOIN open_days od ON uad.day_id = od.id
 WHERE od.day = 'Lunes'
 ORDER BY u.first_surname;
+
+select * from incident_status_enum;
+
+------------------
+-- Incidencias Usuarios (DASHBOARD)
+SELECT
+iue.incident_name as "Tipo",
+ui.comment as "Incidencia",
+CONCAT(u.first_name, ' ', u.first_surname) as "Usuario",
+sue.significance_name as "Importancia",
+ui.created_at as "Incio",
+ui.updated_at as "Actualización",
+CONCAT(w.first_name, ' ', w.first_surname) as "Creado Por",
+ise.status_name as "Estado"
+FROM users_incidents ui
+JOIN users u ON ui.user_id = u.id
+JOIN incident_user_enum iue ON ui.incident_user_id = iue.id
+JOIN significance_user_enum sue ON ui.significance_user_id = sue.id
+JOIN workers w ON ui.created_by_worker_id = w.id
+JOIN incident_status_enum ise ON ui.incident_status_id = ise.id
+ORDER BY ui.created_at DESC;
+

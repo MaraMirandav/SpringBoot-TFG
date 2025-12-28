@@ -452,26 +452,41 @@ INSERT INTO significance_user_enum (significance_name, created_at, updated_at) V
     ON CONFLICT (significance_name) DO NOTHING;
 
 -- --------------------------------------------------------
--- INCIDENCIAS DE CENTRO (cd_incidents)
+-- CATÁLOGO: ESTADOS DE INCIDENCIA
 -- --------------------------------------------------------
-INSERT INTO cd_incidents (incident_cd_id, significance_cd_id, created_by_worker_id,comment, created_at, updated_at, is_active)
-VALUES
-    (1, 3, 1, 'La caldera hace un ruido extraño y pierde agua.', '2025-01-14 09:00:00', CURRENT_TIMESTAMP, true);
-
-INSERT INTO cd_incidents (incident_cd_id, significance_cd_id, created_by_worker_id,comment, created_at, updated_at, is_active)
-VALUES
-    (2, 1, 5, 'Se ha derramado café en la sala de estar.', '2025-01-14 16:00:00', CURRENT_TIMESTAMP, true);
+INSERT INTO incident_status_enum (status_name, created_at, updated_at) VALUES
+('Activa', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('En revisión', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Cerrada', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Cancelada', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+ON CONFLICT (status_name) DO NOTHING;
 
 -- --------------------------------------------------------
+-- INCIDENCIAS DE CENTRO
+-- --------------------------------------------------------
+-- 1. Caldera: Estado 'En revisión' (ID 2)
+INSERT INTO cd_incidents
+(incident_cd_id, significance_cd_id, created_by_worker_id, incident_status_id, comment, created_at, updated_at)
+VALUES
+    (1, 3, 1, 2, 'La caldera hace un ruido extraño y pierde agua.', '2025-01-14 09:00:00', CURRENT_TIMESTAMP);
+
+-- 2. Café: Estado 'Cerrada' (ID 3)
+INSERT INTO cd_incidents
+(incident_cd_id, significance_cd_id, created_by_worker_id, incident_status_id, comment, created_at, updated_at)
+VALUES
+    (2, 1, 5, 3, 'Se ha derramado café en la sala de estar.', '2025-01-14 16:00:00', CURRENT_TIMESTAMP);
+
+--- --------------------------------------------------------
 -- INCIDENCIAS DE USUARIO (users_incidents)
 -- --------------------------------------------------------
-INSERT INTO users_incidents (user_id, incident_user_id, significance_user_id, created_by_worker_id, comment, created_at, updated_at, is_active)
+-- 1. Antonio (Caída): Estado 'En revisión' (ID 2)
+INSERT INTO users_incidents (user_id, incident_user_id, significance_user_id, created_by_worker_id, incident_status_id, comment, created_at, updated_at)
 VALUES
-    (1, 1, 3, 3, 'Antonio se ha mareado y ha caído al suelo en el comedor.', '2025-01-15 11:00:00', CURRENT_TIMESTAMP, true);
-
-INSERT INTO users_incidents (user_id, incident_user_id, significance_user_id, created_by_worker_id, comment, created_at, updated_at, is_active)
+    (1, 1, 3, 3, 2, 'Antonio se ha mareado y ha caído al suelo en el comedor.', '2025-01-15 11:00:00', CURRENT_TIMESTAMP);
+-- 2. María (Agitada): Estado 'Activa' (ID 1)
+INSERT INTO users_incidents (user_id, incident_user_id, significance_user_id, created_by_worker_id, incident_status_id, comment, created_at, updated_at)
 VALUES
-    (2, 2, 2, 2, 'María está muy agitada y se niega a comer.', '2025-01-15 20:00:00', CURRENT_TIMESTAMP, true);
+    (2, 2, 2, 2, 1, 'María está muy agitada y se niega a comer.', '2025-01-15 20:00:00', CURRENT_TIMESTAMP);
 
 -- --------------------------------------------------------
 -- INSERTAR COMENTARIOS EN INCIDENCIAS DE CENTRO
@@ -498,6 +513,7 @@ VALUES
     (2, 1, '¿Se ha tomado la pastilla?', '2025-01-15 20:10:00', CURRENT_TIMESTAMP),
     (2, 2, 'Sí, se la dí yo, pero tarda en hacer efecto.', '2025-01-15 20:20:00', CURRENT_TIMESTAMP),
     (2, 5, 'Le pondré música suave.', '2025-01-15 20:35:00', CURRENT_TIMESTAMP);
+
 
 -- --------------------------------------------------------
 -- TABLA DE ROLES

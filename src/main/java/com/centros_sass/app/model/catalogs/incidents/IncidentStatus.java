@@ -1,42 +1,36 @@
-package com.centros_sass.app.model.incidents;
+package com.centros_sass.app.model.catalogs.incidents;
+
 import java.io.Serializable;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.incidents.IncidentStatus;
-import com.centros_sass.app.model.profiles.workers.Worker;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@MappedSuperclass
+@Entity
+@Table(name = "incident_status_enum")
 @Getter
 @Setter
-public abstract class Incident extends BaseEntity implements Serializable {
+@NoArgsConstructor
+@AllArgsConstructor
+public class IncidentStatus extends BaseEntity implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "created_by_worker_id", nullable = false)
-    private Worker createdBy;
-
-    @Column(name = "comment", nullable = false, columnDefinition = "TEXT")
-    private String comment;
-
-    @ManyToOne
-    @JoinColumn(name = "incident_status_id", nullable = false)
-    private IncidentStatus incidentStatus;
-
+    @Column(name = "status_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    private String statusName;
 
     // hashCode / equals / toString
     @Override
@@ -55,7 +49,7 @@ public abstract class Incident extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Incident other = (Incident) obj;
+        IncidentStatus other = (IncidentStatus) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -66,7 +60,6 @@ public abstract class Incident extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "Incident [id=" + id + ", createdBy=" + createdBy + ", comment=" + comment + ", incidentStatus="
-                + incidentStatus + "]";
+        return "IncidentStatus [id=" + id + ", statusName=" + statusName + "]";
     }
 }
