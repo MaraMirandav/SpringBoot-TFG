@@ -190,4 +190,3 @@ JOIN significance_user_enum sue ON ui.significance_user_id = sue.id
 JOIN workers w ON ui.created_by_worker_id = w.id
 JOIN incident_status_enum ise ON ui.incident_status_id = ise.id
 ORDER BY ui.created_at DESC;
-
