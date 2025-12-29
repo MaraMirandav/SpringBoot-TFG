@@ -190,3 +190,16 @@ JOIN significance_user_enum sue ON ui.significance_user_id = sue.id
 JOIN workers w ON ui.created_by_worker_id = w.id
 JOIN incident_status_enum ise ON ui.incident_status_id = ise.id
 ORDER BY ui.created_at DESC;
+
+------------------
+-- Pruebas de tablas de transporte
+SELECT
+    tr.route_number AS "Ruta",
+    rs.route_name AS "Turno",
+    rv.license_plate AS "Matrícula",
+    COUNT(tru.user_id) AS "Total Pasajeros"
+FROM transport_routes tr
+JOIN route_shift_enum rs ON tr.route_shift_id = rs.id
+JOIN route_vehicles rv ON tr.route_vehicle_id = rv.id
+LEFT JOIN transport_routes_user tru ON tr.id = tru.route_id
+GROUP BY tr.route_number, rs.route_name, rv.license_plate;

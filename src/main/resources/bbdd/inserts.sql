@@ -720,3 +720,47 @@ VALUES
     (4, 2, '08:30:00', '17:30:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     (4, 3, '08:30:00', '17:30:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     (4, 4, '08:30:00', '17:30:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- CATALOGO: TURNOS DE RUTA (route_shift_enum)
+-- --------------------------------------------------------
+INSERT INTO route_shift_enum (route_name, created_at, updated_at)
+VALUES
+    ('MAÑANA', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('TARDE', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    ON CONFLICT (route_name) DO NOTHING;
+
+-- --------------------------------------------------------
+-- CATÁLOGO: VEHÍCULOS (route_vehicles)
+-- --------------------------------------------------------
+INSERT INTO route_vehicles (license_plate, capacity, has_wheelchair, wheelchair_capacity, is_active, created_at, updated_at)
+VALUES
+    ('1234-BBB', 12, false, 0, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('5678-JWL', 8, true, 2, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    ON CONFLICT (license_plate) DO NOTHING;
+
+-- --------------------------------------------------------
+-- RUTAS DE TRANSPORTE (transport_routes)
+-- --------------------------------------------------------
+-- Limpiamos previo para evitar duplicados en pruebas
+TRUNCATE TABLE transport_routes CASCADE;
+
+INSERT INTO transport_routes (route_number, start_time, end_time, route_shift_id, route_vehicle_id, worker_driver_id, worker_copilot_id, is_active, created_at, updated_at)
+VALUES
+    -- RUTA 101: Mañana (Recogida) - Furgoneta Normal
+    (101, '08:00:00', '09:30:00', 1, 1, 1, 2, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- RUTA 102: Tarde (Vuelta) - Furgoneta Adaptada
+    (102, '17:00:00', '18:30:00', 2, 2, 2, 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- ASIGNACIÓN DE PASAJEROS (transport_routes_user)
+-- --------------------------------------------------------
+TRUNCATE TABLE transport_routes_user CASCADE;
+
+INSERT INTO transport_routes_user (route_id, user_id) VALUES
+    -- Ruta 101 (Mañana): Van Antonio (1) y María (2)
+    (1, 1),
+    (1, 2),
+    -- Ruta 102 (Tarde): Vuelven los mismos
+    (2, 1),
+    (2, 2);
