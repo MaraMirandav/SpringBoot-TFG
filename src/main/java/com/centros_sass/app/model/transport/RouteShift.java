@@ -1,4 +1,4 @@
-package com.centros_sass.app.model.catalogs.incidents;
+package com.centros_sass.app.model.transport;
 
 import java.io.Serializable;
 
@@ -16,21 +16,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "significance_user_enum")
+@Table(name = "route_shift_enum")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserSignificanceType extends BaseEntity implements Serializable {
+public class RouteShift extends BaseEntity implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "significance_name", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String significanceName;
+    @Column(name = "route_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    private String routeName;
 
+    // hashCode / equals / toString
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -38,8 +40,6 @@ public class UserSignificanceType extends BaseEntity implements Serializable {
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         return result;
     }
-
-    // hashCode / equals / toString
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -48,7 +48,7 @@ public class UserSignificanceType extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        UserSignificanceType other = (UserSignificanceType) obj;
+        RouteShift other = (RouteShift) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -59,6 +59,6 @@ public class UserSignificanceType extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "UserSignificanceType [id=" + id + ", significanceName=" + significanceName + "]";
+        return "RouteShift [id=" + id + ", routeName=" + routeName + "]";
     }
 }

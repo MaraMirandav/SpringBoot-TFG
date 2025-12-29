@@ -1,4 +1,4 @@
-package com.centros_sass.app.model.catalogs.incidents;
+package com.centros_sass.app.model.incidents;
 
 import java.io.Serializable;
 
@@ -16,21 +16,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "incident_status_enum")
+@Table(name = "significance_cd_enum")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class IncidentStatus extends BaseEntity implements Serializable {
-
+public class CdSignificanceType extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "status_name", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String statusName;
+    @Column(name = "significance_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    private String significanceName;
 
     // hashCode / equals / toString
     @Override
@@ -49,7 +48,7 @@ public class IncidentStatus extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        IncidentStatus other = (IncidentStatus) obj;
+        CdSignificanceType other = (CdSignificanceType) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -60,6 +59,6 @@ public class IncidentStatus extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "IncidentStatus [id=" + id + ", statusName=" + statusName + "]";
+        return "CdSignificanceType [id=" + id + ", significanceName=" + significanceName + "]";
     }
 }

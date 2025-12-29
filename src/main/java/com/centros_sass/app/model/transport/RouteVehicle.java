@@ -1,4 +1,4 @@
-package com.centros_sass.app.model.catalogs.incidents;
+package com.centros_sass.app.model.transport;
 
 import java.io.Serializable;
 
@@ -16,12 +16,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "incident_cd_enum")
+@Table(name = "route_vehicles")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CdIncidentType extends BaseEntity implements Serializable {
+public class RouteVehicle extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,8 +29,20 @@ public class CdIncidentType extends BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "incident_name", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String incidentName;
+    @Column(name = "license_plate", nullable = false, columnDefinition = "TEXT", unique = true)
+    private String licensePlate;
+
+    @Column(name = "capacity", nullable = false, columnDefinition = "INTEGER")
+    private Integer capacity;
+
+    @Column(name = "has_wheelchair", nullable = false, columnDefinition = "BOOLEAN")
+    private boolean hasWheelchair;
+
+    @Column(name = "wheelchair_capacity", columnDefinition = "INTEGER")
+    private Integer wheelchairCapacity;
+
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
+    private boolean isActive;
 
     // hashCode / equals / toString
     @Override
@@ -49,7 +61,7 @@ public class CdIncidentType extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        CdIncidentType other = (CdIncidentType) obj;
+        RouteVehicle other = (RouteVehicle) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -60,6 +72,8 @@ public class CdIncidentType extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "CdIncidentType [id=" + id + ", incidentName=" + incidentName + "]";
+        return "RouteVehicule [id=" + id + ", licensePlate=" + licensePlate + ", capacity=" + capacity
+                + ", hasWheelchair=" + hasWheelchair + ", wheelchairCapacity=" + wheelchairCapacity + ", isActive="
+                + isActive + "]";
     }
 }

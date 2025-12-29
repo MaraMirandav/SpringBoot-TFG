@@ -1,8 +1,5 @@
 package com.centros_sass.app.model.incidents;
 
-import com.centros_sass.app.model.catalogs.incidents.CdIncidentType;
-import com.centros_sass.app.model.catalogs.incidents.CdSignificanceType;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
