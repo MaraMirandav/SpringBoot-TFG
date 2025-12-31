@@ -764,3 +764,100 @@ INSERT INTO transport_routes_user (route_id, user_id) VALUES
     -- Ruta 102 (Tarde): Vuelven los mismos
     (2, 1),
     (2, 2);
+
+-- --------------------------------------------------------
+-- CATALOGO: Tipos de Ropa
+-- --------------------------------------------------------
+INSERT INTO clothing_type_enum (clothes_name, created_at, updated_at)
+VALUES
+    ('Pantalón', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Camisa', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Chaqueta', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Ropa interior', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Chándal', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- CATALOGO: Tipos de Objetos
+-- --------------------------------------------------------
+INSERT INTO objects_type_enum (object_name, created_at, updated_at)
+VALUES
+    ('Gafas', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Bastón', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Oxígeno', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Neceser', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- CATALOGO: Condiciones
+-- --------------------------------------------------------
+INSERT INTO condition_type_enum (condition_name, created_at, updated_at)
+VALUES
+    ('Nuevo', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Buen estado', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Desgastado', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- CATALOGO: Tamaño del pañal
+-- --------------------------------------------------------
+INSERT INTO diapers_size_enum (size, created_at, updated_at)
+VALUES
+    ('Pequeño', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Mediano', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Grande', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- CATALOGO: Tipo del pañal
+-- --------------------------------------------------------
+INSERT INTO diapers_type_enum (type, created_at, updated_at)
+VALUES
+    ('Elástico', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Braga-pañal', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Anatómico', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- CATALOGO: Regreso cosas (return_reason_enum)
+-- --------------------------------------------------------
+INSERT INTO return_reason_enum (reason, created_at, updated_at) VALUES
+('No devuelto (En uso)', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Devuelto a familiar', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Desechado', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- TABLA: Ropa Física (UserClothes)
+-- --------------------------------------------------------
+INSERT INTO user_clothing (clothes_id, is_clean, is_returned, received_at, returned_at, return_reason_id, created_at, updated_at)
+VALUES
+    (3, true, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (3, true, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (1, false, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (5, true, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (4, true, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- TABLA: Objetos Físicos (UserObject)
+-- --------------------------------------------------------
+INSERT INTO user_objects (object_id, condition_id, comment, created_at, updated_at)
+VALUES
+    (1, 2, 'Funda roja', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (2, 3, 'Madera, empuñadura gastada', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (3, 2, 'Oído derecho, marca Siemens', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (4, 1, 'Concentrador portátil con batería extra', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- TABLA: Pañales Físicos (UserDiapers)
+-- --------------------------------------------------------
+INSERT INTO user_diapers (size_id, type_id, quantity, created_at, updated_at)
+VALUES
+    (2, 2, 10, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (3, 1, 30, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (1, 3, 15, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- --------------------------------------------------------
+-- PERTENENCIAS (Tabla Principal: user_belongings)
+-- --------------------------------------------------------
+INSERT INTO user_belongings
+(user_id, user_clothing_id, user_object_id, user_diaper_id, worker_id, comment, is_request, created_at, updated_at)
+VALUES
+    (1, 1, 1, NULL, 12, 'Chaqueta de punto azul. Trae también su bastón.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (2, 2, 2, NULL, 5, 'Chaqueta de lana.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (3, 3, NULL, 1, 13, 'Pantalón manchado para lavandería y reposición de pañales.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    (4, 4, 3, NULL, 7, 'Viene con chándal nuevo. Las gafas se quedan en taquilla.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
