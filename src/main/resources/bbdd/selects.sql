@@ -203,3 +203,33 @@ JOIN route_shift_enum rs ON tr.route_shift_id = rs.id
 JOIN route_vehicles rv ON tr.route_vehicle_id = rv.id
 LEFT JOIN transport_routes_user tru ON tr.id = tru.route_id
 GROUP BY tr.route_number, rs.route_name, rv.license_plate;
+
+------------------
+-- Pruebas Inventario
+SELECT
+    CONCAT(u.first_name, ' ', u.first_surname) AS "Usuario",
+    CONCAT(w.first_name, ' ', w.first_surname) AS "Registrado Por",
+    c_enum.clothes_name AS "Prenda",
+    b.created_at AS "Hora Entrada",
+    b.comment AS "Observaciones"
+FROM user_belongings b
+JOIN users u ON b.user_id = u.id
+JOIN workers w ON b.worker_id = w.id
+JOIN user_clothing uc ON b.user_clothing_id = uc.id
+JOIN clothing_type_enum c_enum ON uc.clothes_id = c_enum.id;
+
+
+SELECT
+    CONCAT(u.first_name, ' ', u.first_surname) AS "Usuario",
+    c_enum.clothes_name AS "Ropa",
+    o_enum.object_name AS "Objeto",
+    d_type.type AS "Tipo Pañal",
+    ud.quantity AS "Cantidad"
+FROM user_belongings b
+JOIN users u ON b.user_id = u.id
+JOIN user_clothing uc ON b.user_clothing_id = uc.id
+JOIN clothing_type_enum c_enum ON uc.clothes_id = c_enum.id
+LEFT JOIN user_objects uo ON b.user_object_id = uo.id
+LEFT JOIN objects_type_enum o_enum ON uo.object_id = o_enum.id
+LEFT JOIN user_diapers ud ON b.user_diaper_id = ud.id
+LEFT JOIN diapers_type_enum d_type ON ud.type_id = d_type.id;
