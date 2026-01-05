@@ -34,11 +34,11 @@ public class WorkerScheduleRecord extends BaseEntity implements Serializable {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "worker_id", nullable = false, columnDefinition = "INTEGER" )
+    @JoinColumn(name = "worker_id", nullable = false)
     private Worker worker;
 
     @OneToOne
-    @JoinColumn(name = "schedule_id", nullable = false, columnDefinition = "INTEGER" )
+    @JoinColumn(name = "schedule_id", nullable = false)
     private WorkerSchedule schedule;
 
     @Column(name = "clock_in", nullable = false, columnDefinition = "TIMESTAMP")
@@ -47,7 +47,7 @@ public class WorkerScheduleRecord extends BaseEntity implements Serializable {
     @Column(name = "clock_out", columnDefinition = "TIMESTAMP")
     private LocalDateTime clockOut;
 
-    @Column(name = "is_active", nullable = false)
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
     private boolean isActive;
 
     // hashCode / equals / toString

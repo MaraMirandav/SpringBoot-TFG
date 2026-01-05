@@ -28,7 +28,7 @@ public abstract class Comment extends BaseEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "worker_id", nullable = false)
-    private Worker createdBy;
+    private Worker worker;
 
     @Column(name = "comment", nullable = false, columnDefinition = "TEXT")
     private String comment;
@@ -61,8 +61,6 @@ public abstract class Comment extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "Comment [id=" + id + ", createdBy=" + createdBy + ", comment=" + comment + "]";
+        return "Comment [id=" + id + ", createdBy=" + worker + ", comment=" + comment + "]";
     }
-
-
 }

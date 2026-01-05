@@ -8,7 +8,6 @@ import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.organization.Position;
 import com.centros_sass.app.model.catalogs.organization.Role;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -65,7 +64,7 @@ public class Worker extends BaseEntity implements Serializable {
     private boolean isActive;
 
     // Roles
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany
     @JoinTable(
         name = "workers_roles",
         joinColumns = @JoinColumn(name = "worker_id"),
@@ -82,7 +81,7 @@ public class Worker extends BaseEntity implements Serializable {
     }
 
     // Positions
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany
     @JoinTable(
         name = "workers_positions",
         joinColumns = @JoinColumn(name = "worker_id"),
@@ -130,5 +129,4 @@ public class Worker extends BaseEntity implements Serializable {
                 + firstSurname + ", secondSurname=" + secondSurname + ", mainPhone=" + mainPhone + ", secondPhone="
                 + secondPhone + ", email=" + email + ", password=" + password + ", isActive=" + isActive + "]";
     }
-
 }

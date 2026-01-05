@@ -54,6 +54,14 @@ public class UserAllergy extends BaseEntity implements Serializable {
     )
     private Set<Medication> medications = new HashSet<>();
 
+    public void addMedication(Medication medication) {
+        medications.add(medication);
+    }
+
+    public void removeMedication(Medication medication) {
+        medications.remove(medication);
+    }
+
     // hashCode / equals / toString
     @Override
     public int hashCode() {

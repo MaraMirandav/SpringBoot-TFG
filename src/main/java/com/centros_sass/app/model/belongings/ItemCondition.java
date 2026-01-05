@@ -30,7 +30,7 @@ public class ItemCondition extends BaseEntity implements Serializable {
     private Integer id;
 
     @Column(name = "condition_name", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String ConditionName;
+    private String conditionName;
 
     //hashCode / equals / toString
     @Override
@@ -60,6 +60,6 @@ public class ItemCondition extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "ItemCondition [id=" + id + ", ConditionName=" + ConditionName + "]";
+        return "ItemCondition [id=" + id + ", conditionName=" + conditionName + "]";
     }
 }

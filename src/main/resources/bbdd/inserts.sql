@@ -999,3 +999,40 @@ INSERT INTO treatment_details_medication (treatment_detail_id, medication_id) VA
 
 -- CASO CORRECTO: Antonio (UserAllergy ID 3 - Polen) toma Ebastina (Medication ID 7)
 INSERT INTO allergies_medications (user_allergy_id, medication_id) VALUES (3, 7);
+
+-- ============================================================
+-- TAREAS DE HIGIENE (bathroom_tasks)
+-- ============================================================
+
+INSERT INTO bathroom_tasks (task_name, estimated_time, created_at, updated_at)
+VALUES
+    ('Aseo en Lavabo (Cara/Manos)', '00:10:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Cambio de Pañal / Absorbente', '00:08:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Acompañamiento WC', '00:05:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Higiene Bucal (Post-comida)', '00:05:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- ============================================================
+-- TURNOS DE BAÑO E HIGIENE (bathroom_turns)
+-- ============================================================
+INSERT INTO bathroom_turns (turn_name, start_at, end_at, created_at, updated_at)
+VALUES
+    ('Ronda Llegada', '09:00:00', '10:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Ronda Pre-Comida', '12:30:00', '13:30:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Higiene Post-Siesta', '15:30:00', '16:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Preparación Salida', '16:30:00', '17:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- ============================================================
+-- HORARIOS DE USO DE BAÑO(bathroom_schedule)
+-- ============================================================
+INSERT INTO bathroom_schedule (user_id, bathroom_turn_id, bathroom_task_id, created_at, updated_at)
+VALUES
+    -- 1. ANTONIO (ID 1): Al llegar, aseo general en lavabo (ID 1).
+    (1, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 2. MARÍA (ID 2): Antes de comer, ir al WC (ID 3).
+    (2, 2, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 3. JOSÉ (ID 3): Cambio de pañal tras la siesta (ID 2).
+    (3, 3, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 4. DOLORES (ID 4): Aseo de cara/manos antes de irse (ID 1).
+    (4, 4, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 5. ANTONIO (ID 1): Higiene bucal después de comer (ID 4).
+    (1, 2, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);

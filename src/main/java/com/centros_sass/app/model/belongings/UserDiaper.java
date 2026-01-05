@@ -32,11 +32,11 @@ public class UserDiaper extends BaseEntity implements Serializable {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "size_id", nullable = false, columnDefinition = "INTEGER")
+    @JoinColumn(name = "size_id", nullable = false)
     private DiaperSize size;
 
     @ManyToOne
-    @JoinColumn(name = "type_id", nullable = false, columnDefinition = "INTEGER")
+    @JoinColumn(name = "type_id", nullable = false)
     private DiaperType type;
 
     @Column(name = "quantity", nullable = false, columnDefinition = "INTEGER")

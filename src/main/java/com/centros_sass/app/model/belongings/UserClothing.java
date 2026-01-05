@@ -33,7 +33,7 @@ public class UserClothing extends BaseEntity implements Serializable {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "clothes_id", nullable = false, columnDefinition = "INTEGER")
+    @JoinColumn(name = "clothes_id", nullable = false)
     private ClothingType clothes;
 
     @Column(name = "is_clean", nullable = false, columnDefinition = "BOOLEAN")
@@ -49,7 +49,7 @@ public class UserClothing extends BaseEntity implements Serializable {
     private LocalDateTime returnedAt;
 
     @ManyToOne
-    @JoinColumn(name = "return_reason_id", nullable = false, columnDefinition = "INTEGER")
+    @JoinColumn(name = "return_reason_id", nullable = false)
     private ReturnReason returnReason;
 
     // hashCode / equals / toString

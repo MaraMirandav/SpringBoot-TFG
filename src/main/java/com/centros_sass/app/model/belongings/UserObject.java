@@ -32,11 +32,11 @@ public class UserObject extends BaseEntity implements Serializable {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "condition_id", nullable = false, columnDefinition = "INTEGER")
+    @JoinColumn(name = "condition_id", nullable = false)
     private ItemCondition condition;
 
     @ManyToOne
-    @JoinColumn(name = "object_id", nullable = false, columnDefinition = "INTEGER")
+    @JoinColumn(name = "object_id", nullable = false)
     private ObjectType object;
 
     @Column(name = "comment", columnDefinition = "TEXT")

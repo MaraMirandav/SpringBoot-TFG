@@ -49,6 +49,14 @@ public class UserIllness extends BaseEntity implements Serializable {
     )
     private Set<TreatmentDetail> treatmentDetails = new HashSet<>();
 
+    public void addTreatmentDetail(TreatmentDetail treatmentDetail) {
+        treatmentDetails.add(treatmentDetail);
+    }
+
+    public void removeTreatmentDetail(TreatmentDetail treatmentDetail) {
+        treatmentDetails.remove(treatmentDetail);
+    }
+
     // hashCode / equals / toString
     @Override
     public int hashCode() {
