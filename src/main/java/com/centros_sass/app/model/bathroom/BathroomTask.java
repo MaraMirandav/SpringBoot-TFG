@@ -1,6 +1,7 @@
-package com.centros_sass.app.model.catalogs.people;
+package com.centros_sass.app.model.bathroom;
 
 import java.io.Serializable;
+import java.time.LocalTime;
 
 import com.centros_sass.app.model.base.BaseEntity;
 
@@ -16,20 +17,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "sex_enum")
+@Table(name = "bathroom_tasks")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Sex extends BaseEntity implements Serializable {
+public class BathroomTask extends BaseEntity implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "sex", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String sex;
+    @Column(name = "task_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    private String taskName;
+
+    @Column(name = "estimated_time", nullable = false, columnDefinition = "TIME")
+    private LocalTime estimatedTime;
 
     // hashCode / equals / toString
     @Override
@@ -48,7 +53,7 @@ public class Sex extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Sex other = (Sex) obj;
+        BathroomTask other = (BathroomTask) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -59,6 +64,6 @@ public class Sex extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "Sex [id=" + id + ", sex=" + sex + "]";
+        return "BathroomTask [id=" + id + ", taskName=" + taskName + ", estimatedTime=" + estimatedTime + "]";
     }
 }

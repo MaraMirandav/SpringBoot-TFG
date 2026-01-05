@@ -30,7 +30,7 @@ public class Position extends BaseEntity implements Serializable {
     private Integer id;
 
     @Column(name = "position_name", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String name;
+    private String positionName;
 
     @Override
     public int hashCode() {
@@ -59,6 +59,6 @@ public class Position extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "Position [id=" + id + ", name=" + name + "]";
+        return "Position [id=" + id + ", positionName=" + positionName + "]";
     }
 }

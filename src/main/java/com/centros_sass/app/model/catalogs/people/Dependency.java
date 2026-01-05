@@ -61,5 +61,4 @@ public class Dependency extends BaseEntity implements Serializable {
     public String toString() {
         return "Dependency [id=" + id + ", nivelDependency=" + nivelDependency + "]";
     }
-
 }

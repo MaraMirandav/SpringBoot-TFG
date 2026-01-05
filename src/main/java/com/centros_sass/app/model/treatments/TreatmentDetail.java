@@ -55,6 +55,13 @@ public class TreatmentDetail extends BaseEntity implements Serializable {
     )
     private Set<Medication> medications = new HashSet<>();
 
+    public void addMedication(Medication medication) {
+        this.medications.add(medication);
+    }
+
+    public void removeMedication(Medication medication) {
+        this.medications.remove(medication);
+    }
 
     // hashCode / equals / toString
     @Override

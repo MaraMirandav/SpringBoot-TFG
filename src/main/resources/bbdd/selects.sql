@@ -294,3 +294,29 @@ JOIN allergies_enum ae ON ua.allergy_id = ae.id
 LEFT JOIN allergies_medications am ON ua.id = am.user_allergy_id
 LEFT JOIN medications m ON am.medication_id = m.id
 LEFT JOIN medication_name_enum mn ON m.medication_name_id = mn.id;
+
+------------------
+-- Baños e Higiene
+
+-- Agenda general sobre los horarios y tareas de higiene
+SELECT
+    bt.start_at AS Hora,
+    bt.turn_name AS Turno,
+    CONCAT(u.first_name, ' ', u.first_surname) AS Paciente,
+    bk.task_name AS Tarea,
+    bk.estimated_time AS Duracion
+FROM bathroom_schedule bs
+JOIN users u ON bs.user_id = u.id
+JOIN bathroom_turns bt ON bs.bathroom_turn_id = bt.id
+JOIN bathroom_tasks bk ON bs.bathroom_task_id = bk.id
+ORDER BY bt.start_at, u.first_name;
+
+-- Carga de trabajo por turno
+SELECT
+    bt.turn_name AS Turno,
+    bt.start_at AS Inicio,
+    COUNT(bs.id) AS Total_Pacientes
+FROM bathroom_turns bt
+LEFT JOIN bathroom_schedule bs ON bt.id = bs.bathroom_turn_id
+GROUP BY bt.id, bt.turn_name, bt.start_at
+ORDER BY bt.start_at;

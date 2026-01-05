@@ -41,10 +41,10 @@ public class UserAttendanceDay extends BaseEntity implements Serializable {
     @JoinColumn(name = "day_id", nullable = false)
     private OpenDay day;
 
-    @Column(name = "start_at", nullable = false, columnDefinition = "TIME", unique = false)
+    @Column(name = "start_at", nullable = false, columnDefinition = "TIME")
     private LocalTime startAt;
 
-    @Column(name = "end_at", nullable = false, columnDefinition = "TIME", unique = false)
+    @Column(name = "end_at", nullable = false, columnDefinition = "TIME")
     private LocalTime endAt;
 
     // hashCode / equals / toString

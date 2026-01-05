@@ -1,6 +1,7 @@
-package com.centros_sass.app.model.catalogs.people;
+package com.centros_sass.app.model.bathroom;
 
 import java.io.Serializable;
+import java.time.LocalTime;
 
 import com.centros_sass.app.model.base.BaseEntity;
 
@@ -16,22 +17,29 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "sex_enum")
+@Table(name = "bathroom_turns")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Sex extends BaseEntity implements Serializable {
+public class BathroomTurn extends BaseEntity implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "sex", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String sex;
+    @Column(name = "turn_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    private String turnName;
 
-    // hashCode / equals / toString
+    @Column(name = "start_at", nullable = false, columnDefinition = "TIME")
+    private LocalTime startAt;
+
+    @Column(name = "end_at", nullable = false, columnDefinition = "TIME")
+    private LocalTime endAt;
+
+    //hashCode / equals / toString
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -48,7 +56,7 @@ public class Sex extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Sex other = (Sex) obj;
+        BathroomTurn other = (BathroomTurn) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -59,6 +67,6 @@ public class Sex extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "Sex [id=" + id + ", sex=" + sex + "]";
+        return "BathroomTurn [id=" + id + ", turnName=" + turnName + ", startAt=" + startAt + ", endAt=" + endAt + "]";
     }
 }

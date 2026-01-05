@@ -56,14 +56,14 @@ public class User extends BaseEntity implements Serializable {
     @JoinColumn(name = "sex_id", nullable = false)
     private Sex sex;
 
-    @Column(name = "birth_date", nullable = false)
+    @Column(name = "birth_date", nullable = false, columnDefinition = "DATE")
     private LocalDate birthDate;
 
     @ManyToOne
     @JoinColumn(name = "dependency_id", nullable = false)
     private Dependency dependency;
 
-    @Column(name = "is_active", nullable = false)
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
     private boolean isActive;
 
     // hashCode / equals / toString

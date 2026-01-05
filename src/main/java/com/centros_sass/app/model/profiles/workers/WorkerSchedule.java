@@ -34,11 +34,11 @@ public class WorkerSchedule extends BaseEntity implements Serializable {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "worker_id", nullable = false, columnDefinition = "INTEGER" )
+    @JoinColumn(name = "worker_id", nullable = false)
     private Worker worker;
 
     @ManyToOne
-    @JoinColumn(name = "day_id", nullable = false, columnDefinition = "INTEGER" )
+    @JoinColumn(name = "day_id", nullable = false)
     private OpenDay openDay;
 
     @Column(name = "start_at", nullable = false, columnDefinition = "TIMESTAMP")

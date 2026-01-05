@@ -34,26 +34,26 @@ public class UserBelonging extends BaseEntity implements Serializable {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false, columnDefinition = "INTEGER")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "user_clothing_id", nullable = false, columnDefinition = "INTEGER")
+    @JoinColumn(name = "user_clothing_id", nullable = false)
     private UserClothing userClothing;
 
     @ManyToOne
-    @JoinColumn(name = "user_object_id", nullable = true, columnDefinition = "INTEGER")
+    @JoinColumn(name = "user_object_id", nullable = true)
     private UserObject userObject;
 
     @ManyToOne
-    @JoinColumn(name = "worker_id", nullable = true, columnDefinition = "INTEGER")
+    @JoinColumn(name = "worker_id", nullable = true)
     private Worker worker;
 
     @Column(name = "comment", columnDefinition = "TEXT")
     private String comment;
 
     @ManyToOne
-    @JoinColumn(name = "user_diaper_id", nullable = true, columnDefinition = "INTEGER")
+    @JoinColumn(name = "user_diaper_id", nullable = true)
     private UserDiaper userDiaper;
 
     @Column(name = "is_request", nullable = false ,columnDefinition = "BOOLEAN")
