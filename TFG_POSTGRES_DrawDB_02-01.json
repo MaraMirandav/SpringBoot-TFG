@@ -616,6 +616,18 @@
           "comment": "",
           "size": "",
           "values": []
+        },
+        {
+          "id": "pb2eC58zlVY-Qm4KLCCa0",
+          "name": "hora_en_puerta",
+          "type": "",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
         }
       ],
       "comment": "",
@@ -626,7 +638,7 @@
       "id": "d4EFGjhKM-fF4DGgXRZt5",
       "name": "dias_asistencia",
       "x": 144,
-      "y": 600,
+      "y": 576,
       "locked": false,
       "fields": [
         {
@@ -668,6 +680,34 @@
           "comment": "",
           "size": "",
           "values": []
+        },
+        {
+          "id": "G-YCh-hu8EvzFOaGdx62K",
+          "name": "start_at",
+          "type": "TIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "z1_SFtMQP_3ayNS3smHGg",
+          "name": "end_at",
+          "type": "TIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
         }
       ],
       "comment": "",
@@ -678,7 +718,7 @@
       "id": "BbsBxBFkSzU3OSNGBBRqH",
       "name": "routes",
       "x": 120,
-      "y": 2664,
+      "y": 2808,
       "locked": false,
       "fields": [
         {
@@ -926,9 +966,9 @@
     },
     {
       "id": "zOlF8UcNEUSGyg4c5A7_z",
-      "name": "workers_schedule",
-      "x": -696,
-      "y": 216,
+      "name": "workers_schedules",
+      "x": -672,
+      "y": 48,
       "locked": false,
       "fields": [
         {
@@ -974,7 +1014,7 @@
         {
           "id": "SfmIelK0k8sMdO9sLECVn",
           "name": "start_at",
-          "type": "TIME",
+          "type": "TIMESTAMP",
           "default": "",
           "check": "",
           "primary": false,
@@ -987,8 +1027,8 @@
         },
         {
           "id": "HCeOKz3c33EKp6g0Co8KQ",
-          "name": "finish_at",
-          "type": "TIME",
+          "name": "end_at",
+          "type": "TIMESTAMP",
           "default": "",
           "check": "",
           "primary": false,
@@ -1197,7 +1237,7 @@
         },
         {
           "id": "vZ2Xj2AIb7IGoOXAHyjpe",
-          "name": "significance_id",
+          "name": "significance_user_id",
           "type": "INTEGER",
           "default": "",
           "check": "",
@@ -1673,7 +1713,7 @@
         },
         {
           "id": "2p2cVNfMPDuh4TtfbMs6U",
-          "name": "incident_id",
+          "name": "incident_cd_id",
           "type": "INTEGER",
           "default": "",
           "check": "",
@@ -1864,7 +1904,7 @@
       "id": "R5lGvzLFyeWCDzU6ayyzo",
       "name": "sex_enum",
       "x": 144,
-      "y": 840,
+      "y": 888,
       "locked": false,
       "fields": [
         {
@@ -3619,6 +3659,100 @@
       "comment": "",
       "indices": [],
       "color": "#175e7a"
+    },
+    {
+      "id": "e89VDr6ZL2BRjk_3McnOC",
+      "name": "worker_schedule_records",
+      "x": -744,
+      "y": -240,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "l7OG8YOeNFv294J50SdBA"
+        },
+        {
+          "id": "Fja5HHl5KQ9OvPxEb42Si",
+          "name": "worker_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CwzdkvTCGS-WEuTOGN3iC",
+          "name": "schedule_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "4lE9HiMrHvXXJ4uPowPkv",
+          "name": "clock_in",
+          "type": "TIMESTAMP",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "VwBB5u0qw2lPsYonCrP8L",
+          "name": "clock_out",
+          "type": "TIMESTAMP",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "1wIZR3TB08iIkdik1VjlA",
+          "name": "is_active",
+          "type": "BOOLEAN",
+          "default": "TRUE",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a"
     }
   ],
   "relationships": [
@@ -4023,7 +4157,7 @@
       "startFieldId": "svTk-hMyZWpHPkGbF1j4c",
       "endTableId": "OH_xynXKl-EUtTm0RjOJI",
       "endFieldId": "vp94w5hOfL5cLTwM-sZzL",
-      "cardinality": "one_to_many",
+      "cardinality": "many_to_one",
       "updateConstraint": "No action",
       "deleteConstraint": "No action",
       "name": "fk_user_belongings_diapers_id_user_diapers",
@@ -4067,7 +4201,7 @@
       "startFieldId": "Zx_C6eHw-XYbkYmavCet7",
       "endTableId": "jrf7XXCBIcoFif6MeUCX1",
       "endFieldId": "sLfyrxsR_Il8-0BGdgkn0",
-      "cardinality": "one_to_many",
+      "cardinality": "many_to_one",
       "updateConstraint": "No action",
       "deleteConstraint": "No action",
       "name": "fk_user_belongings_user_object_id_user_object",
@@ -4089,7 +4223,7 @@
       "startFieldId": "NkS7xguCZ9IewJJvbel8H",
       "endTableId": "xl9biXgbHYiXzgf7E3qdQ",
       "endFieldId": "CdNo1_cWtvmaAlbzI6ZLz",
-      "cardinality": "one_to_many",
+      "cardinality": "many_to_one",
       "updateConstraint": "No action",
       "deleteConstraint": "No action",
       "name": "fk_user_belongings_user_clothes_id_user_clothes",
@@ -4292,6 +4426,39 @@
       "deleteConstraint": "No action",
       "name": "fk_bathroom_schedule_trabajo_realizado_id_trabajos",
       "id": "haD7Sq0SwiE4C-3uYh_ix"
+    },
+    {
+      "startTableId": "e89VDr6ZL2BRjk_3McnOC",
+      "startFieldId": "Fja5HHl5KQ9OvPxEb42Si",
+      "endTableId": "5DVYTDuVvcn7BTcdM_vMT",
+      "endFieldId": "UgwSeSI2dqbpnJqqm3OZn",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_worker_schedule_records_worker_id_workers",
+      "id": "HdkjFIWeYX6WO7YOlDlQd"
+    },
+    {
+      "startTableId": "e89VDr6ZL2BRjk_3McnOC",
+      "startFieldId": "CwzdkvTCGS-WEuTOGN3iC",
+      "endTableId": "zOlF8UcNEUSGyg4c5A7_z",
+      "endFieldId": "KGzecZbFJa0SQ-IIVNMXj",
+      "cardinality": "one_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_worker_schedule_records_schedule_id_workers_schedules",
+      "id": "9qqWt1XTOjdumDEHxrv8s"
+    },
+    {
+      "startTableId": "aSMIcG8KV0Jv7NGZp1mt4",
+      "startFieldId": "fkUatFu5l-rrdagL6Bo5f",
+      "endTableId": "5DVYTDuVvcn7BTcdM_vMT",
+      "endFieldId": "UgwSeSI2dqbpnJqqm3OZn",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_user_belongings_worker_id_workers",
+      "id": "atsN5KG5XKOUM8WNiJsXs"
     }
   ],
   "notes": [
@@ -4352,8 +4519,8 @@
     },
     {
       "id": 5,
-      "x": -958.8805736941765,
-      "y": 313.5449498284543,
+      "x": -1032,
+      "y": -168,
       "title": "note_5",
       "content": "//TODO\nFICHAJE",
       "locked": false,
@@ -4363,13 +4530,13 @@
     },
     {
       "id": 6,
-      "x": 408,
-      "y": 2496,
+      "x": 768,
+      "y": 2520,
       "title": "rutas",
-      "content": "numero_ruta: ruta 1, ruta 2, etc...\n\nRELACIONES LISTAS",
+      "content": "TABLAS INCOMPLETAS!\nFALTA LOS USUARIOS!\nYa tenemos que un usuario puede ir en una o muchas rutas, tambien tenemos el schedule de las rutas, pero\na que hora se estima pasar por el?\na que hora se le deja?\nel usuario sube por la derecha? por la izquierda? usa silla de ruedas?\nalguna nota a tener en cuenta? como llamar a alguien.\n\netc... esas preguntas que nos llevan a capturar informacion",
       "locked": false,
       "color": "#fcf7ac",
-      "height": 114,
+      "height": 450,
       "width": 269.3025
     },
     {
@@ -4464,10 +4631,20 @@
       "height": 480,
       "color": "#175e7a",
       "locked": false
+    },
+    {
+      "id": 8,
+      "name": "area_8",
+      "x": 120,
+      "y": 552,
+      "width": 312,
+      "height": 288,
+      "color": "#ff0000",
+      "locked": false
     }
   ],
   "database": "postgresql",
   "types": [],
   "enums": [],
-  "title": "TFG postgreSQL dec_21"
+  "title": "TFG postgreSQL dec_24"
 }
