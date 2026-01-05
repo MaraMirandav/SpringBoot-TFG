@@ -861,3 +861,141 @@ VALUES
     (2, 2, 2, NULL, 5, 'Chaqueta de lana.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     (3, 3, NULL, 1, 13, 'Pantalón manchado para lavandería y reposición de pañales.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     (4, 4, 3, NULL, 7, 'Viene con chándal nuevo. Las gafas se quedan en taquilla.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- ============================================================
+-- 1. CATÁLOGOS MÉDICOS (Enums)
+-- ============================================================
+
+-- Nombres de Medicamentos
+INSERT INTO medication_name_enum (medication_name, created_at, updated_at)
+VALUES
+    ('Sintrom (Acenocumarol)', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),   -- ID 1
+    ('Omeprazol', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),                -- ID 2
+    ('Enalapril', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),                -- ID 3
+    ('Insulina Lantus', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),          -- ID 4
+    ('Paracetamol', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),              -- ID 5
+    ('Adiro 100', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),                -- ID 6
+    ('Seguril (Furosemida)', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),     -- ID 7
+    ('Ventolín', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),                 -- ID 8
+    ('Amoxicilina', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),              -- ID 9
+    ('Ebastina 10mg', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);            -- ID 10
+
+-- Vías de Administración
+INSERT INTO medication_application_enum (medication_application_name, created_at, updated_at)
+VALUES
+    ('Oral', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Subcutánea', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Intravenosa', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Tópica', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Inhalada', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- Condiciones de Conservación
+INSERT INTO storage_condition_enum (storage_name, created_at, updated_at)
+VALUES
+    ('Temperatura Ambiente', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Refrigerado (Nevera)', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Proteger de la luz', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- Enfermedades / Patologías
+INSERT INTO illness_enum (illness_name, created_at, updated_at)
+VALUES
+    ('Hipertensión Arterial', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Diabetes Tipo 2', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Alzheimer (Fase Inicial)', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Artrosis', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Insuficiencia Cardíaca', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('EPOC', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- Alergias
+INSERT INTO allergies_enum (allergy_name, created_at, updated_at)
+VALUES
+    ('Penicilina', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),           -- ID 1
+    ('AINEs (Ibuprofeno/Aspirina)', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), -- ID 2
+    ('Lactosa', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),              -- ID 3
+    ('Sulfamidas', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),           -- ID 4
+    ('Polen / Gramíneas', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);    -- ID 5
+
+-- ============================================================
+-- 2. INVENTARIO DE MEDICAMENTOS (Medications)
+-- ============================================================
+
+INSERT INTO medications (medication_name_id, dose, reception_date, expiration_date, storage_condition_id, medication_application_id, created_at, updated_at)
+VALUES
+    -- 1. Sintrom
+    (1, '4mg (Según pauta)', '2025-01-01', '2026-06-01', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 2. Omeprazol
+    (2, '20mg', '2025-01-01', '2027-01-01', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 3. Enalapril
+    (3, '20mg', '2025-01-05', '2026-12-01', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 4. Insulina Lantus
+    (4, 'Pluma precargada', '2025-01-10', '2025-06-10', 2, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 5. Paracetamol
+    (5, '1g', '2025-01-01', '2028-01-01', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 6. Amoxicilina
+    (9, '500mg', '2025-01-01', '2026-01-01', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 7. Ebastina (Para la alergia) -> Medication Name ID 10
+    (10, '10mg Desayuno', '2025-02-01', '2026-02-01', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- ============================================================
+-- 3. HISTORIAL MÉDICO DE USUARIOS (user_medical_info)
+-- ============================================================
+
+INSERT INTO user_medical_info (user_id, worker_id, is_active, created_at, updated_at)
+VALUES
+    (1, 5, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), -- Antonio
+    (2, 5, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), -- María
+    (3, 5, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), -- José
+    (4, 5, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP); -- Dolores
+
+-- ============================================================
+-- 4. REGISTROS CLÍNICOS (Enfermedades y Alergias)
+-- ============================================================
+
+-- Enfermedades
+INSERT INTO user_illnesses (user_medical_info_id, illness_id, created_at, updated_at) VALUES (1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP); -- Antonio (Hipertensión)
+INSERT INTO user_illnesses (user_medical_info_id, illness_id, created_at, updated_at) VALUES (2, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP); -- María (Diabetes)
+INSERT INTO user_illnesses (user_medical_info_id, illness_id, created_at, updated_at) VALUES (2, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP); -- María (Alzheimer)
+INSERT INTO user_illnesses (user_medical_info_id, illness_id, created_at, updated_at) VALUES (3, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP); -- José (Artrosis)
+
+-- Alergias (¡Ojo al orden para los IDs!)
+-- 1. José -> Penicilina (Generará ID 1)
+INSERT INTO user_allergies (user_medical_info_id, allergy_id, comment, created_at, updated_at)
+VALUES (3, 1, 'Reacción cutánea grave.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- 2. Dolores -> Lactosa (Generará ID 2)
+INSERT INTO user_allergies (user_medical_info_id, allergy_id, comment, created_at, updated_at)
+VALUES (4, 3, 'Intolerancia digestiva severa.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- 3. Antonio -> Polen (Generará ID 3)
+INSERT INTO user_allergies (user_medical_info_id, allergy_id, comment, created_at, updated_at)
+VALUES (1, 5, 'Rinitis estacional fuerte en primavera.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- ============================================================
+-- 5. TRATAMIENTOS (treatment_details)
+-- ============================================================
+
+INSERT INTO treatment_details (start_date, end_date, is_active, comment, created_at, updated_at)
+VALUES
+    ('2024-01-01', NULL, true, 'Control tensión.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), -- ID 1 (Antonio)
+    ('2024-06-15', NULL, true, 'Control diabetes.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), -- ID 2 (María)
+    ('2025-01-01', '2025-02-01', true, 'Dolor puntual.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP); -- ID 3 (José)
+
+-- ============================================================
+-- 6. RELACIONES MANY-TO-MANY
+-- ============================================================
+
+-- A. Enfermedad <-> Tratamiento
+INSERT INTO user_illness_treatment (user_illness_id, treatment_detail_id) VALUES (1, 1);
+INSERT INTO user_illness_treatment (user_illness_id, treatment_detail_id) VALUES (2, 2);
+INSERT INTO user_illness_treatment (user_illness_id, treatment_detail_id) VALUES (4, 3);
+
+-- B. Tratamiento <-> Medicamento
+INSERT INTO treatment_details_medication (treatment_detail_id, medication_id) VALUES (1, 3); -- Enalapril
+INSERT INTO treatment_details_medication (treatment_detail_id, medication_id) VALUES (2, 4); -- Insulina
+INSERT INTO treatment_details_medication (treatment_detail_id, medication_id) VALUES (3, 5); -- Paracetamol
+
+-- C. Alergia <-> Medicamento para tratarla (CORREGIDO)
+-- Lógica: "Si tienes esta alergia, debes tomar este medicamento"
+
+-- CASO CORRECTO: Antonio (UserAllergy ID 3 - Polen) toma Ebastina (Medication ID 7)
+INSERT INTO allergies_medications (user_allergy_id, medication_id) VALUES (3, 7);
