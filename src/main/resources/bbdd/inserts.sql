@@ -79,7 +79,7 @@ VALUES
     ('Miércoles', '08:15', '18:30', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Jueves', '08:15', '18:30', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Viernes', '08:15', '18:30', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-    ON CONFLICT (day) DO NOTHING;
+    ON CONFLICT (day_name) DO NOTHING;
 
 
 -- --------------------------------------------------------
@@ -625,7 +625,7 @@ INSERT INTO schema_template.workers_positions (worker_id, position_id) VALUES
 -- --------------------------------------------------------
 -- CATÁLOGO: REGIONES (Comunidades Autónomas)
 -- --------------------------------------------------------
-INSERT INTO region_enum (region_name, created_at, updated_at) VALUES
+INSERT INTO regions_enum (region_name, created_at, updated_at) VALUES
 ('Comunidad de Madrid', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Andalucía', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Cataluña', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
@@ -634,7 +634,7 @@ ON CONFLICT (region_name) DO NOTHING;
 -- --------------------------------------------------------
 -- CATÁLOGO: PROVINCIAS
 -- --------------------------------------------------------
-INSERT INTO province_enum (province_name, created_at, updated_at) VALUES
+INSERT INTO provinces_enum (province_name, created_at, updated_at) VALUES
 ('Madrid', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Sevilla', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Barcelona', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
