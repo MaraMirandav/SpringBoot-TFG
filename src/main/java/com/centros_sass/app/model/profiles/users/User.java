@@ -1,6 +1,8 @@
 package com.centros_sass.app.model.profiles.users;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.people.Dependency;
@@ -8,11 +10,13 @@ import com.centros_sass.app.model.catalogs.people.Sex;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -91,5 +95,12 @@ public class User extends BaseEntity {
     @NotNull(message = "{user.isActive.required}")
     @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
     private Boolean isActive;
+
+    // RELATIONS
+    // // UserAdresses
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<UserAddress> userAdresses = new HashSet<>();
+
+
 
 }
