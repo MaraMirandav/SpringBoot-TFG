@@ -39,8 +39,8 @@ public class OpenDay extends BaseEntity {
     private Integer id;
 
     @NotBlank(message = "{openDay.day.required}")
-    @Column(name = "day", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String day;
+    @Column(name = "day_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    private String dayName;
 
     @NotNull(message = "{openDay.openAt.required}")
     @Column(name = "open_at", nullable = false, columnDefinition = "TIME")
