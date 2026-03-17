@@ -53,10 +53,10 @@ public class WorkerSchedule extends BaseEntity {
     private WorkerScheduleRecord record;
 
     @NotNull(message = "{workerSchedule.startAt.required}")
-    @Column(name = "start_at", nullable = false, columnDefinition = "TIMESTAMP")
+    @Column(name = "start_at", nullable = false, columnDefinition = "TIME")
     private LocalDateTime startAt;
 
     @NotNull(message = "{workerSchedule.endAt.required}")
-    @Column(name = "end_at", nullable = false, columnDefinition = "TIMESTAMP")
+    @Column(name = "end_at", nullable = false, columnDefinition = "TIME")
     private LocalDateTime endAt;
 }
