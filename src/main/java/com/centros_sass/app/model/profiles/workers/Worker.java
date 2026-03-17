@@ -7,6 +7,7 @@ import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.organization.Position;
 import com.centros_sass.app.model.catalogs.organization.Role;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -16,6 +17,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -82,6 +84,21 @@ public class Worker extends BaseEntity {
     @NotNull(message = "{worker.isActive.required}")
     @Column(name = "is_active", nullable = false)
     private Boolean isActive;
+
+    // Schedules
+    @OneToMany(mappedBy = "worker", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<WorkerSchedule> schedules = new HashSet<>();
+
+    public void addSchedule(WorkerSchedule schedule) {
+        this.schedules.add(schedule);
+        schedule.setWorker(this);
+    }
+
+    public void removeSchedule(WorkerSchedule schedule) {
+        this.schedules.remove(schedule);
+        schedule.setWorker(null);
+    }
 
     // Roles
     @ManyToMany(fetch = FetchType.LAZY)
