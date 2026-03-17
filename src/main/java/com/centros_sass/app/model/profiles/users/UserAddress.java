@@ -7,6 +7,7 @@ import com.centros_sass.app.model.catalogs.address.Region;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -39,7 +40,7 @@ public class UserAddress extends BaseEntity {
     private Integer id;
 
     @NotNull(message = "{userAddress.user.required}")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
@@ -53,17 +54,17 @@ public class UserAddress extends BaseEntity {
     private String postalCode;
 
     @NotNull(message = "{userAddress.city.required}")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
     @NotNull(message = "{userAddress.province.required}")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "province_id", nullable = false)
     private Province province;
 
     @NotNull(message = "{userAddress.region.required}")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id", nullable = false)
     private Region region;
 

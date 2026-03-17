@@ -1,65 +1,57 @@
 package com.centros_sass.app.model.catalogs.address;
 
-import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
+import com.centros_sass.app.model.profiles.users.UserAddress;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "cities_enum")
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class City extends BaseEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+@ToString(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+public class City extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ToString.Include
+    @EqualsAndHashCode.Include
     private Integer id;
 
+    @NotBlank(message = "{city.cityName.required}")
     @Column(name = "city_name", nullable = false, columnDefinition = "TEXT")
     private String cityName;
 
-    // hashCode / equals / toString
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
-    }
+    // RELATIONS
+    // // UserAdress
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
+    private Set<UserAddress> userAdresses = new HashSet<>();
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        City other = (City) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
+    public void addUserAddress(UserAddress userAddress) {
+        userAdresses.add(userAddress);
+        userAddress.setCity(this);
     }
-
-    @Override
-    public String toString() {
-        return "City [id=" + id + ", CityName=" + cityName + "]";
+    public void removeUserAddress(UserAddress userAddress) {
+        userAdresses.remove(userAddress);
+        userAddress.setCity(null);
     }
 }

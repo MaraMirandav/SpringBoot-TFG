@@ -78,7 +78,7 @@ public class User extends BaseEntity {
     private String dni;
 
     @NotNull(message = "{user.sex.required}")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sex_id", nullable = false)
     private Sex sex;
 
@@ -88,7 +88,7 @@ public class User extends BaseEntity {
     private LocalDate birthDate;
 
     @NotNull(message = "{user.dependency.required}")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dependency_id", nullable = false)
     private Dependency dependency;
 
@@ -97,10 +97,16 @@ public class User extends BaseEntity {
     private Boolean isActive;
 
     // RELATIONS
-    // // UserAdresses
+    // // UserAdress
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<UserAddress> userAdresses = new HashSet<>();
 
-
-
+    public void addUserAddress(UserAddress userAddress) {
+        userAdresses.add(userAddress);
+        userAddress.setUser(this);
+    }
+    public void removeUserAddress(UserAddress userAddress) {
+        userAdresses.remove(userAddress);
+        userAddress.setUser(null);
+    }
 }
