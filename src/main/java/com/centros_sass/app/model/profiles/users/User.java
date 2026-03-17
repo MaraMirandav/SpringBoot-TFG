@@ -123,4 +123,16 @@ public class User extends BaseEntity {
         userAttendanceDay.setUser(null);
     }
 
+    // // UserContact
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<UserContact> userContacts = new HashSet<>();
+
+    public void addUserContact(UserContact userContact) {
+        userContacts.add(userContact);
+        userContact.setUser(this);
+    }
+    public void removeUserContact(UserContact userContact) {
+        userContacts.remove(userContact);
+        userContact.setUser(null);
+    }
 }

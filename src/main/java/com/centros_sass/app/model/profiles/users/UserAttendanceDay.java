@@ -7,6 +7,7 @@ import com.centros_sass.app.model.catalogs.calendar.OpenDay;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -37,12 +38,12 @@ public class UserAttendanceDay extends BaseEntity {
     private Integer id;
 
     @NotNull(message = "{userAttendanceDay.user.required}")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @NotNull(message = "{userAttendanceDay.day.required}")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "day_id", nullable = false)
     private OpenDay day;
 
