@@ -219,7 +219,7 @@
           "check": "",
           "primary": false,
           "unique": false,
-          "notNull": true,
+          "notNull": false,
           "increment": false,
           "comment": "",
           "size": "",
@@ -240,8 +240,50 @@
           "values": []
         },
         {
+          "id": "x2c8rQ_vCzJo-vzQw50Aw",
+          "name": "email",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "IBKG5YM_juinGocQd4HZ2",
+          "name": "phone",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "29NSZz8hGYU6cZxmDh9-M",
+          "name": "cellphone",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
           "id": "rnkgI6wn80iAPW6EX5-16",
-          "name": "DNI",
+          "name": "dni_nie",
           "type": "TEXT",
           "default": "",
           "check": "",
@@ -4646,5 +4688,5 @@
   "database": "postgresql",
   "types": [],
   "enums": [],
-  "title": "TFG postgreSQL dec_24"
+  "title": "TFG postgreSQL"
 }
