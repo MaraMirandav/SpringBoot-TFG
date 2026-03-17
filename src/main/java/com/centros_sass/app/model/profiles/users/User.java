@@ -74,7 +74,7 @@ public class User extends BaseEntity {
 
     @NotBlank(message = "{user.dni.required}")
     @Pattern(regexp = "^(?:[0-9]{8}|[XYZxyz][0-9]{7})[A-Za-z]$", message = "{user.dni.invalid}")
-    @Column(name = "dni", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "dni_nie", nullable = false, columnDefinition = "TEXT")
     private String dni;
 
     @NotNull(message = "{user.sex.required}")

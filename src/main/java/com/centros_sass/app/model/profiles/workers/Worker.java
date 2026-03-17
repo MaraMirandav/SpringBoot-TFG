@@ -61,7 +61,7 @@ public class Worker extends BaseEntity {
 
     @NotBlank(message = "{worker.dni.required}")
     @Pattern(regexp = "^(?:[0-9]{8}|[XYZxyz][0-9]{7})[A-Za-z]$", message = "{worker.dni.invalid}")
-    @Column(name = "dni", nullable = false, unique = true, columnDefinition = "TEXT")
+    @Column(name = "dni_nie", nullable = false, unique = true, columnDefinition = "TEXT")
     private String dni;
 
     @NotBlank(message = "{worker.mainPhone.required}")
