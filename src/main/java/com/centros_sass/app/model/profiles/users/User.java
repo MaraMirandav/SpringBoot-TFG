@@ -109,4 +109,18 @@ public class User extends BaseEntity {
         userAdresses.remove(userAddress);
         userAddress.setUser(null);
     }
+
+    // // UserAttendanceDay
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<UserAttendanceDay> userAttendanceDays = new HashSet<>();
+
+    public void addUserAttendanceDay(UserAttendanceDay userAttendanceDay) {
+        userAttendanceDays.add(userAttendanceDay);
+        userAttendanceDay.setUser(this);
+    }
+    public void removeUserAttendanceDay(UserAttendanceDay userAttendanceDay) {
+        userAttendanceDays.remove(userAttendanceDay);
+        userAttendanceDay.setUser(null);
+    }
+
 }
