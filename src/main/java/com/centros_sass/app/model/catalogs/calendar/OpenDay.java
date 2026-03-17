@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
+import com.centros_sass.app.model.profiles.users.UserAttendanceDay;
 import com.centros_sass.app.model.profiles.workers.WorkerSchedule;
 
 import jakarta.persistence.Column;
@@ -50,6 +51,8 @@ public class OpenDay extends BaseEntity {
     @Column(name = "close_at", nullable = false, columnDefinition = "TIME")
     private LocalTime closeAt;
 
+    // RELATIONS
+    // // WorkerSchedule
     @OneToMany(mappedBy = "openDay", fetch = FetchType.LAZY)
     private Set<WorkerSchedule> schedules = new HashSet<>();
 
@@ -57,9 +60,21 @@ public class OpenDay extends BaseEntity {
         this.schedules.add(schedule);
         schedule.setOpenDay(this);
     }
-
     public void removeSchedule(WorkerSchedule schedule) {
         this.schedules.remove(schedule);
         schedule.setOpenDay(null);
+    }
+
+    // // UserAttendanceDay
+    @OneToMany(mappedBy = "day", fetch = FetchType.LAZY)
+    private Set<UserAttendanceDay> attendanceDays = new HashSet<>();
+
+    public void addAttendanceDay(UserAttendanceDay attendanceDay) {
+        this.attendanceDays.add(attendanceDay);
+        attendanceDay.setDay(this);
+    }
+    public void removeAttendanceDay(UserAttendanceDay attendanceDay) {
+        this.attendanceDays.remove(attendanceDay);
+        attendanceDay.setDay(null);
     }
 }

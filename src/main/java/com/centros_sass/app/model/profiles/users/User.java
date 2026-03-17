@@ -1,7 +1,8 @@
 package com.centros_sass.app.model.profiles.users;
 
-import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.people.Dependency;
@@ -9,37 +10,49 @@ import com.centros_sass.app.model.catalogs.people.Sex;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "users")
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends BaseEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+@ToString(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ToString.Include
+    @EqualsAndHashCode.Include
     private Integer id;
 
+    @NotBlank(message = "{user.firstName.required}")
     @Column(name = "first_name", nullable = false, columnDefinition = "TEXT")
     private String firstName;
 
     @Column(name = "second_name", columnDefinition = "TEXT")
     private String secondName;
 
+    @NotBlank(message = "{user.firsSurename.required}")
     @Column(name = "first_surname", nullable = false, columnDefinition = "TEXT")
     private String firstSurname;
 
@@ -49,54 +62,77 @@ public class User extends BaseEntity implements Serializable {
     @Column(name = "alias", columnDefinition = "TEXT")
     private String alias;
 
-    @Column(name = "dni", nullable = false, columnDefinition = "TEXT")
+    @Email(message = "{user.email.invalid}")
+    @Column(name = "email", columnDefinition = "TEXT")
+    private String email;
+
+    @Column(name = "phone", columnDefinition = "TEXT")
+    private String phone;
+
+    @Column(name = "cellphone", columnDefinition = "TEXT")
+    private String cellphone;
+
+    @NotBlank(message = "{user.dni.required}")
+    @Pattern(regexp = "^(?:[0-9]{8}|[XYZxyz][0-9]{7})[A-Za-z]$", message = "{user.dni.invalid}")
+    @Column(name = "dni_nie", nullable = false, columnDefinition = "TEXT")
     private String dni;
 
-    @ManyToOne
+    @NotNull(message = "{user.sex.required}")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sex_id", nullable = false)
     private Sex sex;
 
+    @NotNull(message = "{user.birthDate.required}")
+    @Past(message = "{user.birthDate.past}")
     @Column(name = "birth_date", nullable = false, columnDefinition = "DATE")
     private LocalDate birthDate;
 
-    @ManyToOne
+    @NotNull(message = "{user.dependency.required}")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dependency_id", nullable = false)
     private Dependency dependency;
 
+    @NotNull(message = "{user.isActive.required}")
     @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
-    private boolean isActive;
+    private Boolean isActive;
 
-    // hashCode / equals / toString
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
+    // RELATIONS
+    // // UserAdress
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<UserAddress> userAdresses = new HashSet<>();
+
+    public void addUserAddress(UserAddress userAddress) {
+        userAdresses.add(userAddress);
+        userAddress.setUser(this);
+    }
+    public void removeUserAddress(UserAddress userAddress) {
+        userAdresses.remove(userAddress);
+        userAddress.setUser(null);
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        User other = (User) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
+    // // UserAttendanceDay
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<UserAttendanceDay> userAttendanceDays = new HashSet<>();
+
+    public void addUserAttendanceDay(UserAttendanceDay userAttendanceDay) {
+        userAttendanceDays.add(userAttendanceDay);
+        userAttendanceDay.setUser(this);
+    }
+    public void removeUserAttendanceDay(UserAttendanceDay userAttendanceDay) {
+        userAttendanceDays.remove(userAttendanceDay);
+        userAttendanceDay.setUser(null);
     }
 
-    @Override
-    public String toString() {
-        return "User [id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", firstSurname="
-                + firstSurname + ", secondSurname=" + secondSurname + ", alias=" + alias + ", dni=" + dni + ", sex="
-                + sex + ", birthDate=" + birthDate + ", dependency=" + dependency + ", isActive=" + isActive + "]";
-    }
+    // // UserContact
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<UserContact> userContacts = new HashSet<>();
 
+    public void addUserContact(UserContact userContact) {
+        userContacts.add(userContact);
+        userContact.setUser(this);
+    }
+    public void removeUserContact(UserContact userContact) {
+        userContacts.remove(userContact);
+        userContact.setUser(null);
+    }
 }
