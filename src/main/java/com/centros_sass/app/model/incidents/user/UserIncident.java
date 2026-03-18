@@ -40,14 +40,13 @@ public class UserIncident extends Incident {
 
     // RELATIONS
     // // UserIncidentComment
-    @OneToMany(mappedBy = "userIncident")
+    @OneToMany(mappedBy = "userIncident", fetch = FetchType.LAZY)
     private Set<UserIncidentComment> userIncidentComments = new HashSet<>();
 
     public void addUserIncidentComment(UserIncidentComment userIncidentComment) {
         userIncidentComments.add(userIncidentComment);
         userIncidentComment.setUserIncident(this);
     }
-
     public void removeUserIncidentComment(UserIncidentComment userIncidentComment) {
         userIncidentComments.remove(userIncidentComment);
         userIncidentComment.setUserIncident(null);

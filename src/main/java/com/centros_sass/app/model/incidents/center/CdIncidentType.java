@@ -1,65 +1,56 @@
 package com.centros_sass.app.model.incidents.center;
 
-import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "incident_cd_enum")
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CdIncidentType extends BaseEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+@ToString(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+public class CdIncidentType extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ToString.Include
+    @EqualsAndHashCode.Include
     private Integer id;
 
+    @NotBlank(message = "{cdIncidentType.incidentName.required}")
     @Column(name = "incident_name", nullable = false, columnDefinition = "TEXT", unique = true)
     private String incidentName;
 
-    // hashCode / equals / toString
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
-    }
+    // RELATIONS
+    // // CenterIncident
+    @OneToMany(mappedBy = "cdIncident", fetch = FetchType.LAZY)
+    private Set<CenterIncident> centerIncidents = new HashSet<>();
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        CdIncidentType other = (CdIncidentType) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
+    public void addCenterIncident(CenterIncident centerIncident) {
+        centerIncidents.add(centerIncident);
+        centerIncident.setCdIncident(this);
     }
-
-    @Override
-    public String toString() {
-        return "CdIncidentType [id=" + id + ", incidentName=" + incidentName + "]";
+    public void removeCenterIncident(CenterIncident centerIncident) {
+        centerIncidents.remove(centerIncident);
+        centerIncident.setCdIncident(null);
     }
 }
