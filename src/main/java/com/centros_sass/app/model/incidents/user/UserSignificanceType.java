@@ -1,4 +1,4 @@
-package com.centros_sass.app.model.incidents;
+package com.centros_sass.app.model.incidents.user;
 
 import java.io.Serializable;
 
@@ -16,12 +16,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "significance_cd_enum")
+@Table(name = "significance_user_enum")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CdSignificanceType extends BaseEntity implements Serializable {
+public class UserSignificanceType extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -31,7 +31,6 @@ public class CdSignificanceType extends BaseEntity implements Serializable {
     @Column(name = "significance_name", nullable = false, columnDefinition = "TEXT", unique = true)
     private String significanceName;
 
-    // hashCode / equals / toString
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -40,6 +39,7 @@ public class CdSignificanceType extends BaseEntity implements Serializable {
         return result;
     }
 
+    // hashCode / equals / toString
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -48,7 +48,7 @@ public class CdSignificanceType extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        CdSignificanceType other = (CdSignificanceType) obj;
+        UserSignificanceType other = (UserSignificanceType) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -59,6 +59,6 @@ public class CdSignificanceType extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "CdSignificanceType [id=" + id + ", significanceName=" + significanceName + "]";
+        return "UserSignificanceType [id=" + id + ", significanceName=" + significanceName + "]";
     }
 }

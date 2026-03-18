@@ -1,4 +1,6 @@
-package com.centros_sass.app.model.incidents;
+package com.centros_sass.app.model.incidents.center;
+
+import com.centros_sass.app.model.incidents.Comment;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;

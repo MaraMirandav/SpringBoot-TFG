@@ -1,5 +1,6 @@
-package com.centros_sass.app.model.incidents;
+package com.centros_sass.app.model.incidents.user;
 
+import com.centros_sass.app.model.incidents.Incident;
 import com.centros_sass.app.model.profiles.users.User;
 
 import jakarta.persistence.Entity;

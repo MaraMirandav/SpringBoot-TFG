@@ -1,4 +1,4 @@
-package com.centros_sass.app.model.incidents;
+package com.centros_sass.app.model.incidents.center;
 
 import java.io.Serializable;
 
@@ -16,12 +16,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "incident_user_enum")
+@Table(name = "incident_cd_enum")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserIncidentType extends BaseEntity implements Serializable {
+public class CdIncidentType extends BaseEntity implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -48,7 +49,7 @@ public class UserIncidentType extends BaseEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        UserIncidentType other = (UserIncidentType) obj;
+        CdIncidentType other = (CdIncidentType) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -59,6 +60,6 @@ public class UserIncidentType extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "UserIncidentType [id=" + id + ", incidentName=" + incidentName + "]";
+        return "CdIncidentType [id=" + id + ", incidentName=" + incidentName + "]";
     }
 }
