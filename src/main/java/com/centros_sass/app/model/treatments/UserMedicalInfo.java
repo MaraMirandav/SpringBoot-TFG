@@ -1,77 +1,88 @@
 package com.centros_sass.app.model.treatments;
 
-import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.profiles.users.User;
 import com.centros_sass.app.model.profiles.workers.Worker;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Table(name = "user_medical_info")
-@Getter
-@Setter
-@NoArgsConstructor
+@Table(name = "users_medical_info")
+@Getter @Setter
 @AllArgsConstructor
-public class UserMedicalInfo extends BaseEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+@NoArgsConstructor
+@ToString(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+public class UserMedicalInfo extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @EqualsAndHashCode.Include
+    @ToString.Include
+    private Integer id;
 
-    @ManyToOne
+    @NotNull(message = "{userMedicalInfo.user.required}")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
+    @NotNull(message = "{userMedicalInfo.worker.required}")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "worker_id", nullable = false)
     private Worker worker;
 
+    @NotNull(message = "{userMedicalInfo.isActive.required}")
     @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
-    private boolean isActive;
+    private Boolean isActive;
 
-    // hashCode / equals / toString
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
+    // RELATIONS
+    // // UserAllergy
+    @OneToMany(mappedBy = "userMedicalInfo", fetch = FetchType.LAZY,
+        cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<UserAllergy> userAllergies = new HashSet<>();
+
+    public void addUserAllergy(UserAllergy userAllergy) {
+        userAllergies.add(userAllergy);
+        userAllergy.setUserMedicalInfo(this);
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        UserMedicalInfo other = (UserMedicalInfo) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
+    public void removeUserAllergy(UserAllergy userAllergy) {
+        userAllergies.remove(userAllergy);
+        userAllergy.setUserMedicalInfo(null);
     }
 
-    @Override
-    public String toString() {
-        return "UserMedicalInfo [id=" + id + ", user=" + user + ", worker=" + worker + ", isActive=" + isActive + "]";
+    // // UserIllness
+    @OneToMany(mappedBy = "userMedicalInfo", fetch = FetchType.LAZY,
+        cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<UserIllness> userIllnesses = new HashSet<>();
+
+    public void addUserIllness(UserIllness userIllness) {
+        userIllnesses.add(userIllness);
+        userIllness.setUserMedicalInfo(this);
+    }
+
+    public void removeUserIllness(UserIllness userIllness) {
+        userIllnesses.remove(userIllness);
+        userIllness.setUserMedicalInfo(null);
     }
 }

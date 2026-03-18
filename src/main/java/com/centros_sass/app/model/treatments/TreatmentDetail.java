@@ -26,8 +26,7 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "treatment_details")
-@Getter
-@Setter
+@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(onlyExplicitlyIncluded = true)
@@ -70,6 +69,21 @@ public class TreatmentDetail extends BaseEntity {
     public void removeMedication(Medication medication) {
         this.medications.remove(medication);
         medication.getTreatmentDetails().remove(this);
+    }
+
+    // RELATIONS
+    // // UserIllnesses
+    @ManyToMany(mappedBy = "treatmentDetails", fetch = FetchType.LAZY)
+    private Set<UserIllness> userIllnesses = new HashSet<>();
+
+    public void addUserIllness(UserIllness userIllness) {
+        userIllnesses.add(userIllness);
+        userIllness.getTreatmentDetails().add(this);
+    }
+
+    public void removeUserIllness(UserIllness userIllness) {
+        userIllnesses.remove(userIllness);
+        userIllness.getTreatmentDetails().remove(this);
     }
 }
 

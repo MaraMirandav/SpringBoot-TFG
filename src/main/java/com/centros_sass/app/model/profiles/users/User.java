@@ -7,6 +7,7 @@ import java.util.Set;
 import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.people.Dependency;
 import com.centros_sass.app.model.catalogs.people.Sex;
+import com.centros_sass.app.model.treatments.UserMedicalInfo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -134,5 +135,19 @@ public class User extends BaseEntity {
     public void removeUserContact(UserContact userContact) {
         userContacts.remove(userContact);
         userContact.setUser(null);
+    }
+
+    // // UserMedicalInfo
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<UserMedicalInfo> userMedicalInfos = new HashSet<>();
+
+    public void addUserMedicalInfo(UserMedicalInfo userMedicalInfo) {
+        userMedicalInfos.add(userMedicalInfo);
+        userMedicalInfo.setUser(this);
+    }
+
+    public void removeUserMedicalInfo(UserMedicalInfo userMedicalInfo) {
+        userMedicalInfos.remove(userMedicalInfo);
+        userMedicalInfo.setUser(null);
     }
 }

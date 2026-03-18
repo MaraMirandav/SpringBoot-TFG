@@ -40,7 +40,8 @@ public class StorageCondition extends BaseEntity {
     @Column(name = "storage_name", nullable = false, columnDefinition = "TEXT", unique = true)
     private String storageName;
 
-    // Medications
+    // RELATIONS
+    // // Medications
     @OneToMany(mappedBy = "storageCondition", fetch = FetchType.LAZY)
     private Set<Medication> medications = new HashSet<>();
 

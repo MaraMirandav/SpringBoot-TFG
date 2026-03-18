@@ -1,12 +1,17 @@
 package com.centros_sass.app.model.treatments;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.centros_sass.app.model.base.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -34,4 +39,19 @@ public class Illness extends BaseEntity {
     @NotBlank(message = "{illness.illnessName.required}")
     @Column(name = "illness_name", nullable = false, columnDefinition = "TEXT", unique = true)
     private String illnessName;
+
+    // RELATIONS
+    // // UserIllness
+    @OneToMany(mappedBy = "illness", fetch = FetchType.LAZY)
+    private Set<UserIllness> userIllnesses = new HashSet<>();
+
+    public void addUserIllness(UserIllness userIllness) {
+        userIllnesses.add(userIllness);
+        userIllness.setIllness(this);
+    }
+
+    public void removeUserIllness(UserIllness userIllness) {
+        userIllnesses.remove(userIllness);
+        userIllness.setIllness(null);
+    }
 }

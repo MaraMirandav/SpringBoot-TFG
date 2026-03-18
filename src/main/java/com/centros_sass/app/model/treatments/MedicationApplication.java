@@ -40,7 +40,8 @@ public class MedicationApplication extends BaseEntity {
     @Column(name = "medication_application_name", nullable = false, columnDefinition = "TEXT", unique = true)
     private String medicationApplicationName;
 
-    // Medications
+    // RELATIONS
+    // // Medications
     @OneToMany(mappedBy = "medicationApplication", fetch = FetchType.LAZY)
     private Set<Medication> medications = new HashSet<>();
 
