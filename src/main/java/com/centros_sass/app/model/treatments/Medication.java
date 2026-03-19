@@ -72,27 +72,7 @@ public class Medication extends BaseEntity {
     @ManyToMany(mappedBy = "medications", fetch = FetchType.LAZY)
     private Set<TreatmentDetail> treatmentDetails = new HashSet<>();
 
-    public void addTreatmentDetail(TreatmentDetail treatmentDetail) {
-        treatmentDetails.add(treatmentDetail);
-        treatmentDetail.getMedications().add(this);
-    }
-
-    public void removeTreatmentDetail(TreatmentDetail treatmentDetail) {
-        treatmentDetails.remove(treatmentDetail);
-        treatmentDetail.getMedications().remove(this);
-    }
-
     // // UserAllergies
     @ManyToMany(mappedBy = "medications", fetch = FetchType.LAZY)
     private Set<UserAllergy> userAllergies = new HashSet<>();
-
-    public void addUserAllergy(UserAllergy userAllergy) {
-        userAllergies.add(userAllergy);
-        userAllergy.getMedications().add(this);
-    }
-
-    public void removeUserAllergy(UserAllergy userAllergy) {
-        userAllergies.remove(userAllergy);
-        userAllergy.getMedications().remove(this);
-    }
 }
