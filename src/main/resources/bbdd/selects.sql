@@ -246,8 +246,8 @@ SELECT
 FROM users u
 JOIN user_medical_info umi ON u.id = umi.user_id
 JOIN user_illnesses ui ON umi.id = ui.user_medical_info_id
-JOIN illness_enum ill ON ui.illness_id = ill.id
-LEFT JOIN user_illness_treatment uit ON ui.id = uit.user_illness_id
+JOIN illnesses_enum ill ON ui.illness_id = ill.id
+LEFT JOIN user_illness_treatment_details uit ON ui.id = uit.user_illness_id
 LEFT JOIN treatment_details td ON uit.treatment_detail_id = td.id
 LEFT JOIN treatment_details_medication tdm ON td.id = tdm.treatment_detail_id
 LEFT JOIN medications m ON tdm.medication_id = m.id
@@ -263,7 +263,6 @@ FROM users u
 JOIN user_medical_info umi ON u.id = umi.user_id
 JOIN user_allergies ua ON umi.id = ua.user_medical_info_id
 JOIN allergies_enum ae ON ua.allergy_id = ae.id;
-
 
 SELECT
     CONCAT(u.first_name, ' ', u.first_surname) AS usuario,
