@@ -897,7 +897,7 @@ VALUES
     ('Proteger de la luz', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- Enfermedades / Patologías
-INSERT INTO illness_enum (illness_name, created_at, updated_at)
+INSERT INTO illnesses_enum (illness_name, created_at, updated_at)
 VALUES
     ('Hipertensión Arterial', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Diabetes Tipo 2', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
@@ -985,9 +985,9 @@ VALUES
 -- ============================================================
 
 -- A. Enfermedad <-> Tratamiento
-INSERT INTO user_illness_treatment (user_illness_id, treatment_detail_id) VALUES (1, 1);
-INSERT INTO user_illness_treatment (user_illness_id, treatment_detail_id) VALUES (2, 2);
-INSERT INTO user_illness_treatment (user_illness_id, treatment_detail_id) VALUES (4, 3);
+INSERT INTO user_illness_treatment_details (user_illness_id, treatment_detail_id) VALUES (1, 1);
+INSERT INTO user_illness_treatment_details (user_illness_id, treatment_detail_id) VALUES (2, 2);
+INSERT INTO user_illness_treatment_details (user_illness_id, treatment_detail_id) VALUES (4, 3);
 
 -- B. Tratamiento <-> Medicamento
 INSERT INTO treatment_details_medication (treatment_detail_id, medication_id) VALUES (1, 3); -- Enalapril

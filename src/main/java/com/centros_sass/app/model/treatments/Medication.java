@@ -1,88 +1,78 @@
 package com.centros_sass.app.model.treatments;
 
-import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "medications")
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter
 @AllArgsConstructor
-public class Medication extends BaseEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+@NoArgsConstructor
+@ToString(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+public class Medication extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
+    @ToString.Include
     private Integer id;
 
-    @ManyToOne
+    @NotNull(message = "{medication.medicationName.required}")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "medication_name_id", nullable = false)
     private MedicationName medicationName;
 
+    @NotBlank(message = "{medication.dose.required}")
     @Column(name = "dose", nullable = false, columnDefinition = "TEXT")
     private String dose;
 
+    @NotNull(message = "{medication.receptionDate.required}")
     @Column(name = "reception_date", nullable = false, columnDefinition = "DATE")
     private LocalDate receptionDate;
 
+    @NotNull(message = "{medication.expirationDate.required}")
     @Column(name = "expiration_date", nullable = false, columnDefinition = "DATE")
     private LocalDate expirationDate;
 
-    @ManyToOne
+    @NotNull(message = "{medication.storageCondition.required}")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "storage_condition_id", nullable = false)
     private StorageCondition storageCondition;
 
-    @ManyToOne
+    @NotNull(message = "{medication.medicationApplication.required}")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "medication_application_id", nullable = false)
     private MedicationApplication medicationApplication;
 
-    // hashCode / equals / toString
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
-    }
+    // RELATIONS
+    // // TreatmentDetails
+    @ManyToMany(mappedBy = "medications", fetch = FetchType.LAZY)
+    private Set<TreatmentDetail> treatmentDetails = new HashSet<>();
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Medication other = (Medication) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Medication [id=" + id + ", medicationName=" + medicationName + ", dose=" + dose + ", receptionDate="
-                + receptionDate + ", expirationDate=" + expirationDate + ", storageCondition=" + storageCondition
-                + ", medicationApplication=" + medicationApplication + "]";
-    }
+    // // UserAllergies
+    @ManyToMany(mappedBy = "medications", fetch = FetchType.LAZY)
+    private Set<UserAllergy> userAllergies = new HashSet<>();
 }

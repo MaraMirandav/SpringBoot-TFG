@@ -8,6 +8,7 @@ import com.centros_sass.app.model.catalogs.organization.Position;
 import com.centros_sass.app.model.catalogs.organization.Role;
 import com.centros_sass.app.model.incidents.Comment;
 import com.centros_sass.app.model.incidents.Incident;
+import com.centros_sass.app.model.treatments.UserMedicalInfo;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -87,7 +88,8 @@ public class Worker extends BaseEntity {
     @Column(name = "is_active", nullable = false)
     private Boolean isActive;
 
-    // Schedules
+    // RELATIONS
+    // // Schedules
     @OneToMany(mappedBy = "worker", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<WorkerSchedule> schedules = new HashSet<>();
@@ -102,7 +104,7 @@ public class Worker extends BaseEntity {
         schedule.setWorker(null);
     }
 
-    // Roles
+    // // Roles
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "workers_roles",
@@ -119,7 +121,7 @@ public class Worker extends BaseEntity {
         this.roles.remove(role);
     }
 
-    // Positions
+    // // Positions
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "workers_positions",
@@ -160,5 +162,19 @@ public class Worker extends BaseEntity {
     public void removeComment(Comment comment) {
         comments.remove(comment);
         comment.setWorker(null);
+    }
+
+    // // UserMedicalInfo
+    @OneToMany(mappedBy = "worker", fetch = FetchType.LAZY)
+    private Set<UserMedicalInfo> userMedicalInfos = new HashSet<>();
+
+    public void addUserMedicalInfo(UserMedicalInfo userMedicalInfo) {
+        userMedicalInfos.add(userMedicalInfo);
+        userMedicalInfo.setWorker(this);
+    }
+
+    public void removeUserMedicalInfo(UserMedicalInfo userMedicalInfo) {
+        userMedicalInfos.remove(userMedicalInfo);
+        userMedicalInfo.setWorker(null);
     }
 }
