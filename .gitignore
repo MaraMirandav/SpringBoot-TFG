@@ -33,3 +33,5 @@ build/
 .vscode/
 
 TODO.md
+GEMINI.md
+.gemini/
