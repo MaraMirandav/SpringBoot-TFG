@@ -1,10 +1,9 @@
-package com.centros_sass.app.model.catalogs.people;
+package com.centros_sass.app.model.incidents.center;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.profiles.users.User;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.FetchType;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -22,13 +22,13 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "user_dependency_enum")
+@Table(name = "significance_cd_enum")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class Dependency extends BaseEntity {
+public class CdSignificanceType extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,21 +36,21 @@ public class Dependency extends BaseEntity {
     @EqualsAndHashCode.Include
     private Integer id;
 
-    @NotBlank(message = "{dependency.nivelDependency.required}")
-    @Column(name = "nivel_dependency", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String nivelDependency;
+    @NotBlank(message = "{cdSignificanceType.significanceName.required}")
+    @Column(name = "significance_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    private String significanceName;
 
     // RELATIONS
-    // // User
-    @OneToMany(mappedBy = "dependency")
-    private Set<User> users = new HashSet<>();
+    // // CenterIncident
+    @OneToMany(mappedBy = "cdSignificance", fetch = FetchType.LAZY)
+    private Set<CenterIncident> centerIncidents = new HashSet<>();
 
-    public void addUser(User user) {
-        users.add(user);
-        user.setDependency(this);
+    public void addCenterIncident(CenterIncident centerIncident) {
+        centerIncidents.add(centerIncident);
+        centerIncident.setCdSignificance(this);
     }
-    public void removeUser(User user) {
-        users.remove(user);
-        user.setDependency(null);
+    public void removeCenterIncident(CenterIncident centerIncident) {
+        centerIncidents.remove(centerIncident);
+        centerIncident.setCdSignificance(null);
     }
 }

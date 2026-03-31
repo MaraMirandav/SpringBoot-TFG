@@ -69,6 +69,20 @@
           "check": "",
           "primary": false,
           "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "8abjAn5xMv_vHppz0DNRP",
+          "name": "dni_nie",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
           "notNull": true,
           "increment": false,
           "comment": "",
@@ -110,7 +124,7 @@
           "default": "",
           "check": "",
           "primary": false,
-          "unique": false,
+          "unique": true,
           "notNull": true,
           "increment": false,
           "comment": "",
@@ -219,7 +233,7 @@
           "check": "",
           "primary": false,
           "unique": false,
-          "notNull": true,
+          "notNull": false,
           "increment": false,
           "comment": "",
           "size": "",
@@ -240,8 +254,50 @@
           "values": []
         },
         {
+          "id": "x2c8rQ_vCzJo-vzQw50Aw",
+          "name": "email",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "IBKG5YM_juinGocQd4HZ2",
+          "name": "phone",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "29NSZz8hGYU6cZxmDh9-M",
+          "name": "cellphone",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
           "id": "rnkgI6wn80iAPW6EX5-16",
-          "name": "DNI",
+          "name": "dni_nie",
           "type": "TEXT",
           "default": "",
           "check": "",
@@ -316,7 +372,7 @@
     },
     {
       "id": "9sAjUeYhl2Ssvf9YDevO-",
-      "name": "user_addresses",
+      "name": "user_adresses",
       "x": 168,
       "y": -192,
       "locked": false,
@@ -377,7 +433,7 @@
         },
         {
           "id": "eYC-zA2S8Ww0K_5Vzr7e8",
-          "name": "poblacion_id",
+          "name": "city_id",
           "type": "INTEGER",
           "default": "",
           "check": "",
@@ -391,7 +447,7 @@
         },
         {
           "id": "bRkwR0sQJ8j3bRAZOpIRs",
-          "name": "provincia_id",
+          "name": "province_id",
           "type": "INTEGER",
           "default": "",
           "check": "",
@@ -405,7 +461,7 @@
         },
         {
           "id": "VFOlWyLrPvv4IL64EofsG",
-          "name": "comunidad_id",
+          "name": "region_id",
           "type": "INTEGER",
           "default": "",
           "check": "",
@@ -546,7 +602,7 @@
     },
     {
       "id": "XPfaj7f7-tRo2aao4TLh_",
-      "name": "user_relations_enum",
+      "name": "user_relationships_enum",
       "x": 552,
       "y": 240,
       "locked": false,
@@ -565,7 +621,7 @@
         },
         {
           "id": "IGBnQYsP4oRSK5qIzuQO9",
-          "name": "relation_name",
+          "name": "relationship_name",
           "type": "TEXT",
           "default": "",
           "check": "",
@@ -636,7 +692,7 @@
     },
     {
       "id": "d4EFGjhKM-fF4DGgXRZt5",
-      "name": "dias_asistencia",
+      "name": "user_attendance_days",
       "x": 144,
       "y": 576,
       "locked": false,
@@ -1014,7 +1070,7 @@
         {
           "id": "SfmIelK0k8sMdO9sLECVn",
           "name": "start_at",
-          "type": "TIMESTAMP",
+          "type": "TIME",
           "default": "",
           "check": "",
           "primary": false,
@@ -1028,7 +1084,7 @@
         {
           "id": "HCeOKz3c33EKp6g0Co8KQ",
           "name": "end_at",
-          "type": "TIMESTAMP",
+          "type": "TIME",
           "default": "",
           "check": "",
           "primary": false,
@@ -1148,7 +1204,7 @@
           "default": "",
           "check": "",
           "primary": false,
-          "unique": false,
+          "unique": true,
           "notNull": true,
           "increment": false,
           "comment": "",
@@ -1788,7 +1844,7 @@
     },
     {
       "id": "3caAUN3UmBQ5EcTwoJfBb",
-      "name": "comunidad_enum",
+      "name": "regions_enum",
       "x": 456,
       "y": 72,
       "locked": false,
@@ -1807,7 +1863,7 @@
         },
         {
           "id": "OHDKJEjQUvJEJOwwh8NZB",
-          "name": "comunidad",
+          "name": "region_name",
           "type": "TEXT",
           "default": "",
           "check": "",
@@ -1826,7 +1882,7 @@
     },
     {
       "id": "LG9iPsmknkBIphBjk8bzj",
-      "name": "provincia_enum",
+      "name": "provinces_enum",
       "x": 528,
       "y": -72,
       "locked": false,
@@ -1845,7 +1901,7 @@
         },
         {
           "id": "7jEu1rghekJTwJ9UIiYHO",
-          "name": "provincia",
+          "name": "province_name",
           "type": "TEXT",
           "default": "",
           "check": "",
@@ -1864,7 +1920,7 @@
     },
     {
       "id": "dD9-MErT13KS54Nkg7tiT",
-      "name": "poblacion_enum",
+      "name": "cities_enum",
       "x": 456,
       "y": -216,
       "locked": false,
@@ -1883,7 +1939,7 @@
         },
         {
           "id": "BZkaQwy_xSafGlVU3GwKz",
-          "name": "poblacion",
+          "name": "city_name",
           "type": "TEXT",
           "default": "",
           "check": "",
@@ -4646,5 +4702,5 @@
   "database": "postgresql",
   "types": [],
   "enums": [],
-  "title": "TFG postgreSQL dec_24"
+  "title": "TFG postgreSQL"
 }

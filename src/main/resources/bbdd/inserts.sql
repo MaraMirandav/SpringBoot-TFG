@@ -3,29 +3,29 @@
 -- Tabla: schema_template.workers
 -- --------------------------------------------------------
 INSERT INTO workers
-(first_name, second_name, first_surname, second_surname, email, password, main_phone, second_phone, is_active, created_at, updated_at)
+(first_name, second_name, first_surname, second_surname, dni_nie, email, password, main_phone, second_phone, is_active, created_at, updated_at)
 VALUES
     -- 1. Trabajadora con todos los datos completos
-    ('Ana', 'María', 'García', 'López', 'ana.garcia@email.com', 'contraseña123', '600123456', '911223344', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Ana', 'María', 'García', 'López', 'Z2033087A', 'ana.garcia@email.com', 'contraseña123', '600123456', '911223344', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     -- 2. Trabajador sin segundo nombre ni segundo teléfono (campos NULL)
-    ('Carlos', NULL, 'Rodríguez', 'Sánchez', 'carlos.rod@email.com', 'claveSegura2025', '655987654', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Carlos', NULL, 'Rodríguez', 'Sánchez', 'Z2333087A', 'carlos.rod@email.com', 'claveSegura2025', '655987654', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     -- 3. Trabajadora sin segundo apellido
-    ('Lucía', 'Carmen', 'Fernández', NULL, 'lucia.fer@email.com', 'admin1234', '611222333', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Lucía', 'Carmen', 'Fernández', NULL, 'Z2033037C', 'lucia.fer@email.com', 'admin1234', '611222333', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     -- 4. Trabajador inactivo (is_active = false)
-    ('Miguel', NULL, 'Torres', 'Ruiz', 'miguel.torres@email.com', 'passMiguel', '699888777', '933445566', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Miguel', NULL, 'Torres', 'Ruiz', 'Z2033083J', 'miguel.torres@email.com', 'passMiguel', '699888777', '933445566', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     -- 5. Trabajadora estándar
-    ('Elena', NULL, 'Moreno', 'Díaz', 'elena.moreno@email.com', 'elena2025', '622333444', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Roberto', NULL, 'Sanz', 'Gil', 'roberto.rrhh@email.com', 'pass123', '600666666', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Beatriz', NULL, 'Molina', 'Pérez', 'bea.recep@email.com', 'pass123', '600777777', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Laura', NULL, 'Ruiz', 'Giménez', 'laura.fisio@email.com', 'pass123', '600888888', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Pablo', 'José', 'Martín', 'Sanz', 'pablo.to@email.com', 'pass123', '600999999', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Sara', NULL, 'Díaz', 'Romero', 'sara.ts@email.com', 'pass123', '611000111', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('David', NULL, 'Serrano', 'Molina', 'david.psico@email.com', 'pass123', '611222333', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Carmen', 'Luisa', 'Ortiz', 'Vega', 'carmen.gero@email.com', 'pass123', '611333444', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Javier', NULL, 'Navarro', 'Flores', 'javier.tas@email.com', 'pass123', '611444555', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Manuel', 'Antonio', 'Iglesias', 'Vargas', 'manolo.ruta@email.com', 'pass123', '611555666', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Julián', NULL, 'Vázquez', 'Rey', 'julian.copi@email.com', 'pass123', '611666777', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Rosa', 'María', 'Vidal', 'Sáez', 'rosa.limpieza@email.com', 'pass123', '611777888', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+    ('Elena', NULL, 'Moreno', 'Díaz', 'Z2343087A', 'elena.moreno@email.com', 'elena2025', '622333444', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Roberto', NULL, 'Sanz', 'Gil', 'Z2033547T', 'roberto.rrhh@email.com', 'pass123', '600666666', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Beatriz', NULL, 'Molina', 'Pérez', 'Z2036687F', 'bea.recep@email.com', 'pass123', '600777777', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Laura', NULL, 'Ruiz', 'Giménez', 'Z2273087A', 'laura.fisio@email.com', 'pass123', '600888888', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Pablo', 'José', 'Martín', 'Sanz', 'Z2038487B', 'pablo.to@email.com', 'pass123', '600999999', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Sara', NULL, 'Díaz', 'Romero', 'Z2033447A', 'sara.ts@email.com', 'pass123', '611000111', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('David', NULL, 'Serrano', 'Molina', 'Z2333087Y', 'david.psico@email.com', 'pass123', '611222333', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Carmen', 'Luisa', 'Ortiz', 'Vega', 'Z2233087A', 'carmen.gero@email.com', 'pass123', '611333444', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Javier', NULL, 'Navarro', 'Flores', 'Z2133087Y', 'javier.tas@email.com', 'pass123', '611444555', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Manuel', 'Antonio', 'Iglesias', 'Vargas', 'Z2035587A', 'manolo.ruta@email.com', 'pass123', '611555666', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Julián', NULL, 'Vázquez', 'Rey', 'Z2036697A', 'julian.copi@email.com', 'pass123', '611666777', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Rosa', 'María', 'Vidal', 'Sáez', 'Z2037787A', 'rosa.limpieza@email.com', 'pass123', '611777888', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- --------------------------------------------------------
 -- CATÁLOGO DE SEXOS
@@ -56,30 +56,30 @@ ON CONFLICT (nivel_dependency) DO NOTHING;
 -- --------------------------------------------------------
 
 INSERT INTO users
-    (first_name, second_name, first_surname, second_surname, alias, dni, birth_date, is_active, sex_id, dependency_id, created_at, updated_at)
+    (first_name, second_name, first_surname, second_surname, alias, email, phone, cellphone, dni_nie, birth_date, is_active, sex_id, dependency_id, created_at, updated_at)
 VALUES
     -- 1. Antonio: Hombre (1), Dependencia Baja (1)
-    ('Antonio', 'Luis', 'Martínez', 'Soria', 'Toño', '11223344B', '1950-03-15', true, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Antonio', 'Luis', 'Martínez', 'Soria', 'Toño', NULL, NULL, NULL, '11223344B', '1950-03-15', true, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     -- 2. María: Mujer (2), Dependencia Alta (3)
-    ('María', 'Carmen', 'López', 'Vega', 'Mari', '55667788C', '1948-11-20', true, 2, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('María', 'Carmen', 'López', 'Vega', 'Mari', NULL, NULL, NULL, '55667788C', '1948-11-20', true, 2, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     -- 3. José: Hombre (1), Dependencia Media (2)
-    ('José', NULL, 'Hernández', 'Ruiz', NULL, '99887766D', '1960-01-30', true, 1, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('José', NULL, 'Hernández', 'Ruiz', NULL, NULL, NULL, NULL, '99887766D', '1960-01-30', true, 1, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     -- 4. Dolores: Mujer (2), Sin Dependencia (4)
-    ('Dolores', NULL, 'Gómez', 'Pérez', 'Lola', '22334455E', '1955-07-12', false, 2, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+    ('Dolores', NULL, 'Gómez', 'Pérez', 'Lola', NULL, NULL, NULL, '22334455E', '1955-07-12', false, 2, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- --------------------------------------------------------
 -- TABLA DE OPEN_DAYS
 -- Tabla: schema_template.open_days
 -- --------------------------------------------------------
 
-INSERT INTO open_days (day, open_at, close_at, created_at, updated_at)
+INSERT INTO open_days (day_name, open_at, close_at, created_at, updated_at)
 VALUES
     ('Lunes', '08:15', '18:30', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Martes', '08:15', '18:30', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Miércoles', '08:15', '18:30', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Jueves', '08:15', '18:30', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Viernes', '08:15', '18:30', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-    ON CONFLICT (day) DO NOTHING;
+    ON CONFLICT (day_name) DO NOTHING;
 
 
 -- --------------------------------------------------------
@@ -625,7 +625,7 @@ INSERT INTO schema_template.workers_positions (worker_id, position_id) VALUES
 -- --------------------------------------------------------
 -- CATÁLOGO: REGIONES (Comunidades Autónomas)
 -- --------------------------------------------------------
-INSERT INTO region_enum (region_name, created_at, updated_at) VALUES
+INSERT INTO regions_enum (region_name, created_at, updated_at) VALUES
 ('Comunidad de Madrid', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Andalucía', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Cataluña', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
@@ -634,7 +634,7 @@ ON CONFLICT (region_name) DO NOTHING;
 -- --------------------------------------------------------
 -- CATÁLOGO: PROVINCIAS
 -- --------------------------------------------------------
-INSERT INTO province_enum (province_name, created_at, updated_at) VALUES
+INSERT INTO provinces_enum (province_name, created_at, updated_at) VALUES
 ('Madrid', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Sevilla', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Barcelona', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
@@ -666,7 +666,7 @@ ON CONFLICT (relationship_name) DO NOTHING;
 -- --------------------------------------------------------
 -- DIRECCIONES DE USUARIOS
 -- --------------------------------------------------------
-INSERT INTO user_addresses (user_id, address, postal_code, city_id, province_id, region_id, created_at, updated_at)
+INSERT INTO user_adresses (user_id, address, postal_code, city_id, province_id, region_id, created_at, updated_at)
 VALUES
     -- 1. Antonio (Vive en Móstoles, Madrid)
     (1, 'Calle de la Libertad, 45, 3ºA', '28931', 1, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
@@ -897,7 +897,7 @@ VALUES
     ('Proteger de la luz', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- Enfermedades / Patologías
-INSERT INTO illness_enum (illness_name, created_at, updated_at)
+INSERT INTO illnesses_enum (illness_name, created_at, updated_at)
 VALUES
     ('Hipertensión Arterial', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Diabetes Tipo 2', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
@@ -985,9 +985,9 @@ VALUES
 -- ============================================================
 
 -- A. Enfermedad <-> Tratamiento
-INSERT INTO user_illness_treatment (user_illness_id, treatment_detail_id) VALUES (1, 1);
-INSERT INTO user_illness_treatment (user_illness_id, treatment_detail_id) VALUES (2, 2);
-INSERT INTO user_illness_treatment (user_illness_id, treatment_detail_id) VALUES (4, 3);
+INSERT INTO user_illness_treatment_details (user_illness_id, treatment_detail_id) VALUES (1, 1);
+INSERT INTO user_illness_treatment_details (user_illness_id, treatment_detail_id) VALUES (2, 2);
+INSERT INTO user_illness_treatment_details (user_illness_id, treatment_detail_id) VALUES (4, 3);
 
 -- B. Tratamiento <-> Medicamento
 INSERT INTO treatment_details_medication (treatment_detail_id, medication_id) VALUES (1, 3); -- Enalapril

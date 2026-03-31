@@ -27,7 +27,7 @@ JOIN workers_schedules ws ON w.id = ws.worker_id;
 
 -- VER trabajador 3, su horario y su fichaje
 
-SELECT w.first_name, d.day, ws.start_at, ws.end_at, wr.clock_in, wr.clock_out
+SELECT w.first_name, d.day_name, ws.start_at, ws.end_at, wr.clock_in, wr.clock_out
 FROM schema_template.workers w
 JOIN schema_template.workers_schedules ws ON w.id = ws.worker_id
 JOIN schema_template.open_days d ON ws.day_id = d.id
@@ -35,13 +35,12 @@ JOIN schema_template.workers_schedules_records wr ON wr.schedule_id = ws.id
 WHERE w.id = 5;
 
 
-
 SELECT * FROM workers_schedules_records WHERE worker_id = 3;
 
 
 SELECT
     w.first_name,
-    d.day,
+    d.day_name,
     ws.start_at,
     ws.end_at,
     wr.clock_in,
@@ -139,9 +138,9 @@ SELECT
     c.city_name AS "Ciudad",
     p.province_name AS "Provincia"
 FROM users u
-JOIN user_addresses ua ON u.id = ua.user_id
+JOIN user_adresses ua ON u.id = ua.user_id
 JOIN cities_enum c ON ua.city_id = c.id
-JOIN province_enum p ON ua.province_id = p.id;
+JOIN provinces_enum p ON ua.province_id = p.id;
 
 ------------------
 -- Contactos
@@ -159,15 +158,15 @@ WHERE uc.is_contact_main = true;
 ------------------
 -- Horarios Asistencia
 SELECT
-    od.day AS "Día Semana",
+    od.day_name AS "Día Semana",
     CONCAT(u.first_name, ' ', u.first_surname) AS "Usuario",
-    u.dni,
+    u.dni_nie,
     uad.start_at AS "Hora Entrada",
     uad.end_at AS "Hora Salida"
 FROM user_attendance_days uad
 JOIN users u ON uad.user_id = u.id
 JOIN open_days od ON uad.day_id = od.id
-WHERE od.day = 'Lunes'
+WHERE od.day_name = 'Lunes'
 ORDER BY u.first_surname;
 
 select * from incident_status_enum;
@@ -247,8 +246,8 @@ SELECT
 FROM users u
 JOIN user_medical_info umi ON u.id = umi.user_id
 JOIN user_illnesses ui ON umi.id = ui.user_medical_info_id
-JOIN illness_enum ill ON ui.illness_id = ill.id
-LEFT JOIN user_illness_treatment uit ON ui.id = uit.user_illness_id
+JOIN illnesses_enum ill ON ui.illness_id = ill.id
+LEFT JOIN user_illness_treatment_details uit ON ui.id = uit.user_illness_id
 LEFT JOIN treatment_details td ON uit.treatment_detail_id = td.id
 LEFT JOIN treatment_details_medication tdm ON td.id = tdm.treatment_detail_id
 LEFT JOIN medications m ON tdm.medication_id = m.id
@@ -264,7 +263,6 @@ FROM users u
 JOIN user_medical_info umi ON u.id = umi.user_id
 JOIN user_allergies ua ON umi.id = ua.user_medical_info_id
 JOIN allergies_enum ae ON ua.allergy_id = ae.id;
-
 
 SELECT
     CONCAT(u.first_name, ' ', u.first_surname) AS usuario,

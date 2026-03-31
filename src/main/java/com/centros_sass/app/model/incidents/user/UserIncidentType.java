@@ -1,19 +1,19 @@
-package com.centros_sass.app.model.catalogs.people;
+package com.centros_sass.app.model.incidents.user;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.profiles.users.User;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -22,13 +22,13 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "user_dependency_enum")
+@Table(name = "incident_user_enum")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class Dependency extends BaseEntity {
+public class UserIncidentType extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,21 +36,21 @@ public class Dependency extends BaseEntity {
     @EqualsAndHashCode.Include
     private Integer id;
 
-    @NotBlank(message = "{dependency.nivelDependency.required}")
-    @Column(name = "nivel_dependency", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String nivelDependency;
+    @NotBlank(message = "{userIncidentType.incidentName.required}")
+    @Column(name = "incident_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    private String incidentName;
 
     // RELATIONS
-    // // User
-    @OneToMany(mappedBy = "dependency")
-    private Set<User> users = new HashSet<>();
+    // // UserIncident
+    @OneToMany(mappedBy = "userIncident", fetch = FetchType.LAZY)
+    private Set<UserIncident> userIncidents = new HashSet<>();
 
-    public void addUser(User user) {
-        users.add(user);
-        user.setDependency(this);
+    public void addUserIncident(UserIncident userIncident) {
+        userIncidents.add(userIncident);
+        userIncident.setUserIncident(this);
     }
-    public void removeUser(User user) {
-        users.remove(user);
-        user.setDependency(null);
+    public void removeUserIncident(UserIncident userIncident) {
+        userIncidents.remove(userIncident);
+        userIncident.setUserIncident(null);
     }
 }

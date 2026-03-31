@@ -1,4 +1,4 @@
-package com.centros_sass.app.model.treatments;
+package com.centros_sass.app.model.incidents.center;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,36 +22,35 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "medication_application_enum")
+@Table(name = "incident_cd_enum")
 @Getter @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class MedicationApplication extends BaseEntity {
+public class CdIncidentType extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
     @ToString.Include
+    @EqualsAndHashCode.Include
     private Integer id;
 
-    @NotBlank(message = "{medicationApplication.medicationApplicationName.required}")
-    @Column(name = "medication_application_name", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String medicationApplicationName;
+    @NotBlank(message = "{cdIncidentType.incidentName.required}")
+    @Column(name = "incident_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    private String incidentName;
 
     // RELATIONS
-    // // Medications
-    @OneToMany(mappedBy = "medicationApplication", fetch = FetchType.LAZY)
-    private Set<Medication> medications = new HashSet<>();
+    // // CenterIncident
+    @OneToMany(mappedBy = "cdIncident", fetch = FetchType.LAZY)
+    private Set<CenterIncident> centerIncidents = new HashSet<>();
 
-    public void addMedication(Medication medication) {
-        medications.add(medication);
-        medication.setMedicationApplication(this);
+    public void addCenterIncident(CenterIncident centerIncident) {
+        centerIncidents.add(centerIncident);
+        centerIncident.setCdIncident(this);
     }
-
-    public void removeMedication(Medication medication) {
-        medications.remove(medication);
-        medication.setMedicationApplication(null);
+    public void removeCenterIncident(CenterIncident centerIncident) {
+        centerIncidents.remove(centerIncident);
+        centerIncident.setCdIncident(null);
     }
 }
