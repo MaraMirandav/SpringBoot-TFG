@@ -32,6 +32,16 @@ build/
 ### VS Code ###
 .vscode/
 
-TODO.md
+*.env
+todo.md
+
+# AGENTS
+.agents/
+.claude/
+.openai/
+.opencode/
+AGENTS.md
 GEMINI.md
-.gemini/
+CLAUDE.md
+COPILOT.md
+OPENAI.md

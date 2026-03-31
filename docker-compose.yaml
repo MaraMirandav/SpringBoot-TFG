@@ -4,9 +4,9 @@ services:
     container_name: centro_dia_db
     restart: always
     environment:
-      POSTGRES_DB: centro_dia_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: admin
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
     ports:
       - "5434:5432"
     volumes:
