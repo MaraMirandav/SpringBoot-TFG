@@ -14,9 +14,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,24 +37,24 @@ public class WorkerScheduleRecord extends BaseEntity {
     @ToString.Include
     private Integer id;
 
-    @NotNull(message = "{workerScheduleRecord.workerId.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "worker_id", nullable = false)
     private Worker worker;
 
-    @NotNull(message = "{workerScheduleRecord.scheduleId.required}")
+    @NonNull
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "schedule_id", nullable = false, unique = true)
     private WorkerSchedule schedule;
 
-    @NotNull(message = "{workerScheduleRecord.clockIn.required}")
+    @NonNull
     @Column(name = "clock_in", nullable = false, columnDefinition = "TIMESTAMP")
     private LocalDateTime clockIn;
 
     @Column(name = "clock_out", columnDefinition = "TIMESTAMP")
     private LocalDateTime clockOut;
 
-    @NotNull(message = "{workerScheduleRecord.isActive.required}")
+    @NonNull
     @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
     private Boolean isActive;
 }

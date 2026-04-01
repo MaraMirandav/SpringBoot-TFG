@@ -18,11 +18,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -41,17 +41,17 @@ public class UserMedicalInfo extends BaseEntity {
     @ToString.Include
     private Integer id;
 
-    @NotNull(message = "{userMedicalInfo.user.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @NotNull(message = "{userMedicalInfo.worker.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "worker_id", nullable = false)
     private Worker worker;
 
-    @NotNull(message = "{userMedicalInfo.isActive.required}")
+    @NonNull
     @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
     private Boolean isActive;
 

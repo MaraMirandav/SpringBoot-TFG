@@ -16,11 +16,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -39,14 +39,14 @@ public class TreatmentDetail extends BaseEntity {
     @ToString.Include
     private Integer id;
 
-    @NotNull(message = "{treatmentDetail.startDate.required}")
+    @NonNull
     @Column(name = "start_date", nullable = false, columnDefinition = "DATE")
     private LocalDate startDate;
 
     @Column(name = "end_date", columnDefinition = "DATE")
     private LocalDate endDate;
 
-    @NotNull(message = "{treatmentDetail.isActive.required}")
+    @NonNull
     @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
     private Boolean isActive;
 

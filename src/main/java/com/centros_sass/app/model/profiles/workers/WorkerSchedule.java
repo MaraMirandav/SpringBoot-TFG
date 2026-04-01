@@ -3,7 +3,7 @@ package com.centros_sass.app.model.profiles.workers;
 import java.time.LocalDateTime;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.calendar.OpenDay;
+import com.centros_sass.app.model.catalogs.fixed.calendar.OpenDay;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -16,9 +16,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -39,12 +39,12 @@ public class WorkerSchedule extends BaseEntity {
     @ToString.Include
     private Integer id;
 
-    @NotNull(message = "{workerSchedule.workerId.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "worker_id", nullable = false)
     private Worker worker;
 
-    @NotNull(message = "{workerSchedule.dayId.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "day_id", nullable = false)
     private OpenDay openDay;
@@ -52,11 +52,15 @@ public class WorkerSchedule extends BaseEntity {
     @OneToOne(mappedBy = "schedule", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private WorkerScheduleRecord record;
 
-    @NotNull(message = "{workerSchedule.startAt.required}")
+    @NonNull
     @Column(name = "start_at", nullable = false, columnDefinition = "TIME")
     private LocalDateTime startAt;
 
-    @NotNull(message = "{workerSchedule.endAt.required}")
+    @NonNull
     @Column(name = "end_at", nullable = false, columnDefinition = "TIME")
     private LocalDateTime endAt;
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 }

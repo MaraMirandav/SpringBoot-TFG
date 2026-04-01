@@ -4,8 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.organization.Position;
-import com.centros_sass.app.model.catalogs.organization.Role;
+import com.centros_sass.app.model.catalogs.fixed.organization.Position;
+import com.centros_sass.app.model.catalogs.fixed.organization.Role;
 import com.centros_sass.app.model.incidents.Comment;
 import com.centros_sass.app.model.incidents.Incident;
 import com.centros_sass.app.model.treatments.UserMedicalInfo;
@@ -22,12 +22,9 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -48,43 +45,39 @@ public class Worker extends BaseEntity {
     @ToString.Include
     private Integer id;
 
-    @NotBlank(message = "{worker.firstName.required}")
+    @NonNull
     @Column(name = "first_name", nullable = false, columnDefinition = "TEXT")
     private String firstName;
 
     @Column(name = "second_name", columnDefinition = "TEXT")
     private String secondName;
 
-    @NotBlank(message = "{worker.firstSurname.required}")
+    @NonNull
     @Column(name = "first_surname", nullable = false, columnDefinition = "TEXT")
     private String firstSurname;
 
     @Column(name = "second_surname", columnDefinition = "TEXT")
     private String secondSurname;
 
-    @NotBlank(message = "{worker.dni.required}")
-    @Pattern(regexp = "^(?:[0-9]{8}|[XYZxyz][0-9]{7})[A-Za-z]$", message = "{worker.dni.invalid}")
+    @NonNull
     @Column(name = "dni_nie", nullable = false, unique = true, columnDefinition = "TEXT")
     private String dni;
 
-    @NotBlank(message = "{worker.mainPhone.required}")
     @Column(name = "main_phone", nullable = false, columnDefinition = "TEXT")
     private String mainPhone;
 
     @Column(name = "second_phone", columnDefinition = "TEXT")
     private String secondPhone;
 
-    @NotBlank(message = "{worker.email.required}")
-    @Email(message = "{worker.email.invalid}")
+    @NonNull
     @Column(name = "email", nullable = false, unique = true, columnDefinition = "TEXT")
     private String email;
 
-    @NotBlank(message = "{worker.password.required}")
-    @Pattern(regexp = "([A-Za-z]{8,})", message = "{worker.password.invalid}")
+    @NonNull
     @Column(name = "password", nullable = false, columnDefinition = "TEXT")
     private String password;
 
-    @NotNull(message = "{worker.isActive.required}")
+    @NonNull
     @Column(name = "is_active", nullable = false)
     private Boolean isActive;
 

@@ -3,37 +3,42 @@ package com.centros_sass.app.model.incidents.user;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.centros_sass.app.model.catalogs.fixed.incidents.user.UserIncidentType;
+import com.centros_sass.app.model.catalogs.fixed.incidents.user.UserSignificanceType;
 import com.centros_sass.app.model.incidents.Incident;
 import com.centros_sass.app.model.profiles.users.User;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 @Entity
 @Table(name = "users_incidents")
 @Getter @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserIncident extends Incident {
 
-    @NotNull(message = "{userIncident.user.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @NotNull(message = "{userIncident.userIncident.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "incident_user_id", nullable = false)
     private UserIncidentType userIncident;
 
-    @NotNull(message = "{userIncident.userSignificance.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "significance_user_id", nullable = false)
     private UserSignificanceType userSignificance;
@@ -51,4 +56,8 @@ public class UserIncident extends Incident {
         userIncidentComments.remove(userIncidentComment);
         userIncidentComment.setUserIncident(null);
     }
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 }
