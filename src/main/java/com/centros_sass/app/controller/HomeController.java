@@ -1,35 +1,31 @@
 package com.centros_sass.app.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.centros_sass.app.generic.ApiDataResponse;
 
 @RestController
 @RequestMapping("/")
 public class HomeController {
 
     @GetMapping("health")
-    public ResponseEntity<Map<String, String>> health() {
-        Map<String, String> response = new HashMap<>();
-        response.put("status", "UP");
-        response.put("version", "1.0.0");
-        response.put("message", "Mi primera API funcionando!!!!");
-        return ResponseEntity.ok(response);
+    public ResponseEntity<ApiDataResponse<Map<String, String>>> health() {
+        Map<String, String> data = new HashMap<>();
+        data.put("status", "UP");
+        data.put("version", "1.0.0");
+        return ResponseEntity.ok(new ApiDataResponse<>("API funcionando correctamente", data, 200));
     }
 
     @GetMapping("error")
-    public ResponseEntity<Map<String, String>> error() {
-        Map<String, String> body = new HashMap<>();
-        body.put("status", "DOWN");
-        body.put("version", "1.0.0");
-        body.put("message", "Mi primera API sin encontrar nada!!!!");
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
+    public ResponseEntity<ApiDataResponse<Void>> error() {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ApiDataResponse<>("Recurso no encontrado", HttpStatus.NOT_FOUND.value()));
     }
-
 }
