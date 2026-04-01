@@ -6,9 +6,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
+import com.centros_sass.app.model.catalogs.fixed.transport.RouteShift;
 import com.centros_sass.app.model.profiles.users.User;
 import com.centros_sass.app.model.profiles.workers.Worker;
 
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,9 +22,11 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "transport_routes")
@@ -30,12 +34,16 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(onlyExplicitlyIncluded = true, callSuper = false)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public class TransportRoute extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ToString.Include
+    @EqualsAndHashCode.Include
     private Integer id;
 
     @Column(name = "route_number", nullable = false, columnDefinition = "INTEGER")
@@ -47,26 +55,26 @@ public class TransportRoute extends BaseEntity implements Serializable {
     @Column(name = "end_time", nullable = false, columnDefinition = "TIME")
     private LocalTime endTime;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "route_shift_id", nullable = false)
     private RouteShift routeShift;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "route_vehicle_id", nullable = false)
     private RouteVehicle routeVehicle;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "worker_driver_id", nullable = false)
     private Worker driver;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "worker_copilot_id", nullable = false)
     private Worker copilot;
 
     @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
     private boolean isActive;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "transport_routes_user",
         joinColumns = @JoinColumn(name = "route_id"),
@@ -74,36 +82,4 @@ public class TransportRoute extends BaseEntity implements Serializable {
     )
     private Set<User> users = new HashSet<>();
 
-    // hashCode / equals / toString
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        TransportRoute other = (TransportRoute) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "TransportRoute [id=" + id + ", routeNumber=" + routeNumber + ", startTime=" + startTime + ", endTime="
-                + endTime + ", routeShift=" + routeShift + ", routeVehicule=" + routeVehicle + ", driver=" + driver
-                + ", copilot=" + copilot + ", isActive=" + isActive + ", users=" + users + "]";
-    }
 }

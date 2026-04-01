@@ -3,7 +3,7 @@ package com.centros_sass.app.model.profiles.users;
 import java.time.LocalTime;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.calendar.OpenDay;
+import com.centros_sass.app.model.catalogs.fixed.calendar.OpenDay;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,9 +14,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,21 +37,19 @@ public class UserAttendanceDay extends BaseEntity {
     @EqualsAndHashCode.Include
     private Integer id;
 
-    @NotNull(message = "{userAttendanceDay.user.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @NotNull(message = "{userAttendanceDay.day.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "day_id", nullable = false)
     private OpenDay day;
 
-    @NotNull(message = "{userAttendanceDay.startAt.required}")
     @Column(name = "start_at", nullable = false, columnDefinition = "TIME")
     private LocalTime startAt;
 
-    @NotNull(message = "{userAttendanceDay.endAt.required}")
     @Column(name = "end_at", nullable = false, columnDefinition = "TIME")
     private LocalTime endAt;
 }

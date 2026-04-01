@@ -1,9 +1,9 @@
 package com.centros_sass.app.model.profiles.users;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.address.City;
-import com.centros_sass.app.model.catalogs.address.Province;
-import com.centros_sass.app.model.catalogs.address.Region;
+import com.centros_sass.app.model.catalogs.fixed.address.City;
+import com.centros_sass.app.model.catalogs.fixed.address.Province;
+import com.centros_sass.app.model.catalogs.fixed.address.Region;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,11 +14,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -39,31 +37,30 @@ public class UserAddress extends BaseEntity {
     @EqualsAndHashCode.Include
     private Integer id;
 
-    @NotNull(message = "{userAddress.user.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @NotBlank(message = "{userAddress.address.required}")
+    @NonNull
     @Column(name = "address", nullable = false, columnDefinition = "TEXT")
     private String address;
 
-    @NotBlank(message = "{userAddress.postalCode.required}")
-    @Pattern(regexp = "^\\d{5}$", message = "{userAddress.postalCode.invalid}") // Esta bien escapado?
+    @NonNull
     @Column(name = "postal_code", nullable = false, columnDefinition = "TEXT")
     private String postalCode;
 
-    @NotNull(message = "{userAddress.city.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
-    @NotNull(message = "{userAddress.province.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "province_id", nullable = false)
     private Province province;
 
-    @NotNull(message = "{userAddress.region.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id", nullable = false)
     private Region region;

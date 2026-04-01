@@ -4,6 +4,7 @@ import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.profiles.workers.Worker;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,10 +14,10 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 // import jakarta.persistence.MappedSuperclass;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -24,6 +25,7 @@ import lombok.ToString;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Getter @Setter
+@NoArgsConstructor
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public abstract class Comment extends BaseEntity {
@@ -34,12 +36,12 @@ public abstract class Comment extends BaseEntity {
     @EqualsAndHashCode.Include
     private Integer id;
 
-    @NotNull(message = "{comment.worker.required}")
-    @ManyToOne
+    @NonNull
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "worker_id", nullable = false)
     private Worker worker;
 
-    @NotBlank(message = "{comment.comment.required}")
+    @NonNull
     @Column(name = "comment", nullable = false, columnDefinition = "TEXT")
     private String comment;
 }

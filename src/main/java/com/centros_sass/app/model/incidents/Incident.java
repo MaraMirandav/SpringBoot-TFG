@@ -1,6 +1,7 @@
 package com.centros_sass.app.model.incidents;
 
 import com.centros_sass.app.model.base.BaseEntity;
+import com.centros_sass.app.model.catalogs.fixed.incidents.IncidentStatus;
 import com.centros_sass.app.model.profiles.workers.Worker;
 
 import jakarta.persistence.Column;
@@ -14,10 +15,10 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 // import jakarta.persistence.MappedSuperclass;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -25,6 +26,7 @@ import lombok.ToString;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Getter @Setter
+@NoArgsConstructor
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public abstract class Incident extends BaseEntity {
@@ -34,16 +36,16 @@ public abstract class Incident extends BaseEntity {
     @EqualsAndHashCode.Include
     private Integer id;
 
-    @NotNull(message = "{incident.createdBy.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by_worker_id", nullable = false)
     private Worker createdBy;
 
-    @NotBlank(message = "{incident.comment.required}")
+    @NonNull
     @Column(name = "comment", nullable = false, columnDefinition = "TEXT")
     private String comment;
 
-    @NotNull(message = "{incident.status.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "incident_status_id", nullable = false)
     private IncidentStatus incidentStatus;

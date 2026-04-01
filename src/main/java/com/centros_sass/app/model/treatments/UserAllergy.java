@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
+import com.centros_sass.app.model.catalogs.dynamic.treatments.Allergy;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,11 +17,11 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -39,12 +40,12 @@ public class UserAllergy extends BaseEntity {
     @ToString.Include
     private Integer id;
 
-    @NotNull(message = "{userAllergy.userMedicalInfo.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_medical_info_id", nullable = false)
     private UserMedicalInfo userMedicalInfo;
 
-    @NotNull(message = "{userAllergy.allergy.required}")
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "allergy_id", nullable = false)
     private Allergy allergy;
