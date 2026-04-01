@@ -20,6 +20,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.NonNull;
 import lombok.ToString;
 
 @Entity
@@ -49,4 +50,8 @@ public class UserObject extends BaseEntity implements Serializable {
 
     @Column(name = "comment", columnDefinition = "TEXT")
     private String comment;
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 }

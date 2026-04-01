@@ -20,6 +20,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.NonNull;
 import lombok.ToString;
 
 @Entity
@@ -49,4 +50,8 @@ public class UserDiaper extends BaseEntity implements Serializable {
 
     @Column(name = "quantity", nullable = false, columnDefinition = "INTEGER")
     private Integer quantity;
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 }

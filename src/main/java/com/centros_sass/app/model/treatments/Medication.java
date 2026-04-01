@@ -77,4 +77,8 @@ public class Medication extends BaseEntity {
     // // UserAllergies
     @ManyToMany(mappedBy = "medications", fetch = FetchType.LAZY)
     private Set<UserAllergy> userAllergies = new HashSet<>();
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 }

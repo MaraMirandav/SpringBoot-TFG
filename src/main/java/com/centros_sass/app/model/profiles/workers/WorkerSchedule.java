@@ -59,4 +59,8 @@ public class WorkerSchedule extends BaseEntity {
     @NonNull
     @Column(name = "end_at", nullable = false, columnDefinition = "TIME")
     private LocalDateTime endAt;
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 }

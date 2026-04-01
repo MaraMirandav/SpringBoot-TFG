@@ -61,4 +61,8 @@ public class UserContact extends BaseEntity {
 
     @Column(name = "contact_note", columnDefinition = "TEXT")
     private String contactNote;
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 }

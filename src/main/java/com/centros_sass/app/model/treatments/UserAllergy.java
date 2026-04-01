@@ -70,4 +70,8 @@ public class UserAllergy extends BaseEntity {
         medications.remove(medication);
         medication.getUserAllergies().remove(this);
     }
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 }

@@ -7,6 +7,7 @@ import com.centros_sass.app.model.catalogs.fixed.incidents.center.CdIncidentType
 import com.centros_sass.app.model.catalogs.fixed.incidents.center.CdSignificanceType;
 import com.centros_sass.app.model.incidents.Incident;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
@@ -49,4 +50,8 @@ public class CenterIncident extends Incident {
         centerIncidentComments.remove(centerIncidentComment);
         centerIncidentComment.setCdIncident(null);
     }
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 }

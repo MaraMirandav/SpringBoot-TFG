@@ -52,4 +52,8 @@ public class UserAttendanceDay extends BaseEntity {
 
     @Column(name = "end_at", nullable = false, columnDefinition = "TIME")
     private LocalTime endAt;
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 }

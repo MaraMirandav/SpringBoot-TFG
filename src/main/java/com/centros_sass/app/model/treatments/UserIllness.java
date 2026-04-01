@@ -6,6 +6,7 @@ import java.util.Set;
 import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.dynamic.treatments.Illness;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -66,4 +67,8 @@ public class UserIllness extends BaseEntity {
         treatmentDetails.remove(treatmentDetail);
         treatmentDetail.getUserIllnesses().remove(this);
     }
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 }

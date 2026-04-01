@@ -20,6 +20,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.NonNull;
 import lombok.ToString;
 
 @Entity
@@ -64,5 +65,9 @@ public class UserBelonging extends BaseEntity implements Serializable {
 
     @Column(name = "is_request", nullable = false ,columnDefinition = "BOOLEAN")
     private boolean isRequest;
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 
 }

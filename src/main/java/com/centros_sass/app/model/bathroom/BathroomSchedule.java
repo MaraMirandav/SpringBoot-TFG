@@ -4,6 +4,7 @@ import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.dynamic.bathroom.BathroomTask;
 import com.centros_sass.app.model.profiles.users.User;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.NonNull;
 import lombok.ToString;
 
 @Entity
@@ -45,4 +47,8 @@ public class BathroomSchedule  extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bathroom_task_id", nullable = false)
     private BathroomTask bathroomTask;
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 }
