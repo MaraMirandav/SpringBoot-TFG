@@ -38,7 +38,7 @@ public class Relationship extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "relationship_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    @Column(name = "relationship_name", nullable = false, length = 50, columnDefinition = "VARCHAR", unique = true)
     private String relationshipName;
 
     // RELATIONS

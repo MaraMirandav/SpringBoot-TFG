@@ -38,7 +38,7 @@ public class Dependency extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "nivel_dependency", nullable = false, columnDefinition = "TEXT", unique = true)
+    @Column(name = "nivel_dependency", nullable = false, length = 50, columnDefinition = "VARCHAR", unique = true)
     private String nivelDependency;
 
     // RELATIONS

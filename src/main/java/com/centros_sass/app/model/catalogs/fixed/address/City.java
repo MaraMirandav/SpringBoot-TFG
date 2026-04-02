@@ -38,7 +38,7 @@ public class City extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "city_name", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "city_name", nullable = false, length = 100, columnDefinition = "VARCHAR")
     private String cityName;
 
     // RELATIONS

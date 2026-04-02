@@ -38,7 +38,7 @@ public class Sex extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "sex", nullable = false, columnDefinition = "TEXT", unique = true)
+    @Column(name = "sex", nullable = false, length = 20, columnDefinition = "VARCHAR", unique = true)
     private String sex;
 
     // RELATIONS
