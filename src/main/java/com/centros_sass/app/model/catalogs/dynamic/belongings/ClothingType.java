@@ -1,7 +1,5 @@
 package com.centros_sass.app.model.catalogs.dynamic.belongings;
 
-import java.io.Serializable;
-
 import com.centros_sass.app.model.base.BaseEntity;
 
 import jakarta.persistence.Column;
@@ -14,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -24,9 +23,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true, callSuper = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class ClothingType extends BaseEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class ClothingType extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +31,11 @@ public class ClothingType extends BaseEntity implements Serializable {
     @EqualsAndHashCode.Include
     private Integer id;
 
-    @Column(name = "clothes_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    @NonNull
+    @Column(name = "clothes_name", nullable = false, length = 50, columnDefinition = "VARCHAR", unique = true)
     private String clothesName;
 
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 }

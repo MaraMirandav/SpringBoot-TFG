@@ -1,7 +1,5 @@
 package com.centros_sass.app.model.belongings;
 
-import java.io.Serializable;
-
 import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.dynamic.belongings.ItemCondition;
 import com.centros_sass.app.model.catalogs.dynamic.belongings.ObjectType;
@@ -30,9 +28,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true, callSuper = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class UserObject extends BaseEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class UserObject extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,10 +36,12 @@ public class UserObject extends BaseEntity implements Serializable {
     @EqualsAndHashCode.Include
     private Integer id;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "condition_id", nullable = false)
     private ItemCondition condition;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "object_id", nullable = false)
     private ObjectType object;

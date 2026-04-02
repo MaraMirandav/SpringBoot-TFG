@@ -38,7 +38,7 @@ public class UserSignificanceType extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "significance_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    @Column(name = "significance_name", nullable = false, length = 50, columnDefinition = "VARCHAR", unique = true)
     private String significanceName;
 
     // RELATIONS

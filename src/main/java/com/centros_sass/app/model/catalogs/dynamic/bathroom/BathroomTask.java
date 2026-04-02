@@ -1,6 +1,5 @@
 package com.centros_sass.app.model.catalogs.dynamic.bathroom;
 
-import java.io.Serializable;
 import java.time.LocalTime;
 
 import com.centros_sass.app.model.base.BaseEntity;
@@ -15,6 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -25,9 +25,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true, callSuper = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class BathroomTask extends BaseEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class BathroomTask extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,9 +33,15 @@ public class BathroomTask extends BaseEntity implements Serializable {
     @EqualsAndHashCode.Include
     private Integer id;
 
-    @Column(name = "task_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    @NonNull
+    @Column(name = "task_name", nullable = false, length = 50, columnDefinition = "VARCHAR", unique = true)
     private String taskName;
 
+    @NonNull
     @Column(name = "estimated_time", nullable = false, columnDefinition = "TIME")
     private LocalTime estimatedTime;
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 }

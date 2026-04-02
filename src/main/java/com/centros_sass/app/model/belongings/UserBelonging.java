@@ -1,7 +1,5 @@
 package com.centros_sass.app.model.belongings;
 
-import java.io.Serializable;
-
 import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.profiles.users.User;
 import com.centros_sass.app.model.profiles.workers.Worker;
@@ -30,9 +28,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true, callSuper = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class UserBelonging extends BaseEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class UserBelonging extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,31 +36,35 @@ public class UserBelonging extends BaseEntity implements Serializable {
     @EqualsAndHashCode.Include
     private Integer id;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_clothing_id", nullable = false)
+    @JoinColumn(name = "user_clothing_id", nullable = true)
     private UserClothing userClothing;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_object_id", nullable = true)
     private UserObject userObject;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "worker_id", nullable = true)
+    @JoinColumn(name = "user_diaper_id", nullable = true)
+    private UserDiaper userDiaper;
+
+    @NonNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "worker_id", nullable = false)
     private Worker worker;
 
     @Column(name = "comment", columnDefinition = "TEXT")
     private String comment;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_diaper_id", nullable = true)
-    private UserDiaper userDiaper;
-
+    @NonNull
     @Column(name = "is_request", nullable = false ,columnDefinition = "BOOLEAN")
-    private boolean isRequest;
+    private Boolean isRequest;
 
     @NonNull
     @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")

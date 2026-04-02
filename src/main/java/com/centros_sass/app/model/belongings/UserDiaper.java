@@ -1,7 +1,5 @@
 package com.centros_sass.app.model.belongings;
 
-import java.io.Serializable;
-
 import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.dynamic.belongings.DiaperSize;
 import com.centros_sass.app.model.catalogs.dynamic.belongings.DiaperType;
@@ -30,9 +28,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true, callSuper = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class UserDiaper extends BaseEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class UserDiaper extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,14 +36,17 @@ public class UserDiaper extends BaseEntity implements Serializable {
     @EqualsAndHashCode.Include
     private Integer id;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "size_id", nullable = false)
     private DiaperSize size;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "type_id", nullable = false)
     private DiaperType type;
 
+    @NonNull
     @Column(name = "quantity", nullable = false, columnDefinition = "INTEGER")
     private Integer quantity;
 
