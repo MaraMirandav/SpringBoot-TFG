@@ -1,7 +1,5 @@
 package com.centros_sass.app.model.catalogs.fixed.organization;
 
-import java.io.Serializable;
-
 import com.centros_sass.app.model.base.BaseEntity;
 
 import jakarta.persistence.Column;
@@ -25,9 +23,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true, callSuper = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class Position extends BaseEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Position extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +31,7 @@ public class Position extends BaseEntity implements Serializable {
     @EqualsAndHashCode.Include
     private Integer id;
 
-    @Column(name = "position_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    @Column(name = "position_name", nullable = false, length = 50, columnDefinition = "VARCHAR", unique = true)
     private String positionName;
 
 }

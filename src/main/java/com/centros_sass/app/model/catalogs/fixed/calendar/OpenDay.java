@@ -39,7 +39,7 @@ public class OpenDay extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "day_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    @Column(name = "day_name", nullable = false, length = 20, columnDefinition = "VARCHAR", unique = true)
     private String dayName;
 
     @NonNull

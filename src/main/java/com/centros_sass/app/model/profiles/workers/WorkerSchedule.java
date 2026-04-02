@@ -1,6 +1,6 @@
 package com.centros_sass.app.model.profiles.workers;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.fixed.calendar.OpenDay;
@@ -54,11 +54,11 @@ public class WorkerSchedule extends BaseEntity {
 
     @NonNull
     @Column(name = "start_at", nullable = false, columnDefinition = "TIME")
-    private LocalDateTime startAt;
+    private LocalTime startAt;
 
     @NonNull
     @Column(name = "end_at", nullable = false, columnDefinition = "TIME")
-    private LocalDateTime endAt;
+    private LocalTime endAt;
 
     @NonNull
     @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
