@@ -47,9 +47,11 @@ public class UserAttendanceDay extends BaseEntity {
     @JoinColumn(name = "day_id", nullable = false)
     private OpenDay day;
 
+    @NonNull
     @Column(name = "start_at", nullable = false, columnDefinition = "TIME")
     private LocalTime startAt;
 
+    @NonNull
     @Column(name = "end_at", nullable = false, columnDefinition = "TIME")
     private LocalTime endAt;
 

@@ -41,7 +41,7 @@ public class UserContact extends BaseEntity {
     private User user;
 
     @NonNull
-    @Column(name = "contact_name", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "contact_name", nullable = false, length = 25, columnDefinition = "VARCHAR")
     private String contactName;
 
     @NonNull
@@ -50,14 +50,14 @@ public class UserContact extends BaseEntity {
     private Relationship contactRelationship;
 
     @NonNull
-    @Column(name = "contact_phone", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "contact_phone", nullable = false, length = 20, columnDefinition = "VARCHAR")
     private String contactPhone;
 
-    @Column(name = "contact_email", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "contact_email", nullable = false, length = 255, columnDefinition = "VARCHAR")
     private String contactEmail;
 
-    @Column(name = "is_contact_main", nullable = false, columnDefinition = "BOOLEAN")
-    private Boolean isContactMain;
+    @Column(name = "is_contact_main", nullable = false, columnDefinition = "BOOLEAN DEFAULT false")
+    private Boolean isContactMain = false;
 
     @Column(name = "contact_note", columnDefinition = "TEXT")
     private String contactNote;

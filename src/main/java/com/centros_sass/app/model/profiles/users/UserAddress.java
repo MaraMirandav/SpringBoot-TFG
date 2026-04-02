@@ -43,11 +43,11 @@ public class UserAddress extends BaseEntity {
     private User user;
 
     @NonNull
-    @Column(name = "address", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "address", nullable = false, length = 100, columnDefinition = "VARCHAR")
     private String address;
 
     @NonNull
-    @Column(name = "postal_code", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "postal_code", nullable = false, length = 10, columnDefinition = "VARCHAR")
     private String postalCode;
 
     @NonNull

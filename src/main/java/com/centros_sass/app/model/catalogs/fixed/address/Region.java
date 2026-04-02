@@ -38,7 +38,7 @@ public class Region extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "region_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    @Column(name = "region_name", nullable = false, length = 100, columnDefinition = "VARCHAR", unique = true)
     private String regionName;
 
     // RELATIONS

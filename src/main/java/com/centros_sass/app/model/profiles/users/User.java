@@ -44,33 +44,33 @@ public class User extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "first_name", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "first_name", nullable = false, length = 25, columnDefinition = "VARCHAR")
     private String firstName;
 
-    @Column(name = "second_name", columnDefinition = "TEXT")
+    @Column(name = "second_name", length = 25, columnDefinition = "VARCHAR")
     private String secondName;
 
     @NonNull
-    @Column(name = "first_surname", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "first_surname", nullable = false, length = 25, columnDefinition = "VARCHAR")
     private String firstSurname;
 
-    @Column(name = "second_surname", columnDefinition = "TEXT")
+    @Column(name = "second_surname", length = 25, columnDefinition = "VARCHAR")
     private String secondSurname;
 
-    @Column(name = "alias", columnDefinition = "TEXT")
+    @Column(name = "alias", length = 25, columnDefinition = "VARCHAR")
     private String alias;
 
-    @Column(name = "email", columnDefinition = "TEXT")
+    @Column(name = "email", length = 255, columnDefinition = "VARCHAR")
     private String email;
 
-    @Column(name = "phone", columnDefinition = "TEXT")
+    @Column(name = "phone", length = 20, columnDefinition = "VARCHAR")
     private String phone;
 
-    @Column(name = "cellphone", columnDefinition = "TEXT")
+    @Column(name = "cellphone", length = 20, columnDefinition = "VARCHAR")
     private String cellphone;
 
     @NonNull
-    @Column(name = "dni_nie", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "dni_nie", nullable = false, length = 9, columnDefinition = "VARCHAR")
     private String dni;
 
     @NonNull
@@ -88,8 +88,8 @@ public class User extends BaseEntity {
     private Dependency dependency;
 
     @NonNull
-    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
-    private Boolean isActive;
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 
     // RELATIONS
     // // UserAdress
