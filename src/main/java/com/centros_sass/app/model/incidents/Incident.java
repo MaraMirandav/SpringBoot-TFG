@@ -27,7 +27,7 @@ import lombok.ToString;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Getter @Setter
 @NoArgsConstructor
-@ToString(onlyExplicitlyIncluded = true)
+@ToString(onlyExplicitlyIncluded = true, callSuper = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public abstract class Incident extends BaseEntity {
     @Id
@@ -39,7 +39,7 @@ public abstract class Incident extends BaseEntity {
     @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by_worker_id", nullable = false)
-    private Worker createdBy;
+    private Worker reportedBy;
 
     @NonNull
     @Column(name = "comment", nullable = false, columnDefinition = "TEXT")

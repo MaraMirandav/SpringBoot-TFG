@@ -11,6 +11,7 @@ import com.centros_sass.app.dto.auth.AuthResponse;
 import com.centros_sass.app.dto.auth.LoginRequest;
 import com.centros_sass.app.dto.auth.RegisterRequest;
 import com.centros_sass.app.model.profiles.workers.Worker;
+import com.centros_sass.app.repository.RoleRepository;
 import com.centros_sass.app.repository.WorkerRepository;
 import com.centros_sass.app.security.JwtService;
 import com.centros_sass.app.security.WorkerSecurity;
@@ -23,6 +24,7 @@ import lombok.RequiredArgsConstructor;
 public class AuthServiceImpl implements AuthService {
 
     private final WorkerRepository workerRepository;
+    private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -30,12 +32,14 @@ public class AuthServiceImpl implements AuthService {
     @Override
     @Transactional
     public AuthResponse register(RegisterRequest request) {
-        if (workerRepository.existsByEmail(request.email())) {
+        String normalizedEmail = request.email().trim().toLowerCase();
+
+        if (workerRepository.existsByEmail(normalizedEmail)) {
             throw new IllegalArgumentException("El email ya está registrado");
         }
 
         var worker = new Worker();
-        worker.setEmail(request.email());
+        worker.setEmail(normalizedEmail);
         worker.setPassword(passwordEncoder.encode(request.password()));
         worker.setFirstName(request.firstName());
         worker.setSecondName(request.secondName());
@@ -48,23 +52,30 @@ public class AuthServiceImpl implements AuthService {
 
         workerRepository.save(worker);
 
+        var defaultRole = roleRepository.findByRoleName("ROLE_TAS")
+                .orElseThrow(() -> new IllegalStateException("El rol ROLE_TAS no existe en la base de datos"));
+        worker.addRole(defaultRole);
+        workerRepository.save(worker);
+
         var workerSecurity = new WorkerSecurity(worker);
-        var token = jwtService.generateToken(workerSecurity);
+        String token = jwtService.generateToken(workerSecurity);
         return new AuthResponse(token);
     }
 
     @Override
     @Transactional(readOnly = true)
     public AuthResponse login(LoginRequest request) {
+        String normalizedEmail = request.email().trim().toLowerCase();
+
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.email(), request.password())
+                new UsernamePasswordAuthenticationToken(normalizedEmail, request.password())
         );
 
-        var worker = workerRepository.findByEmail(request.email())
+        var worker = workerRepository.findByEmail(normalizedEmail)
                 .orElseThrow(() -> new UsernameNotFoundException("Trabajador no encontrado"));
 
         var workerSecurity = new WorkerSecurity(worker);
-        var token = jwtService.generateToken(workerSecurity);
+        String token = jwtService.generateToken(workerSecurity);
         return new AuthResponse(token);
     }
 

@@ -12,7 +12,7 @@ public interface WorkerRepository extends JpaRepository<Worker, Integer> {
 
     Optional<Worker> findByEmail(String email);
 
-    @Query("SELECT w FROM Worker w JOIN FETCH w.roles WHERE w.email = :email")
+    @Query("SELECT w FROM Worker w LEFT JOIN FETCH w.roles WHERE w.email = :email")
     Optional<Worker> findByEmailWithRoles(@Param("email") String email);
 
     boolean existsByEmail(String email);
