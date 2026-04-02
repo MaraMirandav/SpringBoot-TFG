@@ -27,7 +27,7 @@ import lombok.ToString;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(onlyExplicitlyIncluded = true)
+@ToString(onlyExplicitlyIncluded = true, callSuper = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public class Allergy extends BaseEntity {
 

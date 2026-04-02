@@ -35,7 +35,7 @@ import lombok.ToString;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(onlyExplicitlyIncluded = true)
+@ToString(onlyExplicitlyIncluded = true, callSuper = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public class Worker extends BaseEntity {
 
@@ -132,16 +132,16 @@ public class Worker extends BaseEntity {
     }
 
     // Incident
-    @OneToMany(mappedBy = "createdBy", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "reportedBy", fetch = FetchType.LAZY)
     private Set<Incident> incidents = new HashSet<>();
 
     public void addIncident(Incident incident) {
         incidents.add(incident);
-        incident.setCreatedBy(this);
+        incident.setReportedBy(this);
     }
     public void removeIncident(Incident incident) {
         incidents.remove(incident);
-        incident.setCreatedBy(null);
+        incident.setReportedBy(null);
     }
 
     // Comments
