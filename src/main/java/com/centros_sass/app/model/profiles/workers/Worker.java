@@ -46,40 +46,40 @@ public class Worker extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "first_name", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "first_name", nullable = false,length = 25, columnDefinition = "VARCHAR")
     private String firstName;
 
-    @Column(name = "second_name", columnDefinition = "TEXT")
+    @Column(name = "second_name", length = 25, columnDefinition = "VARCHAR")
     private String secondName;
 
     @NonNull
-    @Column(name = "first_surname", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "first_surname", nullable = false, length = 25, columnDefinition = "VARCHAR")
     private String firstSurname;
 
-    @Column(name = "second_surname", columnDefinition = "TEXT")
+    @Column(name = "second_surname", length = 25, columnDefinition = "VARCHAR")
     private String secondSurname;
 
     @NonNull
-    @Column(name = "dni_nie", nullable = false, unique = true, columnDefinition = "TEXT")
+    @Column(name = "dni_nie", nullable = false, length = 9, columnDefinition = "VARCHAR", unique = true)
     private String dni;
 
     @NonNull
-    @Column(name = "main_phone", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "main_phone", nullable = false,length = 20, columnDefinition = "VARCHAR")
     private String mainPhone;
 
-    @Column(name = "second_phone", columnDefinition = "TEXT")
+    @Column(name = "second_phone", length = 20, columnDefinition = "VARCHAR")
     private String secondPhone;
 
     @NonNull
-    @Column(name = "email", nullable = false, unique = true, columnDefinition = "TEXT")
+    @Column(name = "email", nullable = false, length = 255, columnDefinition = "VARCHAR", unique = true)
     private String email;
 
     @NonNull
-    @Column(name = "password", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "password", nullable = false,length = 255, columnDefinition = "VARCHAR")
     private String password;
 
     @NonNull
-    @Column(name = "is_active", nullable = false)
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
     private Boolean isActive;
 
     // RELATIONS
