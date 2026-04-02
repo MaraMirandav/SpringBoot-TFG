@@ -52,8 +52,8 @@ public class UserMedicalInfo extends BaseEntity {
     private Worker worker;
 
     @NonNull
-    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
-    private Boolean isActive;
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 
     // RELATIONS
     // // UserAllergy

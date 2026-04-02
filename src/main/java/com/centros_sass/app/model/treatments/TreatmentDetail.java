@@ -47,8 +47,8 @@ public class TreatmentDetail extends BaseEntity {
     private LocalDate endDate;
 
     @NonNull
-    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
-    private Boolean isActive;
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 
     @Column(name = "comment", columnDefinition = "TEXT")
     private String comment;

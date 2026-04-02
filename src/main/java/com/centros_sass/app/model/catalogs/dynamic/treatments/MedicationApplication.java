@@ -38,8 +38,12 @@ public class MedicationApplication extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "medication_application_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    @Column(name = "medication_application_name", nullable = false, length = 100, columnDefinition = "VARCHAR", unique = true)
     private String medicationApplicationName;
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 
     // RELATIONS
     // // Medications

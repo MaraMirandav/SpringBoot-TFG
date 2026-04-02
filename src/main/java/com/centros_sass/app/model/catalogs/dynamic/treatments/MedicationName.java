@@ -38,7 +38,7 @@ public class MedicationName extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "medication_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    @Column(name = "medication_name", nullable = false, length = 100, columnDefinition = "VARCHAR", unique = true)
     private String medicationName;
 
     // RELATIONS
