@@ -28,4 +28,10 @@ public class HomeController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(new ApiDataResponse<>("Recurso no encontrado", HttpStatus.NOT_FOUND.value()));
     }
+
+    @GetMapping("/home")
+    public ResponseEntity<ApiDataResponse<String>> home() {
+        return ResponseEntity.ok(new ApiDataResponse<>("Bienvenido a la API, si ves esto, estas logeado!", 200));
+    }
+
 }

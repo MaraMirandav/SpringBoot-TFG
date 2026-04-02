@@ -5,27 +5,28 @@
 INSERT INTO workers
 (first_name, second_name, first_surname, second_surname, dni_nie, email, password, main_phone, second_phone, is_active, created_at, updated_at)
 VALUES
-    -- 1. Trabajadora con todos los datos completos
-    ('Ana', 'María', 'García', 'López', 'Z2033087A', 'ana.garcia@email.com', 'contraseña123', '600123456', '911223344', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    -- 2. Trabajador sin segundo nombre ni segundo teléfono (campos NULL)
-    ('Carlos', NULL, 'Rodríguez', 'Sánchez', 'Z2333087A', 'carlos.rod@email.com', 'claveSegura2025', '655987654', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    -- 3. Trabajadora sin segundo apellido
-    ('Lucía', 'Carmen', 'Fernández', NULL, 'Z2033037C', 'lucia.fer@email.com', 'admin1234', '611222333', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    -- 4. Trabajador inactivo (is_active = false)
-    ('Miguel', NULL, 'Torres', 'Ruiz', 'Z2033083J', 'miguel.torres@email.com', 'passMiguel', '699888777', '933445566', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    -- 5. Trabajadora estándar
-    ('Elena', NULL, 'Moreno', 'Díaz', 'Z2343087A', 'elena.moreno@email.com', 'elena2025', '622333444', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Roberto', NULL, 'Sanz', 'Gil', 'Z2033547T', 'roberto.rrhh@email.com', 'pass123', '600666666', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Beatriz', NULL, 'Molina', 'Pérez', 'Z2036687F', 'bea.recep@email.com', 'pass123', '600777777', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Laura', NULL, 'Ruiz', 'Giménez', 'Z2273087A', 'laura.fisio@email.com', 'pass123', '600888888', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Pablo', 'José', 'Martín', 'Sanz', 'Z2038487B', 'pablo.to@email.com', 'pass123', '600999999', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Sara', NULL, 'Díaz', 'Romero', 'Z2033447A', 'sara.ts@email.com', 'pass123', '611000111', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('David', NULL, 'Serrano', 'Molina', 'Z2333087Y', 'david.psico@email.com', 'pass123', '611222333', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Carmen', 'Luisa', 'Ortiz', 'Vega', 'Z2233087A', 'carmen.gero@email.com', 'pass123', '611333444', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Javier', NULL, 'Navarro', 'Flores', 'Z2133087Y', 'javier.tas@email.com', 'pass123', '611444555', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Manuel', 'Antonio', 'Iglesias', 'Vargas', 'Z2035587A', 'manolo.ruta@email.com', 'pass123', '611555666', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Julián', NULL, 'Vázquez', 'Rey', 'Z2036697A', 'julian.copi@email.com', 'pass123', '611666777', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Rosa', 'María', 'Vidal', 'Sáez', 'Z2037787A', 'rosa.limpieza@email.com', 'pass123', '611777888', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+    -- 1. Trabajadora con todos los datos completos (password: contraseña123)
+    ('Ana', 'María', 'García', 'López', 'Z2033087A', 'ana.garcia@email.com', '$2b$10$idCkCcq8viMSAB/sIETuO.FQ5u/OnCFmNuEOPe7.J2niz9iOFqrxq', '600123456', '911223344', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 2. Trabajador sin segundo nombre ni segundo teléfono (password: claveSegura2025)
+    ('Carlos', NULL, 'Rodríguez', 'Sánchez', 'Z2333087A', 'carlos.rod@email.com', '$2b$10$pVUEZn161eRBU.rnXAr4mO8QdY26m2PbnnCfCDhCCySo1iQw9PQ8m', '655987654', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 3. Trabajadora sin segundo apellido (password: admin1234)
+    ('Lucía', 'Carmen', 'Fernández', NULL, 'Z2033037C', 'lucia.fer@email.com', '$2b$10$IO/SgO96W7t7Mb6axDzbB.Vf6sMbXc54bj6bktX0ms4SEpx5bCkBO', '611222333', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 4. Trabajador inactivo (password: passMiguel)
+    ('Miguel', NULL, 'Torres', 'Ruiz', 'Z2033083J', 'miguel.torres@email.com', '$2b$10$s9atu2Rpd0raJyPcxn8JY.HsMxLb/mL0fVLy7.jDqh4EhzSSabe/6', '699888777', '933445566', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 5. Trabajadora estándar (password: elena2025)
+    ('Elena', NULL, 'Moreno', 'Díaz', 'Z2343087A', 'elena.moreno@email.com', '$2b$10$q.JNT8Q6f5T3MCblU4MM4.awqW5xT2P37GNDIPgPAekzjKxKYVO22', '622333444', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    -- 6-16. Trabajadores estándar (password: pass123)
+    ('Roberto', NULL, 'Sanz', 'Gil', 'Z2033547T', 'roberto.rrhh@email.com', '$2b$10$f50Z1zgFXvMZfLcvJ0mikuzssO52Huv/tea7U82eNlM5IFpatY3DG', '600666666', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Beatriz', NULL, 'Molina', 'Pérez', 'Z2036687F', 'bea.recep@email.com', '$2b$10$f50Z1zgFXvMZfLcvJ0mikuzssO52Huv/tea7U82eNlM5IFpatY3DG', '600777777', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Laura', NULL, 'Ruiz', 'Giménez', 'Z2273087A', 'laura.fisio@email.com', '$2b$10$f50Z1zgFXvMZfLcvJ0mikuzssO52Huv/tea7U82eNlM5IFpatY3DG', '600888888', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Pablo', 'José', 'Martín', 'Sanz', 'Z2038487B', 'pablo.to@email.com', '$2b$10$f50Z1zgFXvMZfLcvJ0mikuzssO52Huv/tea7U82eNlM5IFpatY3DG', '600999999', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Sara', NULL, 'Díaz', 'Romero', 'Z2033447A', 'sara.ts@email.com', '$2b$10$f50Z1zgFXvMZfLcvJ0mikuzssO52Huv/tea7U82eNlM5IFpatY3DG', '611000111', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('David', NULL, 'Serrano', 'Molina', 'Z2333087Y', 'david.psico@email.com', '$2b$10$f50Z1zgFXvMZfLcvJ0mikuzssO52Huv/tea7U82eNlM5IFpatY3DG', '611222333', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Carmen', 'Luisa', 'Ortiz', 'Vega', 'Z2233087A', 'carmen.gero@email.com', '$2b$10$f50Z1zgFXvMZfLcvJ0mikuzssO52Huv/tea7U82eNlM5IFpatY3DG', '611333444', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Javier', NULL, 'Navarro', 'Flores', 'Z2133087Y', 'javier.tas@email.com', '$2b$10$f50Z1zgFXvMZfLcvJ0mikuzssO52Huv/tea7U82eNlM5IFpatY3DG', '611444555', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Manuel', 'Antonio', 'Iglesias', 'Vargas', 'Z2035587A', 'manolo.ruta@email.com', '$2b$10$f50Z1zgFXvMZfLcvJ0mikuzssO52Huv/tea7U82eNlM5IFpatY3DG', '611555666', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Julián', NULL, 'Vázquez', 'Rey', 'Z2036697A', 'julian.copi@email.com', '$2b$10$f50Z1zgFXvMZfLcvJ0mikuzssO52Huv/tea7U82eNlM5IFpatY3DG', '611666777', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('Rosa', 'María', 'Vidal', 'Sáez', 'Z2037787A', 'rosa.limpieza@email.com', '$2b$10$f50Z1zgFXvMZfLcvJ0mikuzssO52Huv/tea7U82eNlM5IFpatY3DG', '611777888', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- --------------------------------------------------------
 -- CATÁLOGO DE SEXOS

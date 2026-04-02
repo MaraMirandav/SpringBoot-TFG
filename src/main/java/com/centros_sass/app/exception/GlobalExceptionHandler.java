@@ -37,12 +37,11 @@ public class GlobalExceptionHandler {
                 .body(new ApiDataResponse<>(message.toString(), HttpStatus.BAD_REQUEST.value()));
     }
 
-    // TODO: Descomentar cuando se active Spring Security en Fase 1B
-    // @ExceptionHandler(AccessDeniedException.class)
-    // public ResponseEntity<ApiDataResponse<Void>> handleAccessDenied(AccessDeniedException ex) {
-    //     return ResponseEntity.status(HttpStatus.FORBIDDEN)
-    //             .body(new ApiDataResponse<>("Acceso denegado: no tienes permisos para esta operación", HttpStatus.FORBIDDEN.value()));
-    // }
+    @ExceptionHandler(org.springframework.security.access.AccessDeniedException.class)
+    public ResponseEntity<ApiDataResponse<Void>> handleAccessDenied(org.springframework.security.access.AccessDeniedException ex) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(new ApiDataResponse<>("Acceso denegado: no tienes permisos para esta operación", HttpStatus.FORBIDDEN.value()));
+    }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiDataResponse<Void>> handleGeneral(Exception ex) {
