@@ -63,6 +63,7 @@ public class Worker extends BaseEntity {
     @Column(name = "dni_nie", nullable = false, unique = true, columnDefinition = "TEXT")
     private String dni;
 
+    @NonNull
     @Column(name = "main_phone", nullable = false, columnDefinition = "TEXT")
     private String mainPhone;
 
