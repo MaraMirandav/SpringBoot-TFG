@@ -6,8 +6,6 @@ import java.util.Set;
 import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.fixed.organization.Position;
 import com.centros_sass.app.model.catalogs.fixed.organization.Role;
-import com.centros_sass.app.model.incidents.Comment;
-import com.centros_sass.app.model.incidents.Incident;
 import com.centros_sass.app.model.treatments.UserMedicalInfo;
 
 import jakarta.persistence.CascadeType;
@@ -130,32 +128,6 @@ public class Worker extends BaseEntity {
 
     public void removePosition(Position position) {
         this.positions.remove(position);
-    }
-
-    // Incident
-    @OneToMany(mappedBy = "reportedBy", fetch = FetchType.LAZY)
-    private Set<Incident> incidents = new HashSet<>();
-
-    public void addIncident(Incident incident) {
-        incidents.add(incident);
-        incident.setReportedBy(this);
-    }
-    public void removeIncident(Incident incident) {
-        incidents.remove(incident);
-        incident.setReportedBy(null);
-    }
-
-    // Comments
-    @OneToMany(mappedBy = "worker", fetch = FetchType.LAZY)
-    private Set<Comment> comments = new HashSet<>();
-
-    public void addComment(Comment comment) {
-        comments.add(comment);
-        comment.setWorker(this);
-    }
-    public void removeComment(Comment comment) {
-        comments.remove(comment);
-        comment.setWorker(null);
     }
 
     // // UserMedicalInfo
