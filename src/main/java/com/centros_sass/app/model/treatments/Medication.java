@@ -48,7 +48,7 @@ public class Medication extends BaseEntity {
     private MedicationName medicationName;
 
     @NonNull
-    @Column(name = "dose", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "dose", nullable = false, length = 100, columnDefinition = "VARCHAR")
     private String dose;
 
     @NonNull

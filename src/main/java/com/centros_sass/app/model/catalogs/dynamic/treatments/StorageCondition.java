@@ -38,7 +38,7 @@ public class StorageCondition extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "storage_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    @Column(name = "storage_name", nullable = false, length = 100, columnDefinition = "VARCHAR", unique = true)
     private String storageName;
 
     // RELATIONS

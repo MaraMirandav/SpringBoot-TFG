@@ -1,6 +1,5 @@
 package com.centros_sass.app.model.transport;
 
-import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,6 +22,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,15 +30,12 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "transport_routes")
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true, callSuper = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class TransportRoute extends BaseEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class TransportRoute extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,33 +43,41 @@ public class TransportRoute extends BaseEntity implements Serializable {
     @EqualsAndHashCode.Include
     private Integer id;
 
+    @NonNull
     @Column(name = "route_number", nullable = false, columnDefinition = "INTEGER")
     private Integer routeNumber;
 
+    @NonNull
     @Column(name = "start_time", nullable = false, columnDefinition = "TIME")
     private LocalTime startTime;
 
+    @NonNull
     @Column(name = "end_time", nullable = false, columnDefinition = "TIME")
     private LocalTime endTime;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "route_shift_id", nullable = false)
     private RouteShift routeShift;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "route_vehicle_id", nullable = false)
     private RouteVehicle routeVehicle;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "worker_driver_id", nullable = false)
     private Worker driver;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "worker_copilot_id", nullable = false)
     private Worker copilot;
 
-    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")
-    private boolean isActive;
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(

@@ -38,7 +38,7 @@ public class Allergy extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "allergy_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    @Column(name = "allergy_name", nullable = false, length = 100, columnDefinition = "VARCHAR", unique = true)
     private String allergyName;
 
     // RELATIONS
