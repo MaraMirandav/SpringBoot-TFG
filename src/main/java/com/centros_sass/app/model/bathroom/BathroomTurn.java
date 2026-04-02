@@ -1,6 +1,5 @@
 package com.centros_sass.app.model.bathroom;
 
-import java.io.Serializable;
 import java.time.LocalTime;
 
 import com.centros_sass.app.model.base.BaseEntity;
@@ -16,19 +15,17 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.NonNull;
 import lombok.ToString;
 
 @Entity
 @Table(name = "bathroom_turns")
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true, callSuper = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class BathroomTurn extends BaseEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class BathroomTurn extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,12 +33,15 @@ public class BathroomTurn extends BaseEntity implements Serializable {
     @EqualsAndHashCode.Include
     private Integer id;
 
-    @Column(name = "turn_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    @NonNull
+    @Column(name = "turn_name", nullable = false, length = 50, columnDefinition = "VARCHAR", unique = true)
     private String turnName;
 
+    @NonNull
     @Column(name = "start_at", nullable = false, columnDefinition = "TIME")
     private LocalTime startAt;
 
+    @NonNull
     @Column(name = "end_at", nullable = false, columnDefinition = "TIME")
     private LocalTime endAt;
 

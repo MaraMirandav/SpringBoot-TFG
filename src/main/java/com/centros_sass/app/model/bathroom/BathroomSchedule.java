@@ -36,14 +36,17 @@ public class BathroomSchedule  extends BaseEntity {
     @EqualsAndHashCode.Include
     private Integer id;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bathroom_turn_id", nullable = false)
     private BathroomTurn bathroomTurn;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bathroom_task_id", nullable = false)
     private BathroomTask bathroomTask;

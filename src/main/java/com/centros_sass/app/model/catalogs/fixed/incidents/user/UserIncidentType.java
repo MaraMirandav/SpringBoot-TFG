@@ -38,7 +38,7 @@ public class UserIncidentType extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "incident_name", nullable = false, columnDefinition = "TEXT", unique = true)
+    @Column(name = "incident_name", nullable = false, length = 50, columnDefinition = "VARCHAR", unique = true)
     private String incidentName;
 
     // RELATIONS

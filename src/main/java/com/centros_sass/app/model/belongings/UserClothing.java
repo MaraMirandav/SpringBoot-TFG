@@ -1,6 +1,5 @@
 package com.centros_sass.app.model.belongings;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.centros_sass.app.model.base.BaseEntity;
@@ -31,9 +30,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true, callSuper = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class UserClothing extends BaseEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class UserClothing extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,22 +38,27 @@ public class UserClothing extends BaseEntity implements Serializable {
     @EqualsAndHashCode.Include
     private Integer id;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "clothes_id", nullable = false)
     private ClothingType clothes;
 
+    @NonNull
     @Column(name = "is_clean", nullable = false, columnDefinition = "BOOLEAN")
-    private boolean isClean;
+    private Boolean isClean;
 
+    @NonNull
     @Column(name = "is_returned", nullable = false, columnDefinition = "BOOLEAN")
-    private boolean isReturned;
+    private Boolean isReturned;
 
+    @NonNull
     @Column(name = "received_at", nullable = false, columnDefinition = "TIMESTAMP")
     private LocalDateTime receivedAt;
 
     @Column(name = "returned_at", nullable = false, columnDefinition = "TIMESTAMP")
     private LocalDateTime returnedAt;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "return_reason_id", nullable = false)
     private ReturnReason returnReason;
