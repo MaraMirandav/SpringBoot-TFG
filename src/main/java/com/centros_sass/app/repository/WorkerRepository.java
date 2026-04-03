@@ -1,6 +1,5 @@
 package com.centros_sass.app.repository;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;

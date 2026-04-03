@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * DTO de actualizaciÃ³n para modificar un trabajador existente.
+ * DTO de actualización para modificar un trabajador existente.
  *
  * Utiliza clase con Lombok ya que todos los campos son opcionales.
  *
@@ -40,17 +40,17 @@ public class WorkerUpdateDTO {
     @Size(max = 9, message = "El DNI no puede exceder los 9 caracteres")
     private String dni;
 
-    @Size(max = 20, message = "El telÃ©fono no puede exceder los 20 caracteres")
+    @Size(max = 20, message = "El teléfono no puede exceder los 20 caracteres")
     private String mainPhone;
 
-    @Size(max = 20, message = "El telÃ©fono secundario no puede exceder los 20 caracteres")
+    @Size(max = 20, message = "El teléfono secundario no puede exceder los 20 caracteres")
     private String secondPhone;
 
-    @Email(message = "El email no es vÃ¡lido")
+    @Email(message = "El email no es válido")
     @Size(max = 255, message = "El email no puede exceder los 255 caracteres")
     private String email;
 
-    @Size(min = 8, message = "La contraseÃ±a debe tener al menos 8 caracteres")
+    @Size(min = 8, message = "La contraseña debe tener al menos 8 caracteres")
     private String password;
 
     private Set<Integer> roleIds;
