@@ -1,6 +1,8 @@
 package com.centros_sass.app.model.profiles.users;
 
 import java.time.LocalTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.fixed.calendar.OpenDay;
@@ -13,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -58,4 +61,19 @@ public class UserAttendanceDay extends BaseEntity {
     @NonNull
     @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
     private Boolean isActive = true;
+
+    // RELATIONS
+    // // UserAttendanceRecord
+    @OneToMany(mappedBy = "attendanceDay", fetch = FetchType.LAZY)
+    private Set<UserAttendanceRecord> attendanceRecords = new HashSet<>();
+
+    public void addAttendanceRecord(UserAttendanceRecord record) {
+        this.attendanceRecords.add(record);
+        record.setAttendanceDay(this);
+    }
+
+    public void removeAttendanceRecord(UserAttendanceRecord record) {
+        this.attendanceRecords.remove(record);
+        record.setAttendanceDay(null);
+    }
 }

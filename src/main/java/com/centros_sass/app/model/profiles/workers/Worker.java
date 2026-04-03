@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.fixed.organization.Position;
 import com.centros_sass.app.model.catalogs.fixed.organization.Role;
 import com.centros_sass.app.model.treatments.UserMedicalInfo;
 
@@ -111,23 +110,6 @@ public class Worker extends BaseEntity {
 
     public void removeRole(Role role) {
         this.roles.remove(role);
-    }
-
-    // // Positions
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "workers_positions",
-        joinColumns = @JoinColumn(name = "worker_id"),
-        inverseJoinColumns = @JoinColumn(name = "position_id")
-    )
-    private Set<Position> positions = new HashSet<>();
-
-    public void addPosition(Position position) {
-        this.positions.add(position);
-    }
-
-    public void removePosition(Position position) {
-        this.positions.remove(position);
     }
 
     // // UserMedicalInfo

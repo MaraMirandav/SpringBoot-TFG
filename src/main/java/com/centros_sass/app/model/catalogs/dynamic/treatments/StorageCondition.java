@@ -23,7 +23,7 @@ import lombok.NonNull;
 import lombok.ToString;
 
 @Entity
-@Table(name = "storage_condition_enum")
+@Table(name = "storage_conditions_enum")
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -40,6 +40,10 @@ public class StorageCondition extends BaseEntity {
     @NonNull
     @Column(name = "storage_name", nullable = false, length = 100, columnDefinition = "VARCHAR", unique = true)
     private String storageName;
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 
     // RELATIONS
     // // Medications

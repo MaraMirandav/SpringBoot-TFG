@@ -1,5 +1,8 @@
 package com.centros_sass.app.model.belongings;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.dynamic.belongings.DiaperSize;
 import com.centros_sass.app.model.catalogs.dynamic.belongings.DiaperType;
@@ -12,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -23,7 +27,8 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "user_diapers")
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true, callSuper = false)
@@ -38,13 +43,13 @@ public class UserDiaper extends BaseEntity {
 
     @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "size_id", nullable = false)
-    private DiaperSize size;
+    @JoinColumn(name = "diaper_size_id", nullable = false)
+    private DiaperSize diaperSize;
 
     @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "type_id", nullable = false)
-    private DiaperType type;
+    @JoinColumn(name = "diaper_type_id", nullable = false)
+    private DiaperType diaperType;
 
     @NonNull
     @Column(name = "quantity", nullable = false, columnDefinition = "INTEGER")
@@ -53,4 +58,19 @@ public class UserDiaper extends BaseEntity {
     @NonNull
     @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
     private Boolean isActive = true;
+
+    // RELATIONS
+    // // UserBelonging
+    @OneToMany(mappedBy = "userDiaper", fetch = FetchType.LAZY)
+    private Set<UserBelonging> userBelongings = new HashSet<>();
+
+    public void addUserBelonging(UserBelonging userBelonging) {
+        this.userBelongings.add(userBelonging);
+        userBelonging.setUserDiaper(this);
+    }
+
+    public void removeUserBelonging(UserBelonging userBelonging) {
+        this.userBelongings.remove(userBelonging);
+        userBelonging.setUserDiaper(null);
+    }
 }

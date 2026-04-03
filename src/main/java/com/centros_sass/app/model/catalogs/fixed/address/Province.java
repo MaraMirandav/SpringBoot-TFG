@@ -42,15 +42,17 @@ public class Province extends BaseEntity {
     private String provinceName;
 
     // RELATIONS
-    // // UserAdress
+    // // UserAddress
     @OneToMany(mappedBy = "province", fetch = FetchType.LAZY)
-    private Set<UserAddress> userAdresses = new HashSet<>();
+    private Set<UserAddress> userAddresses = new HashSet<>();
+
     public void addUserAddress(UserAddress userAddress) {
-        userAdresses.add(userAddress);
+        userAddresses.add(userAddress);
         userAddress.setProvince(this);
     }
+
     public void removeUserAddress(UserAddress userAddress) {
-        userAdresses.remove(userAddress);
+        userAddresses.remove(userAddress);
         userAddress.setProvince(null);
     }
 }
