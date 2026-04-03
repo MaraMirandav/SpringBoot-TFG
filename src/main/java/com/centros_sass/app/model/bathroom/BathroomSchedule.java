@@ -22,13 +22,13 @@ import lombok.NonNull;
 import lombok.ToString;
 
 @Entity
-@Table(name = "bathroom_schedule")
+@Table(name = "bathroom_schedules")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true, callSuper = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class BathroomSchedule  extends BaseEntity {
+public class BathroomSchedule extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

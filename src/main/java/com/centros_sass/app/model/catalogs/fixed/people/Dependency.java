@@ -38,8 +38,8 @@ public class Dependency extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "nivel_dependency", nullable = false, length = 50, columnDefinition = "VARCHAR", unique = true)
-    private String nivelDependency;
+    @Column(name = "dependency_level", nullable = false, length = 50, columnDefinition = "VARCHAR", unique = true)
+    private String dependencyLevel;
 
     // RELATIONS
     // // User

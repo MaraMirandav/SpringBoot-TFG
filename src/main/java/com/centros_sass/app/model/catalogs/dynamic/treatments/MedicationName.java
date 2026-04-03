@@ -23,7 +23,7 @@ import lombok.NonNull;
 import lombok.ToString;
 
 @Entity
-@Table(name = "medication_name_enum")
+@Table(name = "medication_names_enum")
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -40,6 +40,10 @@ public class MedicationName extends BaseEntity {
     @NonNull
     @Column(name = "medication_name", nullable = false, length = 100, columnDefinition = "VARCHAR", unique = true)
     private String medicationName;
+
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
 
     // RELATIONS
     // // Medications

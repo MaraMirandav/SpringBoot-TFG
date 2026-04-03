@@ -118,6 +118,20 @@ public class User extends BaseEntity {
         userAttendanceDay.setUser(null);
     }
 
+    // // UserAttendanceRecord
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<UserAttendanceRecord> attendanceRecords = new HashSet<>();
+
+    public void addAttendanceRecord(UserAttendanceRecord record) {
+        this.attendanceRecords.add(record);
+        record.setUser(this);
+    }
+
+    public void removeAttendanceRecord(UserAttendanceRecord record) {
+        this.attendanceRecords.remove(record);
+        record.setUser(null);
+    }
+
     // // UserContact
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<UserContact> userContacts = new HashSet<>();

@@ -38,20 +38,21 @@ public class City extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "city_name", nullable = false, length = 100, columnDefinition = "VARCHAR")
+    @Column(name = "city_name", nullable = false, length = 100, columnDefinition = "VARCHAR", unique = true)
     private String cityName;
 
     // RELATIONS
-    // // UserAdress
+    // // UserAddress
     @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
-    private Set<UserAddress> userAdresses = new HashSet<>();
+    private Set<UserAddress> userAddresses = new HashSet<>();
 
     public void addUserAddress(UserAddress userAddress) {
-        userAdresses.add(userAddress);
+        userAddresses.add(userAddress);
         userAddress.setCity(this);
     }
+
     public void removeUserAddress(UserAddress userAddress) {
-        userAdresses.remove(userAddress);
+        userAddresses.remove(userAddress);
         userAddress.setCity(null);
     }
 }

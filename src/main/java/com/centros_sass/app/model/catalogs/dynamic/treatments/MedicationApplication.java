@@ -23,7 +23,7 @@ import lombok.NonNull;
 import lombok.ToString;
 
 @Entity
-@Table(name = "medication_application_enum")
+@Table(name = "medication_applications_enum")
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor

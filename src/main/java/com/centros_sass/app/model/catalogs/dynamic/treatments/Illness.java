@@ -41,6 +41,10 @@ public class Illness extends BaseEntity {
     @Column(name = "illness_name", nullable = false, length = 100, columnDefinition = "VARCHAR", unique = true)
     private String illnessName;
 
+    @NonNull
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isActive = true;
+
     // RELATIONS
     // // UserIllness
     @OneToMany(mappedBy = "illness", fetch = FetchType.LAZY)

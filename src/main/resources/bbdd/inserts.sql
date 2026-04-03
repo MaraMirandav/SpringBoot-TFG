@@ -39,17 +39,17 @@ VALUES
 ON CONFLICT (sex) DO NOTHING;
 
 -- --------------------------------------------------------
--- CATÁLOGO DE DEPENDENCIAS
--- Tabla: user_dependency_enum | Columna: nivel_dependency
+-- TABLA DE DEPENDENCIAS
+-- Tabla: user_dependency_enum | Columna: dependency_level
 -- --------------------------------------------------------
 -- Opcional: Un valor por defecto para usuarios sanos
-INSERT INTO user_dependency_enum (nivel_dependency, created_at, updated_at, created_by, updated_by)
+INSERT INTO user_dependency_enum (dependency_level, created_at, updated_at, created_by, updated_by)
 VALUES
     ('Sin Dependencia', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Baja', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Media', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Alta', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system')
-ON CONFLICT (nivel_dependency) DO NOTHING;
+ON CONFLICT (dependency_level) DO NOTHING;
 
 -- --------------------------------------------------------
 -- TABLA DE USUARIOS (USERS)
@@ -429,7 +429,7 @@ INSERT INTO incident_cd_enum (incident_name, created_at, updated_at, created_by,
     ON CONFLICT (incident_name) DO NOTHING;
 
 -- Gravedad de CENTRO
-INSERT INTO significance_cd_enum (significance_name, created_at, updated_at, created_by, updated_by) VALUES
+INSERT INTO significances_cd_enum (significance_name, created_at, updated_at, created_by, updated_by) VALUES
     ('Baja', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Media', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Alta', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system')
@@ -439,14 +439,14 @@ INSERT INTO significance_cd_enum (significance_name, created_at, updated_at, cre
 -- CATÁLOGOS DE USUARIO (Tipos y Gravedad)
 -- --------------------------------------------------------
 -- Tipos de Incidencia de USUARIO
-INSERT INTO incident_user_enum (incident_name, created_at, updated_at, created_by, updated_by) VALUES
+INSERT INTO incidents_user_enum (incident_name, created_at, updated_at, created_by, updated_by) VALUES
     ('Salud / Caída', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Comportamiento', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Medicación', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system')
     ON CONFLICT (incident_name) DO NOTHING;
 
 -- Gravedad de USUARIO
-INSERT INTO significance_user_enum (significance_name, created_at, updated_at, created_by, updated_by) VALUES
+INSERT INTO significances_user_enum (significance_name, created_at, updated_at, created_by, updated_by) VALUES
     ('Leve', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Moderada', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Crítica', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system')
@@ -467,13 +467,13 @@ ON CONFLICT (status_name) DO NOTHING;
 -- --------------------------------------------------------
 -- 1. Caldera: Estado 'En revisión' (ID 2)
 INSERT INTO cd_incidents
-(incident_cd_id, significance_cd_id, created_by_worker_id, incident_status_id, comment, is_active, created_at, updated_at, created_by, updated_by)
+(incident_cd_id, significance_cd_id, reported_by_id, incident_status_id, comment, is_active, created_at, updated_at, created_by, updated_by)
 VALUES
     (1, 3, 1, 2, 'La caldera hace un ruido extraño y pierde agua.', true, '2025-01-14 09:00:00', CURRENT_TIMESTAMP, 'system', 'system');
 
 -- 2. Café: Estado 'Cerrada' (ID 3)
 INSERT INTO cd_incidents
-(incident_cd_id, significance_cd_id, created_by_worker_id, incident_status_id, comment, is_active, created_at, updated_at, created_by, updated_by)
+(incident_cd_id, significance_cd_id, reported_by_id, incident_status_id, comment, is_active, created_at, updated_at, created_by, updated_by)
 VALUES
     (2, 1, 5, 3, 'Se ha derramado café en la sala de estar.', true, '2025-01-14 16:00:00', CURRENT_TIMESTAMP, 'system', 'system');
 
@@ -481,11 +481,11 @@ VALUES
 -- INCIDENCIAS DE USUARIO (users_incidents)
 -- --------------------------------------------------------
 -- 1. Antonio (Caída): Estado 'En revisión' (ID 2)
-INSERT INTO users_incidents (user_id, incident_user_id, significance_user_id, created_by_worker_id, incident_status_id, comment, is_active, created_at, updated_at, created_by, updated_by)
+INSERT INTO users_incidents (user_id, incident_user_id, significance_user_id, reported_by_id, incident_status_id, comment, is_active, created_at, updated_at, created_by, updated_by)
 VALUES
     (1, 1, 3, 3, 2, 'Antonio se ha mareado y ha caído al suelo en el comedor.', true, '2025-01-15 11:00:00', CURRENT_TIMESTAMP, 'system', 'system');
 -- 2. María (Agitada): Estado 'Activa' (ID 1)
-INSERT INTO users_incidents (user_id, incident_user_id, significance_user_id, created_by_worker_id, incident_status_id, comment, is_active, created_at, updated_at, created_by, updated_by)
+INSERT INTO users_incidents (user_id, incident_user_id, significance_user_id, reported_by_id, incident_status_id, comment, is_active, created_at, updated_at, created_by, updated_by)
 VALUES
     (2, 2, 2, 2, 1, 'María está muy agitada y se niega a comer.', true, '2025-01-15 20:00:00', CURRENT_TIMESTAMP, 'system', 'system');
 
@@ -538,32 +538,6 @@ INSERT INTO roles_enum (role_name, created_at, updated_at, created_by, updated_b
 ON CONFLICT (role_name) DO NOTHING;
 
 -- --------------------------------------------------------
--- TABLA DE POSICIONES
--- --------------------------------------------------------
-INSERT INTO positions_enum (position_name, created_at, updated_at, created_by, updated_by) VALUES
--- Dirección
-('Director/a', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-('Recursos Humanos', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-('Coordinador/a', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
--- Administración
-('Administrativo/a', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-('Recepcionista', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
--- Equipo Tecnico
-('Enfermero/a', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-('Fisioterapeuta', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-('Terapeuta Ocupacional', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-('Trabajador/a Social', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-('Psicólogo/a', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
--- Atencion Directa
-('Gerocultor/a', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-('Técnico/a de Atención Sociosanitaria', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
--- Servicios
-('Conductor/a', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-('Copiloto', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-('Personal de Limpieza', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system')
-ON CONFLICT (position_name) DO NOTHING;
-
--- --------------------------------------------------------
 -- TABLA DE WORKERS_ROLES
 -- --------------------------------------------------------
 INSERT INTO schema_template.workers_roles (worker_id, role_id) VALUES
@@ -600,29 +574,6 @@ INSERT INTO schema_template.workers_roles (worker_id, role_id) VALUES
 -- Copiloto / TAS
 (15, 11),
 (15, 9)
-ON CONFLICT DO NOTHING;
-
--- --------------------------------------------------------
--- TABLA DE WORKERS_POSITIONS
--- --------------------------------------------------------
-INSERT INTO schema_template.workers_positions (worker_id, position_id) VALUES
-(1, 1),  -- Ana -> Director/a
-(2, 3),  -- Carlos -> Coordinador/a
-(2, 12), -- Carlos -> TAS
-(3, 4),  -- Lucía -> Administrativo/a
-(5, 6),  -- Elena -> Enfermero/a
-(6, 2),  -- Roberto -> Recursos Humanos
-(6, 8),  -- Roberto -> Terapeuta Ocupacional
-(7, 5),  -- Beatriz -> Recepcionista
-(8, 7),  -- Laura -> Fisioterapeuta
-(9, 8),  -- Pablo -> Terapeuta Ocupacional
-(10, 9), -- Sara -> Trabajador/a Social
-(11, 10),-- David -> Psicólogo/a
-(12, 11),-- Carmen -> Gerocultor/a
-(13, 12),-- Javier -> Técnico/a de Atención Sociosanitaria
-(14, 13),-- Manuel -> Conductor/a
-(15, 14),-- Julián -> Copiloto
-(16, 15) -- Rosa -> Personal de Limpieza
 ON CONFLICT DO NOTHING;
 
 -- --------------------------------------------------------
@@ -669,7 +620,7 @@ ON CONFLICT (relationship_name) DO NOTHING;
 -- --------------------------------------------------------
 -- DIRECCIONES DE USUARIOS
 -- --------------------------------------------------------
-INSERT INTO user_adresses (user_id, address, postal_code, city_id, province_id, region_id, created_at, updated_at, created_by, updated_by)
+INSERT INTO user_addresses (user_id, address, postal_code, city_id, province_id, region_id, created_at, updated_at, created_by, updated_by)
 VALUES
     -- 1. Antonio (Vive en Móstoles, Madrid)
     (1, 'Calle de la Libertad, 45, 3ºA', '28931', 1, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
@@ -727,7 +678,7 @@ VALUES
 -- --------------------------------------------------------
 -- CATALOGO: TURNOS DE RUTA (route_shift_enum)
 -- --------------------------------------------------------
-INSERT INTO route_shift_enum (route_name, created_at, updated_at, created_by, updated_by)
+INSERT INTO routes_shift_enum (route_name, created_at, updated_at, created_by, updated_by)
 VALUES
     ('MAÑANA', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('TARDE', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system')
@@ -772,7 +723,7 @@ ON CONFLICT DO NOTHING;
 -- --------------------------------------------------------
 -- CATALOGO: Tipos de Ropa
 -- --------------------------------------------------------
-INSERT INTO clothing_type_enum (clothes_name, is_active, created_at, updated_at, created_by, updated_by)
+INSERT INTO clothing_types_enum (clothing_name, is_active, created_at, updated_at, created_by, updated_by)
 VALUES
     ('Pantalón', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Camisa', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
@@ -783,7 +734,7 @@ VALUES
 -- --------------------------------------------------------
 -- CATALOGO: Tipos de Objetos
 -- --------------------------------------------------------
-INSERT INTO objects_type_enum (object_name, is_active, created_at, updated_at, created_by, updated_by)
+INSERT INTO object_types_enum (object_name, is_active, created_at, updated_at, created_by, updated_by)
 VALUES
     ('Gafas', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Bastón', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
@@ -793,7 +744,7 @@ VALUES
 -- --------------------------------------------------------
 -- CATALOGO: Condiciones
 -- --------------------------------------------------------
-INSERT INTO condition_type_enum (condition_name, is_active, created_at, updated_at, created_by, updated_by)
+INSERT INTO item_conditions_enum (condition_name, is_active, created_at, updated_at, created_by, updated_by)
 VALUES
     ('Nuevo', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Buen estado', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
@@ -802,7 +753,7 @@ VALUES
 -- --------------------------------------------------------
 -- CATALOGO: Tamaño del pañal
 -- --------------------------------------------------------
-INSERT INTO diapers_size_enum (size, is_active, created_at, updated_at, created_by, updated_by)
+INSERT INTO diaper_sizes_enum (size, is_active, created_at, updated_at, created_by, updated_by)
 VALUES
     ('Pequeño', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Mediano', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
@@ -811,7 +762,7 @@ VALUES
 -- --------------------------------------------------------
 -- CATALOGO: Tipo del pañal
 -- --------------------------------------------------------
-INSERT INTO diapers_type_enum (type, is_active, created_at, updated_at, created_by, updated_by)
+INSERT INTO diaper_types_enum (type, is_active, created_at, updated_at, created_by, updated_by)
 VALUES
     ('Elástico', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Braga-pañal', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
@@ -820,7 +771,7 @@ VALUES
 -- --------------------------------------------------------
 -- CATALOGO: Regreso cosas (return_reason_enum)
 -- --------------------------------------------------------
-INSERT INTO return_reason_enum (reason, is_active, created_at, updated_at, created_by, updated_by) VALUES
+INSERT INTO return_reasons_enum (reason, is_active, created_at, updated_at, created_by, updated_by) VALUES
 ('No devuelto (En uso)', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
 ('Devuelto a familiar', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
 ('Desechado', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
@@ -828,7 +779,7 @@ INSERT INTO return_reason_enum (reason, is_active, created_at, updated_at, creat
 -- --------------------------------------------------------
 -- TABLA: Ropa Física (UserClothes)
 -- --------------------------------------------------------
-INSERT INTO user_clothing (clothes_id, is_clean, is_returned, received_at, returned_at, return_reason_id, is_active, created_at, updated_at, created_by, updated_by)
+INSERT INTO user_clothings (clothing_type_id, is_clean, is_returned, received_at, returned_at, return_reason_id, is_active, created_at, updated_at, created_by, updated_by)
 VALUES
     (3, true, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (3, true, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
@@ -839,7 +790,7 @@ VALUES
 -- --------------------------------------------------------
 -- TABLA: Objetos Físicos (UserObject)
 -- --------------------------------------------------------
-INSERT INTO user_objects (object_id, condition_id, comment, created_at, updated_at, created_by, updated_by)
+INSERT INTO user_objects (object_type_id, item_condition_id, comment, created_at, updated_at, created_by, updated_by)
 VALUES
     (1, 2, 'Funda roja', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (2, 3, 'Madera, empuñadura gastada', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
@@ -849,7 +800,7 @@ VALUES
 -- --------------------------------------------------------
 -- TABLA: Pañales Físicos (UserDiapers)
 -- --------------------------------------------------------
-INSERT INTO user_diapers (size_id, type_id, quantity, created_at, updated_at, created_by, updated_by)
+INSERT INTO user_diapers (diaper_size_id, diaper_type_id, quantity, created_at, updated_at, created_by, updated_by)
 VALUES
     (2, 2, 10, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (3, 1, 30, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
@@ -871,7 +822,7 @@ VALUES
 -- ============================================================
 
 -- Nombres de Medicamentos
-INSERT INTO medication_name_enum (medication_name, created_at, updated_at, created_by, updated_by)
+INSERT INTO medication_names_enum (medication_name, created_at, updated_at, created_by, updated_by)
 VALUES
     ('Sintrom (Acenocumarol)', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),   -- ID 1
     ('Omeprazol', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),                -- ID 2
@@ -885,7 +836,7 @@ VALUES
     ('Ebastina 10mg', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');            -- ID 10
 
 -- Vías de Administración
-INSERT INTO medication_application_enum (medication_application_name, created_at, updated_at, created_by, updated_by)
+INSERT INTO medication_applications_enum (medication_application_name, created_at, updated_at, created_by, updated_by)
 VALUES
     ('Oral', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Subcutánea', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
@@ -894,7 +845,7 @@ VALUES
     ('Inhalada', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- Condiciones de Conservación
-INSERT INTO storage_condition_enum (storage_name, created_at, updated_at, created_by, updated_by)
+INSERT INTO storage_conditions_enum (storage_name, created_at, updated_at, created_by, updated_by)
 VALUES
     ('Temperatura Ambiente', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Refrigerado (Nevera)', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
@@ -1008,7 +959,7 @@ INSERT INTO allergies_medications (user_allergy_id, medication_id) VALUES (3, 7)
 -- TAREAS DE HIGIENE (bathroom_tasks)
 -- ============================================================
 
-INSERT INTO bathroom_tasks (task_name, estimated_time, is_active, created_at, updated_at, created_by, updated_by)
+INSERT INTO bathroom_tasks_enum (task_name, estimated_time, is_active, created_at, updated_at, created_by, updated_by)
 VALUES
     ('Aseo en Lavabo (Cara/Manos)', '00:10:00', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Cambio de Pañal / Absorbente', '00:08:00', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
@@ -1028,7 +979,7 @@ VALUES
 -- ============================================================
 -- HORARIOS DE USO DE BAÑO(bathroom_schedule)
 -- ============================================================
-INSERT INTO bathroom_schedule (user_id, bathroom_turn_id, bathroom_task_id, created_at, updated_at, created_by, updated_by)
+INSERT INTO bathroom_schedules (user_id, bathroom_turn_id, bathroom_task_id, created_at, updated_at, created_by, updated_by)
 VALUES
     -- 1. ANTONIO (ID 1): Al llegar, aseo general en lavabo (ID 1).
     (1, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),

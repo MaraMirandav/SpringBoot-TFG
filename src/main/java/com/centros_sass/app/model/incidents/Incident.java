@@ -21,7 +21,7 @@ public abstract class Incident extends BaseEntity {
 
     @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by_worker_id", nullable = false)
+    @JoinColumn(name = "reported_by_id", nullable = false)
     private Worker reportedBy;
 
     @NonNull

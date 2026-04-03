@@ -42,16 +42,15 @@ public class UserBelonging extends BaseEntity {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_clothing_id", nullable = true)
+    @JoinColumn(name = "user_clothing_id")
     private UserClothing userClothing;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_object_id", nullable = true)
+    @JoinColumn(name = "user_object_id")
     private UserObject userObject;
 
-    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_diaper_id", nullable = true)
+    @JoinColumn(name = "user_diaper_id")
     private UserDiaper userDiaper;
 
     @NonNull

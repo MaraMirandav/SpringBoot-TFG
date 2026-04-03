@@ -1,14 +1,18 @@
 package com.centros_sass.app.model.bathroom;
 
 import java.time.LocalTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -45,4 +49,18 @@ public class BathroomTurn extends BaseEntity {
     @Column(name = "end_at", nullable = false, columnDefinition = "TIME")
     private LocalTime endAt;
 
+    // RELATIONS
+    // // BathroomSchedule
+    @OneToMany(mappedBy = "bathroomTurn", fetch = FetchType.LAZY)
+    private Set<BathroomSchedule> bathroomSchedules = new HashSet<>();
+
+    public void addBathroomSchedule(BathroomSchedule schedule) {
+        this.bathroomSchedules.add(schedule);
+        schedule.setBathroomTurn(this);
+    }
+
+    public void removeBathroomSchedule(BathroomSchedule schedule) {
+        this.bathroomSchedules.remove(schedule);
+        schedule.setBathroomTurn(null);
+    }
 }
