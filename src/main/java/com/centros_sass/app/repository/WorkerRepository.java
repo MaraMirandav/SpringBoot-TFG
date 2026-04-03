@@ -1,7 +1,10 @@
 package com.centros_sass.app.repository;
 
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,5 +19,17 @@ public interface WorkerRepository extends JpaRepository<Worker, Integer> {
     Optional<Worker> findByEmailWithRoles(@Param("email") String email);
 
     boolean existsByEmail(String email);
+
+    // --- DNI ---
+
+    Optional<Worker> findByDni(String dni);
+
+    boolean existsByDni(String dni);
+
+    // --- Estado activo/inactivo ---
+
+    Page<Worker> findAllByIsActiveTrue(Pageable pageable);
+
+    Page<Worker> findAllByIsActiveFalse(Pageable pageable);
 
 }
