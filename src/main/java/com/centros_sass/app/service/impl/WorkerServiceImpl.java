@@ -123,7 +123,7 @@ public class WorkerServiceImpl implements WorkerService {
         });
     }
 
-    // --- Helpers ---
+    // Métodos Helpers
 
     private void assignRoles(Worker worker, Set<Integer> roleIds) {
         if (roleIds == null || roleIds.isEmpty()) {

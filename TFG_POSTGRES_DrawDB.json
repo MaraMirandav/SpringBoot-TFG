@@ -3783,7 +3783,7 @@
           "default": "",
           "check": "",
           "primary": false,
-          "unique": true,
+          "unique": false,
           "notNull": true,
           "increment": false,
           "comment": "",
@@ -4603,14 +4603,14 @@
       "id": "HdkjFIWeYX6WO7YOlDlQd"
     },
     {
-      "startTableId": "e89VDr6ZL2BRjk_3McnOC",
-      "startFieldId": "CwzdkvTCGS-WEuTOGN3iC",
-      "endTableId": "zOlF8UcNEUSGyg4c5A7_z",
-      "endFieldId": "KGzecZbFJa0SQ-IIVNMXj",
-      "cardinality": "one_to_one",
+      "startTableId": "zOlF8UcNEUSGyg4c5A7_z",
+      "startFieldId": "KGzecZbFJa0SQ-IIVNMXj",
+      "endTableId": "e89VDr6ZL2BRjk_3McnOC",
+      "endFieldId": "CwzdkvTCGS-WEuTOGN3iC",
+      "cardinality": "one_to_many",
       "updateConstraint": "No action",
       "deleteConstraint": "No action",
-      "name": "fk_worker_schedule_records_schedule_id_workers_schedules",
+      "name": "fk_workers_schedules_id_workers_schedules_records",
       "id": "9qqWt1XTOjdumDEHxrv8s"
     },
     {

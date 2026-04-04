@@ -20,5 +20,7 @@ public record WorkerScheduleResponseDTO(
     Boolean isActive,
     Boolean hasRecord,
     String createdAt,
-    String updatedAt
+    String createdBy,
+    String updatedAt,
+    String updatedBy
 ) {}

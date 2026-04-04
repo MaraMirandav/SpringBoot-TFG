@@ -111,7 +111,7 @@ public class WorkerScheduleServiceImpl implements WorkerScheduleService {
 
             workerScheduleMapper.updateFromDto(dto, existing);
 
-            WorkerSchedule saved = workerScheduleRepository.save(existing);
+            WorkerSchedule saved = workerScheduleRepository.saveAndFlush(existing);
             return workerScheduleMapper.toResponse(saved);
         });
     }
@@ -121,7 +121,7 @@ public class WorkerScheduleServiceImpl implements WorkerScheduleService {
     public Optional<WorkerScheduleResponseDTO> delete(Integer id) {
         return workerScheduleRepository.findById(id).map(existing -> {
             existing.setIsActive(false);
-            WorkerSchedule saved = workerScheduleRepository.save(existing);
+            WorkerSchedule saved = workerScheduleRepository.saveAndFlush(existing);
             return workerScheduleMapper.toResponse(saved);
         });
     }

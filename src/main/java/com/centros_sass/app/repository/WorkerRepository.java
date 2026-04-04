@@ -19,14 +19,12 @@ public interface WorkerRepository extends JpaRepository<Worker, Integer> {
 
     boolean existsByEmail(String email);
 
-    // --- DNI ---
-
+    // DNI
     Optional<Worker> findByDni(String dni);
 
     boolean existsByDni(String dni);
 
-    // --- Estado activo/inactivo ---
-
+    // Estado activo/inactivo
     Page<Worker> findAllByIsActiveTrue(Pageable pageable);
 
     Page<Worker> findAllByIsActiveFalse(Pageable pageable);
