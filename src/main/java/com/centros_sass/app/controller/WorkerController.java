@@ -35,7 +35,7 @@ public class WorkerController {
 
     @GetMapping
     public ResponseEntity<ApiDataResponse<List<WorkerResponseDTO>>> findAll(
-            @PageableDefault(size = 20) Pageable pageable) {
+            @PageableDefault(size = 5) Pageable pageable) {
         Page<WorkerResponseDTO> page = workerService.findAll(pageable);
         return ResponseEntity.ok(new ApiDataResponse<>(
                 "Trabajadores activos encontrados",
