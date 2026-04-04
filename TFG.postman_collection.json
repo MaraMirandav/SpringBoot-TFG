@@ -1,0 +1,2807 @@
+{
+  "info": {
+    "_postman_id": "15689b47-89dd-4b25-9c57-3989a7e748b9",
+    "name": "TFG",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "42944299"
+  },
+  "item": [
+    {
+      "name": "/",
+      "item": [
+        {
+          "name": "/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5555/health",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "health"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/health",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5555/health",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "health"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 31 Mar 2026 14:53:07 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Mi primera API funcionando!!!!\",\n    \"version\": \"1.0.0\",\n    \"status\": \"UP\"\n}"
+            },
+            {
+              "name": "/health",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5555/health",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "health"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Apr 2026 23:45:44 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"API funcionando correctamente\",\n    \"data\": {\n        \"version\": \"1.0.0\",\n        \"status\": \"UP\"\n    },\n    \"status\": 200\n}"
+            }
+          ]
+        },
+        {
+          "name": "/error",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5555/error",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "error"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/home",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5555/home",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "home"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "/api/auth",
+      "item": [
+        {
+          "name": "/register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"admin@email.com\",\n    \"password\": \"admin.1234\",\n    \"firstName\": \"Admin\",\n    \"firstSurname\": \"Admin\",\n    \"dni\": \"Z2033086Y\",\n    \"mainPhone\": \"+64 64647474\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5555/api/auth/register",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/register",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"admin@email.com\",\n    \"password\": \"admin.1234\",\n    \"firstName\": \"Admin\",\n    \"firstSurname\": \"Admin\",\n    \"dni\": \"Z2033086Y\",\n    \"mainPhone\": \"+64 64647474\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5555/api/auth/register",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 02 Apr 2026 13:49:08 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Trabajador registrado exitosamente\",\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NzUxMzc3NDgsImV4cCI6MTc3NTIyNDE0OH0.bxJDVA2zqkTb0YRx0A9VZ9EuOlxkEjipSq3uf0RZ1TU2f0oY-FODnA1Fr68EvbfY\"\n    },\n    \"status\": 201,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "/login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"admin@email.com\",\n    \"password\": \"admin.1234\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5555/api/auth/login",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "/workers",
+      "item": [
+        {
+          "name": "/workers",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/workers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "workers"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/workers",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/workers",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "workers"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 16:35:41 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Trabajadores activos encontrados\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"firstName\": \"Admin\",\n            \"secondName\": null,\n            \"firstSurname\": \"Sistema\",\n            \"secondSurname\": null,\n            \"dni\": \"00000000T\",\n            \"mainPhone\": \"+34 000000000\",\n            \"secondPhone\": null,\n            \"email\": \"admin@centro-sass.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                1,\n                2\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:44:47.829157\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:44:47.829157\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 2,\n            \"firstName\": \"Ana\",\n            \"secondName\": \"María\",\n            \"firstSurname\": \"García\",\n            \"secondSurname\": \"López\",\n            \"dni\": \"Z2033087A\",\n            \"mainPhone\": \"600123456\",\n            \"secondPhone\": \"911223344\",\n            \"email\": \"ana.garcia@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                3,\n                9\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 3,\n            \"firstName\": \"Carlos\",\n            \"secondName\": null,\n            \"firstSurname\": \"Rodríguez\",\n            \"secondSurname\": \"Sánchez\",\n            \"dni\": \"Z2333087A\",\n            \"mainPhone\": \"655987654\",\n            \"secondPhone\": null,\n            \"email\": \"carlos.rod@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                1\n            ],\n            \"scheduleCount\": 10,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 4,\n            \"firstName\": \"Lucía\",\n            \"secondName\": \"Carmen\",\n            \"firstSurname\": \"Fernández\",\n            \"secondSurname\": null,\n            \"dni\": \"Z2033037C\",\n            \"mainPhone\": \"611222333\",\n            \"secondPhone\": null,\n            \"email\": \"lucia.fer@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [],\n            \"scheduleCount\": 10,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 6,\n            \"firstName\": \"Elena\",\n            \"secondName\": null,\n            \"firstSurname\": \"Moreno\",\n            \"secondSurname\": \"Díaz\",\n            \"dni\": \"Z2343087A\",\n            \"mainPhone\": \"622333444\",\n            \"secondPhone\": null,\n            \"email\": \"elena.moreno@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                1,\n                6\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 7,\n            \"firstName\": \"Roberto\",\n            \"secondName\": null,\n            \"firstSurname\": \"Sanz\",\n            \"secondSurname\": \"Gil\",\n            \"dni\": \"Z2033547T\",\n            \"mainPhone\": \"600666666\",\n            \"secondPhone\": null,\n            \"email\": \"roberto.rrhh@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                3\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 8,\n            \"firstName\": \"Beatriz\",\n            \"secondName\": null,\n            \"firstSurname\": \"Molina\",\n            \"secondSurname\": \"Pérez\",\n            \"dni\": \"Z2036687F\",\n            \"mainPhone\": \"600777777\",\n            \"secondPhone\": null,\n            \"email\": \"bea.recep@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                5\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 9,\n            \"firstName\": \"Laura\",\n            \"secondName\": null,\n            \"firstSurname\": \"Ruiz\",\n            \"secondSurname\": \"Giménez\",\n            \"dni\": \"Z2273087A\",\n            \"mainPhone\": \"600888888\",\n            \"secondPhone\": null,\n            \"email\": \"laura.fisio@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                6\n            ],\n            \"scheduleCount\": 10,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 10,\n            \"firstName\": \"Pablo\",\n            \"secondName\": \"José\",\n            \"firstSurname\": \"Martín\",\n            \"secondSurname\": \"Sanz\",\n            \"dni\": \"Z2038487B\",\n            \"mainPhone\": \"600999999\",\n            \"secondPhone\": null,\n            \"email\": \"pablo.to@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                7\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 11,\n            \"firstName\": \"Sara\",\n            \"secondName\": null,\n            \"firstSurname\": \"Díaz\",\n            \"secondSurname\": \"Romero\",\n            \"dni\": \"Z2033447A\",\n            \"mainPhone\": \"611000111\",\n            \"secondPhone\": null,\n            \"email\": \"sara.ts@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                8\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 12,\n            \"firstName\": \"David\",\n            \"secondName\": null,\n            \"firstSurname\": \"Serrano\",\n            \"secondSurname\": \"Molina\",\n            \"dni\": \"Z2333087Y\",\n            \"mainPhone\": \"611222333\",\n            \"secondPhone\": null,\n            \"email\": \"david.psico@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                9\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 13,\n            \"firstName\": \"Carmen\",\n            \"secondName\": \"Luisa\",\n            \"firstSurname\": \"Ortiz\",\n            \"secondSurname\": \"Vega\",\n            \"dni\": \"Z2233087A\",\n            \"mainPhone\": \"611333444\",\n            \"secondPhone\": null,\n            \"email\": \"carmen.gero@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                9\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 14,\n            \"firstName\": \"Javier\",\n            \"secondName\": null,\n            \"firstSurname\": \"Navarro\",\n            \"secondSurname\": \"Flores\",\n            \"dni\": \"Z2133087Y\",\n            \"mainPhone\": \"611444555\",\n            \"secondPhone\": null,\n            \"email\": \"javier.tas@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                9,\n                10\n            ],\n            \"scheduleCount\": 10,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 15,\n            \"firstName\": \"Manuel\",\n            \"secondName\": \"Antonio\",\n            \"firstSurname\": \"Iglesias\",\n            \"secondSurname\": \"Vargas\",\n            \"dni\": \"Z2035587A\",\n            \"mainPhone\": \"611555666\",\n            \"secondPhone\": null,\n            \"email\": \"manolo.ruta@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                9,\n                11\n            ],\n            \"scheduleCount\": 10,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 16,\n            \"firstName\": \"Julián\",\n            \"secondName\": null,\n            \"firstSurname\": \"Vázquez\",\n            \"secondSurname\": \"Rey\",\n            \"dni\": \"Z2036697A\",\n            \"mainPhone\": \"611666777\",\n            \"secondPhone\": null,\n            \"email\": \"julian.copi@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 17,\n            \"firstName\": \"Rosa\",\n            \"secondName\": \"María\",\n            \"firstSurname\": \"Vidal\",\n            \"secondSurname\": \"Sáez\",\n            \"dni\": \"Z2037787A\",\n            \"mainPhone\": \"611777888\",\n            \"secondPhone\": null,\n            \"email\": \"rosa.limpieza@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [],\n            \"scheduleCount\": 0,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 16\n}"
+            }
+          ]
+        },
+        {
+          "name": "/workers/all",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/workers/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "workers",
+                "all"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/workers/all",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/workers/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "workers",
+                    "all"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 16:37:02 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Todos los trabajadores encontrados\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"firstName\": \"Admin\",\n            \"secondName\": null,\n            \"firstSurname\": \"Sistema\",\n            \"secondSurname\": null,\n            \"dni\": \"00000000T\",\n            \"mainPhone\": \"+34 000000000\",\n            \"secondPhone\": null,\n            \"email\": \"admin@centro-sass.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                1,\n                2\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:44:47.829157\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:44:47.829157\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 2,\n            \"firstName\": \"Ana\",\n            \"secondName\": \"María\",\n            \"firstSurname\": \"García\",\n            \"secondSurname\": \"López\",\n            \"dni\": \"Z2033087A\",\n            \"mainPhone\": \"600123456\",\n            \"secondPhone\": \"911223344\",\n            \"email\": \"ana.garcia@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                3,\n                9\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 3,\n            \"firstName\": \"Carlos\",\n            \"secondName\": null,\n            \"firstSurname\": \"Rodríguez\",\n            \"secondSurname\": \"Sánchez\",\n            \"dni\": \"Z2333087A\",\n            \"mainPhone\": \"655987654\",\n            \"secondPhone\": null,\n            \"email\": \"carlos.rod@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                1\n            ],\n            \"scheduleCount\": 10,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 4,\n            \"firstName\": \"Lucía\",\n            \"secondName\": \"Carmen\",\n            \"firstSurname\": \"Fernández\",\n            \"secondSurname\": null,\n            \"dni\": \"Z2033037C\",\n            \"mainPhone\": \"611222333\",\n            \"secondPhone\": null,\n            \"email\": \"lucia.fer@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [],\n            \"scheduleCount\": 10,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 5,\n            \"firstName\": \"Miguel\",\n            \"secondName\": null,\n            \"firstSurname\": \"Torres\",\n            \"secondSurname\": \"Ruiz\",\n            \"dni\": \"Z2033083J\",\n            \"mainPhone\": \"699888777\",\n            \"secondPhone\": \"933445566\",\n            \"email\": \"miguel.torres@email.com\",\n            \"isActive\": false,\n            \"roleIds\": [\n                4\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 6,\n            \"firstName\": \"Elena\",\n            \"secondName\": null,\n            \"firstSurname\": \"Moreno\",\n            \"secondSurname\": \"Díaz\",\n            \"dni\": \"Z2343087A\",\n            \"mainPhone\": \"622333444\",\n            \"secondPhone\": null,\n            \"email\": \"elena.moreno@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                1,\n                6\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 7,\n            \"firstName\": \"Roberto\",\n            \"secondName\": null,\n            \"firstSurname\": \"Sanz\",\n            \"secondSurname\": \"Gil\",\n            \"dni\": \"Z2033547T\",\n            \"mainPhone\": \"600666666\",\n            \"secondPhone\": null,\n            \"email\": \"roberto.rrhh@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                3\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 8,\n            \"firstName\": \"Beatriz\",\n            \"secondName\": null,\n            \"firstSurname\": \"Molina\",\n            \"secondSurname\": \"Pérez\",\n            \"dni\": \"Z2036687F\",\n            \"mainPhone\": \"600777777\",\n            \"secondPhone\": null,\n            \"email\": \"bea.recep@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                5\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 9,\n            \"firstName\": \"Laura\",\n            \"secondName\": null,\n            \"firstSurname\": \"Ruiz\",\n            \"secondSurname\": \"Giménez\",\n            \"dni\": \"Z2273087A\",\n            \"mainPhone\": \"600888888\",\n            \"secondPhone\": null,\n            \"email\": \"laura.fisio@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                6\n            ],\n            \"scheduleCount\": 10,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 10,\n            \"firstName\": \"Pablo\",\n            \"secondName\": \"José\",\n            \"firstSurname\": \"Martín\",\n            \"secondSurname\": \"Sanz\",\n            \"dni\": \"Z2038487B\",\n            \"mainPhone\": \"600999999\",\n            \"secondPhone\": null,\n            \"email\": \"pablo.to@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                7\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 11,\n            \"firstName\": \"Sara\",\n            \"secondName\": null,\n            \"firstSurname\": \"Díaz\",\n            \"secondSurname\": \"Romero\",\n            \"dni\": \"Z2033447A\",\n            \"mainPhone\": \"611000111\",\n            \"secondPhone\": null,\n            \"email\": \"sara.ts@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                8\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 12,\n            \"firstName\": \"David\",\n            \"secondName\": null,\n            \"firstSurname\": \"Serrano\",\n            \"secondSurname\": \"Molina\",\n            \"dni\": \"Z2333087Y\",\n            \"mainPhone\": \"611222333\",\n            \"secondPhone\": null,\n            \"email\": \"david.psico@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                9\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 13,\n            \"firstName\": \"Carmen\",\n            \"secondName\": \"Luisa\",\n            \"firstSurname\": \"Ortiz\",\n            \"secondSurname\": \"Vega\",\n            \"dni\": \"Z2233087A\",\n            \"mainPhone\": \"611333444\",\n            \"secondPhone\": null,\n            \"email\": \"carmen.gero@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                9\n            ],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 14,\n            \"firstName\": \"Javier\",\n            \"secondName\": null,\n            \"firstSurname\": \"Navarro\",\n            \"secondSurname\": \"Flores\",\n            \"dni\": \"Z2133087Y\",\n            \"mainPhone\": \"611444555\",\n            \"secondPhone\": null,\n            \"email\": \"javier.tas@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                9,\n                10\n            ],\n            \"scheduleCount\": 10,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 15,\n            \"firstName\": \"Manuel\",\n            \"secondName\": \"Antonio\",\n            \"firstSurname\": \"Iglesias\",\n            \"secondSurname\": \"Vargas\",\n            \"dni\": \"Z2035587A\",\n            \"mainPhone\": \"611555666\",\n            \"secondPhone\": null,\n            \"email\": \"manolo.ruta@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [\n                9,\n                11\n            ],\n            \"scheduleCount\": 10,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 16,\n            \"firstName\": \"Julián\",\n            \"secondName\": null,\n            \"firstSurname\": \"Vázquez\",\n            \"secondSurname\": \"Rey\",\n            \"dni\": \"Z2036697A\",\n            \"mainPhone\": \"611666777\",\n            \"secondPhone\": null,\n            \"email\": \"julian.copi@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [],\n            \"scheduleCount\": 5,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 17,\n            \"firstName\": \"Rosa\",\n            \"secondName\": \"María\",\n            \"firstSurname\": \"Vidal\",\n            \"secondSurname\": \"Sáez\",\n            \"dni\": \"Z2037787A\",\n            \"mainPhone\": \"611777888\",\n            \"secondPhone\": null,\n            \"email\": \"rosa.limpieza@email.com\",\n            \"isActive\": true,\n            \"roleIds\": [],\n            \"scheduleCount\": 0,\n            \"createdAt\": \"2026-04-04T15:45:03.667909\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 17\n}"
+            }
+          ]
+        },
+        {
+          "name": "/workers/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/workers/6",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "workers",
+                "6"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/workers/:id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/workers/6",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "workers",
+                    "6"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 16:40:33 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Trabajador encontrado\",\n    \"data\": {\n        \"id\": 6,\n        \"firstName\": \"Elena\",\n        \"secondName\": null,\n        \"firstSurname\": \"Moreno\",\n        \"secondSurname\": \"Díaz\",\n        \"dni\": \"Z2343087A\",\n        \"mainPhone\": \"622333444\",\n        \"secondPhone\": null,\n        \"email\": \"elena.moreno@email.com\",\n        \"isActive\": true,\n        \"roleIds\": [\n            1,\n            6\n        ],\n        \"scheduleCount\": 5,\n        \"createdAt\": \"2026-04-04T15:45:03.667909\",\n        \"createdBy\": \"system\",\n        \"updatedAt\": \"2026-04-04T15:45:03.667909\",\n        \"updatedBy\": \"system\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "/workers",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Antonia\",\n  \"secondName\": null,\n  \"firstSurname\": \"Cáceres\",\n  \"secondSurname\": \"Apellido2\",\n  \"dni\": \"Z9999999X\",\n  \"mainPhone\": \"600111222\",\n  \"secondPhone\": null,\n  \"email\": \"test.worker@email.com\",\n  \"password\": \"test123456\",\n  \"roleIds\": [1]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/workers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "workers"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/workers",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Antonia\",\n  \"secondName\": null,\n  \"firstSurname\": \"Cáceres\",\n  \"secondSurname\": \"Apellido2\",\n  \"dni\": \"Z9999999X\",\n  \"mainPhone\": \"600111222\",\n  \"secondPhone\": null,\n  \"email\": \"test.worker@email.com\",\n  \"password\": \"test123456\",\n  \"roleIds\": [1]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/workers",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "workers"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 16:47:03 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Trabajador creado exitosamente\",\n    \"data\": {\n        \"id\": 18,\n        \"firstName\": \"Antonia\",\n        \"secondName\": null,\n        \"firstSurname\": \"Cáceres\",\n        \"secondSurname\": \"Apellido2\",\n        \"dni\": \"Z9999999X\",\n        \"mainPhone\": \"600111222\",\n        \"secondPhone\": null,\n        \"email\": \"test.worker@email.com\",\n        \"isActive\": true,\n        \"roleIds\": [\n            1\n        ],\n        \"scheduleCount\": 0,\n        \"createdAt\": \"2026-04-04T18:47:03.768812\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-04T18:47:03.768812\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 201,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "/workers:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"secondSurname\": \"Ovalle\",\n  \"mainPhone\": \"600999888\",\n  \"email\": \"nuevo.email@email.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/workers/18",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "workers",
+                "18"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/workers:id",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"secondSurname\": \"Ovalle\",\n  \"mainPhone\": \"600999888\",\n  \"email\": \"nuevo.email@email.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/workers/18",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "workers",
+                    "18"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 16:49:31 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Trabajador actualizado\",\n    \"data\": {\n        \"id\": 18,\n        \"firstName\": \"Antonia\",\n        \"secondName\": null,\n        \"firstSurname\": \"Cáceres\",\n        \"secondSurname\": \"Ovalle\",\n        \"dni\": \"Z9999999X\",\n        \"mainPhone\": \"600999888\",\n        \"secondPhone\": null,\n        \"email\": \"nuevo.email@email.com\",\n        \"isActive\": true,\n        \"roleIds\": [\n            1\n        ],\n        \"scheduleCount\": 0,\n        \"createdAt\": \"2026-04-04T18:47:03.768812\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-04T18:49:31.506120\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "/worker/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/workers/18",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "workers",
+                "18"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/worker/:id",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/workers/18",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "workers",
+                    "18"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 16:55:37 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Trabajador eliminado\",\n    \"data\": {\n        \"id\": 18,\n        \"firstName\": \"Antonia\",\n        \"secondName\": null,\n        \"firstSurname\": \"Cáceres\",\n        \"secondSurname\": \"Ovalle\",\n        \"dni\": \"Z9999999X\",\n        \"mainPhone\": \"600999888\",\n        \"secondPhone\": null,\n        \"email\": \"nuevo.email@email.com\",\n        \"isActive\": false,\n        \"roleIds\": [\n            1\n        ],\n        \"scheduleCount\": 0,\n        \"createdAt\": \"2026-04-04T18:47:03.768812\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-04T18:55:37.141080\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "/worker-schedules",
+      "item": [
+        {
+          "name": "/worker-schedules",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/worker-schedules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedules"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/worker-schedules",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/worker-schedules",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "worker-schedules"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 16:59:53 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Horarios encontrados\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"workerId\": 1,\n            \"workerFullName\": \"Admin Sistema\",\n            \"openDayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"08:15:00\",\n            \"endAt\": \"18:30:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 2,\n            \"workerId\": 1,\n            \"workerFullName\": \"Admin Sistema\",\n            \"openDayId\": 2,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"08:15:00\",\n            \"endAt\": \"18:30:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 3,\n            \"workerId\": 1,\n            \"workerFullName\": \"Admin Sistema\",\n            \"openDayId\": 3,\n            \"dayName\": \"Miércoles\",\n            \"startAt\": \"08:15:00\",\n            \"endAt\": \"18:30:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 4,\n            \"workerId\": 1,\n            \"workerFullName\": \"Admin Sistema\",\n            \"openDayId\": 4,\n            \"dayName\": \"Jueves\",\n            \"startAt\": \"08:15:00\",\n            \"endAt\": \"18:30:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 5,\n            \"workerId\": 1,\n            \"workerFullName\": \"Admin Sistema\",\n            \"openDayId\": 5,\n            \"dayName\": \"Viernes\",\n            \"startAt\": \"08:15:00\",\n            \"endAt\": \"18:30:00\",\n            \"isActive\": true,\n            \"hasRecord\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 6,\n            \"workerId\": 2,\n            \"workerFullName\": \"Ana María García López\",\n            \"openDayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"08:15:00\",\n            \"endAt\": \"18:30:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 7,\n            \"workerId\": 2,\n            \"workerFullName\": \"Ana María García López\",\n            \"openDayId\": 2,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"08:15:00\",\n            \"endAt\": \"18:30:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 8,\n            \"workerId\": 2,\n            \"workerFullName\": \"Ana María García López\",\n            \"openDayId\": 3,\n            \"dayName\": \"Miércoles\",\n            \"startAt\": \"08:15:00\",\n            \"endAt\": \"18:30:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 9,\n            \"workerId\": 2,\n            \"workerFullName\": \"Ana María García López\",\n            \"openDayId\": 4,\n            \"dayName\": \"Jueves\",\n            \"startAt\": \"08:15:00\",\n            \"endAt\": \"18:30:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 10,\n            \"workerId\": 2,\n            \"workerFullName\": \"Ana María García López\",\n            \"openDayId\": 5,\n            \"dayName\": \"Viernes\",\n            \"startAt\": \"08:15:00\",\n            \"endAt\": \"18:30:00\",\n            \"isActive\": true,\n            \"hasRecord\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 11,\n            \"workerId\": 3,\n            \"workerFullName\": \"Carlos Rodríguez Sánchez\",\n            \"openDayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"08:15:00\",\n            \"endAt\": \"12:00:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 12,\n            \"workerId\": 3,\n            \"workerFullName\": \"Carlos Rodríguez Sánchez\",\n            \"openDayId\": 2,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"08:15:00\",\n            \"endAt\": \"12:00:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 13,\n            \"workerId\": 3,\n            \"workerFullName\": \"Carlos Rodríguez Sánchez\",\n            \"openDayId\": 3,\n            \"dayName\": \"Miércoles\",\n            \"startAt\": \"08:15:00\",\n            \"endAt\": \"12:00:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 14,\n            \"workerId\": 3,\n            \"workerFullName\": \"Carlos Rodríguez Sánchez\",\n            \"openDayId\": 4,\n            \"dayName\": \"Jueves\",\n            \"startAt\": \"08:15:00\",\n            \"endAt\": \"12:00:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 15,\n            \"workerId\": 3,\n            \"workerFullName\": \"Carlos Rodríguez Sánchez\",\n            \"openDayId\": 5,\n            \"dayName\": \"Viernes\",\n            \"startAt\": \"08:15:00\",\n            \"endAt\": \"12:00:00\",\n            \"isActive\": true,\n            \"hasRecord\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 16,\n            \"workerId\": 3,\n            \"workerFullName\": \"Carlos Rodríguez Sánchez\",\n            \"openDayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"15:00:00\",\n            \"endAt\": \"18:30:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 17,\n            \"workerId\": 3,\n            \"workerFullName\": \"Carlos Rodríguez Sánchez\",\n            \"openDayId\": 2,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"15:00:00\",\n            \"endAt\": \"18:30:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 18,\n            \"workerId\": 3,\n            \"workerFullName\": \"Carlos Rodríguez Sánchez\",\n            \"openDayId\": 3,\n            \"dayName\": \"Miércoles\",\n            \"startAt\": \"15:00:00\",\n            \"endAt\": \"18:30:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 19,\n            \"workerId\": 3,\n            \"workerFullName\": \"Carlos Rodríguez Sánchez\",\n            \"openDayId\": 4,\n            \"dayName\": \"Jueves\",\n            \"startAt\": \"15:00:00\",\n            \"endAt\": \"18:30:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 20,\n            \"workerId\": 3,\n            \"workerFullName\": \"Carlos Rodríguez Sánchez\",\n            \"openDayId\": 5,\n            \"dayName\": \"Viernes\",\n            \"startAt\": \"15:00:00\",\n            \"endAt\": \"18:30:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 105\n}"
+            }
+          ]
+        },
+        {
+          "name": "/worker-schedules/worker/:d",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/worker-schedules/worker/6",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedules",
+                "worker",
+                "6"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "New Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/worker-schedules/worker/6",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "worker-schedules",
+                    "worker",
+                    "6"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 17:00:58 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Horarios del trabajador encontrados\",\n    \"data\": [\n        {\n            \"id\": 36,\n            \"workerId\": 6,\n            \"workerFullName\": \"Elena Moreno Díaz\",\n            \"openDayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"18:00:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 37,\n            \"workerId\": 6,\n            \"workerFullName\": \"Elena Moreno Díaz\",\n            \"openDayId\": 2,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"18:00:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 38,\n            \"workerId\": 6,\n            \"workerFullName\": \"Elena Moreno Díaz\",\n            \"openDayId\": 3,\n            \"dayName\": \"Miércoles\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"18:00:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 39,\n            \"workerId\": 6,\n            \"workerFullName\": \"Elena Moreno Díaz\",\n            \"openDayId\": 4,\n            \"dayName\": \"Jueves\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"18:00:00\",\n            \"isActive\": true,\n            \"hasRecord\": false,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 40,\n            \"workerId\": 6,\n            \"workerFullName\": \"Elena Moreno Díaz\",\n            \"openDayId\": 5,\n            \"dayName\": \"Viernes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"18:00:00\",\n            \"isActive\": true,\n            \"hasRecord\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.695145\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 5\n}"
+            }
+          ]
+        },
+        {
+          "name": "/worker-schedules/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/worker-schedules/5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedules",
+                "5"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/worker-schedules/:id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/worker-schedules/5",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "worker-schedules",
+                    "5"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 17:04:29 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Horario encontrado\",\n    \"data\": {\n        \"id\": 5,\n        \"workerId\": 1,\n        \"workerFullName\": \"Admin Sistema\",\n        \"openDayId\": 5,\n        \"dayName\": \"Viernes\",\n        \"startAt\": \"08:15:00\",\n        \"endAt\": \"18:30:00\",\n        \"isActive\": true,\n        \"hasRecord\": true,\n        \"createdAt\": \"2026-04-04T15:45:03.695145\",\n        \"createdBy\": \"system\",\n        \"updatedAt\": \"2026-04-04T15:45:03.695145\",\n        \"updatedBy\": \"system\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "/worker-schedules",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workerId\": 1,\n  \"openDayId\": 1,\n  \"startAt\": \"18:30:00\",\n  \"endAt\": \"22:00:00\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/worker-schedules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedules"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/worker-schedules",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": 1,\n  \"openDayId\": 1,\n  \"startAt\": \"18:30:00\",\n  \"endAt\": \"22:00:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/worker-schedules",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "worker-schedules"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 17:10:25 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Horario creado exitosamente\",\n    \"data\": {\n        \"id\": 106,\n        \"workerId\": 1,\n        \"workerFullName\": \"Admin Sistema\",\n        \"openDayId\": 1,\n        \"dayName\": \"Lunes\",\n        \"startAt\": \"18:30:00\",\n        \"endAt\": \"22:00:00\",\n        \"isActive\": true,\n        \"hasRecord\": false,\n        \"createdAt\": \"2026-04-04T19:10:25.846305\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-04T19:10:25.846305\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 201,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "/worker-schedules/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"endAt\": \"21:30:00\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/worker-schedules/106",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedules",
+                "106"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/worker-schedules/:id",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endAt\": \"21:30:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/worker-schedules/106",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "worker-schedules",
+                    "106"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 17:11:52 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Horario actualizado\",\n    \"data\": {\n        \"id\": 106,\n        \"workerId\": 1,\n        \"workerFullName\": \"Admin Sistema\",\n        \"openDayId\": 1,\n        \"dayName\": \"Lunes\",\n        \"startAt\": \"18:30:00\",\n        \"endAt\": \"21:30:00\",\n        \"isActive\": true,\n        \"hasRecord\": false,\n        \"createdAt\": \"2026-04-04T19:10:25.846305\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-04T19:11:52.777289\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "/worker-schedules/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/worker-schedules/106",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedules",
+                "106"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/worker-schedules/:id",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/worker-schedules/106",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "worker-schedules",
+                    "106"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 17:12:40 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Horario eliminado\",\n    \"data\": {\n        \"id\": 106,\n        \"workerId\": 1,\n        \"workerFullName\": \"Admin Sistema\",\n        \"openDayId\": 1,\n        \"dayName\": \"Lunes\",\n        \"startAt\": \"18:30:00\",\n        \"endAt\": \"21:30:00\",\n        \"isActive\": false,\n        \"hasRecord\": false,\n        \"createdAt\": \"2026-04-04T19:10:25.846305\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-04T19:12:40.038241\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "/worker-schedule-records",
+      "item": [
+        {
+          "name": "/worker-schedule-records",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/worker-schedule-records",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedule-records"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/worker-schedule-records",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/worker-schedule-records",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "worker-schedule-records"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 17:16:01 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Fichajes encontrados\",\n    \"data\": [\n        {\n            \"id\": 10,\n            \"workerId\": 2,\n            \"workerFullName\": \"Ana María García López\",\n            \"scheduleId\": 10,\n            \"clockIn\": \"2025-01-17T08:16:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.712573\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.712573\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 19,\n            \"workerId\": 3,\n            \"workerFullName\": \"Carlos Rodríguez Sánchez\",\n            \"scheduleId\": 15,\n            \"clockIn\": \"2025-01-17T08:17:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.715804\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.715804\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 28,\n            \"workerId\": 4,\n            \"workerFullName\": \"Lucía Carmen Fernández\",\n            \"scheduleId\": 25,\n            \"clockIn\": \"2025-01-17T07:53:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.718691\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.718691\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 43,\n            \"workerId\": 7,\n            \"workerFullName\": \"Roberto Sanz Gil\",\n            \"scheduleId\": 45,\n            \"clockIn\": \"2025-01-17T07:56:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.730812\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.730812\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 48,\n            \"workerId\": 8,\n            \"workerFullName\": \"Beatriz Molina Pérez\",\n            \"scheduleId\": 50,\n            \"clockIn\": \"2025-01-17T08:26:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.734266\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.734266\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 57,\n            \"workerId\": 9,\n            \"workerFullName\": \"Laura Ruiz Giménez\",\n            \"scheduleId\": 55,\n            \"clockIn\": \"2025-01-17T09:55:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.737256\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.737256\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 62,\n            \"workerId\": 10,\n            \"workerFullName\": \"Pablo José Martín Sanz\",\n            \"scheduleId\": 65,\n            \"clockIn\": \"2025-01-17T09:01:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.742225\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.742225\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 67,\n            \"workerId\": 11,\n            \"workerFullName\": \"Sara Díaz Romero\",\n            \"scheduleId\": 70,\n            \"clockIn\": \"2025-01-17T09:00:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.745379\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.745379\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 72,\n            \"workerId\": 12,\n            \"workerFullName\": \"David Serrano Molina\",\n            \"scheduleId\": 75,\n            \"clockIn\": \"2025-01-17T06:56:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.749276\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.749276\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 77,\n            \"workerId\": 13,\n            \"workerFullName\": \"Carmen Luisa Ortiz Vega\",\n            \"scheduleId\": 80,\n            \"clockIn\": \"2025-01-17T14:57:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.752722\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.752722\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 33,\n            \"workerId\": 5,\n            \"workerFullName\": \"Miguel Torres Ruiz\",\n            \"scheduleId\": 35,\n            \"clockIn\": \"2025-01-17T08:14:00\",\n            \"clockOut\": \"2025-01-17T18:30:00\",\n            \"hoursWorked\": \"10h 16m\",\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.723064\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T18:14:35.563360\",\n            \"updatedBy\": \"admin@centro-sass.com\"\n        },\n        {\n            \"id\": 38,\n            \"workerId\": 6,\n            \"workerFullName\": \"Elena Moreno Díaz\",\n            \"scheduleId\": 40,\n            \"clockIn\": \"2025-01-17T08:57:00\",\n            \"clockOut\": \"2025-01-17T18:30:00\",\n            \"hoursWorked\": \"9h 33m\",\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.727375\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T18:22:29.951089\",\n            \"updatedBy\": \"admin@centro-sass.com\"\n        },\n        {\n            \"id\": 86,\n            \"workerId\": 14,\n            \"workerFullName\": \"Javier Navarro Flores\",\n            \"scheduleId\": 85,\n            \"clockIn\": \"2025-01-17T07:46:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.763015\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.763015\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 95,\n            \"workerId\": 15,\n            \"workerFullName\": \"Manuel Antonio Iglesias Vargas\",\n            \"scheduleId\": 95,\n            \"clockIn\": \"2025-01-17T07:49:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.767565\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.767565\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 100,\n            \"workerId\": 16,\n            \"workerFullName\": \"Julián Vázquez Rey\",\n            \"scheduleId\": 105,\n            \"clockIn\": \"2025-01-17T06:59:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.773148\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.773148\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 5,\n            \"workerId\": 1,\n            \"workerFullName\": \"Admin Sistema\",\n            \"scheduleId\": 5,\n            \"clockIn\": \"2025-01-17T08:18:00\",\n            \"clockOut\": \"2025-01-17T18:30:00\",\n            \"hoursWorked\": \"10h 12m\",\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.707164\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T17:47:17.314698\",\n            \"updatedBy\": \"admin@centro-sass.com\"\n        },\n        {\n            \"id\": 101,\n            \"workerId\": 1,\n            \"workerFullName\": \"Admin Sistema\",\n            \"scheduleId\": 5,\n            \"clockIn\": \"2025-01-20T08:15:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T17:48:05.503211\",\n            \"createdBy\": \"admin@centro-sass.com\",\n            \"updatedAt\": \"2026-04-04T17:48:05.503211\",\n            \"updatedBy\": \"admin@centro-sass.com\"\n        },\n        {\n            \"id\": 102,\n            \"workerId\": 6,\n            \"workerFullName\": \"Elena Moreno Díaz\",\n            \"scheduleId\": 40,\n            \"clockIn\": \"2025-01-20T08:15:00\",\n            \"clockOut\": \"2025-01-20T14:05:00\",\n            \"hoursWorked\": \"5h 50m\",\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T18:24:59.105018\",\n            \"createdBy\": \"admin@centro-sass.com\",\n            \"updatedAt\": \"2026-04-04T18:25:39.458565\",\n            \"updatedBy\": \"admin@centro-sass.com\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 18\n}"
+            }
+          ]
+        },
+        {
+          "name": "/worker-schedule-records/worker/:workerId",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/worker-schedule-records/worker/6",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedule-records",
+                "worker",
+                "6"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/worker-schedule-records/worker/:workerId",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/worker-schedule-records/worker/6",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "worker-schedule-records",
+                    "worker",
+                    "6"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 17:18:12 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Fichajes del trabajador encontrados\",\n    \"data\": [\n        {\n            \"id\": 38,\n            \"workerId\": 6,\n            \"workerFullName\": \"Elena Moreno Díaz\",\n            \"scheduleId\": 40,\n            \"clockIn\": \"2025-01-17T08:57:00\",\n            \"clockOut\": \"2025-01-17T18:30:00\",\n            \"hoursWorked\": \"9h 33m\",\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.727375\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T18:22:29.951089\",\n            \"updatedBy\": \"admin@centro-sass.com\"\n        },\n        {\n            \"id\": 102,\n            \"workerId\": 6,\n            \"workerFullName\": \"Elena Moreno Díaz\",\n            \"scheduleId\": 40,\n            \"clockIn\": \"2025-01-20T08:15:00\",\n            \"clockOut\": \"2025-01-20T14:05:00\",\n            \"hoursWorked\": \"5h 50m\",\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T18:24:59.105018\",\n            \"createdBy\": \"admin@centro-sass.com\",\n            \"updatedAt\": \"2026-04-04T18:25:39.458565\",\n            \"updatedBy\": \"admin@centro-sass.com\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 2\n}"
+            }
+          ]
+        },
+        {
+          "name": "/worker-schedule-records/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/worker-schedule-records/worker/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedule-records",
+                "worker",
+                "2"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/worker-schedule-records/:id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/worker-schedule-records/19",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "worker-schedule-records",
+                    "19"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 17:20:06 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Fichaje encontrado\",\n    \"data\": {\n        \"id\": 19,\n        \"workerId\": 3,\n        \"workerFullName\": \"Carlos Rodríguez Sánchez\",\n        \"scheduleId\": 15,\n        \"clockIn\": \"2025-01-17T08:17:00\",\n        \"clockOut\": null,\n        \"hoursWorked\": null,\n        \"isLate\": false,\n        \"isActive\": true,\n        \"createdAt\": \"2026-04-04T15:45:03.715804\",\n        \"createdBy\": \"system\",\n        \"updatedAt\": \"2026-04-04T15:45:03.715804\",\n        \"updatedBy\": \"system\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "/worker-schedule-records/worker/:workerId/active",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/worker-schedule-records/worker/2/active",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedule-records",
+                "worker",
+                "2",
+                "active"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/worker-schedule-records/worker/:workerId/active",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/worker-schedule-records/worker/10/active",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "worker-schedule-records",
+                    "worker",
+                    "10",
+                    "active"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 17:23:31 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Fichajes abiertos del trabajador\",\n    \"data\": [\n        {\n            \"id\": 62,\n            \"workerId\": 10,\n            \"workerFullName\": \"Pablo José Martín Sanz\",\n            \"scheduleId\": 65,\n            \"clockIn\": \"2025-01-17T09:01:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.742225\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.742225\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "/worker-schedule-records/:id/clock-out",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clockOut\": \"2025-02-17T18:30:00\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/worker-schedule-records/10/clock-out",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedule-records",
+                "10",
+                "clock-out"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/worker-schedule-records/:id/clock-out",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clockOut\": \"2025-02-17T18:30:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/worker-schedule-records/10/clock-out",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "worker-schedule-records",
+                    "10",
+                    "clock-out"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 17:30:30 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Salida registrada exitosamente\",\n    \"data\": {\n        \"id\": 10,\n        \"workerId\": 2,\n        \"workerFullName\": \"Ana María García López\",\n        \"scheduleId\": 10,\n        \"clockIn\": \"2025-01-17T08:16:00\",\n        \"clockOut\": \"2025-02-17T18:30:00\",\n        \"hoursWorked\": \"754h 14m\",\n        \"isLate\": false,\n        \"isActive\": true,\n        \"createdAt\": \"2026-04-04T15:45:03.712573\",\n        \"createdBy\": \"system\",\n        \"updatedAt\": \"2026-04-04T19:30:30.509766\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "/worker-schedule-records/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clockIn\": \"2025-01-20T08:15:31\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/worker-schedule-records/10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedule-records",
+                "10"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/worker-schedule-records/:id",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clockIn\": \"2025-01-20T08:15:31\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/worker-schedule-records/10",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "worker-schedule-records",
+                    "10"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 17:37:00 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Fichaje actualizado exitosamente\",\n    \"data\": {\n        \"id\": 10,\n        \"workerId\": 2,\n        \"workerFullName\": \"Ana María García López\",\n        \"scheduleId\": 10,\n        \"clockIn\": \"2025-01-20T08:15:31\",\n        \"clockOut\": \"2025-02-17T18:30:00\",\n        \"hoursWorked\": \"682h 14m\",\n        \"isLate\": false,\n        \"isActive\": true,\n        \"createdAt\": \"2026-04-04T15:45:03.712573\",\n        \"createdBy\": \"system\",\n        \"updatedAt\": \"2026-04-04T19:37:00.556966\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "/worker-schedule-records/clock-in",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"scheduleId\": 10,\n  \"clockIn\": \"2025-01-20T08:15:00\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/worker-schedule-records/clock-in",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedule-records",
+                "clock-in"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/worker-schedule-records/clock-in",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"scheduleId\": 10,\n  \"clockIn\": \"2025-01-20T08:15:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/worker-schedule-records/clock-in",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "worker-schedule-records",
+                    "clock-in"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 17:33:22 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Entrada registrada exitosamente\",\n    \"data\": {\n        \"id\": 103,\n        \"workerId\": 2,\n        \"workerFullName\": \"Ana María García López\",\n        \"scheduleId\": 10,\n        \"clockIn\": \"2025-01-20T08:15:00\",\n        \"clockOut\": null,\n        \"hoursWorked\": null,\n        \"isLate\": false,\n        \"isActive\": true,\n        \"createdAt\": \"2026-04-04T19:33:22.663825\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-04T19:33:22.663825\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 201,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "/worker-schedule-records/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBjZW50cm8tc2Fzcy5jb20iLCJpYXQiOjE3NzUyNjI0OTgsImV4cCI6MTc3NTM0ODg5OH0.CHWdcUUeeaha0uCIpWFmrf5N--OaeuOutW7fMHEpkVHu6D3KGejNxckdLU1t3Ojf",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/worker-schedule-records/103",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedule-records",
+                "103"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/worker-schedule-records/:id",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/worker-schedule-records/103",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "worker-schedule-records",
+                    "103"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 04 Apr 2026 17:39:37 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Fichaje eliminado\",\n    \"data\": {\n        \"id\": 103,\n        \"workerId\": 2,\n        \"workerFullName\": \"Ana María García López\",\n        \"scheduleId\": 10,\n        \"clockIn\": \"2025-01-20T08:15:00\",\n        \"clockOut\": null,\n        \"hoursWorked\": null,\n        \"isLate\": false,\n        \"isActive\": false,\n        \"createdAt\": \"2026-04-04T19:33:22.663825\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-04T19:33:22.663825\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

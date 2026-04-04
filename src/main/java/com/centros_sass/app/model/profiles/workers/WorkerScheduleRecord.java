@@ -12,7 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -43,8 +42,8 @@ public class WorkerScheduleRecord extends BaseEntity {
     private Worker worker;
 
     @NonNull
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "schedule_id", nullable = false, unique = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "schedule_id", nullable = false)
     private WorkerSchedule schedule;
 
     @NonNull

@@ -1,11 +1,12 @@
 package com.centros_sass.app.model.profiles.workers;
 
 import java.time.LocalTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.fixed.calendar.OpenDay;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -14,7 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -49,8 +50,18 @@ public class WorkerSchedule extends BaseEntity {
     @JoinColumn(name = "day_id", nullable = false)
     private OpenDay openDay;
 
-    @OneToOne(mappedBy = "schedule", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private WorkerScheduleRecord record;
+    @OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY)
+    private Set<WorkerScheduleRecord> records = new HashSet<>();
+
+    public void addRecord(WorkerScheduleRecord record) {
+        this.records.add(record);
+        record.setSchedule(this);
+    }
+
+    public void removeRecord(WorkerScheduleRecord record) {
+        this.records.remove(record);
+        record.setSchedule(null);
+    }
 
     @NonNull
     @Column(name = "start_at", nullable = false, columnDefinition = "TIME")
