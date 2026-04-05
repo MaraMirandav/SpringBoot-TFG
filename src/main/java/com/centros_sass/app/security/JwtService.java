@@ -1,6 +1,7 @@
 package com.centros_sass.app.security;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -9,6 +10,9 @@ import javax.crypto.SecretKey;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import com.centros_sass.app.model.catalogs.fixed.organization.Role;
+import com.centros_sass.app.model.profiles.workers.Worker;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -25,7 +29,17 @@ public class JwtService {
     private long jwtExpiration;
 
     public String generateToken(UserDetails userDetails) {
-        return generateToken(Map.of(), userDetails);
+        Map<String, Object> extraClaims = new HashMap<>();
+        if (userDetails instanceof WorkerSecurity workerSecurity) {
+            Worker worker = workerSecurity.getWorker();
+            extraClaims.put("id", worker.getId());
+            extraClaims.put("roles", worker.getRoles().stream()
+                    .map(Role::getRoleName)
+                    .toList());
+            extraClaims.put("firstName", worker.getFirstName());
+            extraClaims.put("firstSurname", worker.getFirstSurname());
+        }
+        return generateToken(extraClaims, userDetails);
     }
 
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
