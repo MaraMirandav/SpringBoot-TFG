@@ -24,6 +24,7 @@ import com.centros_sass.app.model.profiles.workers.WorkerScheduleRecord;
 import com.centros_sass.app.repository.WorkerRepository;
 import com.centros_sass.app.repository.WorkerScheduleRecordRepository;
 import com.centros_sass.app.repository.WorkerScheduleRepository;
+import com.centros_sass.app.security.WorkerSecurity;
 import com.centros_sass.app.service.WorkerScheduleRecordService;
 
 import lombok.RequiredArgsConstructor;
@@ -128,9 +129,17 @@ public class WorkerScheduleRecordServiceImpl implements WorkerScheduleRecordServ
                 .orElse(List.of());
     }
 
-    // Métodos Helpers
-
+    /**
+     * Obtiene el worker autenticado directamente del SecurityContext.
+     * El JwtAuthenticationFilter carga un WorkerSecurity como principal,
+     * que contiene la entidad Worker ya resuelta (sin query extra).
+     */
     private Worker getCurrentWorker() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof WorkerSecurity workerSecurity) {
+            return workerSecurity.getWorker();
+        }
+        // Fallback: si no es WorkerSecurity, busca por email (ej: admin u otro tipo de auth)
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
         return workerRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("Worker", "email", email));
