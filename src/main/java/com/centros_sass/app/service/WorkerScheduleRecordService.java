@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.centros_sass.app.dto.workerschedulerecord.WorkerScheduleRecordRequestDTO;
 import com.centros_sass.app.dto.workerschedulerecord.WorkerScheduleRecordResponseDTO;
 import com.centros_sass.app.dto.workerschedulerecord.WorkerScheduleRecordUpdateDTO;
 
@@ -18,9 +17,9 @@ public interface WorkerScheduleRecordService {
 
     Optional<WorkerScheduleRecordResponseDTO> findById(Integer id);
 
-    WorkerScheduleRecordResponseDTO clockIn(WorkerScheduleRecordRequestDTO dto);
+    WorkerScheduleRecordResponseDTO clockInToday();
 
-    Optional<WorkerScheduleRecordResponseDTO> clockOut(Integer id, WorkerScheduleRecordUpdateDTO dto);
+    Optional<WorkerScheduleRecordResponseDTO> clockOutToday();
 
     Optional<WorkerScheduleRecordResponseDTO> update(Integer id, WorkerScheduleRecordUpdateDTO dto);
 

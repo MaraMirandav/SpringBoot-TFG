@@ -17,13 +17,10 @@ public interface WorkerScheduleRepository extends JpaRepository<WorkerSchedule, 
     // Por worker
     Page<WorkerSchedule> findByWorkerIdAndIsActiveTrue(Integer workerId, Pageable pageable);
 
-    // Por día
-    Page<WorkerSchedule> findByOpenDayIdAndIsActiveTrue(Integer openDayId, Pageable pageable);
-
-    //Todos activos
+    // Todos activos
     Page<WorkerSchedule> findAllByIsActiveTrue(Pageable pageable);
 
-    //Validación solapamiento de horarios
+    // Validación solapamiento de horarios
     @Query("SELECT ws FROM WorkerSchedule ws " +
             "WHERE ws.worker.id = :workerId " +
             "AND ws.openDay.id = :openDayId " +
@@ -38,7 +35,7 @@ public interface WorkerScheduleRepository extends JpaRepository<WorkerSchedule, 
             @Param("endAt") LocalTime endAt,
             @Param("excludeId") Integer excludeId);
 
-    //Búsqueda específica
-    Optional<WorkerSchedule> findByWorkerIdAndOpenDayIdAndIsActiveTrue(Integer workerId, Integer openDayId);
+    // Búsqueda por día de la semana (para clock-in/today)
+    Optional<WorkerSchedule> findByWorkerIdAndOpenDayDayNameAndIsActiveTrue(Integer workerId, String dayName);
 
 }

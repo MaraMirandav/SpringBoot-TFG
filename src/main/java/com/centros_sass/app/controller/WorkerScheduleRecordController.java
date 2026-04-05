@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.centros_sass.app.dto.workerschedulerecord.WorkerScheduleRecordRequestDTO;
 import com.centros_sass.app.dto.workerschedulerecord.WorkerScheduleRecordResponseDTO;
 import com.centros_sass.app.dto.workerschedulerecord.WorkerScheduleRecordUpdateDTO;
 import com.centros_sass.app.exception.ResourceNotFoundException;
@@ -66,10 +65,9 @@ public class WorkerScheduleRecordController {
                 HttpStatus.OK.value()));
     }
 
-    @PostMapping("/clock-in")
-    public ResponseEntity<ApiDataResponse<WorkerScheduleRecordResponseDTO>> clockIn(
-            @Valid @RequestBody WorkerScheduleRecordRequestDTO dto) {
-        WorkerScheduleRecordResponseDTO created = recordService.clockIn(dto);
+    @PostMapping("/clock-in/today")
+    public ResponseEntity<ApiDataResponse<WorkerScheduleRecordResponseDTO>> clockInToday() {
+        WorkerScheduleRecordResponseDTO created = recordService.clockInToday();
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(new ApiDataResponse<>(
                         "Entrada registrada exitosamente",
@@ -77,12 +75,10 @@ public class WorkerScheduleRecordController {
                         HttpStatus.CREATED.value()));
     }
 
-    @PutMapping("/{id}/clock-out")
-    public ResponseEntity<ApiDataResponse<WorkerScheduleRecordResponseDTO>> clockOut(
-            @PathVariable Integer id,
-            @Valid @RequestBody WorkerScheduleRecordUpdateDTO dto) {
-        WorkerScheduleRecordResponseDTO updated = recordService.clockOut(id, dto)
-                .orElseThrow(() -> new ResourceNotFoundException("WorkerScheduleRecord", "id", id));
+    @PostMapping("/clock-out/today")
+    public ResponseEntity<ApiDataResponse<WorkerScheduleRecordResponseDTO>> clockOutToday() {
+        WorkerScheduleRecordResponseDTO updated = recordService.clockOutToday()
+                .orElseThrow(() -> new ResourceNotFoundException("Fichaje abierto", "worker", "actual"));
         return ResponseEntity.ok(new ApiDataResponse<>(
                 "Salida registrada exitosamente",
                 updated,
