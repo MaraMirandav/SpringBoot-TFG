@@ -11,8 +11,6 @@ import org.mapstruct.ReportingPolicy;
 import com.centros_sass.app.dto.user.UserRequestDTO;
 import com.centros_sass.app.dto.user.UserResponseDTO;
 import com.centros_sass.app.dto.user.UserUpdateDTO;
-import com.centros_sass.app.model.catalogs.fixed.people.Dependency;
-import com.centros_sass.app.model.catalogs.fixed.people.Sex;
 import com.centros_sass.app.model.profiles.users.User;
 
 @Mapper(
@@ -22,8 +20,8 @@ import com.centros_sass.app.model.profiles.users.User;
 )
 public interface UserMapper {
 
-    @Mapping(target = "sexName", expression = "java(extractSexName(user))")
-    @Mapping(target = "dependencyName", expression = "java(extractDependencyName(user))")
+    @Mapping(target = "sexName", source = "sex.sex")
+    @Mapping(target = "dependencyName", source = "dependency.dependencyLevel")
     @Mapping(target = "createdAt", expression = "java(formatDateTime(user.getCreatedAt()))")
     @Mapping(target = "updatedAt", expression = "java(formatDateTime(user.getUpdatedAt()))")
     UserResponseDTO toResponse(User user);
@@ -51,15 +49,7 @@ public interface UserMapper {
     @Mapping(target = "userIncidents", ignore = true)
     void updateFromDto(UserUpdateDTO dto, @MappingTarget User entity);
 
-    default String extractSexName(User user) {
-        Sex sex = user.getSex();
-        return sex != null ? sex.getSex() : null;
-    }
-
-    default String extractDependencyName(User user) {
-        Dependency dependency = user.getDependency();
-        return dependency != null ? dependency.getDependencyLevel() : null;
-    }
+    // Métodos Helpers
 
     default String formatDateTime(LocalDateTime dateTime) {
         if (dateTime == null) {
