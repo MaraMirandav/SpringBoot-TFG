@@ -44,6 +44,17 @@ public class WorkerController {
                 (int) page.getTotalElements()));
     }
 
+    @GetMapping("/inactive")
+    public ResponseEntity<ApiDataResponse<List<WorkerResponseDTO>>> findAllInactive(
+            @PageableDefault(size = 6) Pageable pageable) {
+        Page<WorkerResponseDTO> page = workerService.findAllInactive(pageable);
+        return ResponseEntity.ok(new ApiDataResponse<>(
+                "Trabajadores inactivos encontrados",
+                page.getContent(),
+                HttpStatus.OK.value(),
+                (int) page.getTotalElements()));
+    }
+
     @GetMapping("/all")
     public ResponseEntity<ApiDataResponse<List<WorkerResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 6) Pageable pageable) {

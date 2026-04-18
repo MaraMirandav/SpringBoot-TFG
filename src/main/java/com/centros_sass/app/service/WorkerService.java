@@ -13,6 +13,8 @@ public interface WorkerService {
 
     Page<WorkerResponseDTO> findAll(Pageable pageable);
 
+    Page<WorkerResponseDTO> findAllInactive(Pageable pageable);
+
     Page<WorkerResponseDTO> findAllIncludingInactive(Pageable pageable);
 
     Optional<WorkerResponseDTO> findById(Integer id);

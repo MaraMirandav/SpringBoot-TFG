@@ -41,6 +41,13 @@ public class WorkerServiceImpl implements WorkerService {
 
     @Override
     @Transactional(readOnly = true)
+    public Page<WorkerResponseDTO> findAllInactive(Pageable pageable) {
+        Page<Worker> workers = workerRepository.findAllByIsActiveFalse(pageable);
+        return workers.map(workerMapper::toResponse);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public Page<WorkerResponseDTO> findAllIncludingInactive(Pageable pageable) {
         Page<Worker> workers = workerRepository.findAll(pageable);
         return workers.map(workerMapper::toResponse);
