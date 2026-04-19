@@ -18,14 +18,15 @@ import com.centros_sass.app.model.profiles.users.UserAddress;
 )
 public interface UserAddressMapper {
 
+    @Mapping(target = "userId", source = "user.id")
     @Mapping(target = "cityId", source = "city.id")
-    @Mapping(target = "cityName", expression = "java(formatCityName(entity))")
+    @Mapping(target = "cityName", source = "city.cityName")
     @Mapping(target = "provinceId", source = "province.id")
-    @Mapping(target = "provinceName", expression = "java(formatProvinceName(entity))")
+    @Mapping(target = "provinceName", source = "province.provinceName")
     @Mapping(target = "regionId", source = "region.id")
-    @Mapping(target = "regionName", expression = "java(formatRegionName(entity))")
-    @Mapping(target = "createdAt", expression = "java(formatDateTime(entity.getCreatedAt()))")
-    @Mapping(target = "updatedAt", expression = "java(formatDateTime(entity.getUpdatedAt()))")
+    @Mapping(target = "regionName", source = "region.regionName")
+    @Mapping(target = "createdAt", source = "createdAt")
+    @Mapping(target = "updatedAt", source = "updatedAt")
     UserAddressResponseDTO toResponse(UserAddress entity);
 
     @Mapping(target = "id", ignore = true)
@@ -50,18 +51,6 @@ public interface UserAddressMapper {
     @Mapping(target = "createdBy", ignore = true)
     @Mapping(target = "updatedBy", ignore = true)
     void updateFromDto(UserAddressUpdateDTO dto, @MappingTarget UserAddress entity);
-
-    default String formatCityName(UserAddress entity) {
-        return entity.getCity() != null ? entity.getCity().getCityName() : null;
-    }
-
-    default String formatProvinceName(UserAddress entity) {
-        return entity.getProvince() != null ? entity.getProvince().getProvinceName() : null;
-    }
-
-    default String formatRegionName(UserAddress entity) {
-        return entity.getRegion() != null ? entity.getRegion().getRegionName() : null;
-    }
 
     default String formatDateTime(java.time.LocalDateTime dateTime) {
         if (dateTime == null) return null;
