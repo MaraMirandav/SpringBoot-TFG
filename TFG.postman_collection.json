@@ -1061,6 +1061,628 @@
       ]
     },
     {
+      "name": "/roles",
+      "item": [
+        {
+          "name": "/roles",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/roles",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "roles"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/roles",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/roles",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "roles"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 19 Apr 2026 17:59:41 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Roles encontrados\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"roleName\": \"ROLE_ADMIN\",\n            \"createdAt\": \"2026-04-05T17:28:46.811383\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:28:46.811383\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 10,\n            \"roleName\": \"ROLE_CONDUCTOR\",\n            \"createdAt\": \"2026-04-05T17:28:46.811383\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:28:46.811383\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 3,\n            \"roleName\": \"ROLE_COORDINADOR\",\n            \"createdAt\": \"2026-04-05T17:28:46.811383\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:28:46.811383\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 11,\n            \"roleName\": \"ROLE_COPILOTO\",\n            \"createdAt\": \"2026-04-05T17:28:46.811383\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:28:46.811383\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 2,\n            \"roleName\": \"ROLE_DIRECTOR\",\n            \"createdAt\": \"2026-04-05T17:28:46.811383\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:28:46.811383\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 4,\n            \"roleName\": \"ROLE_ENFERMERO\",\n            \"createdAt\": \"2026-04-05T17:28:46.811383\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:28:46.811383\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 5,\n            \"roleName\": \"ROLE_FISIO\",\n            \"createdAt\": \"2026-04-05T17:28:46.811383\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:28:46.811383\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 8,\n            \"roleName\": \"ROLE_PSICO\",\n            \"createdAt\": \"2026-04-05T17:28:46.811383\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:28:46.811383\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 9,\n            \"roleName\": \"ROLE_TAS\",\n            \"createdAt\": \"2026-04-05T17:28:46.811383\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:28:46.811383\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 6,\n            \"roleName\": \"ROLE_TO\",\n            \"createdAt\": \"2026-04-05T17:28:46.811383\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:28:46.811383\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 7,\n            \"roleName\": \"ROLE_TS\",\n            \"createdAt\": \"2026-04-05T17:28:46.811383\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:28:46.811383\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 11\n}"
+            }
+          ]
+        },
+        {
+          "name": "/roles/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/roles/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "roles",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/roles/:id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/roles/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "roles",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 19 Apr 2026 18:01:15 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Rol encontrado\",\n    \"data\": {\n        \"id\": 1,\n        \"roleName\": \"ROLE_ADMIN\",\n        \"createdAt\": \"2026-04-05T17:28:46.811383\",\n        \"createdBy\": \"system\",\n        \"updatedAt\": \"2026-04-05T17:28:46.811383\",\n        \"updatedBy\": \"system\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "/roles",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roleName\": \"ROLE_NUEVO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/roles",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "roles"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/roles",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"roleName\": \"ROLE_NUEVO\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/roles",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "roles"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 19 Apr 2026 18:02:38 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Rol creado exitosamente\",\n    \"data\": {\n        \"id\": 23,\n        \"roleName\": \"ROLE_NUEVO\",\n        \"createdAt\": \"2026-04-19T20:02:38.363787\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-19T20:02:38.363787\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 201,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "/roles/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roleName\": \"ROLE_ACTUALIZADO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/roles/23",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "roles",
+                "23"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/roles/:id",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"roleName\": \"ROLE_ACTUALIZADO\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/roles/23",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "roles",
+                    "23"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 19 Apr 2026 18:03:53 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Rol actualizado\",\n    \"data\": {\n        \"id\": 23,\n        \"roleName\": \"ROLE_ACTUALIZADO\",\n        \"createdAt\": \"2026-04-19T20:02:38.363787\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-19T20:02:38.363787\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "/roles/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/roles/23",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "roles",
+                "23"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "New Request",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/roles/23",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "roles",
+                    "23"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 19 Apr 2026 18:04:31 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Rol eliminado\",\n    \"data\": {\n        \"id\": 23,\n        \"roleName\": \"ROLE_ACTUALIZADO\",\n        \"createdAt\": \"2026-04-19T20:02:38.363787\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-19T20:03:52.983139\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "/worker-schedules",
       "item": [
         {
@@ -4379,6 +5001,1078 @@
               ],
               "cookie": [],
               "body": "{\n    \"message\": \"Dirección eliminada\",\n    \"data\": {\n        \"id\": 5,\n        \"userId\": 1,\n        \"address\": \"Calle Nueva 456\",\n        \"postalCode\": \"28002\",\n        \"cityId\": 1,\n        \"cityName\": \"Móstoles\",\n        \"provinceId\": 1,\n        \"provinceName\": \"Madrid\",\n        \"regionId\": 1,\n        \"regionName\": \"Comunidad de Madrid\",\n        \"isActive\": false,\n        \"createdAt\": \"2026-04-19T02:30:44.036744\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-19T02:32:12.217710\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "/user-contacts",
+      "item": [
+        {
+          "name": "/user-contacts",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-contacts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-contacts"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/user-contacts",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-contacts",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-contacts"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 19 Apr 2026 18:05:52 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Contactos encontrados\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"contactName\": \"Laura Martínez\",\n            \"relationshipId\": 1,\n            \"relationshipName\": \"Hijo/a\",\n            \"contactPhone\": \"600111222\",\n            \"contactEmail\": \"laura.mtz@email.com\",\n            \"isContactMain\": true,\n            \"contactNote\": \"Tiene llaves del domicilio principal.\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 2,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"contactName\": \"Pedro Martínez\",\n            \"relationshipId\": 1,\n            \"relationshipName\": \"Hijo/a\",\n            \"contactPhone\": \"600333444\",\n            \"contactEmail\": \"pedro.mtz@email.com\",\n            \"isContactMain\": false,\n            \"contactNote\": null,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 3,\n            \"userId\": 2,\n            \"userFullName\": \"María Carmen López Vega\",\n            \"contactName\": \"Juan López\",\n            \"relationshipId\": 2,\n            \"relationshipName\": \"Cónyuge (Esposo/a)\",\n            \"contactPhone\": \"611222333\",\n            \"contactEmail\": \"juan.lopez@email.com\",\n            \"isContactMain\": true,\n            \"contactNote\": \"Suele estar en casa a partir de las 17:00h.\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 4,\n            \"userId\": 3,\n            \"userFullName\": \"José Hernández Ruiz\",\n            \"contactName\": \"Manuel Hernández\",\n            \"relationshipId\": 3,\n            \"relationshipName\": \"Hermano/a\",\n            \"contactPhone\": \"622444555\",\n            \"contactEmail\": \"manuel.hdez@email.com\",\n            \"isContactMain\": true,\n            \"contactNote\": null,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 5,\n            \"userId\": 3,\n            \"userFullName\": \"José Hernández Ruiz\",\n            \"contactName\": \"Ana Hernández\",\n            \"relationshipId\": 5,\n            \"relationshipName\": \"Sobrino/a\",\n            \"contactPhone\": \"622555666\",\n            \"contactEmail\": \"ana.hdez@email.com\",\n            \"isContactMain\": false,\n            \"contactNote\": null,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 6,\n            \"userId\": 4,\n            \"userFullName\": \"Dolores Gómez Pérez\",\n            \"contactName\": \"Marta Gómez\",\n            \"relationshipId\": 4,\n            \"relationshipName\": \"Nieto/a\",\n            \"contactPhone\": \"633777888\",\n            \"contactEmail\": \"marta.gomez@email.com\",\n            \"isContactMain\": true,\n            \"contactNote\": \"Contactar por WhatsApp si no responde.\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 6\n}"
+            }
+          ]
+        },
+        {
+          "name": "/user-contacts/all",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-contacts/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-contacts",
+                "all"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "New Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-contacts/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-contacts",
+                    "all"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 19 Apr 2026 18:06:47 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Todos los contactos\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"contactName\": \"Laura Martínez\",\n            \"relationshipId\": 1,\n            \"relationshipName\": \"Hijo/a\",\n            \"contactPhone\": \"600111222\",\n            \"contactEmail\": \"laura.mtz@email.com\",\n            \"isContactMain\": true,\n            \"contactNote\": \"Tiene llaves del domicilio principal.\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 2,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"contactName\": \"Pedro Martínez\",\n            \"relationshipId\": 1,\n            \"relationshipName\": \"Hijo/a\",\n            \"contactPhone\": \"600333444\",\n            \"contactEmail\": \"pedro.mtz@email.com\",\n            \"isContactMain\": false,\n            \"contactNote\": null,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 3,\n            \"userId\": 2,\n            \"userFullName\": \"María Carmen López Vega\",\n            \"contactName\": \"Juan López\",\n            \"relationshipId\": 2,\n            \"relationshipName\": \"Cónyuge (Esposo/a)\",\n            \"contactPhone\": \"611222333\",\n            \"contactEmail\": \"juan.lopez@email.com\",\n            \"isContactMain\": true,\n            \"contactNote\": \"Suele estar en casa a partir de las 17:00h.\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 4,\n            \"userId\": 3,\n            \"userFullName\": \"José Hernández Ruiz\",\n            \"contactName\": \"Manuel Hernández\",\n            \"relationshipId\": 3,\n            \"relationshipName\": \"Hermano/a\",\n            \"contactPhone\": \"622444555\",\n            \"contactEmail\": \"manuel.hdez@email.com\",\n            \"isContactMain\": true,\n            \"contactNote\": null,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 5,\n            \"userId\": 3,\n            \"userFullName\": \"José Hernández Ruiz\",\n            \"contactName\": \"Ana Hernández\",\n            \"relationshipId\": 5,\n            \"relationshipName\": \"Sobrino/a\",\n            \"contactPhone\": \"622555666\",\n            \"contactEmail\": \"ana.hdez@email.com\",\n            \"isContactMain\": false,\n            \"contactNote\": null,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 6,\n            \"userId\": 4,\n            \"userFullName\": \"Dolores Gómez Pérez\",\n            \"contactName\": \"Marta Gómez\",\n            \"relationshipId\": 4,\n            \"relationshipName\": \"Nieto/a\",\n            \"contactPhone\": \"633777888\",\n            \"contactEmail\": \"marta.gomez@email.com\",\n            \"isContactMain\": true,\n            \"contactNote\": \"Contactar por WhatsApp si no responde.\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 6\n}"
+            }
+          ]
+        },
+        {
+          "name": "/user-contacts/user/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-contacts/user/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-contacts",
+                "user",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/user-contacts/user/:id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-contacts/user/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-contacts",
+                    "user",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 19 Apr 2026 18:08:46 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Contactos del usuario\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"contactName\": \"Laura Martínez\",\n            \"relationshipId\": 1,\n            \"relationshipName\": \"Hijo/a\",\n            \"contactPhone\": \"600111222\",\n            \"contactEmail\": \"laura.mtz@email.com\",\n            \"isContactMain\": true,\n            \"contactNote\": \"Tiene llaves del domicilio principal.\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 2,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"contactName\": \"Pedro Martínez\",\n            \"relationshipId\": 1,\n            \"relationshipName\": \"Hijo/a\",\n            \"contactPhone\": \"600333444\",\n            \"contactEmail\": \"pedro.mtz@email.com\",\n            \"isContactMain\": false,\n            \"contactNote\": null,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 2\n}"
+            }
+          ]
+        },
+        {
+          "name": "/user-contacts/user/:id/main",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-contacts/user/1/main",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-contacts",
+                "user",
+                "1",
+                "main"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/user-contacts/user/:id/main",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-contacts/user/1/main",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-contacts",
+                    "user",
+                    "1",
+                    "main"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 19 Apr 2026 18:13:27 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Contacto principal del usuario\",\n    \"data\": {\n        \"id\": 1,\n        \"userId\": 1,\n        \"userFullName\": \"Antonio Luis Martínez Soria\",\n        \"contactName\": \"Laura Martínez\",\n        \"relationshipId\": 1,\n        \"relationshipName\": \"Hijo/a\",\n        \"contactPhone\": \"600111222\",\n        \"contactEmail\": \"laura.mtz@email.com\",\n        \"isContactMain\": true,\n        \"contactNote\": \"Tiene llaves del domicilio principal.\",\n        \"isActive\": true,\n        \"createdAt\": \"2026-04-05T17:29:03.319800\",\n        \"createdBy\": \"system\",\n        \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n        \"updatedBy\": \"system\"\n    },\n    \"status\": 200,\n    \"totalElements\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "/user-contacts/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-contacts/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-contacts",
+                "2"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/user-contacts/:id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-contacts/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-contacts",
+                    "2"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 19 Apr 2026 18:14:55 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Contacto encontrado\",\n    \"data\": {\n        \"id\": 2,\n        \"userId\": 1,\n        \"userFullName\": \"Antonio Luis Martínez Soria\",\n        \"contactName\": \"Pedro Martínez\",\n        \"relationshipId\": 1,\n        \"relationshipName\": \"Hijo/a\",\n        \"contactPhone\": \"600333444\",\n        \"contactEmail\": \"pedro.mtz@email.com\",\n        \"isContactMain\": false,\n        \"contactNote\": null,\n        \"isActive\": true,\n        \"createdAt\": \"2026-04-05T17:29:03.319800\",\n        \"createdBy\": \"system\",\n        \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n        \"updatedBy\": \"system\"\n    },\n    \"status\": 200,\n    \"totalElements\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "/user-contacts",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"contactName\": \"Nuevo Contacto\",\n  \"contactRelationshipId\": 4,\n  \"contactPhone\": \"600123456\",\n  \"contactEmail\": \"nuevo@email.com\",\n  \"isContactMain\": false,\n  \"contactNote\": \"Notas opcionales del contacto\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-contacts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-contacts"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "New Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": 1,\n  \"contactName\": \"Nuevo Contacto\",\n  \"contactRelationshipId\": 4,\n  \"contactPhone\": \"600123456\",\n  \"contactEmail\": \"nuevo@email.com\",\n  \"isContactMain\": false,\n  \"contactNote\": \"Notas opcionales del contacto\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-contacts",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-contacts"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 19 Apr 2026 18:16:34 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Contacto creado\",\n    \"data\": {\n        \"id\": 7,\n        \"userId\": 1,\n        \"userFullName\": \"Antonio Luis Martínez Soria\",\n        \"contactName\": \"Nuevo Contacto\",\n        \"relationshipId\": 4,\n        \"relationshipName\": \"Nieto/a\",\n        \"contactPhone\": \"600123456\",\n        \"contactEmail\": \"nuevo@email.com\",\n        \"isContactMain\": false,\n        \"contactNote\": \"Notas opcionales del contacto\",\n        \"isActive\": true,\n        \"createdAt\": \"2026-04-19T20:16:34.170214\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-19T20:16:34.170214\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 201,\n    \"totalElements\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "/user-contacts/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contactName\": \"Nombre Actualizado\",\n  \"contactPhone\": \"600999888\",\n  \"contactEmail\": \"actualizado@email.com\",\n  \"isContactMain\": true,\n  \"contactNote\": \"Nueva nota\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-contacts/7",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-contacts",
+                "7"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/user-contacts/:id",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contactName\": \"Nombre Actualizado\",\n  \"contactPhone\": \"600999888\",\n  \"contactEmail\": \"actualizado@email.com\",\n  \"isContactMain\": true,\n  \"contactNote\": \"Nueva nota\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-contacts/7",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-contacts",
+                    "7"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 19 Apr 2026 18:18:13 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Contacto actualizado\",\n    \"data\": {\n        \"id\": 7,\n        \"userId\": 1,\n        \"userFullName\": \"Antonio Luis Martínez Soria\",\n        \"contactName\": \"Nombre Actualizado\",\n        \"relationshipId\": 4,\n        \"relationshipName\": \"Nieto/a\",\n        \"contactPhone\": \"600999888\",\n        \"contactEmail\": \"actualizado@email.com\",\n        \"isContactMain\": true,\n        \"contactNote\": \"Nueva nota\",\n        \"isActive\": true,\n        \"createdAt\": \"2026-04-19T20:16:34.170214\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-19T20:16:34.170214\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "/user-contacts/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-contacts/7",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-contacts",
+                "7"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/user-contacts/:id",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contactName\": \"Nombre Actualizado\",\n  \"contactPhone\": \"600999888\",\n  \"contactEmail\": \"actualizado@email.com\",\n  \"isContactMain\": true,\n  \"contactNote\": \"Nueva nota\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-contacts/7",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-contacts",
+                    "7"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 19 Apr 2026 18:18:13 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Contacto actualizado\",\n    \"data\": {\n        \"id\": 7,\n        \"userId\": 1,\n        \"userFullName\": \"Antonio Luis Martínez Soria\",\n        \"contactName\": \"Nombre Actualizado\",\n        \"relationshipId\": 4,\n        \"relationshipName\": \"Nieto/a\",\n        \"contactPhone\": \"600999888\",\n        \"contactEmail\": \"actualizado@email.com\",\n        \"isContactMain\": true,\n        \"contactNote\": \"Nueva nota\",\n        \"isActive\": true,\n        \"createdAt\": \"2026-04-19T20:16:34.170214\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-19T20:16:34.170214\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": 1\n}"
+            },
+            {
+              "name": "/user-contacts/:id",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-contacts/7",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-contacts",
+                    "7"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 19 Apr 2026 18:19:07 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Contacto eliminado\",\n    \"data\": {\n        \"id\": 7,\n        \"userId\": 1,\n        \"userFullName\": \"Antonio Luis Martínez Soria\",\n        \"contactName\": \"Nombre Actualizado\",\n        \"relationshipId\": 4,\n        \"relationshipName\": \"Nieto/a\",\n        \"contactPhone\": \"600999888\",\n        \"contactEmail\": \"actualizado@email.com\",\n        \"isContactMain\": true,\n        \"contactNote\": \"Nueva nota\",\n        \"isActive\": false,\n        \"createdAt\": \"2026-04-19T20:16:34.170214\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-19T20:18:13.245261\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": 1\n}"
             }
           ]
         }

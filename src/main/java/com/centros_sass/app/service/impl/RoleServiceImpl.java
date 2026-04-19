@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.centros_sass.app.dto.role.RoleRequestDTO;
 import com.centros_sass.app.dto.role.RoleResponseDTO;
 import com.centros_sass.app.dto.role.RoleUpdateDTO;
-import com.centros_sass.app.exception.ResourceNotFoundException;
 import com.centros_sass.app.mapper.RoleMapper;
 import com.centros_sass.app.model.catalogs.fixed.organization.Role;
 import com.centros_sass.app.repository.RoleRepository;
