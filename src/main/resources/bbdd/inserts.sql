@@ -704,12 +704,13 @@ VALUES
     ON CONFLICT (route_name) DO NOTHING;
 
 -- --------------------------------------------------------
--- CATÁLOGO: VEHÍCULOS (route_vehicles)
+-- VEHÍCULOS (route_vehicles)
 -- --------------------------------------------------------
 INSERT INTO route_vehicles (license_plate, capacity, has_wheelchair, wheelchair_capacity, is_active, created_at, updated_at, created_by, updated_by)
 VALUES
     ('1234-BBB', 12, false, 0, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('5678-JWL', 8, true, 2, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system')
+    ('5678-JWL', 8, true, 2, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('9999-XXX', 5, false, 0, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system')
     ON CONFLICT (license_plate) DO NOTHING;
 
 -- --------------------------------------------------------

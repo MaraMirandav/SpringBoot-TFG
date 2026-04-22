@@ -6965,6 +6965,595 @@
           ]
         }
       ]
+    },
+    {
+      "name": "/transport-routes",
+      "item": [
+        {
+          "name": "/transport-routes",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/transport-routes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "transport-routes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/transport-routes/all",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/transport-routes/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "transport-routes",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/transport-routes/inactive",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/transport-routes/inactive",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "transport-routes",
+                "inactive"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/transport-routes/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/transport-routes/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "transport-routes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/transport-routes/shift/:shiftId",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/transport-routes/shift/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "transport-routes",
+                "shift",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/transport-routes/driver/:workerId",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/transport-routes/driver/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "transport-routes",
+                "driver",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/transport-routes/copilot/:workerId",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/transport-routes/copilot/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "transport-routes",
+                "copilot",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/transport-routes",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"routeNumber\": 1,\n  \"startTime\": \"08:00:00\",\n  \"endTime\": \"09:30:00\",\n  \"routeShiftId\": 1,\n  \"routeVehicleId\": 1,\n  \"driverId\": 2,\n  \"copilotId\": 3,\n  \"userIds\": [1, 2]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/transport-routes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "transport-routes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/transport-routes:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"routeNumber\": 101,\n  \"startTime\": \"08:30:00\",\n  \"endTime\": \"10:00:00\",\n  \"routeShiftId\": 1,\n  \"routeVehicleId\": 1,\n  \"driverId\": 2,\n  \"copilotId\": 3,\n  \"userIds\": [1, 2, 3]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/transport-routes/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "transport-routes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/transport-routes/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/transport-routes/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "transport-routes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "/route-vehicles",
+      "item": [
+        {
+          "name": "/route-vehicles",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/route-vehicles",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "route-vehicles"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/route-vehicles/all",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/route-vehicles/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "route-vehicles",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/route-vehicles/inactive",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/route-vehicles/inactive",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "route-vehicles",
+                "inactive"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/route-vehicles/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/route-vehicles/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "route-vehicles",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/route-vehicles",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"licensePlate\": \"1234ABC\",\n  \"capacity\": 9,\n  \"hasWheelchair\": true,\n  \"wheelchairCapacity\": 2\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/route-vehicles",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "route-vehicles"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/route-vehicles:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"licensePlate\": \"1234-BBB\",\n  \"capacity\": 15,\n  \"hasWheelchair\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/route-vehicles/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "route-vehicles",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/route-vehicles/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/route-vehicles/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "route-vehicles",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
