@@ -1,6 +1,6 @@
 {
   "info": {
-    "_postman_id": "15689b47-89dd-4b25-9c57-3989a7e748b9",
+    "_postman_id": "292fcca9-83a6-4adb-890f-3a575f35dafb",
     "name": "TFG",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "42944299"
@@ -297,7 +297,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"email\": \"admin@centro-sass.com\",\n    \"password\": \"admin.1234\"\n}",
+              "raw": "{\n    \"email\": \"admin@centro-saas.com\",\n    \"password\": \"admin.1234\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -375,7 +375,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -492,7 +492,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -609,7 +609,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -742,7 +742,7 @@
               },
               "status": "Created",
               "code": 201,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -877,7 +877,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -994,7 +994,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -1114,7 +1114,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -1231,7 +1231,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -1364,7 +1364,7 @@
               },
               "status": "Created",
               "code": 201,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -1499,7 +1499,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -1616,7 +1616,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -1736,7 +1736,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -1855,7 +1855,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -1972,7 +1972,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -2105,7 +2105,7 @@
               },
               "status": "Created",
               "code": 201,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -2240,7 +2240,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -2357,7 +2357,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -2477,7 +2477,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -2596,7 +2596,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -2714,7 +2714,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -2835,7 +2835,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -2972,7 +2972,7 @@
               },
               "status": "Created",
               "code": 201,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -3091,7 +3091,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -3226,7 +3226,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -3343,7 +3343,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -3463,7 +3463,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -3580,7 +3580,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -3697,7 +3697,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -3830,7 +3830,7 @@
               },
               "status": "Created",
               "code": 201,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -3965,7 +3965,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -4082,7 +4082,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -4202,7 +4202,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -4319,7 +4319,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -4438,7 +4438,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -4555,7 +4555,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -4688,7 +4688,7 @@
               },
               "status": "Created",
               "code": 201,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -4823,7 +4823,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -4940,7 +4940,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -5060,7 +5060,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -5177,7 +5177,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -5296,7 +5296,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -5417,7 +5417,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -5534,7 +5534,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -5667,7 +5667,7 @@
               },
               "status": "Created",
               "code": 201,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -5802,7 +5802,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -5928,7 +5928,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -6012,7 +6012,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Vary",
@@ -6099,9 +6099,15 @@
             "url": {
               "raw": "http://localhost:5555/api/v1/user-attendance-days",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5555",
-              "path": ["api", "v1", "user-attendance-days"]
+              "path": [
+                "api",
+                "v1",
+                "user-attendance-days"
+              ]
             }
           },
           "response": [
@@ -6113,16 +6119,29 @@
                 "url": {
                   "raw": "http://localhost:5555/api/v1/user-attendance-days",
                   "protocol": "http",
-                  "host": ["localhost"],
+                  "host": [
+                    "localhost"
+                  ],
                   "port": "5555",
-                  "path": ["api", "v1", "user-attendance-days"]
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-attendance-days"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "Text",
               "header": [
-                { "key": "Content-Type", "value": "application/json" },
-                { "key": "Transfer-Encoding", "value": "chunked" }
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
               ],
               "cookie": [],
               "body": "{\n    \"message\": \"Planillas de asistencia encontradas\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 2,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 2,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 6,\n            \"userId\": 2,\n            \"userFullName\": \"María Carmen López Vega\",\n            \"dayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"10:00:00\",\n            \"endAt\": \"18:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 10,\n            \"userId\": 3,\n            \"userFullName\": \"José Hernández Ruiz\",\n            \"dayId\": 2,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"14:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 13,\n            \"userId\": 4,\n            \"userFullName\": \"Dolores García Pérez\",\n            \"dayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"08:30:00\",\n            \"endAt\": \"17:30:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 14\n}"
@@ -6147,9 +6166,16 @@
             "url": {
               "raw": "http://localhost:5555/api/v1/user-attendance-days/all",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5555",
-              "path": ["api", "v1", "user-attendance-days", "all"]
+              "path": [
+                "api",
+                "v1",
+                "user-attendance-days",
+                "all"
+              ]
             }
           },
           "response": [
@@ -6161,16 +6187,30 @@
                 "url": {
                   "raw": "http://localhost:5555/api/v1/user-attendance-days/all",
                   "protocol": "http",
-                  "host": ["localhost"],
+                  "host": [
+                    "localhost"
+                  ],
                   "port": "5555",
-                  "path": ["api", "v1", "user-attendance-days", "all"]
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-attendance-days",
+                    "all"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "Text",
               "header": [
-                { "key": "Content-Type", "value": "application/json" },
-                { "key": "Transfer-Encoding", "value": "chunked" }
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
               ],
               "cookie": [],
               "body": "{\n    \"message\": \"Todas las planillas de asistencia\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 14\n}"
@@ -6195,9 +6235,16 @@
             "url": {
               "raw": "http://localhost:5555/api/v1/user-attendance-days/1",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5555",
-              "path": ["api", "v1", "user-attendance-days", "1"]
+              "path": [
+                "api",
+                "v1",
+                "user-attendance-days",
+                "1"
+              ]
             }
           },
           "response": [
@@ -6209,16 +6256,30 @@
                 "url": {
                   "raw": "http://localhost:5555/api/v1/user-attendance-days/1",
                   "protocol": "http",
-                  "host": ["localhost"],
+                  "host": [
+                    "localhost"
+                  ],
                   "port": "5555",
-                  "path": ["api", "v1", "user-attendance-days", "1"]
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-attendance-days",
+                    "1"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "Text",
               "header": [
-                { "key": "Content-Type", "value": "application/json" },
-                { "key": "Transfer-Encoding", "value": "chunked" }
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
               ],
               "cookie": [],
               "body": "{\n    \"message\": \"Planilla de asistencia encontrada\",\n    \"data\": {\n        \"id\": 1,\n        \"userId\": 1,\n        \"userFullName\": \"Antonio Luis Martínez Soria\",\n        \"dayId\": 1,\n        \"dayName\": \"Lunes\",\n        \"startAt\": \"09:00:00\",\n        \"endAt\": \"17:00:00\",\n        \"isActive\": true,\n        \"createdAt\": \"2026-04-05T17:29:03.117872\",\n        \"createdBy\": \"system\",\n        \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n        \"updatedBy\": \"system\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
@@ -6243,9 +6304,17 @@
             "url": {
               "raw": "http://localhost:5555/api/v1/user-attendance-days/user/1",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5555",
-              "path": ["api", "v1", "user-attendance-days", "user", "1"]
+              "path": [
+                "api",
+                "v1",
+                "user-attendance-days",
+                "user",
+                "1"
+              ]
             }
           },
           "response": [
@@ -6257,16 +6326,31 @@
                 "url": {
                   "raw": "http://localhost:5555/api/v1/user-attendance-days/user/1",
                   "protocol": "http",
-                  "host": ["localhost"],
+                  "host": [
+                    "localhost"
+                  ],
                   "port": "5555",
-                  "path": ["api", "v1", "user-attendance-days", "user", "1"]
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-attendance-days",
+                    "user",
+                    "1"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "Text",
               "header": [
-                { "key": "Content-Type", "value": "application/json" },
-                { "key": "Transfer-Encoding", "value": "chunked" }
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
               ],
               "cookie": [],
               "body": "{\n    \"message\": \"Planillas de asistencia del usuario\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 2,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 2,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 3,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 3,\n            \"dayName\": \"Miércoles\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 4,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 4,\n            \"dayName\": \"Jueves\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 5,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 5,\n            \"dayName\": \"Viernes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 5\n}"
@@ -6300,9 +6384,15 @@
             "url": {
               "raw": "http://localhost:5555/api/v1/user-attendance-days",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5555",
-              "path": ["api", "v1", "user-attendance-days"]
+              "path": [
+                "api",
+                "v1",
+                "user-attendance-days"
+              ]
             }
           },
           "response": [
@@ -6323,16 +6413,29 @@
                 "url": {
                   "raw": "http://localhost:5555/api/v1/user-attendance-days",
                   "protocol": "http",
-                  "host": ["localhost"],
+                  "host": [
+                    "localhost"
+                  ],
                   "port": "5555",
-                  "path": ["api", "v1", "user-attendance-days"]
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-attendance-days"
+                  ]
                 }
               },
               "status": "Created",
               "code": 201,
+              "_postman_previewlanguage": "Text",
               "header": [
-                { "key": "Content-Type", "value": "application/json" },
-                { "key": "Transfer-Encoding", "value": "chunked" }
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
               ],
               "cookie": [],
               "body": "{\n    \"message\": \"Planilla de asistencia creada\",\n    \"data\": {\n        \"id\": 15,\n        \"userId\": 2,\n        \"userFullName\": \"María Carmen López Vega\",\n        \"dayId\": 2,\n        \"dayName\": \"Martes\",\n        \"startAt\": \"10:00:00\",\n        \"endAt\": \"18:00:00\",\n        \"isActive\": true,\n        \"createdAt\": \"2026-04-22T19:30:00.123456\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-22T19:30:00.123456\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 201,\n    \"totalElements\": null\n}"
@@ -6366,9 +6469,16 @@
             "url": {
               "raw": "http://localhost:5555/api/v1/user-attendance-days/15",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5555",
-              "path": ["api", "v1", "user-attendance-days", "15"]
+              "path": [
+                "api",
+                "v1",
+                "user-attendance-days",
+                "15"
+              ]
             }
           },
           "response": [
@@ -6389,16 +6499,30 @@
                 "url": {
                   "raw": "http://localhost:5555/api/v1/user-attendance-days/15",
                   "protocol": "http",
-                  "host": ["localhost"],
+                  "host": [
+                    "localhost"
+                  ],
                   "port": "5555",
-                  "path": ["api", "v1", "user-attendance-days", "15"]
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-attendance-days",
+                    "15"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "Text",
               "header": [
-                { "key": "Content-Type", "value": "application/json" },
-                { "key": "Transfer-Encoding", "value": "chunked" }
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
               ],
               "cookie": [],
               "body": "{\n    \"message\": \"Planilla de asistencia actualizada\",\n    \"data\": {\n        \"id\": 15,\n        \"userId\": 2,\n        \"userFullName\": \"María Carmen López Vega\",\n        \"dayId\": 2,\n        \"dayName\": \"Martes\",\n        \"startAt\": \"10:00:00\",\n        \"endAt\": \"16:00:00\",\n        \"isActive\": true,\n        \"createdAt\": \"2026-04-22T19:30:00.123456\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-22T19:31:00.654321\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
@@ -6423,9 +6547,16 @@
             "url": {
               "raw": "http://localhost:5555/api/v1/user-attendance-days/15",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5555",
-              "path": ["api", "v1", "user-attendance-days", "15"]
+              "path": [
+                "api",
+                "v1",
+                "user-attendance-days",
+                "15"
+              ]
             }
           },
           "response": [
@@ -6437,19 +6568,399 @@
                 "url": {
                   "raw": "http://localhost:5555/api/v1/user-attendance-days/15",
                   "protocol": "http",
-                  "host": ["localhost"],
+                  "host": [
+                    "localhost"
+                  ],
                   "port": "5555",
-                  "path": ["api", "v1", "user-attendance-days", "15"]
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-attendance-days",
+                    "15"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "Text",
               "header": [
-                { "key": "Content-Type", "value": "application/json" },
-                { "key": "Transfer-Encoding", "value": "chunked" }
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
               ],
               "cookie": [],
               "body": "{\n    \"message\": \"Planilla de asistencia eliminada\",\n    \"data\": {\n        \"id\": 15,\n        \"userId\": 2,\n        \"userFullName\": \"María Carmen López Vega\",\n        \"dayId\": 2,\n        \"dayName\": \"Martes\",\n        \"startAt\": \"10:00:00\",\n        \"endAt\": \"16:00:00\",\n        \"isActive\": false,\n        \"createdAt\": \"2026-04-22T19:30:00.123456\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-22T19:32:00.111222\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "/user-attendance-records",
+      "item": [
+        {
+          "name": "GET - Listar todos",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhYXMuY29tIiwiaWF0IjoxNzc2ODU5Mjg0LCJleHAiOjE3NzY5NDU2ODR9.f2AfRhQEe8PfGfv0LR-7fSBkZcP2f1ujMfHV4eoxgQU5mTJpgPgqgRs-wFnf15TY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-attendance-records",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-attendance-records"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "GET - Listar todos",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-attendance-records",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-attendance-records"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Registros de asistencia encontrados\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"attendanceDayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isPresent\": true,\n            \"createdAt\": \"2026-04-22T20:00:00.123456\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-22T20:00:00.123456\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 2,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"attendanceDayId\": 2,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isPresent\": true,\n            \"createdAt\": \"2026-04-22T20:00:00.123456\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-22T20:00:00.123456\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 3,\n            \"userId\": 2,\n            \"userFullName\": \"María Carmen López Vega\",\n            \"attendanceDayId\": 6,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"10:00:00\",\n            \"endAt\": \"18:00:00\",\n            \"isPresent\": false,\n            \"createdAt\": \"2026-04-22T20:00:00.123456\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-22T20:00:00.123456\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 4,\n            \"userId\": 3,\n            \"userFullName\": \"José Hernández Ruiz\",\n            \"attendanceDayId\": 9,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"14:00:00\",\n            \"isPresent\": true,\n            \"createdAt\": \"2026-04-22T20:00:00.123456\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-22T20:00:00.123456\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 5,\n            \"userId\": 4,\n            \"userFullName\": \"Dolores Gómez Pérez\",\n            \"attendanceDayId\": 11,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"08:30:00\",\n            \"endAt\": \"17:30:00\",\n            \"isPresent\": true,\n            \"createdAt\": \"2026-04-22T20:00:00.123456\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-22T20:00:00.123456\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 5\n}"
+            }
+          ]
+        },
+        {
+          "name": "GET - Buscar por ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhYXMuY29tIiwiaWF0IjoxNzc2ODU5Mjg0LCJleHAiOjE3NzY5NDU2ODR9.f2AfRhQEe8PfGfv0LR-7fSBkZcP2f1ujMfHV4eoxgQU5mTJpgPgqgRs-wFnf15TY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-attendance-records/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-attendance-records",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "GET - Buscar por ID",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-attendance-records/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-attendance-records",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Registro de asistencia encontrado\",\n    \"data\": {\n        \"id\": 1,\n        \"userId\": 1,\n        \"userFullName\": \"Antonio Luis Martínez Soria\",\n        \"attendanceDayId\": 1,\n        \"dayName\": \"Lunes\",\n        \"startAt\": \"09:00:00\",\n        \"endAt\": \"17:00:00\",\n        \"isPresent\": true,\n        \"createdAt\": \"2026-04-22T20:00:00.123456\",\n        \"createdBy\": \"system\",\n        \"updatedAt\": \"2026-04-22T20:00:00.123456\",\n        \"updatedBy\": \"system\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "GET - Buscar por usuario",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhYXMuY29tIiwiaWF0IjoxNzc2ODU5Mjg0LCJleHAiOjE3NzY5NDU2ODR9.f2AfRhQEe8PfGfv0LR-7fSBkZcP2f1ujMfHV4eoxgQU5mTJpgPgqgRs-wFnf15TY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-attendance-records/user/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-attendance-records",
+                "user",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "GET - Buscar por usuario",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-attendance-records/user/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-attendance-records",
+                    "user",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Registros de asistencia del usuario encontrados\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"attendanceDayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isPresent\": true,\n            \"createdAt\": \"2026-04-22T20:00:00.123456\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-22T20:00:00.123456\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 2,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"attendanceDayId\": 2,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isPresent\": true,\n            \"createdAt\": \"2026-04-22T20:00:00.123456\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-22T20:00:00.123456\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 2\n}"
+            }
+          ]
+        },
+        {
+          "name": "POST - Marcar asistencia",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhYXMuY29tIiwiaWF0IjoxNzc2ODU5Mjg0LCJleHAiOjE3NzY5NDU2ODR9.f2AfRhQEe8PfGfv0LR-7fSBkZcP2f1ujMfHV4eoxgQU5mTJpgPgqgRs-wFnf15TY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 2,\n  \"attendanceDayId\": 7,\n  \"isPresent\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-attendance-records",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-attendance-records"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "POST - Marcar asistencia",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": 2,\n  \"attendanceDayId\": 7,\n  \"isPresent\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-attendance-records",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-attendance-records"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Registro de asistencia creado\",\n    \"data\": {\n        \"id\": 6,\n        \"userId\": 2,\n        \"userFullName\": \"María Carmen López Vega\",\n        \"attendanceDayId\": 7,\n        \"dayName\": \"Miércoles\",\n        \"startAt\": \"10:00:00\",\n        \"endAt\": \"18:00:00\",\n        \"isPresent\": true,\n        \"createdAt\": \"2026-04-22T20:00:00.123456\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-22T20:00:00.123456\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 201,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "DELETE - Eliminar registro",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhYXMuY29tIiwiaWF0IjoxNzc2ODU5Mjg0LCJleHAiOjE3NzY5NDU2ODR9.f2AfRhQEe8PfGfv0LR-7fSBkZcP2f1ujMfHV4eoxgQU5mTJpgPgqgRs-wFnf15TY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-attendance-records/6",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-attendance-records",
+                "6"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "DELETE - Eliminar registro",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-attendance-records/6",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user-attendance-records",
+                    "6"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Registro de asistencia eliminado\",\n    \"data\": {\n        \"id\": 6,\n        \"userId\": 2,\n        \"userFullName\": \"María Carmen López Vega\",\n        \"attendanceDayId\": 7,\n        \"dayName\": \"Miércoles\",\n        \"startAt\": \"10:00:00\",\n        \"endAt\": \"18:00:00\",\n        \"isPresent\": true,\n        \"createdAt\": \"2026-04-22T20:00:00.123456\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-22T20:00:00.123456\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
             }
           ]
         }
