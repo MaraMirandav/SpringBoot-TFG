@@ -24,9 +24,13 @@ import com.centros_sass.app.utils.MapperHelper;
 )
 public interface TransportRouteMapper {
 
+    @Mapping(target = "routeShiftId", expression = "java(route.getRouteShift() != null ? route.getRouteShift().getId() : null)")
     @Mapping(target = "routeShiftName", expression = "java(route.getRouteShift() != null ? route.getRouteShift().getRouteName() : null)")
+    @Mapping(target = "routeVehicleId", expression = "java(route.getRouteVehicle() != null ? route.getRouteVehicle().getId() : null)")
     @Mapping(target = "licensePlate", expression = "java(route.getRouteVehicle() != null ? route.getRouteVehicle().getLicensePlate() : null)")
+    @Mapping(target = "driverId", expression = "java(route.getDriver() != null ? route.getDriver().getId() : null)")
     @Mapping(target = "driverFullName", expression = "java(MapperHelper.buildFullName(route.getDriver()))")
+    @Mapping(target = "copilotId", expression = "java(route.getCopilot() != null ? route.getCopilot().getId() : null)")
     @Mapping(target = "copilotFullName", expression = "java(MapperHelper.buildFullName(route.getCopilot()))")
     @Mapping(target = "userIds", expression = "java(extractUserIds(route))")
     @Mapping(target = "userCount", expression = "java(route.getUsers() != null ? route.getUsers().size() : 0)")
