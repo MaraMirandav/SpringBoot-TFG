@@ -1,7 +1,5 @@
 package com.centros_sass.app.mapper;
 
-import java.time.LocalDateTime;
-
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -12,18 +10,20 @@ import com.centros_sass.app.dto.user.UserRequestDTO;
 import com.centros_sass.app.dto.user.UserResponseDTO;
 import com.centros_sass.app.dto.user.UserUpdateDTO;
 import com.centros_sass.app.model.profiles.users.User;
+import com.centros_sass.app.utils.MapperHelper;
 
 @Mapper(
     componentModel = "spring",
     unmappedTargetPolicy = ReportingPolicy.IGNORE,
-    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE
+    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+    imports = MapperHelper.class
 )
 public interface UserMapper {
 
     @Mapping(target = "sexName", source = "sex.sex")
     @Mapping(target = "dependencyName", source = "dependency.dependencyLevel")
-    @Mapping(target = "createdAt", expression = "java(formatDateTime(user.getCreatedAt()))")
-    @Mapping(target = "updatedAt", expression = "java(formatDateTime(user.getUpdatedAt()))")
+    @Mapping(target = "createdAt", expression = "java(MapperHelper.formatDateTime(user.getCreatedAt()))")
+    @Mapping(target = "updatedAt", expression = "java(MapperHelper.formatDateTime(user.getUpdatedAt()))")
     UserResponseDTO toResponse(User user);
 
     @Mapping(target = "id", ignore = true)
@@ -48,14 +48,5 @@ public interface UserMapper {
     @Mapping(target = "userMedicalInfos", ignore = true)
     @Mapping(target = "userIncidents", ignore = true)
     void updateFromDto(UserUpdateDTO dto, @MappingTarget User entity);
-
-    // Métodos Helpers
-
-    default String formatDateTime(LocalDateTime dateTime) {
-        if (dateTime == null) {
-            return null;
-        }
-        return dateTime.toString();
-    }
 
 }

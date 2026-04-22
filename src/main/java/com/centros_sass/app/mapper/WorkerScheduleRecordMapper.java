@@ -13,24 +13,25 @@ import org.mapstruct.ReportingPolicy;
 import com.centros_sass.app.dto.workerschedulerecord.WorkerScheduleRecordRequestDTO;
 import com.centros_sass.app.dto.workerschedulerecord.WorkerScheduleRecordResponseDTO;
 import com.centros_sass.app.dto.workerschedulerecord.WorkerScheduleRecordUpdateDTO;
-import com.centros_sass.app.model.profiles.workers.Worker;
 import com.centros_sass.app.model.profiles.workers.WorkerSchedule;
 import com.centros_sass.app.model.profiles.workers.WorkerScheduleRecord;
+import com.centros_sass.app.utils.MapperHelper;
 
 @Mapper(
     componentModel = "spring",
     unmappedTargetPolicy = ReportingPolicy.IGNORE,
-    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE
+    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+    imports = MapperHelper.class
 )
 public interface WorkerScheduleRecordMapper {
 
     @Mapping(target = "workerId", source = "worker.id")
-    @Mapping(target = "workerFullName", expression = "java(buildWorkerFullName(record))")
+    @Mapping(target = "workerFullName", expression = "java(MapperHelper.buildFullName(record.getWorker()))")
     @Mapping(target = "scheduleId", source = "schedule.id")
     @Mapping(target = "hoursWorked", expression = "java(calculateHoursWorked(record))")
     @Mapping(target = "isLate", expression = "java(calculateIsLate(record))")
-    @Mapping(target = "createdAt", expression = "java(formatDateTime(record.getCreatedAt()))")
-    @Mapping(target = "updatedAt", expression = "java(formatDateTime(record.getUpdatedAt()))")
+    @Mapping(target = "createdAt", expression = "java(MapperHelper.formatDateTime(record.getCreatedAt()))")
+    @Mapping(target = "updatedAt", expression = "java(MapperHelper.formatDateTime(record.getUpdatedAt()))")
     WorkerScheduleRecordResponseDTO toResponse(WorkerScheduleRecord record);
 
     @Mapping(target = "id", ignore = true)
@@ -45,23 +46,6 @@ public interface WorkerScheduleRecordMapper {
     void updateFromDto(WorkerScheduleRecordUpdateDTO dto, @MappingTarget WorkerScheduleRecord entity);
 
     // Métodos Helpers
-
-    default String buildWorkerFullName(WorkerScheduleRecord record) {
-        Worker worker = record.getWorker();
-        if (worker == null) {
-            return null;
-        }
-        StringBuilder fullName = new StringBuilder();
-        fullName.append(worker.getFirstName());
-        if (worker.getSecondName() != null) {
-            fullName.append(" ").append(worker.getSecondName());
-        }
-        fullName.append(" ").append(worker.getFirstSurname());
-        if (worker.getSecondSurname() != null) {
-            fullName.append(" ").append(worker.getSecondSurname());
-        }
-        return fullName.toString();
-    }
 
     default String calculateHoursWorked(WorkerScheduleRecord record) {
         LocalDateTime clockIn = record.getClockIn();
@@ -83,13 +67,6 @@ public interface WorkerScheduleRecordMapper {
         }
         LocalTime toleranceLimit = schedule.getStartAt().plusMinutes(10);
         return clockIn.toLocalTime().isAfter(toleranceLimit);
-    }
-
-    default String formatDateTime(LocalDateTime dateTime) {
-        if (dateTime == null) {
-            return null;
-        }
-        return dateTime.toString();
     }
 
 }
