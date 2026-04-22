@@ -7252,7 +7252,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"routeNumber\": 1,\n  \"startTime\": \"08:30:00\",\n  \"endTime\": \"10:00:00\",\n  \"routeShiftId\": 1,\n  \"routeVehicleId\": 1,\n  \"driverId\": 2,\n  \"copilotId\": 3,\n  \"userIds\": [1, 2, 3]\n}",
+              "raw": "{\n  \"routeNumber\": 101,\n  \"startTime\": \"08:30:00\",\n  \"endTime\": \"10:00:00\",\n  \"routeShiftId\": 1,\n  \"routeVehicleId\": 1,\n  \"driverId\": 2,\n  \"copilotId\": 3,\n  \"userIds\": [1, 2, 3]\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -7497,7 +7497,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"licensePlate\": \"1234ABC\",\n  \"capacity\": 12,\n  \"hasWheelchair\": true,\n  \"wheelchairCapacity\": 3\n}",
+              "raw": "{\n  \"licensePlate\": \"1234-BBB\",\n  \"capacity\": 15,\n  \"hasWheelchair\": false\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -7537,7 +7537,7 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "http://localhost:5555/api/v1/route-vehicles/1",
+              "raw": "http://localhost:5555/api/v1/route-vehicles/3",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -7547,7 +7547,7 @@
                 "api",
                 "v1",
                 "route-vehicles",
-                "1"
+                "3"
               ]
             }
           },
