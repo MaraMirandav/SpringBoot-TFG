@@ -6077,6 +6077,383 @@
           ]
         }
       ]
+    },
+    {
+      "name": "/user-attendance-days",
+      "item": [
+        {
+          "name": "GET - Listar activos",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-attendance-days",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["api", "v1", "user-attendance-days"]
+            }
+          },
+          "response": [
+            {
+              "name": "GET - Listar activos",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-attendance-days",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "5555",
+                  "path": ["api", "v1", "user-attendance-days"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json" },
+                { "key": "Transfer-Encoding", "value": "chunked" }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Planillas de asistencia encontradas\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 2,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 2,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 6,\n            \"userId\": 2,\n            \"userFullName\": \"María Carmen López Vega\",\n            \"dayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"10:00:00\",\n            \"endAt\": \"18:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 10,\n            \"userId\": 3,\n            \"userFullName\": \"José Hernández Ruiz\",\n            \"dayId\": 2,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"14:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 13,\n            \"userId\": 4,\n            \"userFullName\": \"Dolores García Pérez\",\n            \"dayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"08:30:00\",\n            \"endAt\": \"17:30:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 14\n}"
+            }
+          ]
+        },
+        {
+          "name": "GET - Listar todos (incluye inactivos)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-attendance-days/all",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["api", "v1", "user-attendance-days", "all"]
+            }
+          },
+          "response": [
+            {
+              "name": "GET - Listar todos",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-attendance-days/all",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "5555",
+                  "path": ["api", "v1", "user-attendance-days", "all"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json" },
+                { "key": "Transfer-Encoding", "value": "chunked" }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Todas las planillas de asistencia\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 14\n}"
+            }
+          ]
+        },
+        {
+          "name": "GET - Buscar por ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-attendance-days/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["api", "v1", "user-attendance-days", "1"]
+            }
+          },
+          "response": [
+            {
+              "name": "GET - Buscar por ID",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-attendance-days/1",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "5555",
+                  "path": ["api", "v1", "user-attendance-days", "1"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json" },
+                { "key": "Transfer-Encoding", "value": "chunked" }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Planilla de asistencia encontrada\",\n    \"data\": {\n        \"id\": 1,\n        \"userId\": 1,\n        \"userFullName\": \"Antonio Luis Martínez Soria\",\n        \"dayId\": 1,\n        \"dayName\": \"Lunes\",\n        \"startAt\": \"09:00:00\",\n        \"endAt\": \"17:00:00\",\n        \"isActive\": true,\n        \"createdAt\": \"2026-04-05T17:29:03.117872\",\n        \"createdBy\": \"system\",\n        \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n        \"updatedBy\": \"system\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "GET - Buscar por usuario",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-attendance-days/user/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["api", "v1", "user-attendance-days", "user", "1"]
+            }
+          },
+          "response": [
+            {
+              "name": "GET - Buscar por usuario",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-attendance-days/user/1",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "5555",
+                  "path": ["api", "v1", "user-attendance-days", "user", "1"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json" },
+                { "key": "Transfer-Encoding", "value": "chunked" }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Planillas de asistencia del usuario\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 2,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 2,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 3,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 3,\n            \"dayName\": \"Miércoles\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 4,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 4,\n            \"dayName\": \"Jueves\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 5,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 5,\n            \"dayName\": \"Viernes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 5\n}"
+            }
+          ]
+        },
+        {
+          "name": "POST - Crear planilla",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 2,\n  \"dayId\": 2,\n  \"startAt\": \"10:00:00\",\n  \"endAt\": \"18:00:00\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-attendance-days",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["api", "v1", "user-attendance-days"]
+            }
+          },
+          "response": [
+            {
+              "name": "POST - Crear planilla",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": 2,\n  \"dayId\": 2,\n  \"startAt\": \"10:00:00\",\n  \"endAt\": \"18:00:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-attendance-days",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "5555",
+                  "path": ["api", "v1", "user-attendance-days"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                { "key": "Content-Type", "value": "application/json" },
+                { "key": "Transfer-Encoding", "value": "chunked" }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Planilla de asistencia creada\",\n    \"data\": {\n        \"id\": 15,\n        \"userId\": 2,\n        \"userFullName\": \"María Carmen López Vega\",\n        \"dayId\": 2,\n        \"dayName\": \"Martes\",\n        \"startAt\": \"10:00:00\",\n        \"endAt\": \"18:00:00\",\n        \"isActive\": true,\n        \"createdAt\": \"2026-04-22T19:30:00.123456\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-22T19:30:00.123456\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 201,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "PUT - Actualizar planilla",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startAt\": \"10:00:00\",\n  \"endAt\": \"16:00:00\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-attendance-days/15",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["api", "v1", "user-attendance-days", "15"]
+            }
+          },
+          "response": [
+            {
+              "name": "PUT - Actualizar planilla",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startAt\": \"10:00:00\",\n  \"endAt\": \"16:00:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-attendance-days/15",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "5555",
+                  "path": ["api", "v1", "user-attendance-days", "15"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json" },
+                { "key": "Transfer-Encoding", "value": "chunked" }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Planilla de asistencia actualizada\",\n    \"data\": {\n        \"id\": 15,\n        \"userId\": 2,\n        \"userFullName\": \"María Carmen López Vega\",\n        \"dayId\": 2,\n        \"dayName\": \"Martes\",\n        \"startAt\": \"10:00:00\",\n        \"endAt\": \"16:00:00\",\n        \"isActive\": true,\n        \"createdAt\": \"2026-04-22T19:30:00.123456\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-22T19:31:00.654321\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "DELETE - Eliminar planilla",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX0RJUkVDVE9SIl0sImlkIjoxLCJmaXJzdFN1cm5hbWUiOiJTaXN0ZW1hIiwic3ViIjoiYWRtaW5AY2VudHJvLXNhc3MuY29tIiwiaWF0IjoxNzc2NjIxNDg0LCJleHAiOjE3NzY3MDc4ODR9.5NGjYTp0NPzytRqsj3WcOHCn1zaWZgghcM10cB0sqshcQ3n2HDWyc9ejEWCJdjgb",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-attendance-days/15",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["api", "v1", "user-attendance-days", "15"]
+            }
+          },
+          "response": [
+            {
+              "name": "DELETE - Eliminar planilla",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/api/v1/user-attendance-days/15",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "5555",
+                  "path": ["api", "v1", "user-attendance-days", "15"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json" },
+                { "key": "Transfer-Encoding", "value": "chunked" }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Planilla de asistencia eliminada\",\n    \"data\": {\n        \"id\": 15,\n        \"userId\": 2,\n        \"userFullName\": \"María Carmen López Vega\",\n        \"dayId\": 2,\n        \"dayName\": \"Martes\",\n        \"startAt\": \"10:00:00\",\n        \"endAt\": \"16:00:00\",\n        \"isActive\": false,\n        \"createdAt\": \"2026-04-22T19:30:00.123456\",\n        \"createdBy\": \"admin@centro-sass.com\",\n        \"updatedAt\": \"2026-04-22T19:32:00.111222\",\n        \"updatedBy\": \"admin@centro-sass.com\"\n    },\n    \"status\": 200,\n    \"totalElements\": null\n}"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
