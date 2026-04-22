@@ -44,6 +44,17 @@ public class UserController {
                 (int) page.getTotalElements()));
     }
 
+    @GetMapping("/inactive")
+    public ResponseEntity<ApiDataResponse<List<UserResponseDTO>>> findAllInactive(
+            @PageableDefault(size = 20) Pageable pageable) {
+        Page<UserResponseDTO> page = userService.findAllInactive(pageable);
+        return ResponseEntity.ok(new ApiDataResponse<>(
+                "Usuarios inactivos encontrados",
+                page.getContent(),
+                HttpStatus.OK.value(),
+                (int) page.getTotalElements()));
+    }
+
     @GetMapping("/all")
     public ResponseEntity<ApiDataResponse<List<UserResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
