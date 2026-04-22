@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.user.UserRequestDTO;
@@ -35,8 +36,10 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<ApiDataResponse<List<UserResponseDTO>>> findAll(
-            @PageableDefault(size = 20) Pageable pageable) {
-        Page<UserResponseDTO> page = userService.findAll(pageable);
+            @PageableDefault(size = 20) Pageable pageable,
+            @RequestParam(required = false) String search
+        ) {
+        Page<UserResponseDTO> page = userService.findAll(pageable, search);
         return ResponseEntity.ok(new ApiDataResponse<>(
                 "Usuarios activos encontrados",
                 page.getContent(),
@@ -46,8 +49,10 @@ public class UserController {
 
     @GetMapping("/inactive")
     public ResponseEntity<ApiDataResponse<List<UserResponseDTO>>> findAllInactive(
-            @PageableDefault(size = 20) Pageable pageable) {
-        Page<UserResponseDTO> page = userService.findAllInactive(pageable);
+            @PageableDefault(size = 20) Pageable pageable,
+            @RequestParam(required = false) String search
+        ) {
+        Page<UserResponseDTO> page = userService.findAllInactive(pageable, search);
         return ResponseEntity.ok(new ApiDataResponse<>(
                 "Usuarios inactivos encontrados",
                 page.getContent(),

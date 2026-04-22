@@ -34,16 +34,26 @@ public class WorkerServiceImpl implements WorkerService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<WorkerResponseDTO> findAll(Pageable pageable) {
-        return workerRepository.findAllByIsActiveTrue(pageable)
+    public Page<WorkerResponseDTO> findAll(Pageable pageable, String search) {
+        if (search == null || search.trim().isEmpty()) {
+            return workerRepository.findAllByIsActiveTrue(pageable)
+                    .map(workerMapper::toResponse);
+        }
+        String query = search.trim().toLowerCase();
+        return workerRepository.findAllBySearchAndIsActiveTrue(pageable, query)
                 .map(workerMapper::toResponse);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Page<WorkerResponseDTO> findAllInactive(Pageable pageable) {
-        Page<Worker> workers = workerRepository.findAllByIsActiveFalse(pageable);
-        return workers.map(workerMapper::toResponse);
+    public Page<WorkerResponseDTO> findAllInactive(Pageable pageable, String search) {
+        if (search == null || search.trim().isEmpty()) {
+            return workerRepository.findAllByIsActiveFalse(pageable)
+                .map(workerMapper::toResponse);
+        }
+        String query = search.trim().toLowerCase();
+        return workerRepository.findAllBySearchAndIsActiveFalse(pageable, query)
+                .map(workerMapper::toResponse);
     }
 
     @Override
