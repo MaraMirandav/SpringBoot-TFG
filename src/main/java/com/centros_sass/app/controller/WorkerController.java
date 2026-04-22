@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.worker.WorkerRequestDTO;
@@ -35,8 +36,10 @@ public class WorkerController {
 
     @GetMapping
     public ResponseEntity<ApiDataResponse<List<WorkerResponseDTO>>> findAll(
-            @PageableDefault(size = 20) Pageable pageable) {
-        Page<WorkerResponseDTO> page = workerService.findAll(pageable);
+            @PageableDefault(size = 20) Pageable pageable,
+            @RequestParam(required = false) String search
+        ) {
+        Page<WorkerResponseDTO> page = workerService.findAll(pageable, search);
         return ResponseEntity.ok(new ApiDataResponse<>(
                 "Trabajadores activos encontrados",
                 page.getContent(),
@@ -46,8 +49,10 @@ public class WorkerController {
 
     @GetMapping("/inactive")
     public ResponseEntity<ApiDataResponse<List<WorkerResponseDTO>>> findAllInactive(
-            @PageableDefault(size = 6) Pageable pageable) {
-        Page<WorkerResponseDTO> page = workerService.findAllInactive(pageable);
+            @PageableDefault(size = 6) Pageable pageable,
+            @RequestParam(required = false) String search
+        ) {
+        Page<WorkerResponseDTO> page = workerService.findAllInactive(pageable, search);
         return ResponseEntity.ok(new ApiDataResponse<>(
                 "Trabajadores inactivos encontrados",
                 page.getContent(),

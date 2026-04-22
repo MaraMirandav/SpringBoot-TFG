@@ -11,9 +11,9 @@ import com.centros_sass.app.dto.worker.WorkerUpdateDTO;
 
 public interface WorkerService {
 
-    Page<WorkerResponseDTO> findAll(Pageable pageable);
+    Page<WorkerResponseDTO> findAll(Pageable pageable, String search);
 
-    Page<WorkerResponseDTO> findAllInactive(Pageable pageable);
+    Page<WorkerResponseDTO> findAllInactive(Pageable pageable, String search);
 
     Page<WorkerResponseDTO> findAllIncludingInactive(Pageable pageable);
 

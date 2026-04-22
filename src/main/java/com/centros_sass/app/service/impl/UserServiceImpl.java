@@ -34,15 +34,25 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<UserResponseDTO> findAll(Pageable pageable) {
-        return userRepository.findAllByIsActiveTrue(pageable)
+    public Page<UserResponseDTO> findAll(Pageable pageable, String search) {
+        if (search == null || search.trim().isEmpty()) {
+            return userRepository.findAllByIsActiveTrue(pageable)
+                    .map(userMapper::toResponse);
+        }
+        String query = search.trim().toLowerCase();
+        return userRepository.findAllBySearchAndIsActiveTrue(pageable, query)
                 .map(userMapper::toResponse);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Page<UserResponseDTO> findAllInactive(Pageable pageable) {
-        return userRepository.findAllByIsActiveFalse(pageable)
+    public Page<UserResponseDTO> findAllInactive(Pageable pageable, String search) {
+        if (search == null || search.trim().isEmpty()) {
+            return userRepository.findAllByIsActiveFalse(pageable)
+                    .map(userMapper::toResponse);
+        }
+        String query = search.trim().toLowerCase();
+        return userRepository.findAllBySearchAndIsActiveFalse(pageable, query)
                 .map(userMapper::toResponse);
     }
 

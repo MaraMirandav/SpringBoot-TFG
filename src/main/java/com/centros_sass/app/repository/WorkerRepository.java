@@ -27,6 +27,33 @@ public interface WorkerRepository extends JpaRepository<Worker, Integer> {
     // Estado activo/inactivo
     Page<Worker> findAllByIsActiveTrue(Pageable pageable);
 
+    @Query("""
+        SELECT w FROM Worker w
+        WHERE w.isActive = true
+        AND (
+            LOWER(w.firstName) LIKE %:search% OR
+            LOWER(w.firstSurname) LIKE %:search% OR
+            LOWER(w.secondName) LIKE %:search% OR
+            LOWER(w.secondSurname) LIKE %:search% OR
+            LOWER(w.dni) LIKE %:search% OR
+            LOWER(w.email) LIKE %:search%
+        )
+    """)
+    Page<Worker> findAllBySearchAndIsActiveTrue(Pageable pageable, @Param("search") String search);
+
     Page<Worker> findAllByIsActiveFalse(Pageable pageable);
 
+    @Query("""
+        SELECT w FROM Worker w
+        WHERE w.isActive = false
+        AND (
+            LOWER(w.firstName) LIKE %:search% OR
+            LOWER(w.firstSurname) LIKE %:search% OR
+            LOWER(w.secondName) LIKE %:search% OR
+            LOWER(w.secondSurname) LIKE %:search% OR
+            LOWER(w.dni) LIKE %:search% OR
+            LOWER(w.email) LIKE %:search%
+        )
+    """)
+    Page<Worker> findAllBySearchAndIsActiveFalse(Pageable pageable, @Param("search") String search );
 }
