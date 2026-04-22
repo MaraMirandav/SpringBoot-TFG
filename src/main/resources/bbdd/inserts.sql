@@ -676,6 +676,25 @@ VALUES
     (4, 4, '08:30:00', '17:30:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- --------------------------------------------------------
+-- REGISTROS DE ASISTENCIA REAL (user_attendance_records)
+-- --------------------------------------------------------
+
+INSERT INTO user_attendance_records (user_id, attendance_day_id, is_present, created_at, updated_at, created_by, updated_by)
+VALUES
+    -- 1. ANTONIO (ID 1): Vino Lunes y Martes
+    (1, 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (1, 2, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+
+    -- 2. MARÍA (ID 2): NO vino el Lunes
+    (2, 6, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+
+    -- 3. JOSÉ (ID 3): Vino el Martes
+    (3, 9, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+
+    -- 4. DOLORES (ID 4): Vino el Lunes
+    (4, 11, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+
+-- --------------------------------------------------------
 -- CATALOGO: TURNOS DE RUTA (route_shift_enum)
 -- --------------------------------------------------------
 INSERT INTO routes_shift_enum (route_name, created_at, updated_at, created_by, updated_by)
