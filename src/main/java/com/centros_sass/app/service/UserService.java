@@ -13,6 +13,8 @@ public interface UserService {
 
     Page<UserResponseDTO> findAll(Pageable pageable);
 
+    Page<UserResponseDTO> findAllInactive(Pageable pageable);
+
     Page<UserResponseDTO> findAllIncludingInactive(Pageable pageable);
 
     Optional<UserResponseDTO> findById(Integer id);
