@@ -1,6 +1,5 @@
 package com.centros_sass.app.mapper;
 
-import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -15,18 +14,20 @@ import com.centros_sass.app.dto.worker.WorkerResponseDTO;
 import com.centros_sass.app.dto.worker.WorkerUpdateDTO;
 import com.centros_sass.app.model.catalogs.fixed.organization.Role;
 import com.centros_sass.app.model.profiles.workers.Worker;
+import com.centros_sass.app.utils.MapperHelper;
 
 @Mapper(
     componentModel = "spring",
     unmappedTargetPolicy = ReportingPolicy.IGNORE,
-    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE
+    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+    imports = MapperHelper.class
 )
 public interface WorkerMapper {
 
     @Mapping(target = "roleIds", expression = "java(extractRoleIds(worker))")
     @Mapping(target = "scheduleCount", expression = "java(worker.getSchedules() != null ? worker.getSchedules().size() : 0)")
-    @Mapping(target = "createdAt", expression = "java(formatDateTime(worker.getCreatedAt()))")
-    @Mapping(target = "updatedAt", expression = "java(formatDateTime(worker.getUpdatedAt()))")
+    @Mapping(target = "createdAt", expression = "java(MapperHelper.formatDateTime(worker.getCreatedAt()))")
+    @Mapping(target = "updatedAt", expression = "java(MapperHelper.formatDateTime(worker.getUpdatedAt()))")
     WorkerResponseDTO toResponse(Worker worker);
 
     @Mapping(target = "id", ignore = true)
@@ -52,13 +53,6 @@ public interface WorkerMapper {
         return roles.stream()
                 .map(Role::getId)
                 .collect(Collectors.toSet());
-    }
-
-    default String formatDateTime(LocalDateTime dateTime) {
-        if (dateTime == null) {
-            return null;
-        }
-        return dateTime.toString();
     }
 
 }

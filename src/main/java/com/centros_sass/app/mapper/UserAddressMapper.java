@@ -52,8 +52,4 @@ public interface UserAddressMapper {
     @Mapping(target = "updatedBy", ignore = true)
     void updateFromDto(UserAddressUpdateDTO dto, @MappingTarget UserAddress entity);
 
-    default String formatDateTime(java.time.LocalDateTime dateTime) {
-        if (dateTime == null) return null;
-        return dateTime.toString();
-    }
 }

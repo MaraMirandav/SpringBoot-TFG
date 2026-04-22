@@ -1,7 +1,5 @@
 package com.centros_sass.app.mapper;
 
-import java.time.LocalDateTime;
-
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -11,22 +9,23 @@ import org.mapstruct.ReportingPolicy;
 import com.centros_sass.app.dto.userattendanceday.UserAttendanceDayRequestDTO;
 import com.centros_sass.app.dto.userattendanceday.UserAttendanceDayResponseDTO;
 import com.centros_sass.app.dto.userattendanceday.UserAttendanceDayUpdateDTO;
-import com.centros_sass.app.model.profiles.users.User;
 import com.centros_sass.app.model.profiles.users.UserAttendanceDay;
+import com.centros_sass.app.utils.MapperHelper;
 
 @Mapper(
     componentModel = "spring",
     unmappedTargetPolicy = ReportingPolicy.IGNORE,
-    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE
+    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+    imports = MapperHelper.class
 )
 public interface UserAttendanceDayMapper {
 
     @Mapping(target = "userId", source = "user.id")
-    @Mapping(target = "userFullName", expression = "java(buildUserFullName(entity))")
+    @Mapping(target = "userFullName", expression = "java(MapperHelper.buildFullName(entity.getUser()))")
     @Mapping(target = "dayId", source = "day.id")
     @Mapping(target = "dayName", expression = "java(buildDayName(entity))")
-    @Mapping(target = "createdAt", expression = "java(formatDateTime(entity.getCreatedAt()))")
-    @Mapping(target = "updatedAt", expression = "java(formatDateTime(entity.getUpdatedAt()))")
+    @Mapping(target = "createdAt", expression = "java(MapperHelper.formatDateTime(entity.getCreatedAt()))")
+    @Mapping(target = "updatedAt", expression = "java(MapperHelper.formatDateTime(entity.getUpdatedAt()))")
     UserAttendanceDayResponseDTO toResponse(UserAttendanceDay entity);
 
     @Mapping(target = "id", ignore = true)
@@ -41,35 +40,11 @@ public interface UserAttendanceDayMapper {
     void updateFromDto(UserAttendanceDayUpdateDTO dto, @MappingTarget UserAttendanceDay entity);
 
     // Métodos Helper
-    default String buildUserFullName(UserAttendanceDay entity) {
-        if (entity == null || entity.getUser() == null) {
-            return null;
-        }
-        User user = entity.getUser();
-        StringBuilder fullName = new StringBuilder();
-        fullName.append(user.getFirstName());
-        if (user.getSecondName() != null && !user.getSecondName().isEmpty()) {
-            fullName.append(" ").append(user.getSecondName());
-        }
-        fullName.append(" ").append(user.getFirstSurname());
-        if (user.getSecondSurname() != null && !user.getSecondSurname().isEmpty()) {
-            fullName.append(" ").append(user.getSecondSurname());
-        }
-        return fullName.toString();
-    }
-
     default String buildDayName(UserAttendanceDay entity) {
         if (entity == null || entity.getDay() == null) {
             return null;
         }
         return entity.getDay().getDayName();
-    }
-
-    default String formatDateTime(LocalDateTime dateTime) {
-        if (dateTime == null) {
-            return null;
-        }
-        return dateTime.toString();
     }
 
 }
