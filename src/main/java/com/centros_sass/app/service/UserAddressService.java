@@ -14,6 +14,8 @@ public interface UserAddressService {
 
     Page<UserAddressResponseDTO> findAll(Pageable pageable);
 
+    Page<UserAddressResponseDTO> findAllInactive(Pageable pageable);
+
     Page<UserAddressResponseDTO> findAllIncludingInactive(Pageable pageable);
 
     Optional<UserAddressResponseDTO> findById(Integer id);

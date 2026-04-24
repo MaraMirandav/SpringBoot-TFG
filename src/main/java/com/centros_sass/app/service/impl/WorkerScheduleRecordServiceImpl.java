@@ -54,6 +54,13 @@ public class WorkerScheduleRecordServiceImpl implements WorkerScheduleRecordServ
 
     @Override
     @Transactional(readOnly = true)
+    public Page<WorkerScheduleRecordResponseDTO> findAllInactive(Pageable pageable) {
+        return recordRepository.findAllByIsActiveFalse(pageable)
+                .map(recordMapper::toResponse);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public Optional<WorkerScheduleRecordResponseDTO> findById(Integer id) {
         return recordRepository.findById(id)
                 .map(recordMapper::toResponse);

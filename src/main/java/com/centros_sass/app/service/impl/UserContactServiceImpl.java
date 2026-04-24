@@ -41,6 +41,15 @@ public class UserContactServiceImpl implements UserContactService {
 
     @Override
     @Transactional(readOnly = true)
+    public List<UserContactResponseDTO> findAllInactive() {
+        return userContactRepository.findByIsActiveFalse(Pageable.unpaged())
+                .stream()
+                .map(userContactMapper::toResponse)
+                .toList();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public List<UserContactResponseDTO> findAllIncludingInactive() {
         return userContactRepository.findAll(Pageable.unpaged())
                 .stream()

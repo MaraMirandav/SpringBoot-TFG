@@ -43,6 +43,17 @@ public class WorkerScheduleRecordController {
                 (int) page.getTotalElements()));
     }
 
+    @GetMapping("/inactive")
+    public ResponseEntity<ApiDataResponse<List<WorkerScheduleRecordResponseDTO>>> findAllInactive(
+            @PageableDefault(size = 20) Pageable pageable) {
+        Page<WorkerScheduleRecordResponseDTO> page = recordService.findAllInactive(pageable);
+        return ResponseEntity.ok(new ApiDataResponse<>(
+                "Fichajes inactivos encontrados",
+                page.getContent(),
+                HttpStatus.OK.value(),
+                (int) page.getTotalElements()));
+    }
+
     @GetMapping("/worker/{workerId}")
     public ResponseEntity<ApiDataResponse<List<WorkerScheduleRecordResponseDTO>>> findByWorkerId(
             @PathVariable Integer workerId,

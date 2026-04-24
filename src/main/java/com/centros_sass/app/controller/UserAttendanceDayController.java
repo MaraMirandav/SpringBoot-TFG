@@ -40,6 +40,16 @@ public class UserAttendanceDayController {
                 list.size()));
     }
 
+    @GetMapping("/inactive")
+    public ResponseEntity<ApiDataResponse<List<UserAttendanceDayResponseDTO>>> findAllInactive() {
+        List<UserAttendanceDayResponseDTO> list = attendanceDayService.findAllInactive();
+        return ResponseEntity.ok(new ApiDataResponse<>(
+                "Planillas de asistencia inactivas",
+                list,
+                HttpStatus.OK.value(),
+                list.size()));
+    }
+
     @GetMapping("/all")
     public ResponseEntity<ApiDataResponse<List<UserAttendanceDayResponseDTO>>> findAllIncludingInactive() {
         List<UserAttendanceDayResponseDTO> list = attendanceDayService.findAllIncludingInactive();
