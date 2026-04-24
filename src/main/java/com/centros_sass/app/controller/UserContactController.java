@@ -36,6 +36,14 @@ public class UserContactController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/inactive")
+    public ResponseEntity<ApiDataResponse<List<UserContactResponseDTO>>> findAllInactive() {
+        List<UserContactResponseDTO> lista = userContactService.findAllInactive();
+        ApiDataResponse<List<UserContactResponseDTO>> response =
+            new ApiDataResponse<>("Contactos inactivos", lista, 200, lista.size());
+        return ResponseEntity.ok(response);
+    }
+
     @GetMapping("/all")
     public ResponseEntity<ApiDataResponse<List<UserContactResponseDTO>>> findAllIncludingInactive() {
         List<UserContactResponseDTO> lista = userContactService.findAllIncludingInactive();

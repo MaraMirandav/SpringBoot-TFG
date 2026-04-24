@@ -44,6 +44,17 @@ public class WorkerScheduleController {
                 (int) page.getTotalElements()));
     }
 
+    @GetMapping("/inactive")
+    public ResponseEntity<ApiDataResponse<List<WorkerScheduleResponseDTO>>> findAllInactive(
+            @PageableDefault(size = 20) Pageable pageable) {
+        Page<WorkerScheduleResponseDTO> page = workerScheduleService.findAllInactive(pageable);
+        return ResponseEntity.ok(new ApiDataResponse<>(
+                "Horarios inactivos encontrados",
+                page.getContent(),
+                HttpStatus.OK.value(),
+                (int) page.getTotalElements()));
+    }
+
     @GetMapping("/worker/{workerId}")
     public ResponseEntity<ApiDataResponse<List<WorkerScheduleResponseDTO>>> findByWorkerId(
             @PathVariable Integer workerId,

@@ -46,6 +46,13 @@ public class UserAddressServiceImpl implements UserAddressService {
 
     @Override
     @Transactional(readOnly = true)
+    public Page<UserAddressResponseDTO> findAllInactive(Pageable pageable) {
+        return userAddressRepository.findByIsActiveFalse(pageable)
+                .map(userAddressMapper::toResponse);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public Page<UserAddressResponseDTO> findAllIncludingInactive(Pageable pageable) {
         return userAddressRepository.findAll(pageable)
                 .map(userAddressMapper::toResponse);

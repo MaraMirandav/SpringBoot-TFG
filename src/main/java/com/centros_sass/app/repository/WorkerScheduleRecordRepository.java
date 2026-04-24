@@ -16,6 +16,9 @@ public interface WorkerScheduleRecordRepository extends JpaRepository<WorkerSche
     //Todos activos
     Page<WorkerScheduleRecord> findAllByIsActiveTrue(Pageable pageable);
 
+    //Todos inactivos
+    Page<WorkerScheduleRecord> findAllByIsActiveFalse(Pageable pageable);
+
     //Por schedule
     Optional<WorkerScheduleRecord> findByScheduleIdAndIsActiveTrue(Integer scheduleId);
 

@@ -11,6 +11,8 @@ public interface UserAttendanceDayService {
 
     List<UserAttendanceDayResponseDTO> findAll();
 
+    List<UserAttendanceDayResponseDTO> findAllInactive();
+
     List<UserAttendanceDayResponseDTO> findAllIncludingInactive();
 
     Optional<UserAttendanceDayResponseDTO> findById(Integer id);

@@ -440,6 +440,27 @@
           ]
         },
         {
+          "name": "GET /workers/inactive",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5555/api/v1/workers/inactive",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "workers",
+                "inactive"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "/workers/all",
           "request": {
             "auth": {
@@ -1801,6 +1822,27 @@
           ]
         },
         {
+          "name": "GET /worker-schedules/inactive",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5555/api/v1/worker-schedules/inactive",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedules",
+                "inactive"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "/worker-schedules/worker/:d",
           "request": {
             "auth": {
@@ -2540,6 +2582,27 @@
               "body": "{\n    \"message\": \"Fichajes encontrados\",\n    \"data\": [\n        {\n            \"id\": 10,\n            \"workerId\": 2,\n            \"workerFullName\": \"Ana María García López\",\n            \"scheduleId\": 10,\n            \"clockIn\": \"2025-01-17T08:16:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.712573\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.712573\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 19,\n            \"workerId\": 3,\n            \"workerFullName\": \"Carlos Rodríguez Sánchez\",\n            \"scheduleId\": 15,\n            \"clockIn\": \"2025-01-17T08:17:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.715804\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.715804\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 28,\n            \"workerId\": 4,\n            \"workerFullName\": \"Lucía Carmen Fernández\",\n            \"scheduleId\": 25,\n            \"clockIn\": \"2025-01-17T07:53:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.718691\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.718691\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 43,\n            \"workerId\": 7,\n            \"workerFullName\": \"Roberto Sanz Gil\",\n            \"scheduleId\": 45,\n            \"clockIn\": \"2025-01-17T07:56:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.730812\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.730812\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 48,\n            \"workerId\": 8,\n            \"workerFullName\": \"Beatriz Molina Pérez\",\n            \"scheduleId\": 50,\n            \"clockIn\": \"2025-01-17T08:26:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.734266\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.734266\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 57,\n            \"workerId\": 9,\n            \"workerFullName\": \"Laura Ruiz Giménez\",\n            \"scheduleId\": 55,\n            \"clockIn\": \"2025-01-17T09:55:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.737256\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.737256\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 62,\n            \"workerId\": 10,\n            \"workerFullName\": \"Pablo José Martín Sanz\",\n            \"scheduleId\": 65,\n            \"clockIn\": \"2025-01-17T09:01:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.742225\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.742225\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 67,\n            \"workerId\": 11,\n            \"workerFullName\": \"Sara Díaz Romero\",\n            \"scheduleId\": 70,\n            \"clockIn\": \"2025-01-17T09:00:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.745379\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.745379\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 72,\n            \"workerId\": 12,\n            \"workerFullName\": \"David Serrano Molina\",\n            \"scheduleId\": 75,\n            \"clockIn\": \"2025-01-17T06:56:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.749276\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.749276\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 77,\n            \"workerId\": 13,\n            \"workerFullName\": \"Carmen Luisa Ortiz Vega\",\n            \"scheduleId\": 80,\n            \"clockIn\": \"2025-01-17T14:57:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.752722\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.752722\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 33,\n            \"workerId\": 5,\n            \"workerFullName\": \"Miguel Torres Ruiz\",\n            \"scheduleId\": 35,\n            \"clockIn\": \"2025-01-17T08:14:00\",\n            \"clockOut\": \"2025-01-17T18:30:00\",\n            \"hoursWorked\": \"10h 16m\",\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.723064\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T18:14:35.563360\",\n            \"updatedBy\": \"admin@centro-sass.com\"\n        },\n        {\n            \"id\": 38,\n            \"workerId\": 6,\n            \"workerFullName\": \"Elena Moreno Díaz\",\n            \"scheduleId\": 40,\n            \"clockIn\": \"2025-01-17T08:57:00\",\n            \"clockOut\": \"2025-01-17T18:30:00\",\n            \"hoursWorked\": \"9h 33m\",\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.727375\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T18:22:29.951089\",\n            \"updatedBy\": \"admin@centro-sass.com\"\n        },\n        {\n            \"id\": 86,\n            \"workerId\": 14,\n            \"workerFullName\": \"Javier Navarro Flores\",\n            \"scheduleId\": 85,\n            \"clockIn\": \"2025-01-17T07:46:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.763015\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.763015\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 95,\n            \"workerId\": 15,\n            \"workerFullName\": \"Manuel Antonio Iglesias Vargas\",\n            \"scheduleId\": 95,\n            \"clockIn\": \"2025-01-17T07:49:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.767565\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.767565\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 100,\n            \"workerId\": 16,\n            \"workerFullName\": \"Julián Vázquez Rey\",\n            \"scheduleId\": 105,\n            \"clockIn\": \"2025-01-17T06:59:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.773148\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T15:45:03.773148\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 5,\n            \"workerId\": 1,\n            \"workerFullName\": \"Admin Sistema\",\n            \"scheduleId\": 5,\n            \"clockIn\": \"2025-01-17T08:18:00\",\n            \"clockOut\": \"2025-01-17T18:30:00\",\n            \"hoursWorked\": \"10h 12m\",\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T15:45:03.707164\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-04T17:47:17.314698\",\n            \"updatedBy\": \"admin@centro-sass.com\"\n        },\n        {\n            \"id\": 101,\n            \"workerId\": 1,\n            \"workerFullName\": \"Admin Sistema\",\n            \"scheduleId\": 5,\n            \"clockIn\": \"2025-01-20T08:15:00\",\n            \"clockOut\": null,\n            \"hoursWorked\": null,\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T17:48:05.503211\",\n            \"createdBy\": \"admin@centro-sass.com\",\n            \"updatedAt\": \"2026-04-04T17:48:05.503211\",\n            \"updatedBy\": \"admin@centro-sass.com\"\n        },\n        {\n            \"id\": 102,\n            \"workerId\": 6,\n            \"workerFullName\": \"Elena Moreno Díaz\",\n            \"scheduleId\": 40,\n            \"clockIn\": \"2025-01-20T08:15:00\",\n            \"clockOut\": \"2025-01-20T14:05:00\",\n            \"hoursWorked\": \"5h 50m\",\n            \"isLate\": false,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-04T18:24:59.105018\",\n            \"createdBy\": \"admin@centro-sass.com\",\n            \"updatedAt\": \"2026-04-04T18:25:39.458565\",\n            \"updatedBy\": \"admin@centro-sass.com\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 18\n}"
             }
           ]
+        },
+        {
+          "name": "GET /worker-schedule-records/inactive",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5555/api/v1/worker-schedule-records/inactive",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "worker-schedule-records",
+                "inactive"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "/worker-schedule-records/worker/:workerId",
@@ -4267,6 +4330,27 @@
           ]
         },
         {
+          "name": "GET /user-addresses/inactive",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5555/api/v1/user-addresses/inactive",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-addresses",
+                "inactive"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "/user-addresses/all",
           "request": {
             "auth": {
@@ -5123,6 +5207,27 @@
               "body": "{\n    \"message\": \"Contactos encontrados\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"contactName\": \"Laura Martínez\",\n            \"relationshipId\": 1,\n            \"relationshipName\": \"Hijo/a\",\n            \"contactPhone\": \"600111222\",\n            \"contactEmail\": \"laura.mtz@email.com\",\n            \"isContactMain\": true,\n            \"contactNote\": \"Tiene llaves del domicilio principal.\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 2,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"contactName\": \"Pedro Martínez\",\n            \"relationshipId\": 1,\n            \"relationshipName\": \"Hijo/a\",\n            \"contactPhone\": \"600333444\",\n            \"contactEmail\": \"pedro.mtz@email.com\",\n            \"isContactMain\": false,\n            \"contactNote\": null,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 3,\n            \"userId\": 2,\n            \"userFullName\": \"María Carmen López Vega\",\n            \"contactName\": \"Juan López\",\n            \"relationshipId\": 2,\n            \"relationshipName\": \"Cónyuge (Esposo/a)\",\n            \"contactPhone\": \"611222333\",\n            \"contactEmail\": \"juan.lopez@email.com\",\n            \"isContactMain\": true,\n            \"contactNote\": \"Suele estar en casa a partir de las 17:00h.\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 4,\n            \"userId\": 3,\n            \"userFullName\": \"José Hernández Ruiz\",\n            \"contactName\": \"Manuel Hernández\",\n            \"relationshipId\": 3,\n            \"relationshipName\": \"Hermano/a\",\n            \"contactPhone\": \"622444555\",\n            \"contactEmail\": \"manuel.hdez@email.com\",\n            \"isContactMain\": true,\n            \"contactNote\": null,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 5,\n            \"userId\": 3,\n            \"userFullName\": \"José Hernández Ruiz\",\n            \"contactName\": \"Ana Hernández\",\n            \"relationshipId\": 5,\n            \"relationshipName\": \"Sobrino/a\",\n            \"contactPhone\": \"622555666\",\n            \"contactEmail\": \"ana.hdez@email.com\",\n            \"isContactMain\": false,\n            \"contactNote\": null,\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 6,\n            \"userId\": 4,\n            \"userFullName\": \"Dolores Gómez Pérez\",\n            \"contactName\": \"Marta Gómez\",\n            \"relationshipId\": 4,\n            \"relationshipName\": \"Nieto/a\",\n            \"contactPhone\": \"633777888\",\n            \"contactEmail\": \"marta.gomez@email.com\",\n            \"isContactMain\": true,\n            \"contactNote\": \"Contactar por WhatsApp si no responde.\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.319800\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.319800\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 6\n}"
             }
           ]
+        },
+        {
+          "name": "GET /user-contacts/inactive",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5555/api/v1/user-contacts/inactive",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-contacts",
+                "inactive"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "/user-contacts/all",
@@ -6147,6 +6252,27 @@
               "body": "{\n    \"message\": \"Planillas de asistencia encontradas\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 2,\n            \"userId\": 1,\n            \"userFullName\": \"Antonio Luis Martínez Soria\",\n            \"dayId\": 2,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"17:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 6,\n            \"userId\": 2,\n            \"userFullName\": \"María Carmen López Vega\",\n            \"dayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"10:00:00\",\n            \"endAt\": \"18:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 10,\n            \"userId\": 3,\n            \"userFullName\": \"José Hernández Ruiz\",\n            \"dayId\": 2,\n            \"dayName\": \"Martes\",\n            \"startAt\": \"09:00:00\",\n            \"endAt\": \"14:00:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        },\n        {\n            \"id\": 13,\n            \"userId\": 4,\n            \"userFullName\": \"Dolores García Pérez\",\n            \"dayId\": 1,\n            \"dayName\": \"Lunes\",\n            \"startAt\": \"08:30:00\",\n            \"endAt\": \"17:30:00\",\n            \"isActive\": true,\n            \"createdAt\": \"2026-04-05T17:29:03.117872\",\n            \"createdBy\": \"system\",\n            \"updatedAt\": \"2026-04-05T17:29:03.117872\",\n            \"updatedBy\": \"system\"\n        }\n    ],\n    \"status\": 200,\n    \"totalElements\": 14\n}"
             }
           ]
+        },
+        {
+          "name": "GET /user-attendance-days/inactive",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5555/api/v1/user-attendance-days/inactive",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-attendance-days",
+                "inactive"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "GET - Listar todos (incluye inactivos)",

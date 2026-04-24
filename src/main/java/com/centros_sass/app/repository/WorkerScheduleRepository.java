@@ -20,6 +20,9 @@ public interface WorkerScheduleRepository extends JpaRepository<WorkerSchedule, 
     // Todos activos
     Page<WorkerSchedule> findAllByIsActiveTrue(Pageable pageable);
 
+    // Todos inactivos
+    Page<WorkerSchedule> findAllByIsActiveFalse(Pageable pageable);
+
     // Validación solapamiento de horarios
     @Query("SELECT ws FROM WorkerSchedule ws " +
             "WHERE ws.worker.id = :workerId " +

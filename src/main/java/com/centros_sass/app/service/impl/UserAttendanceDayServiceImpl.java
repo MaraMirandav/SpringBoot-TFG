@@ -42,6 +42,15 @@ public class UserAttendanceDayServiceImpl implements UserAttendanceDayService {
 
     @Override
     @Transactional(readOnly = true)
+    public List<UserAttendanceDayResponseDTO> findAllInactive() {
+        return attendanceDayRepository.findByIsActiveFalse(null)
+                .stream()
+                .map(attendanceDayMapper::toResponse)
+                .toList();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public List<UserAttendanceDayResponseDTO> findAllIncludingInactive() {
         return attendanceDayRepository.findAll()
                 .stream()

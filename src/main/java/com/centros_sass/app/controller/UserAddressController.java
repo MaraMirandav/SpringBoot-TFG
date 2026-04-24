@@ -44,6 +44,17 @@ public class UserAddressController {
                 (int) page.getTotalElements()));
     }
 
+    @GetMapping("/inactive")
+    public ResponseEntity<ApiDataResponse<List<UserAddressResponseDTO>>> findAllInactive(
+            @PageableDefault(size = 20) Pageable pageable) {
+        Page<UserAddressResponseDTO> page = userAddressService.findAllInactive(pageable);
+        return ResponseEntity.ok(new ApiDataResponse<>(
+                "Direcciones inactivas encontradas",
+                page.getContent(),
+                HttpStatus.OK.value(),
+                (int) page.getTotalElements()));
+    }
+
     @GetMapping("/all")
     public ResponseEntity<ApiDataResponse<List<UserAddressResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
