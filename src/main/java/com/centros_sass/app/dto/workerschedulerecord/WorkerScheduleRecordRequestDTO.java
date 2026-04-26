@@ -5,13 +5,6 @@ import java.time.LocalDateTime;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 
-/**
- * DTO de solicitud para fichar entrada.
- *
- * @author Equipo de Desarrollo
- * @version 1.0.0
- * @since 1.0.0
- */
 public record WorkerScheduleRecordRequestDTO(
     @NotNull(message = "El ID del horario es obligatorio")
     Integer scheduleId,

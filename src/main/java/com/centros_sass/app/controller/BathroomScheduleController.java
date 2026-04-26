@@ -66,8 +66,8 @@ public class BathroomScheduleController {
                 (int) page.getTotalElements()));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ApiDataResponse<BathroomScheduleResponseDTO>> findById(@PathVariable Integer id) {
+@GetMapping("/{id}")
+public ResponseEntity<ApiDataResponse<BathroomScheduleResponseDTO>> findById(@PathVariable Integer id) {
         BathroomScheduleResponseDTO schedule = bathroomScheduleService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("BathroomSchedule", "id", id));
         return ResponseEntity.ok(new ApiDataResponse<>(

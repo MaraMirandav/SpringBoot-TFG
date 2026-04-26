@@ -2,9 +2,6 @@ package com.centros_sass.app.dto.belongings;
 
 import jakarta.validation.constraints.NotNull;
 
-/**
- * DTO de solicitud para crear un registro de gestión de pertenencias.
- */
 public record UserBelongingRequestDTO(
 
     @NotNull(message = "El usuario es obligatorio")

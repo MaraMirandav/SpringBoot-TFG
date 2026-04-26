@@ -9,15 +9,6 @@ import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-/**
- * DTO de solicitud para crear un usuario (adulto mayor) en el sistema.
- *
- * Utiliza Java Record para inmutabilidad y reducción de boilerplate.
- *
- * @author Equipo de Desarrollo
- * @version 1.0.0
- * @since 1.0.0
- */
 public record UserRequestDTO(
     @NotBlank(message = "El primer nombre es obligatorio")
     @Size(max = 25, message = "El primer nombre no puede exceder los 25 caracteres")

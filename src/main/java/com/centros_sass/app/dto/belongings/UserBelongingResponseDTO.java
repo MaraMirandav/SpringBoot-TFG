@@ -1,8 +1,5 @@
 package com.centros_sass.app.dto.belongings;
 
-/**
- * DTO de respuesta para retornar datos de un registro de gestión de pertenencias.
- */
 public record UserBelongingResponseDTO(
     Integer id,
     Integer userId,

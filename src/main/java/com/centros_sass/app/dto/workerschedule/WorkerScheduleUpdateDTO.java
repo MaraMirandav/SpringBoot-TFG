@@ -8,13 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/**
- * DTO de actualización para modificar un horario de trabajador existente.
- *
- * @author Equipo de Desarrollo
- * @version 1.0.0
- * @since 1.0.0
- */
 @Getter @Setter
 @Builder
 @NoArgsConstructor
