@@ -1,14 +1,14 @@
-package com.centros_sass.app.model.catalogs.fixed.people;
+package com.centros_sass.app.model.catalogs.dynamic.people;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.profiles.users.User;
+import com.centros_sass.app.model.profiles.users.UserContact;
 
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,13 +23,13 @@ import lombok.NonNull;
 import lombok.ToString;
 
 @Entity
-@Table(name = "user_dependency_enum")
+@Table(name = "user_relationships_enum")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true, callSuper = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class Dependency extends BaseEntity {
+public class Relationship extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,20 +38,21 @@ public class Dependency extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "dependency_level", nullable = false, length = 50, columnDefinition = "VARCHAR", unique = true)
-    private String dependencyLevel;
+    @Column(name = "relationship_name", nullable = false, length = 50, columnDefinition = "VARCHAR", unique = true)
+    private String relationshipName;
 
     // RELATIONS
-    // // User
-    @OneToMany(mappedBy = "dependency", fetch = FetchType.LAZY)
-    private Set<User> users = new HashSet<>();
+    // // UserContact
+    @OneToMany(mappedBy = "contactRelationship", fetch = FetchType.LAZY)
+    private Set<UserContact> userContacts = new HashSet<>();
 
-    public void addUser(User user) {
-        users.add(user);
-        user.setDependency(this);
+    public void addUserContact(UserContact userContact) {
+        userContacts.add(userContact);
+        userContact.setContactRelationship(this);
     }
-    public void removeUser(User user) {
-        users.remove(user);
-        user.setDependency(null);
+    public void removeUserContact(UserContact userContact) {
+        userContacts.remove(userContact);
+        userContact.setContactRelationship(null);
     }
+
 }

@@ -1,10 +1,10 @@
-package com.centros_sass.app.model.catalogs.fixed.people;
+package com.centros_sass.app.model.catalogs.dynamic.people;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.profiles.users.UserContact;
+import com.centros_sass.app.model.profiles.users.User;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,13 +23,13 @@ import lombok.NonNull;
 import lombok.ToString;
 
 @Entity
-@Table(name = "user_relationships_enum")
+@Table(name = "sex_enum")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true, callSuper = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class Relationship extends BaseEntity {
+public class Sex extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,21 +38,20 @@ public class Relationship extends BaseEntity {
     private Integer id;
 
     @NonNull
-    @Column(name = "relationship_name", nullable = false, length = 50, columnDefinition = "VARCHAR", unique = true)
-    private String relationshipName;
+    @Column(name = "sex", nullable = false, length = 20, columnDefinition = "VARCHAR", unique = true)
+    private String sex;
 
     // RELATIONS
-    // // UserContact
-    @OneToMany(mappedBy = "contactRelationship", fetch = FetchType.LAZY)
-    private Set<UserContact> userContacts = new HashSet<>();
+    // // User
+    @OneToMany(mappedBy = "sex", fetch = FetchType.LAZY)
+    private Set<User> users = new HashSet<>();
 
-    public void addUserContact(UserContact userContact) {
-        userContacts.add(userContact);
-        userContact.setContactRelationship(this);
+    public void addUser(User user) {
+        users.add(user);
+        user.setSex(this);
     }
-    public void removeUserContact(UserContact userContact) {
-        userContacts.remove(userContact);
-        userContact.setContactRelationship(null);
+    public void removeUser(User user) {
+        users.remove(user);
+        user.setSex(null);
     }
-
 }
