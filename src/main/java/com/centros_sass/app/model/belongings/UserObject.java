@@ -4,8 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.dynamic.belongings.ItemCondition;
-import com.centros_sass.app.model.catalogs.dynamic.belongings.ObjectType;
+import com.centros_sass.app.model.catalogs.belongings.ItemCondition;
+import com.centros_sass.app.model.catalogs.belongings.ObjectType;
 
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Column;

@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import com.centros_sass.app.model.catalogs.fixed.organization.Role;
+import com.centros_sass.app.model.catalogs.organization.Role;
 import com.centros_sass.app.model.profiles.workers.Worker;
 
 import io.jsonwebtoken.Claims;

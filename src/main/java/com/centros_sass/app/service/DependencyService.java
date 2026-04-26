@@ -5,9 +5,9 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.centros_sass.app.dto.people.DependencyRequestDTO;
-import com.centros_sass.app.dto.people.DependencyResponseDTO;
-import com.centros_sass.app.dto.people.DependencyUpdateDTO;
+import com.centros_sass.app.dto.catalogs.people.DependencyRequestDTO;
+import com.centros_sass.app.dto.catalogs.people.DependencyResponseDTO;
+import com.centros_sass.app.dto.catalogs.people.DependencyUpdateDTO;
 
 public interface DependencyService {
 

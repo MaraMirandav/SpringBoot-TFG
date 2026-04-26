@@ -1,7 +1,7 @@
 package com.centros_sass.app.model.bathroom;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.dynamic.bathroom.BathroomTask;
+import com.centros_sass.app.model.catalogs.bathroom.BathroomTask;
 import com.centros_sass.app.model.profiles.users.User;
 
 import jakarta.persistence.Column;

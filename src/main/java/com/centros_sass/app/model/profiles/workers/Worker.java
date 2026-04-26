@@ -5,7 +5,7 @@ import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.belongings.UserBelonging;
-import com.centros_sass.app.model.catalogs.fixed.organization.Role;
+import com.centros_sass.app.model.catalogs.organization.Role;
 import com.centros_sass.app.model.treatments.UserMedicalInfo;
 
 import jakarta.persistence.CascadeType;

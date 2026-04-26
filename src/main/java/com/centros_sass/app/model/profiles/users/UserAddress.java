@@ -1,9 +1,9 @@
 package com.centros_sass.app.model.profiles.users;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.fixed.address.City;
-import com.centros_sass.app.model.catalogs.fixed.address.Province;
-import com.centros_sass.app.model.catalogs.fixed.address.Region;
+import com.centros_sass.app.model.catalogs.address.City;
+import com.centros_sass.app.model.catalogs.address.Province;
+import com.centros_sass.app.model.catalogs.address.Region;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

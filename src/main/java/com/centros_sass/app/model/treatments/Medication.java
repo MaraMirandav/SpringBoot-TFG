@@ -5,9 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.dynamic.treatments.MedicationApplication;
-import com.centros_sass.app.model.catalogs.dynamic.treatments.MedicationName;
-import com.centros_sass.app.model.catalogs.dynamic.treatments.StorageCondition;
+import com.centros_sass.app.model.catalogs.treatments.MedicationApplication;
+import com.centros_sass.app.model.catalogs.treatments.MedicationName;
+import com.centros_sass.app.model.catalogs.treatments.StorageCondition;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

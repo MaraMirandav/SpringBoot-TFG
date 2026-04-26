@@ -5,9 +5,9 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.centros_sass.app.dto.people.SexRequestDTO;
-import com.centros_sass.app.dto.people.SexResponseDTO;
-import com.centros_sass.app.dto.people.SexUpdateDTO;
+import com.centros_sass.app.dto.catalogs.people.SexRequestDTO;
+import com.centros_sass.app.dto.catalogs.people.SexResponseDTO;
+import com.centros_sass.app.dto.catalogs.people.SexUpdateDTO;
 
 public interface SexService {
 

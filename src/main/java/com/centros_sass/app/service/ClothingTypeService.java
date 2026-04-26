@@ -5,17 +5,13 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.centros_sass.app.dto.belongings.ClothingTypeRequestDTO;
-import com.centros_sass.app.dto.belongings.ClothingTypeResponseDTO;
-import com.centros_sass.app.dto.belongings.ClothingTypeUpdateDTO;
+import com.centros_sass.app.dto.catalogs.belongings.ClothingTypeRequestDTO;
+import com.centros_sass.app.dto.catalogs.belongings.ClothingTypeResponseDTO;
+import com.centros_sass.app.dto.catalogs.belongings.ClothingTypeUpdateDTO;
 
 public interface ClothingTypeService {
 
     Page<ClothingTypeResponseDTO> findAll(Pageable pageable);
-
-    Page<ClothingTypeResponseDTO> findAllInactive(Pageable pageable);
-
-    Page<ClothingTypeResponseDTO> findAllIncludingInactive(Pageable pageable);
 
     Optional<ClothingTypeResponseDTO> findById(Integer id);
 
@@ -23,6 +19,6 @@ public interface ClothingTypeService {
 
     Optional<ClothingTypeResponseDTO> update(Integer id, ClothingTypeUpdateDTO dto);
 
-    Optional<ClothingTypeResponseDTO> delete(Integer id);
+    void delete(Integer id);
 
 }

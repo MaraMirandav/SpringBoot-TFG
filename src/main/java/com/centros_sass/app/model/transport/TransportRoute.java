@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.fixed.transport.RouteShift;
+import com.centros_sass.app.model.catalogs.transport.RouteShift;
 import com.centros_sass.app.model.profiles.users.User;
 import com.centros_sass.app.model.profiles.workers.Worker;
 

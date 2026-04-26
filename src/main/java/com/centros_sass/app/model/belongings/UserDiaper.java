@@ -4,8 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.dynamic.belongings.DiaperSize;
-import com.centros_sass.app.model.catalogs.dynamic.belongings.DiaperType;
+import com.centros_sass.app.model.catalogs.belongings.DiaperSize;
+import com.centros_sass.app.model.catalogs.belongings.DiaperType;
 
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Column;

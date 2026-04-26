@@ -3,8 +3,8 @@ package com.centros_sass.app.model.incidents.center;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.centros_sass.app.model.catalogs.fixed.incidents.center.CdIncidentType;
-import com.centros_sass.app.model.catalogs.fixed.incidents.center.CdSignificanceType;
+import com.centros_sass.app.model.catalogs.incidents.center.CdIncidentType;
+import com.centros_sass.app.model.catalogs.incidents.center.CdSignificanceType;
 import com.centros_sass.app.model.incidents.Incident;
 
 import jakarta.persistence.Column;

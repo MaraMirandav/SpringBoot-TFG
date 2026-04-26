@@ -5,17 +5,13 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.centros_sass.app.dto.belongings.ItemConditionRequestDTO;
-import com.centros_sass.app.dto.belongings.ItemConditionResponseDTO;
-import com.centros_sass.app.dto.belongings.ItemConditionUpdateDTO;
+import com.centros_sass.app.dto.catalogs.belongings.ItemConditionRequestDTO;
+import com.centros_sass.app.dto.catalogs.belongings.ItemConditionResponseDTO;
+import com.centros_sass.app.dto.catalogs.belongings.ItemConditionUpdateDTO;
 
 public interface ItemConditionService {
 
     Page<ItemConditionResponseDTO> findAll(Pageable pageable);
-
-    Page<ItemConditionResponseDTO> findAllInactive(Pageable pageable);
-
-    Page<ItemConditionResponseDTO> findAllIncludingInactive(Pageable pageable);
 
     Optional<ItemConditionResponseDTO> findById(Integer id);
 
@@ -23,6 +19,6 @@ public interface ItemConditionService {
 
     Optional<ItemConditionResponseDTO> update(Integer id, ItemConditionUpdateDTO dto);
 
-    Optional<ItemConditionResponseDTO> delete(Integer id);
+    void delete(Integer id);
 
 }
