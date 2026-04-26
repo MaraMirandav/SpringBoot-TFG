@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
+import com.centros_sass.app.model.belongings.UserBelonging;
 import com.centros_sass.app.model.catalogs.fixed.organization.Role;
 import com.centros_sass.app.model.treatments.UserMedicalInfo;
 
@@ -124,5 +125,19 @@ public class Worker extends BaseEntity {
     public void removeUserMedicalInfo(UserMedicalInfo userMedicalInfo) {
         userMedicalInfos.remove(userMedicalInfo);
         userMedicalInfo.setWorker(null);
+    }
+
+    // // UserBelonging
+    @OneToMany(mappedBy = "worker", fetch = FetchType.LAZY)
+    private Set<UserBelonging> userBelongings = new HashSet<>();
+
+    public void addUserBelonging(UserBelonging userBelonging) {
+        userBelongings.add(userBelonging);
+        userBelonging.setWorker(this);
+    }
+
+    public void removeUserBelonging(UserBelonging userBelonging) {
+        userBelongings.remove(userBelonging);
+        userBelonging.setWorker(null);
     }
 }

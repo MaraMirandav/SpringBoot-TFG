@@ -2,16 +2,6 @@ package com.centros_sass.app.dto.user;
 
 import java.time.LocalDate;
 
-/**
- * DTO de respuesta para retornar datos de un usuario (adulto mayor) al cliente.
- *
- * Utiliza Java Record para inmutabilidad y reducción de boilerplate.
- * Incluye campos de auditoría y nombres de catálogos para facilitar la UI.
- *
- * @author Equipo de Desarrollo
- * @version 1.0.0
- * @since 1.0.0
- */
 public record UserResponseDTO(
     Integer id,
     String firstName,

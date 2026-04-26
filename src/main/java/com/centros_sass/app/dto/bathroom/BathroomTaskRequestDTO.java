@@ -6,13 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-/**
- * DTO de solicitud para crear una tarea de higiene.
- *
- * @author Equipo de Desarrollo
- * @version 1.0.0
- * @since 1.0.0
- */
 public record BathroomTaskRequestDTO(
 
     @NotBlank(message = "El nombre de la tarea es obligatorio")
