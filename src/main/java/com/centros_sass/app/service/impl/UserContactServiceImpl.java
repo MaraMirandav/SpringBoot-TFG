@@ -5,7 +5,7 @@ import com.centros_sass.app.dto.usercontact.UserContactResponseDTO;
 import com.centros_sass.app.dto.usercontact.UserContactUpdateDTO;
 import com.centros_sass.app.exception.ResourceNotFoundException;
 import com.centros_sass.app.mapper.UserContactMapper;
-import com.centros_sass.app.model.catalogs.fixed.people.Relationship;
+import com.centros_sass.app.model.catalogs.dynamic.people.Relationship;
 import com.centros_sass.app.model.profiles.users.User;
 import com.centros_sass.app.model.profiles.users.UserContact;
 import com.centros_sass.app.repository.RelationshipRepository;
