@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.dynamic.people.Dependency;
-import com.centros_sass.app.model.catalogs.dynamic.people.Sex;
+import com.centros_sass.app.model.catalogs.people.Dependency;
+import com.centros_sass.app.model.catalogs.people.Sex;
 import com.centros_sass.app.model.treatments.UserMedicalInfo;
 import com.centros_sass.app.model.bathroom.BathroomSchedule;
 import com.centros_sass.app.model.belongings.UserBelonging;

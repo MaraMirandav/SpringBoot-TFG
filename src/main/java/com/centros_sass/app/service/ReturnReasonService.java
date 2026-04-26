@@ -5,17 +5,13 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.centros_sass.app.dto.belongings.ReturnReasonRequestDTO;
-import com.centros_sass.app.dto.belongings.ReturnReasonResponseDTO;
-import com.centros_sass.app.dto.belongings.ReturnReasonUpdateDTO;
+import com.centros_sass.app.dto.catalogs.belongings.ReturnReasonRequestDTO;
+import com.centros_sass.app.dto.catalogs.belongings.ReturnReasonResponseDTO;
+import com.centros_sass.app.dto.catalogs.belongings.ReturnReasonUpdateDTO;
 
 public interface ReturnReasonService {
 
     Page<ReturnReasonResponseDTO> findAll(Pageable pageable);
-
-    Page<ReturnReasonResponseDTO> findAllInactive(Pageable pageable);
-
-    Page<ReturnReasonResponseDTO> findAllIncludingInactive(Pageable pageable);
 
     Optional<ReturnReasonResponseDTO> findById(Integer id);
 
@@ -23,6 +19,6 @@ public interface ReturnReasonService {
 
     Optional<ReturnReasonResponseDTO> update(Integer id, ReturnReasonUpdateDTO dto);
 
-    Optional<ReturnReasonResponseDTO> delete(Integer id);
+    void delete(Integer id);
 
 }

@@ -5,9 +5,9 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.centros_sass.app.dto.people.RelationshipRequestDTO;
-import com.centros_sass.app.dto.people.RelationshipResponseDTO;
-import com.centros_sass.app.dto.people.RelationshipUpdateDTO;
+import com.centros_sass.app.dto.catalogs.people.RelationshipRequestDTO;
+import com.centros_sass.app.dto.catalogs.people.RelationshipResponseDTO;
+import com.centros_sass.app.dto.catalogs.people.RelationshipUpdateDTO;
 
 public interface RelationshipService {
 

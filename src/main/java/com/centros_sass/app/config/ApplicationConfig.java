@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.centros_sass.app.repository.WorkerRepository;
+import com.centros_sass.app.repository.profiles.WorkerRepository;
 import com.centros_sass.app.security.WorkerSecurity;
 
 @Configuration

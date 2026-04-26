@@ -236,7 +236,7 @@ VALUES
     (1, 2, '2025-01-14 08:12', '2025-01-14 18:35', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (1, 3, '2025-01-15 08:20', '2025-01-15 18:25', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (1, 4, '2025-01-16 08:10', '2025-01-16 18:32', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    (1, 5, '2025-01-17 08:18', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (1, 5, '2025-01-17 08:18', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- CARLOS RODRÍGUEZ (ID 2)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at, created_by, updated_by)
@@ -245,7 +245,7 @@ VALUES
     (2, 7, '2025-01-14 08:19', '2025-01-14 18:27', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (2, 8, '2025-01-15 08:11', '2025-01-15 18:29', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (2, 9, '2025-01-16 08:17', '2025-01-16 18:34', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    (2, 10, '2025-01-17 08:16', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (2, 10, '2025-01-17 08:16', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- LUCÍA FERNÁNDEZ (ID 3)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at, created_by, updated_by)
@@ -263,7 +263,7 @@ VALUES
     (3, 14, '2025-01-16 08:14', '2025-01-16 12:03', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (3, 19, '2025-01-16 15:01', '2025-01-16 18:31', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     -- Viernes
-    (3, 15, '2025-01-17 08:17', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (3, 15, '2025-01-17 08:17', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- MIGUEL TORRES (ID 4)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at, created_by, updated_by)
@@ -281,7 +281,7 @@ VALUES
     (4, 24, '2025-01-16 07:51', '2025-01-16 11:04', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (4, 29, '2025-01-16 16:01', '2025-01-16 19:13', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     -- Viernes
-    (4, 25, '2025-01-17 07:53', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (4, 25, '2025-01-17 07:53', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- ELENA MORENO (ID 5)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at, created_by, updated_by)
@@ -290,7 +290,7 @@ VALUES
     (5, 32, '2025-01-14 08:13', '2025-01-14 18:34', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (5, 33, '2025-01-15 08:21', '2025-01-15 18:29', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (5, 34, '2025-01-16 08:16', '2025-01-16 18:33', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    (5, 35, '2025-01-17 08:14', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (5, 35, '2025-01-17 08:14', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- ROBERTO SANZ (ID 6 - RRHH/TO)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at, created_by, updated_by)
@@ -299,7 +299,7 @@ VALUES
     (6, 37, '2025-01-14 09:02', '2025-01-14 18:01', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (6, 38, '2025-01-15 08:58', '2025-01-15 18:10', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (6, 39, '2025-01-16 09:00', '2025-01-16 18:02', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    (6, 40, '2025-01-17 08:57', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (6, 40, '2025-01-17 08:57', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- BEATRIZ MOLINA (ID 7 - Recepción)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at, created_by, updated_by)
@@ -308,7 +308,7 @@ VALUES
     (7, 42, '2025-01-14 07:58', '2025-01-14 16:02', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (7, 43, '2025-01-15 07:52', '2025-01-15 16:01', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (7, 44, '2025-01-16 07:59', '2025-01-16 16:00', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    (7, 45, '2025-01-17 07:56', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (7, 45, '2025-01-17 07:56', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- LAURA RUIZ (ID 8 - Fisio)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at, created_by, updated_by)
@@ -317,7 +317,7 @@ VALUES
     (8, 47, '2025-01-14 08:31', '2025-01-14 14:32', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (8, 48, '2025-01-15 08:28', '2025-01-15 14:38', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (8, 49, '2025-01-16 08:29', '2025-01-16 14:31', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    (8, 50, '2025-01-17 08:26', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (8, 50, '2025-01-17 08:26', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- PABLO MARTÍN (ID 9 - TO)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at, created_by, updated_by)
@@ -335,7 +335,7 @@ VALUES
     (9, 54, '2025-01-16 10:02', '2025-01-16 14:03', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (9, 59, '2025-01-16 15:31', '2025-01-16 19:33', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     -- Viernes
-    (9, 55, '2025-01-17 09:55', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (9, 55, '2025-01-17 09:55', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- SARA DÍAZ (ID 10 - TS)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at, created_by, updated_by)
@@ -344,7 +344,7 @@ VALUES
     (10, 62, '2025-01-14 08:58', '2025-01-14 17:05', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (10, 63, '2025-01-15 08:59', '2025-01-15 17:01', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (10, 64, '2025-01-16 09:02', '2025-01-16 17:03', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    (10, 65, '2025-01-17 09:01', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (10, 65, '2025-01-17 09:01', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- DAVID SERRANO (ID 11 - Psico)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at, created_by, updated_by)
@@ -353,7 +353,7 @@ VALUES
     (11, 67, '2025-01-14 09:05', '2025-01-14 14:02', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (11, 68, '2025-01-15 08:58', '2025-01-15 14:01', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (11, 69, '2025-01-16 08:59', '2025-01-16 14:03', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    (11, 70, '2025-01-17 09:00', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (11, 70, '2025-01-17 09:00', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- CARMEN ORTIZ (ID 12 - TAS)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at, created_by, updated_by)
@@ -362,7 +362,7 @@ VALUES
     (12, 72, '2025-01-14 06:58', '2025-01-14 15:02', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (12, 73, '2025-01-15 06:59', '2025-01-15 15:01', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (12, 74, '2025-01-16 07:01', '2025-01-16 15:03', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    (12, 75, '2025-01-17 06:56', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (12, 75, '2025-01-17 06:56', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- JAVIER NAVARRO (ID 13 - TAS)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at, created_by, updated_by)
@@ -371,7 +371,7 @@ VALUES
     (13, 77, '2025-01-14 14:58', '2025-01-14 22:02', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (13, 78, '2025-01-15 14:59', '2025-01-15 22:01', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (13, 79, '2025-01-16 15:01', '2025-01-16 22:03', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    (13, 80, '2025-01-17 14:57', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (13, 80, '2025-01-17 14:57', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- MANOLO IGLESIAS (ID 14 - Conductor)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at, created_by, updated_by)
@@ -389,7 +389,7 @@ VALUES
     (14, 84, '2025-01-16 07:51', '2025-01-16 11:03', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (14, 89, '2025-01-16 15:59', '2025-01-16 19:19', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     -- Viernes
-    (14, 85, '2025-01-17 07:46', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (14, 85, '2025-01-17 07:46', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- JULIÁN VÁZQUEZ (ID 15 - Copiloto)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at, created_by, updated_by)
@@ -407,7 +407,7 @@ VALUES
     (15, 94, '2025-01-16 07:52', '2025-01-16 11:04', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (15, 99, '2025-01-16 15:58', '2025-01-16 19:17', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     -- Viernes
-    (15, 95, '2025-01-17 07:49', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (15, 95, '2025-01-17 07:49', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- ROSA VIDAL (ID 16 - Limpieza)
 INSERT INTO workers_schedules_records (worker_id, schedule_id, clock_in, clock_out, is_active, created_at, updated_at, created_by, updated_by)
@@ -416,7 +416,7 @@ VALUES
     (16, 102, '2025-01-14 07:01', '2025-01-14 15:05', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (16, 103, '2025-01-15 06:55', '2025-01-15 15:00', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     (16, 104, '2025-01-16 07:02', '2025-01-16 15:03', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    (16, 105, '2025-01-17 06:59', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    (16, 105, '2025-01-17 06:59', NULL, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- --------------------------------------------------------
 -- CATÁLOGOS DE CENTRO (Tipos y Gravedad)
@@ -540,7 +540,7 @@ ON CONFLICT (role_name) DO NOTHING;
 -- --------------------------------------------------------
 -- TABLA DE WORKERS_ROLES
 -- --------------------------------------------------------
-INSERT INTO schema_template.workers_roles (worker_id, role_id) VALUES
+INSERT INTO workers_roles (worker_id, role_id) VALUES
 -- Directora -> ADMIN / DIRECTOR
 (1, 1),
 (1, 2),
@@ -743,58 +743,58 @@ ON CONFLICT DO NOTHING;
 -- --------------------------------------------------------
 -- CATALOGO: Tipos de Ropa
 -- --------------------------------------------------------
-INSERT INTO clothing_types_enum (clothing_name, is_active, created_at, updated_at, created_by, updated_by)
+INSERT INTO clothing_types_enum (clothing_name, created_at, updated_at, created_by, updated_by)
 VALUES
-    ('Pantalón', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Camisa', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Chaqueta', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Ropa interior', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Chándal', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    ('Pantalón', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Camisa', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Chaqueta', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Ropa interior', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Chándal', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- --------------------------------------------------------
 -- CATALOGO: Tipos de Objetos
 -- --------------------------------------------------------
-INSERT INTO object_types_enum (object_name, is_active, created_at, updated_at, created_by, updated_by)
+INSERT INTO object_types_enum (object_name, created_at, updated_at, created_by, updated_by)
 VALUES
-    ('Gafas', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Bastón', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Oxígeno', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Neceser', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    ('Gafas', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Bastón', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Oxígeno', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Neceser', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- --------------------------------------------------------
 -- CATALOGO: Condiciones
 -- --------------------------------------------------------
-INSERT INTO item_conditions_enum (condition_name, is_active, created_at, updated_at, created_by, updated_by)
+INSERT INTO item_conditions_enum (condition_name, created_at, updated_at, created_by, updated_by)
 VALUES
-    ('Nuevo', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Buen estado', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Desgastado', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    ('Nuevo', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Buen estado', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Desgastado', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- --------------------------------------------------------
 -- CATALOGO: Tamaño del pañal
 -- --------------------------------------------------------
-INSERT INTO diaper_sizes_enum (size, is_active, created_at, updated_at, created_by, updated_by)
+INSERT INTO diaper_sizes_enum (size, created_at, updated_at, created_by, updated_by)
 VALUES
-    ('Pequeño', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Mediano', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Grande', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    ('Pequeño', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Mediano', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Grande', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- --------------------------------------------------------
 -- CATALOGO: Tipo del pañal
 -- --------------------------------------------------------
-INSERT INTO diaper_types_enum (type, is_active, created_at, updated_at, created_by, updated_by)
+INSERT INTO diaper_types_enum (type, created_at, updated_at, created_by, updated_by)
 VALUES
-    ('Elástico', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Braga-pañal', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Anatómico', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    ('Elástico', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Braga-pañal', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Anatómico', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- --------------------------------------------------------
 -- CATALOGO: Regreso cosas (return_reason_enum)
 -- --------------------------------------------------------
-INSERT INTO return_reasons_enum (reason, is_active, created_at, updated_at, created_by, updated_by) VALUES
-('No devuelto (En uso)', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-('Devuelto a familiar', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-('Desechado', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+INSERT INTO return_reasons_enum (reason, created_at, updated_at, created_by, updated_by) VALUES
+('No devuelto (En uso)', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+('Devuelto a familiar', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+('Desechado', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- --------------------------------------------------------
 -- TABLA: Ropa Física (UserClothes)
@@ -979,12 +979,12 @@ INSERT INTO allergies_medications (user_allergy_id, medication_id) VALUES (3, 7)
 -- TAREAS DE HIGIENE (bathroom_tasks)
 -- ============================================================
 
-INSERT INTO bathroom_tasks_enum (task_name, estimated_time, is_active, created_at, updated_at, created_by, updated_by)
+INSERT INTO bathroom_tasks_enum (task_name, estimated_time, created_at, updated_at, created_by, updated_by)
 VALUES
-    ('Aseo en Lavabo (Cara/Manos)', '00:10:00', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Cambio de Pañal / Absorbente', '00:08:00', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Acompañamiento WC', '00:05:00', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    ('Higiene Bucal (Post-comida)', '00:05:00', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    ('Aseo en Lavabo (Cara/Manos)', '00:10:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Cambio de Pañal / Absorbente', '00:08:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Acompañamiento WC', '00:05:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('Higiene Bucal (Post-comida)', '00:05:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- ============================================================
 -- TURNOS DE BAÑO E HIGIENE (bathroom_turns)
