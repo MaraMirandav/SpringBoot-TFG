@@ -1,8 +1,12 @@
 package com.centros_sass.app.dto.belongings;
 
-public record ItemConditionResponseDTO(
+public record UserDiaperResponseDTO(
     Integer id,
-    String conditionName,
+    Integer diaperSizeId,
+    String diaperSizeName,
+    Integer diaperTypeId,
+    String diaperTypeName,
+    Integer quantity,
     Boolean isActive,
     String createdAt,
     String createdBy,

@@ -1,6 +1,5 @@
 package com.centros_sass.app.dto.belongings;
 
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,10 +11,13 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReturnReasonUpdateDTO {
+public class UserObjectUpdateDTO {
 
-    @Size(max = 50, message = "La razón de devolución no puede exceder los 50 caracteres")
-    private String reason;
+    private Integer objectTypeId;
+
+    private Integer itemConditionId;
+
+    private String comment;
 
     private Boolean isActive;
 

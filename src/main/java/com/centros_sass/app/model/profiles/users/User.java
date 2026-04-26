@@ -9,6 +9,7 @@ import com.centros_sass.app.model.catalogs.fixed.people.Dependency;
 import com.centros_sass.app.model.catalogs.fixed.people.Sex;
 import com.centros_sass.app.model.treatments.UserMedicalInfo;
 import com.centros_sass.app.model.bathroom.BathroomSchedule;
+import com.centros_sass.app.model.belongings.UserBelonging;
 import com.centros_sass.app.model.incidents.user.UserIncident;
 
 import jakarta.persistence.Column;
@@ -185,5 +186,19 @@ public class User extends BaseEntity {
     public void removeBathroomSchedule(BathroomSchedule bathroomSchedule) {
         bathroomSchedules.remove(bathroomSchedule);
         bathroomSchedule.setUser(null);
+    }
+
+    // // UserBelonging
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<UserBelonging> userBelongings = new HashSet<>();
+
+    public void addUserBelonging(UserBelonging userBelonging) {
+        userBelongings.add(userBelonging);
+        userBelonging.setUser(this);
+    }
+
+    public void removeUserBelonging(UserBelonging userBelonging) {
+        userBelongings.remove(userBelonging);
+        userBelonging.setUser(null);
     }
 }

@@ -1,8 +1,12 @@
 package com.centros_sass.app.dto.belongings;
 
-public record ItemConditionResponseDTO(
+public record UserObjectResponseDTO(
     Integer id,
-    String conditionName,
+    Integer objectTypeId,
+    String objectTypeName,
+    Integer itemConditionId,
+    String itemConditionName,
+    String comment,
     Boolean isActive,
     String createdAt,
     String createdBy,
