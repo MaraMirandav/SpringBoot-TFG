@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.belongings.UserClothingRequestDTO;
@@ -34,6 +35,7 @@ public class UserClothingController {
     private final UserClothingService userClothingService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserClothingResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserClothingResponseDTO> page = userClothingService.findAll(pageable);
@@ -45,6 +47,7 @@ public class UserClothingController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserClothingResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserClothingResponseDTO> page = userClothingService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class UserClothingController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserClothingResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserClothingResponseDTO> page = userClothingService.findAllIncludingInactive(pageable);
@@ -67,6 +71,7 @@ public class UserClothingController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserClothingResponseDTO>> findById(@PathVariable Integer id) {
         UserClothingResponseDTO clothing = userClothingService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserClothing", "id", id));
@@ -77,6 +82,7 @@ public class UserClothingController {
     }
 
     @GetMapping("/type/{typeId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserClothingResponseDTO>>> findByClothingType(
             @PathVariable Integer typeId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -89,6 +95,7 @@ public class UserClothingController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'TAS')")
     public ResponseEntity<ApiDataResponse<UserClothingResponseDTO>> create(
             @Valid @RequestBody UserClothingRequestDTO dto) {
         UserClothingResponseDTO created = userClothingService.save(dto);
@@ -100,6 +107,7 @@ public class UserClothingController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'TAS')")
     public ResponseEntity<ApiDataResponse<UserClothingResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody UserClothingUpdateDTO dto) {
@@ -112,6 +120,7 @@ public class UserClothingController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<UserClothingResponseDTO>> delete(@PathVariable Integer id) {
         UserClothingResponseDTO deleted = userClothingService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserClothing", "id", id));

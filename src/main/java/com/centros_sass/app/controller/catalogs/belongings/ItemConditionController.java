@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.belongings.ItemConditionRequestDTO;
@@ -34,6 +35,7 @@ public class ItemConditionController {
     private final ItemConditionService itemConditionService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<ItemConditionResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<ItemConditionResponseDTO> page = itemConditionService.findAll(pageable);
@@ -47,6 +49,7 @@ public class ItemConditionController {
 
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<ItemConditionResponseDTO>> findById(@PathVariable Integer id) {
         ItemConditionResponseDTO condition = itemConditionService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("ItemCondition", "id", id));
@@ -57,6 +60,7 @@ public class ItemConditionController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<ItemConditionResponseDTO>> create(
             @Valid @RequestBody ItemConditionRequestDTO dto) {
         ItemConditionResponseDTO created = itemConditionService.save(dto);
@@ -68,6 +72,7 @@ public class ItemConditionController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<ItemConditionResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody ItemConditionUpdateDTO dto) {
@@ -80,6 +85,7 @@ public class ItemConditionController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         itemConditionService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(
