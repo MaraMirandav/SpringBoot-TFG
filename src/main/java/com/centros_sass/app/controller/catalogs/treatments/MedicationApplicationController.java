@@ -1,4 +1,3 @@
-/*
 package com.centros_sass.app.controller.catalogs.treatments;
 
 import java.util.List;
@@ -88,4 +87,3 @@ public class MedicationApplicationController {
 
 }
 
-*/
