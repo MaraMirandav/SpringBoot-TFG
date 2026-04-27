@@ -18765,6 +18765,1157 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "/incident-statuses",
+      "item": [
+        {
+          "name": "GET /incident-statuses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/incident-statuses",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "incident-statuses"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /incident-statuses/{id}",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/incident-statuses/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "incident-statuses",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /incident-statuses",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"statusName\": \"Pendiente\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/incident-statuses",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "incident-statuses"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /incident-statuses/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"statusName\": \"En revisión\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/incident-statuses/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "incident-statuses",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /incident-statuses/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/incident-statuses/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "incident-statuses",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "/cd-incident-types",
+      "item": [
+        {
+          "name": "GET /cd-incident-types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/cd-incident-types",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "cd-incident-types"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /cd-incident-types",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"incidentName\": \"Falta de suministro\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/cd-incident-types",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "cd-incident-types"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /cd-incident-types/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"incidentName\": \"Falta de suministro actualizado\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/cd-incident-types/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "cd-incident-types",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /cd-incident-types/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/cd-incident-types/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "cd-incident-types",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "/cd-significance-types",
+      "item": [
+        {
+          "name": "GET /cd-significance-types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/cd-significance-types",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "cd-significance-types"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /cd-significance-types",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"significanceName\": \"Leve\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/cd-significance-types",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "cd-significance-types"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /cd-significance-types/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"significanceName\": \"Moderada\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/cd-significance-types/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "cd-significance-types",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /cd-significance-types/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/cd-significance-types/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "cd-significance-types",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "/user-incident-types",
+      "item": [
+        {
+          "name": "GET /user-incident-types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-incident-types",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-incident-types"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /user-incident-types",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"incidentName\": \"Caída\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-incident-types",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-incident-types"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /user-incident-types/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"incidentName\": \"Caída actualizado\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-incident-types/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-incident-types",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /user-incident-types/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-incident-types/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-incident-types",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "/user-significance-types",
+      "item": [
+        {
+          "name": "GET /user-significance-types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-significance-types",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-significance-types"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /user-significance-types",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"significanceName\": \"Leve\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-significance-types",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-significance-types"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /user-significance-types/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"significanceName\": \"Crítica\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-significance-types/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-significance-types",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /user-significance-types/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-significance-types/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-significance-types",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "/center-incidents",
+      "item": [
+        {
+          "name": "GET /center-incidents",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/center-incidents",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "center-incidents"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /center-incidents/inactive",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/center-incidents/inactive",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "center-incidents",
+                "inactive"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /center-incidents/all",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/center-incidents/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "center-incidents",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /center-incidents/{id}",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/center-incidents/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "center-incidents",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /center-incidents",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reportedById\": 1,\n  \"comment\": \"La caldera no funciona desde esta mañana\",\n  \"cdIncidentTypeId\": 1,\n  \"cdSignificanceTypeId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/center-incidents",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "center-incidents"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /center-incidents/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"La caldera ha sido reparada parcialmente\",\n  \"incidentStatusId\": 2\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/center-incidents/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "center-incidents",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /center-incidents/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/center-incidents/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "center-incidents",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "/user-incidents",
+      "item": [
+        {
+          "name": "GET /user-incidents",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-incidents",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-incidents"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /user-incidents/inactive",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-incidents/inactive",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-incidents",
+                "inactive"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /user-incidents/all",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-incidents/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-incidents",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /user-incidents/{id}",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-incidents/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-incidents",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /user-incidents",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"reportedById\": 1,\n  \"comment\": \"El usuario se ha caído en el pasillo\",\n  \"userIncidentTypeId\": 1,\n  \"userSignificanceTypeId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-incidents",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-incidents"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /user-incidents/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"El usuario ha sido atendido y está estable\",\n  \"incidentStatusId\": 2\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-incidents/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-incidents",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /user-incidents/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-incidents/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-incidents",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "/center-incidents/{id}/comments",
+      "item": [
+        {
+          "name": "GET /center-incidents/{id}/comments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/center-incidents/1/comments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "center-incidents",
+                "1",
+                "comments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /center-incidents/{id}/comments",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"Se ha contactado con el técnico\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/center-incidents/1/comments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "center-incidents",
+                "1",
+                "comments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /center-incidents/{id}/comments/{commentId}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"Se ha contactado con el técnico - actualizado\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/center-incidents/1/comments/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "center-incidents",
+                "1",
+                "comments",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /center-incidents/{id}/comments/{commentId}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/center-incidents/1/comments/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "center-incidents",
+                "1",
+                "comments",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "/user-incidents/{id}/comments",
+      "item": [
+        {
+          "name": "GET /user-incidents/{id}/comments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-incidents/1/comments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-incidents",
+                "1",
+                "comments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /user-incidents/{id}/comments",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"Se ha llamado a la familia\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-incidents/1/comments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-incidents",
+                "1",
+                "comments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /user-incidents/{id}/comments/{commentId}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"Se ha llamado a la familia - actualizado\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-incidents/1/comments/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-incidents",
+                "1",
+                "comments",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /user-incidents/{id}/comments/{commentId}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/user-incidents/1/comments/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "user-incidents",
+                "1",
+                "comments",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
