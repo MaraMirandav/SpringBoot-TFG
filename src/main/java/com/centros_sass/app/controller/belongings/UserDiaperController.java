@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.belongings.UserDiaperRequestDTO;
@@ -34,6 +35,7 @@ public class UserDiaperController {
     private final UserDiaperService userDiaperService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserDiaperResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserDiaperResponseDTO> page = userDiaperService.findAll(pageable);
@@ -45,6 +47,7 @@ public class UserDiaperController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserDiaperResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserDiaperResponseDTO> page = userDiaperService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class UserDiaperController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserDiaperResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserDiaperResponseDTO> page = userDiaperService.findAllIncludingInactive(pageable);
@@ -67,6 +71,7 @@ public class UserDiaperController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserDiaperResponseDTO>> findById(@PathVariable Integer id) {
         UserDiaperResponseDTO diaper = userDiaperService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserDiaper", "id", id));
@@ -77,6 +82,7 @@ public class UserDiaperController {
     }
 
     @GetMapping("/size/{sizeId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserDiaperResponseDTO>>> findByDiaperSize(
             @PathVariable Integer sizeId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -89,6 +95,7 @@ public class UserDiaperController {
     }
 
     @GetMapping("/type/{typeId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserDiaperResponseDTO>>> findByDiaperType(
             @PathVariable Integer typeId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -101,6 +108,7 @@ public class UserDiaperController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'TAS')")
     public ResponseEntity<ApiDataResponse<UserDiaperResponseDTO>> create(
             @Valid @RequestBody UserDiaperRequestDTO dto) {
         UserDiaperResponseDTO created = userDiaperService.save(dto);
@@ -112,6 +120,7 @@ public class UserDiaperController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'TAS')")
     public ResponseEntity<ApiDataResponse<UserDiaperResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody UserDiaperUpdateDTO dto) {
@@ -124,6 +133,7 @@ public class UserDiaperController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<UserDiaperResponseDTO>> delete(@PathVariable Integer id) {
         UserDiaperResponseDTO deleted = userDiaperService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserDiaper", "id", id));

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.incidents.IncidentStatusRequestDTO;
@@ -34,6 +35,7 @@ public class IncidentStatusController {
     private final IncidentStatusService incidentStatusService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<IncidentStatusResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<IncidentStatusResponseDTO> page = incidentStatusService.findAll(pageable);
@@ -45,6 +47,7 @@ public class IncidentStatusController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<IncidentStatusResponseDTO>> findById(@PathVariable Integer id) {
         IncidentStatusResponseDTO dto = incidentStatusService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("IncidentStatus", "id", id));
@@ -55,6 +58,7 @@ public class IncidentStatusController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<IncidentStatusResponseDTO>> create(
             @Valid @RequestBody IncidentStatusRequestDTO dto) {
         IncidentStatusResponseDTO created = incidentStatusService.save(dto);
@@ -66,6 +70,7 @@ public class IncidentStatusController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<IncidentStatusResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody IncidentStatusUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class IncidentStatusController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         incidentStatusService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

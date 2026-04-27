@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.transport.TransportRouteUserRequestDTO;
@@ -31,6 +32,7 @@ public class TransportRouteUserController {
     private final TransportRouteUserService transportRouteUserService;
 
     @GetMapping("/{routeId}/passengers")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<TransportRouteUserResponseDTO>>> findAllByRoute(
             @PathVariable Integer routeId) {
         List<TransportRouteUserResponseDTO> passengers = transportRouteUserService.findAllByRoute(routeId);
@@ -42,6 +44,7 @@ public class TransportRouteUserController {
     }
 
     @GetMapping("/{routeId}/passengers/{userId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<TransportRouteUserResponseDTO>> findByRouteIdAndUserId(
             @PathVariable Integer routeId,
             @PathVariable Integer userId) {
@@ -54,6 +57,7 @@ public class TransportRouteUserController {
     }
 
     @PostMapping("/{routeId}/passengers")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'CONDUCTOR', 'COPILOTO')")
     public ResponseEntity<ApiDataResponse<TransportRouteUserResponseDTO>> create(
             @PathVariable Integer routeId,
             @Valid @RequestBody TransportRouteUserRequestDTO dto) {
@@ -66,6 +70,7 @@ public class TransportRouteUserController {
     }
 
     @PutMapping("/{routeId}/passengers/{userId}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'CONDUCTOR', 'COPILOTO')")
     public ResponseEntity<ApiDataResponse<TransportRouteUserResponseDTO>> update(
             @PathVariable Integer routeId,
             @PathVariable Integer userId,
@@ -79,6 +84,7 @@ public class TransportRouteUserController {
     }
 
     @DeleteMapping("/{routeId}/passengers/{userId}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(
             @PathVariable Integer routeId,
             @PathVariable Integer userId) {

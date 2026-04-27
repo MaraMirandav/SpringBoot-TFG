@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.treatments.UserMedicalInfoRequestDTO;
@@ -34,6 +35,7 @@ public class UserMedicalInfoController {
     private final UserMedicalInfoService userMedicalInfoService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserMedicalInfoResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserMedicalInfoResponseDTO> page = userMedicalInfoService.findAll(pageable);
@@ -45,6 +47,7 @@ public class UserMedicalInfoController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserMedicalInfoResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserMedicalInfoResponseDTO> page = userMedicalInfoService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class UserMedicalInfoController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserMedicalInfoResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserMedicalInfoResponseDTO> page = userMedicalInfoService.findAllIncludingInactive(pageable);
@@ -67,6 +71,7 @@ public class UserMedicalInfoController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserMedicalInfoResponseDTO>> findById(@PathVariable Integer id) {
         UserMedicalInfoResponseDTO dto = userMedicalInfoService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserMedicalInfo", "id", id));
@@ -77,6 +82,7 @@ public class UserMedicalInfoController {
     }
 
     @GetMapping("/user/{userId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserMedicalInfoResponseDTO>> findByUser(@PathVariable Integer userId) {
         UserMedicalInfoResponseDTO dto = userMedicalInfoService.findByUserId(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("UserMedicalInfo", "userId", userId));
@@ -87,6 +93,7 @@ public class UserMedicalInfoController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'ENFERMERO', 'FISIO', 'TO', 'TS', 'PSICO', 'TAS')")
     public ResponseEntity<ApiDataResponse<UserMedicalInfoResponseDTO>> create(
             @Valid @RequestBody UserMedicalInfoRequestDTO dto) {
         UserMedicalInfoResponseDTO created = userMedicalInfoService.save(dto);
@@ -98,6 +105,7 @@ public class UserMedicalInfoController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'ENFERMERO', 'FISIO', 'TO', 'TS', 'PSICO', 'TAS')")
     public ResponseEntity<ApiDataResponse<UserMedicalInfoResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody UserMedicalInfoUpdateDTO dto) {
@@ -110,6 +118,7 @@ public class UserMedicalInfoController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<UserMedicalInfoResponseDTO>> delete(@PathVariable Integer id) {
         UserMedicalInfoResponseDTO deleted = userMedicalInfoService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserMedicalInfo", "id", id));

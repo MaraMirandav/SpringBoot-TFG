@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.transport.RouteShiftRequestDTO;
@@ -34,6 +35,7 @@ public class RouteShiftController {
     private final RouteShiftService routeShiftService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<RouteShiftResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<RouteShiftResponseDTO> page = routeShiftService.findAll(pageable);
@@ -45,6 +47,7 @@ public class RouteShiftController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<RouteShiftResponseDTO>> findById(@PathVariable Integer id) {
         RouteShiftResponseDTO dto = routeShiftService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("RouteShift", "id", id));
@@ -55,6 +58,7 @@ public class RouteShiftController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<RouteShiftResponseDTO>> create(
             @Valid @RequestBody RouteShiftRequestDTO dto) {
         RouteShiftResponseDTO created = routeShiftService.save(dto);
@@ -66,6 +70,7 @@ public class RouteShiftController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<RouteShiftResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody RouteShiftUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class RouteShiftController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         routeShiftService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

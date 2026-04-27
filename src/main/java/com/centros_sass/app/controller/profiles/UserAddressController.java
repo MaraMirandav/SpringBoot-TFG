@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.useraddress.UserAddressRequestDTO;
@@ -34,6 +35,7 @@ public class UserAddressController {
     private final UserAddressService userAddressService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserAddressResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserAddressResponseDTO> page = userAddressService.findAll(pageable);
@@ -45,6 +47,7 @@ public class UserAddressController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserAddressResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserAddressResponseDTO> page = userAddressService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class UserAddressController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserAddressResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserAddressResponseDTO> page = userAddressService.findAllIncludingInactive(pageable);
@@ -67,6 +71,7 @@ public class UserAddressController {
     }
 
     @GetMapping("/user/{userId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserAddressResponseDTO>>> findByUserId(@PathVariable Integer userId) {
         List<UserAddressResponseDTO> addresses = userAddressService.findByUserId(userId);
         return ResponseEntity.ok(new ApiDataResponse<>(
@@ -77,6 +82,7 @@ public class UserAddressController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserAddressResponseDTO>> findById(@PathVariable Integer id) {
         UserAddressResponseDTO address = userAddressService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserAddress", "id", id));
@@ -87,6 +93,7 @@ public class UserAddressController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<UserAddressResponseDTO>> create(
             @Valid @RequestBody UserAddressRequestDTO dto) {
         UserAddressResponseDTO created = userAddressService.save(dto);
@@ -98,6 +105,7 @@ public class UserAddressController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<UserAddressResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody UserAddressUpdateDTO dto) {
@@ -110,6 +118,7 @@ public class UserAddressController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<UserAddressResponseDTO>> delete(@PathVariable Integer id) {
         UserAddressResponseDTO deleted = userAddressService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserAddress", "id", id));

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.transport.TransportRouteRequestDTO;
@@ -34,6 +35,7 @@ public class TransportRouteController {
     private final TransportRouteService transportRouteService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<TransportRouteResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<TransportRouteResponseDTO> page = transportRouteService.findAll(pageable);
@@ -45,6 +47,7 @@ public class TransportRouteController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<TransportRouteResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<TransportRouteResponseDTO> page = transportRouteService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class TransportRouteController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<TransportRouteResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<TransportRouteResponseDTO> page = transportRouteService.findAllIncludingInactive(pageable);
@@ -67,6 +71,7 @@ public class TransportRouteController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<TransportRouteResponseDTO>> findById(@PathVariable Integer id) {
         TransportRouteResponseDTO route = transportRouteService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("TransportRoute", "id", id));
@@ -77,6 +82,7 @@ public class TransportRouteController {
     }
 
     @GetMapping("/shift/{shiftId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<TransportRouteResponseDTO>>> findByShift(
             @PathVariable Integer shiftId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -89,6 +95,7 @@ public class TransportRouteController {
     }
 
     @GetMapping("/driver/{workerId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<TransportRouteResponseDTO>>> findByDriver(
             @PathVariable Integer workerId) {
         List<TransportRouteResponseDTO> routes = transportRouteService.findByDriver(workerId);
@@ -100,6 +107,7 @@ public class TransportRouteController {
     }
 
     @GetMapping("/copilot/{workerId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<TransportRouteResponseDTO>>> findByCopilot(
             @PathVariable Integer workerId) {
         List<TransportRouteResponseDTO> routes = transportRouteService.findByCopilot(workerId);
@@ -111,6 +119,7 @@ public class TransportRouteController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'CONDUCTOR', 'COPILOTO')")
     public ResponseEntity<ApiDataResponse<TransportRouteResponseDTO>> create(
             @Valid @RequestBody TransportRouteRequestDTO dto) {
         TransportRouteResponseDTO created = transportRouteService.save(dto);
@@ -122,6 +131,7 @@ public class TransportRouteController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'CONDUCTOR', 'COPILOTO')")
     public ResponseEntity<ApiDataResponse<TransportRouteResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody TransportRouteUpdateDTO dto) {
@@ -134,6 +144,7 @@ public class TransportRouteController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<TransportRouteResponseDTO>> delete(@PathVariable Integer id) {
         TransportRouteResponseDTO deleted = transportRouteService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("TransportRoute", "id", id));

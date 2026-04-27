@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.treatments.MedicationApplicationRequestDTO;
@@ -34,6 +35,7 @@ public class MedicationApplicationController {
     private final MedicationApplicationService medicationApplicationService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<MedicationApplicationResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<MedicationApplicationResponseDTO> page = medicationApplicationService.findAll(pageable);
@@ -45,6 +47,7 @@ public class MedicationApplicationController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<MedicationApplicationResponseDTO>> findById(@PathVariable Integer id) {
         MedicationApplicationResponseDTO dto = medicationApplicationService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("MedicationApplication", "id", id));
@@ -55,6 +58,7 @@ public class MedicationApplicationController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<MedicationApplicationResponseDTO>> create(
             @Valid @RequestBody MedicationApplicationRequestDTO dto) {
         MedicationApplicationResponseDTO created = medicationApplicationService.save(dto);
@@ -66,6 +70,7 @@ public class MedicationApplicationController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<MedicationApplicationResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody MedicationApplicationUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class MedicationApplicationController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         medicationApplicationService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

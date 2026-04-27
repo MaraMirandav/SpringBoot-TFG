@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.incidents.CenterIncidentRequestDTO;
@@ -34,6 +35,7 @@ public class CenterIncidentController {
     private final CenterIncidentService centerIncidentService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<CenterIncidentResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<CenterIncidentResponseDTO> page = centerIncidentService.findAll(pageable);
@@ -45,6 +47,7 @@ public class CenterIncidentController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<CenterIncidentResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<CenterIncidentResponseDTO> page = centerIncidentService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class CenterIncidentController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<CenterIncidentResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<CenterIncidentResponseDTO> page = centerIncidentService.findAllIncludingInactive(pageable);
@@ -67,6 +71,7 @@ public class CenterIncidentController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<CenterIncidentResponseDTO>> findById(@PathVariable Integer id) {
         CenterIncidentResponseDTO dto = centerIncidentService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("CenterIncident", "id", id));
@@ -77,6 +82,7 @@ public class CenterIncidentController {
     }
 
     @GetMapping("/reported-by/{workerId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<CenterIncidentResponseDTO>>> findByReportedById(
             @PathVariable Integer workerId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -89,6 +95,7 @@ public class CenterIncidentController {
     }
 
     @GetMapping("/status/{statusId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<CenterIncidentResponseDTO>>> findByIncidentStatusId(
             @PathVariable Integer statusId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -101,6 +108,7 @@ public class CenterIncidentController {
     }
 
     @PostMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<CenterIncidentResponseDTO>> create(
             @Valid @RequestBody CenterIncidentRequestDTO dto) {
         CenterIncidentResponseDTO created = centerIncidentService.save(dto);
@@ -112,6 +120,7 @@ public class CenterIncidentController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<CenterIncidentResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody CenterIncidentUpdateDTO dto) {
@@ -124,6 +133,7 @@ public class CenterIncidentController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<CenterIncidentResponseDTO>> delete(@PathVariable Integer id) {
         CenterIncidentResponseDTO deleted = centerIncidentService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("CenterIncident", "id", id));

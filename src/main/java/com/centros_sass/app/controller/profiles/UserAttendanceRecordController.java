@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.userattendancerecord.UserAttendanceRecordRequestDTO;
@@ -32,6 +33,7 @@ public class UserAttendanceRecordController {
     private final UserAttendanceRecordService recordService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserAttendanceRecordResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserAttendanceRecordResponseDTO> page = recordService.findAll(pageable);
@@ -43,6 +45,7 @@ public class UserAttendanceRecordController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserAttendanceRecordResponseDTO>> findById(@PathVariable Integer id) {
         UserAttendanceRecordResponseDTO record = recordService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserAttendanceRecord", "id", id));
@@ -53,6 +56,7 @@ public class UserAttendanceRecordController {
     }
 
     @GetMapping("/user/{userId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserAttendanceRecordResponseDTO>>> findByUserId(
             @PathVariable Integer userId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -65,6 +69,7 @@ public class UserAttendanceRecordController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<UserAttendanceRecordResponseDTO>> save(
             @Valid @RequestBody UserAttendanceRecordRequestDTO dto) {
         UserAttendanceRecordResponseDTO created = recordService.save(dto);
@@ -76,6 +81,7 @@ public class UserAttendanceRecordController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<UserAttendanceRecordResponseDTO>> delete(@PathVariable Integer id) {
         UserAttendanceRecordResponseDTO deleted = recordService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserAttendanceRecord", "id", id));

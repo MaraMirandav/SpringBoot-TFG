@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.belongings.UserObjectRequestDTO;
@@ -34,6 +35,7 @@ public class UserObjectController {
     private final UserObjectService userObjectService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserObjectResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserObjectResponseDTO> page = userObjectService.findAll(pageable);
@@ -45,6 +47,7 @@ public class UserObjectController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserObjectResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserObjectResponseDTO> page = userObjectService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class UserObjectController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserObjectResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserObjectResponseDTO> page = userObjectService.findAllIncludingInactive(pageable);
@@ -67,6 +71,7 @@ public class UserObjectController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserObjectResponseDTO>> findById(@PathVariable Integer id) {
         UserObjectResponseDTO obj = userObjectService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserObject", "id", id));
@@ -77,6 +82,7 @@ public class UserObjectController {
     }
 
     @GetMapping("/type/{typeId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserObjectResponseDTO>>> findByObjectType(
             @PathVariable Integer typeId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -89,6 +95,7 @@ public class UserObjectController {
     }
 
     @GetMapping("/condition/{conditionId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserObjectResponseDTO>>> findByItemCondition(
             @PathVariable Integer conditionId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -101,6 +108,7 @@ public class UserObjectController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'TAS')")
     public ResponseEntity<ApiDataResponse<UserObjectResponseDTO>> create(
             @Valid @RequestBody UserObjectRequestDTO dto) {
         UserObjectResponseDTO created = userObjectService.save(dto);
@@ -112,6 +120,7 @@ public class UserObjectController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'TAS')")
     public ResponseEntity<ApiDataResponse<UserObjectResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody UserObjectUpdateDTO dto) {
@@ -124,6 +133,7 @@ public class UserObjectController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<UserObjectResponseDTO>> delete(@PathVariable Integer id) {
         UserObjectResponseDTO deleted = userObjectService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserObject", "id", id));

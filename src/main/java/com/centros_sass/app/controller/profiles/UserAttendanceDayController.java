@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.userattendanceday.UserAttendanceDayRequestDTO;
@@ -31,6 +32,7 @@ public class UserAttendanceDayController {
     private final UserAttendanceDayService attendanceDayService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserAttendanceDayResponseDTO>>> findAll() {
         List<UserAttendanceDayResponseDTO> list = attendanceDayService.findAll();
         return ResponseEntity.ok(new ApiDataResponse<>(
@@ -41,6 +43,7 @@ public class UserAttendanceDayController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserAttendanceDayResponseDTO>>> findAllInactive() {
         List<UserAttendanceDayResponseDTO> list = attendanceDayService.findAllInactive();
         return ResponseEntity.ok(new ApiDataResponse<>(
@@ -51,6 +54,7 @@ public class UserAttendanceDayController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserAttendanceDayResponseDTO>>> findAllIncludingInactive() {
         List<UserAttendanceDayResponseDTO> list = attendanceDayService.findAllIncludingInactive();
         return ResponseEntity.ok(new ApiDataResponse<>(
@@ -61,6 +65,7 @@ public class UserAttendanceDayController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserAttendanceDayResponseDTO>> findById(@PathVariable Integer id) {
         UserAttendanceDayResponseDTO dto = attendanceDayService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserAttendanceDay", "id", id));
@@ -71,6 +76,7 @@ public class UserAttendanceDayController {
     }
 
     @GetMapping("/user/{userId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserAttendanceDayResponseDTO>>> findByUserId(@PathVariable Integer userId) {
         List<UserAttendanceDayResponseDTO> list = attendanceDayService.findByUserId(userId);
         return ResponseEntity.ok(new ApiDataResponse<>(
@@ -81,6 +87,7 @@ public class UserAttendanceDayController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<UserAttendanceDayResponseDTO>> create(
             @Valid @RequestBody UserAttendanceDayRequestDTO dto) {
         UserAttendanceDayResponseDTO created = attendanceDayService.save(dto);
@@ -92,6 +99,7 @@ public class UserAttendanceDayController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<UserAttendanceDayResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody UserAttendanceDayUpdateDTO dto) {
@@ -104,6 +112,7 @@ public class UserAttendanceDayController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<UserAttendanceDayResponseDTO>> delete(@PathVariable Integer id) {
         UserAttendanceDayResponseDTO deleted = attendanceDayService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserAttendanceDay", "id", id));

@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.centros_sass.app.dto.incidents.UserIncidentCommentRequestDTO;
 import com.centros_sass.app.dto.incidents.UserIncidentCommentResponseDTO;
 import com.centros_sass.app.dto.incidents.UserIncidentCommentUpdateDTO;
-import com.centros_sass.app.exception.BadRequestException;
 import com.centros_sass.app.exception.ResourceNotFoundException;
 import com.centros_sass.app.mapper.incidents.UserIncidentCommentMapper;
 import com.centros_sass.app.model.incidents.user.UserIncident;
@@ -69,12 +68,6 @@ public class UserIncidentCommentServiceImpl implements UserIncidentCommentServic
     @Transactional
     public Optional<UserIncidentCommentResponseDTO> update(Integer id, UserIncidentCommentUpdateDTO dto) {
         return commentRepository.findById(id).map(existing -> {
-            Worker currentWorker = getCurrentWorker();
-
-            if (!existing.getWorker().getId().equals(currentWorker.getId())) {
-                throw new BadRequestException("Solo el autor del comentario puede editarlo");
-            }
-
             commentMapper.updateFromDto(dto, existing);
             UserIncidentComment saved = commentRepository.saveAndFlush(existing);
             return commentMapper.toResponse(saved);
@@ -86,16 +79,6 @@ public class UserIncidentCommentServiceImpl implements UserIncidentCommentServic
     public void delete(Integer id) {
         UserIncidentComment comment = commentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserIncidentComment", "id", id));
-
-        Worker currentWorker = getCurrentWorker();
-
-        boolean isAdmin = currentWorker.getRoles().stream()
-                .anyMatch(role -> "ROLE_ADMIN".equals(role.getRoleName()));
-
-        if (!isAdmin) {
-            throw new BadRequestException("Solo un administrador puede eliminar un comentario");
-        }
-
         commentRepository.delete(comment);
     }
 
