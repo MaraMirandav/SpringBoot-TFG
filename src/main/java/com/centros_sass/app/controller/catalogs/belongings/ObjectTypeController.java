@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.belongings.ObjectTypeRequestDTO;
@@ -34,6 +35,7 @@ public class ObjectTypeController {
     private final ObjectTypeService objectTypeService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<ObjectTypeResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<ObjectTypeResponseDTO> page = objectTypeService.findAll(pageable);
@@ -47,6 +49,7 @@ public class ObjectTypeController {
 
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<ObjectTypeResponseDTO>> findById(@PathVariable Integer id) {
         ObjectTypeResponseDTO type = objectTypeService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("ObjectType", "id", id));
@@ -57,6 +60,7 @@ public class ObjectTypeController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<ObjectTypeResponseDTO>> create(
             @Valid @RequestBody ObjectTypeRequestDTO dto) {
         ObjectTypeResponseDTO created = objectTypeService.save(dto);
@@ -68,6 +72,7 @@ public class ObjectTypeController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<ObjectTypeResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody ObjectTypeUpdateDTO dto) {
@@ -80,6 +85,7 @@ public class ObjectTypeController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         objectTypeService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

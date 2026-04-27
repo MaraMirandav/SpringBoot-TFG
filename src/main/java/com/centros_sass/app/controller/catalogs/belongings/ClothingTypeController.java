@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.belongings.ClothingTypeRequestDTO;
@@ -34,6 +35,7 @@ public class ClothingTypeController {
     private final ClothingTypeService clothingTypeService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<ClothingTypeResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<ClothingTypeResponseDTO> page = clothingTypeService.findAll(pageable);
@@ -47,6 +49,7 @@ public class ClothingTypeController {
 
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<ClothingTypeResponseDTO>> findById(@PathVariable Integer id) {
         ClothingTypeResponseDTO type = clothingTypeService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("ClothingType", "id", id));
@@ -57,6 +60,7 @@ public class ClothingTypeController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<ClothingTypeResponseDTO>> create(
             @Valid @RequestBody ClothingTypeRequestDTO dto) {
         ClothingTypeResponseDTO created = clothingTypeService.save(dto);
@@ -68,6 +72,7 @@ public class ClothingTypeController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<ClothingTypeResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody ClothingTypeUpdateDTO dto) {
@@ -80,6 +85,7 @@ public class ClothingTypeController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         clothingTypeService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

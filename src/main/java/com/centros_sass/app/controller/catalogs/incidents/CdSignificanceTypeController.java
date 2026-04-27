@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.incidents.CdSignificanceTypeRequestDTO;
@@ -34,6 +35,7 @@ public class CdSignificanceTypeController {
     private final CdSignificanceTypeService cdSignificanceTypeService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<CdSignificanceTypeResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<CdSignificanceTypeResponseDTO> page = cdSignificanceTypeService.findAll(pageable);
@@ -45,6 +47,7 @@ public class CdSignificanceTypeController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<CdSignificanceTypeResponseDTO>> findById(@PathVariable Integer id) {
         CdSignificanceTypeResponseDTO dto = cdSignificanceTypeService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("CdSignificanceType", "id", id));
@@ -55,6 +58,7 @@ public class CdSignificanceTypeController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<CdSignificanceTypeResponseDTO>> create(
             @Valid @RequestBody CdSignificanceTypeRequestDTO dto) {
         CdSignificanceTypeResponseDTO created = cdSignificanceTypeService.save(dto);
@@ -66,6 +70,7 @@ public class CdSignificanceTypeController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<CdSignificanceTypeResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody CdSignificanceTypeUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class CdSignificanceTypeController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         cdSignificanceTypeService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

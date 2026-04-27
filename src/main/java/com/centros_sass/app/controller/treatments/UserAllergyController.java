@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.treatments.UserAllergyRequestDTO;
@@ -34,6 +35,7 @@ public class UserAllergyController {
     private final UserAllergyService userAllergyService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserAllergyResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserAllergyResponseDTO> page = userAllergyService.findAll(pageable);
@@ -45,6 +47,7 @@ public class UserAllergyController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserAllergyResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserAllergyResponseDTO> page = userAllergyService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class UserAllergyController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserAllergyResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserAllergyResponseDTO> page = userAllergyService.findAllIncludingInactive(pageable);
@@ -67,6 +71,7 @@ public class UserAllergyController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserAllergyResponseDTO>> findById(@PathVariable Integer id) {
         UserAllergyResponseDTO dto = userAllergyService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserAllergy", "id", id));
@@ -77,6 +82,7 @@ public class UserAllergyController {
     }
 
     @GetMapping("/user-medical-info/{infoId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserAllergyResponseDTO>>> findByUserMedicalInfo(
             @PathVariable Integer infoId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -89,6 +95,7 @@ public class UserAllergyController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'ENFERMERO', 'FISIO', 'TO', 'TS', 'PSICO', 'TAS')")
     public ResponseEntity<ApiDataResponse<UserAllergyResponseDTO>> create(
             @Valid @RequestBody UserAllergyRequestDTO dto) {
         UserAllergyResponseDTO created = userAllergyService.save(dto);
@@ -100,6 +107,7 @@ public class UserAllergyController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'ENFERMERO', 'FISIO', 'TO', 'TS', 'PSICO', 'TAS')")
     public ResponseEntity<ApiDataResponse<UserAllergyResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody UserAllergyUpdateDTO dto) {
@@ -112,6 +120,7 @@ public class UserAllergyController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<UserAllergyResponseDTO>> delete(@PathVariable Integer id) {
         UserAllergyResponseDTO deleted = userAllergyService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserAllergy", "id", id));

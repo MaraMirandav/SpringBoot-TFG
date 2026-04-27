@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.incidents.UserSignificanceTypeRequestDTO;
@@ -34,6 +35,7 @@ public class UserSignificanceTypeController {
     private final UserSignificanceTypeService userSignificanceTypeService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserSignificanceTypeResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserSignificanceTypeResponseDTO> page = userSignificanceTypeService.findAll(pageable);
@@ -45,6 +47,7 @@ public class UserSignificanceTypeController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserSignificanceTypeResponseDTO>> findById(@PathVariable Integer id) {
         UserSignificanceTypeResponseDTO dto = userSignificanceTypeService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserSignificanceType", "id", id));
@@ -55,6 +58,7 @@ public class UserSignificanceTypeController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<UserSignificanceTypeResponseDTO>> create(
             @Valid @RequestBody UserSignificanceTypeRequestDTO dto) {
         UserSignificanceTypeResponseDTO created = userSignificanceTypeService.save(dto);
@@ -66,6 +70,7 @@ public class UserSignificanceTypeController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<UserSignificanceTypeResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody UserSignificanceTypeUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class UserSignificanceTypeController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         userSignificanceTypeService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

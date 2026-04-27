@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.bathroom.BathroomScheduleRequestDTO;
@@ -34,6 +35,7 @@ public class BathroomScheduleController {
     private final BathroomScheduleService bathroomScheduleService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<BathroomScheduleResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<BathroomScheduleResponseDTO> page = bathroomScheduleService.findAll(pageable);
@@ -45,6 +47,7 @@ public class BathroomScheduleController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<BathroomScheduleResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<BathroomScheduleResponseDTO> page = bathroomScheduleService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class BathroomScheduleController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<BathroomScheduleResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<BathroomScheduleResponseDTO> page = bathroomScheduleService.findAllIncludingInactive(pageable);
@@ -66,8 +70,9 @@ public class BathroomScheduleController {
                 (int) page.getTotalElements()));
     }
 
-@GetMapping("/{id}")
-public ResponseEntity<ApiDataResponse<BathroomScheduleResponseDTO>> findById(@PathVariable Integer id) {
+    @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<ApiDataResponse<BathroomScheduleResponseDTO>> findById(@PathVariable Integer id) {
         BathroomScheduleResponseDTO schedule = bathroomScheduleService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("BathroomSchedule", "id", id));
         return ResponseEntity.ok(new ApiDataResponse<>(
@@ -77,6 +82,7 @@ public ResponseEntity<ApiDataResponse<BathroomScheduleResponseDTO>> findById(@Pa
     }
 
     @GetMapping("/user/{userId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<BathroomScheduleResponseDTO>>> findByUser(
             @PathVariable Integer userId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -89,6 +95,7 @@ public ResponseEntity<ApiDataResponse<BathroomScheduleResponseDTO>> findById(@Pa
     }
 
     @GetMapping("/turn/{turnId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<BathroomScheduleResponseDTO>>> findByTurn(
             @PathVariable Integer turnId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -101,6 +108,7 @@ public ResponseEntity<ApiDataResponse<BathroomScheduleResponseDTO>> findById(@Pa
     }
 
     @GetMapping("/task/{taskId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<BathroomScheduleResponseDTO>>> findByTask(
             @PathVariable Integer taskId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -113,6 +121,7 @@ public ResponseEntity<ApiDataResponse<BathroomScheduleResponseDTO>> findById(@Pa
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<BathroomScheduleResponseDTO>> create(
             @Valid @RequestBody BathroomScheduleRequestDTO dto) {
         BathroomScheduleResponseDTO created = bathroomScheduleService.save(dto);
@@ -124,6 +133,7 @@ public ResponseEntity<ApiDataResponse<BathroomScheduleResponseDTO>> findById(@Pa
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<BathroomScheduleResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody BathroomScheduleUpdateDTO dto) {
@@ -136,6 +146,7 @@ public ResponseEntity<ApiDataResponse<BathroomScheduleResponseDTO>> findById(@Pa
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<BathroomScheduleResponseDTO>> delete(@PathVariable Integer id) {
         BathroomScheduleResponseDTO deleted = bathroomScheduleService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("BathroomSchedule", "id", id));

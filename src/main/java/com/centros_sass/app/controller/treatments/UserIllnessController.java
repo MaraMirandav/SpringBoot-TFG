@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.treatments.UserIllnessRequestDTO;
@@ -34,6 +35,7 @@ public class UserIllnessController {
     private final UserIllnessService userIllnessService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserIllnessResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserIllnessResponseDTO> page = userIllnessService.findAll(pageable);
@@ -45,6 +47,7 @@ public class UserIllnessController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserIllnessResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserIllnessResponseDTO> page = userIllnessService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class UserIllnessController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserIllnessResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserIllnessResponseDTO> page = userIllnessService.findAllIncludingInactive(pageable);
@@ -67,6 +71,7 @@ public class UserIllnessController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserIllnessResponseDTO>> findById(@PathVariable Integer id) {
         UserIllnessResponseDTO dto = userIllnessService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserIllness", "id", id));
@@ -77,6 +82,7 @@ public class UserIllnessController {
     }
 
     @GetMapping("/user-medical-info/{infoId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserIllnessResponseDTO>>> findByUserMedicalInfo(
             @PathVariable Integer infoId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -89,6 +95,7 @@ public class UserIllnessController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'ENFERMERO', 'FISIO', 'TO', 'TS', 'PSICO', 'TAS')")
     public ResponseEntity<ApiDataResponse<UserIllnessResponseDTO>> create(
             @Valid @RequestBody UserIllnessRequestDTO dto) {
         UserIllnessResponseDTO created = userIllnessService.save(dto);
@@ -100,6 +107,7 @@ public class UserIllnessController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'ENFERMERO', 'FISIO', 'TO', 'TS', 'PSICO', 'TAS')")
     public ResponseEntity<ApiDataResponse<UserIllnessResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody UserIllnessUpdateDTO dto) {
@@ -112,6 +120,7 @@ public class UserIllnessController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<UserIllnessResponseDTO>> delete(@PathVariable Integer id) {
         UserIllnessResponseDTO deleted = userIllnessService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserIllness", "id", id));

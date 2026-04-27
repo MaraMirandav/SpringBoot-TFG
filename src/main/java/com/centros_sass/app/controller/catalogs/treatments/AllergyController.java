@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.treatments.AllergyRequestDTO;
@@ -34,6 +35,7 @@ public class AllergyController {
     private final AllergyService allergyService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<AllergyResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<AllergyResponseDTO> page = allergyService.findAll(pageable);
@@ -45,6 +47,7 @@ public class AllergyController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<AllergyResponseDTO>> findById(@PathVariable Integer id) {
         AllergyResponseDTO dto = allergyService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Allergy", "id", id));
@@ -55,6 +58,7 @@ public class AllergyController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<AllergyResponseDTO>> create(
             @Valid @RequestBody AllergyRequestDTO dto) {
         AllergyResponseDTO created = allergyService.save(dto);
@@ -66,6 +70,7 @@ public class AllergyController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<AllergyResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody AllergyUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class AllergyController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         allergyService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

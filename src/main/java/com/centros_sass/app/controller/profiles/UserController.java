@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.user.UserRequestDTO;
@@ -35,6 +36,7 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable,
             @RequestParam(required = false) String search
@@ -48,6 +50,7 @@ public class UserController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable,
             @RequestParam(required = false) String search
@@ -61,6 +64,7 @@ public class UserController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserResponseDTO> page = userService.findAllIncludingInactive(pageable);
@@ -72,6 +76,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserResponseDTO>> findById(@PathVariable Integer id) {
         UserResponseDTO user = userService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
@@ -82,6 +87,7 @@ public class UserController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<UserResponseDTO>> create(
             @Valid @RequestBody UserRequestDTO dto) {
         UserResponseDTO created = userService.save(dto);
@@ -93,6 +99,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<UserResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody UserUpdateDTO dto) {
@@ -105,6 +112,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<UserResponseDTO>> delete(@PathVariable Integer id) {
         UserResponseDTO deleted = userService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));

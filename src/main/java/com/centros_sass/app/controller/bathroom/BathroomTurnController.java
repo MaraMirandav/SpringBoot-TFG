@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.bathroom.BathroomTurnRequestDTO;
@@ -34,6 +35,7 @@ public class BathroomTurnController {
     private final BathroomTurnService bathroomTurnService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<BathroomTurnResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<BathroomTurnResponseDTO> page = bathroomTurnService.findAll(pageable);
@@ -45,6 +47,7 @@ public class BathroomTurnController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<BathroomTurnResponseDTO>> findById(@PathVariable Integer id) {
         BathroomTurnResponseDTO turn = bathroomTurnService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("BathroomTurn", "id", id));
@@ -55,6 +58,7 @@ public class BathroomTurnController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<BathroomTurnResponseDTO>> create(
             @Valid @RequestBody BathroomTurnRequestDTO dto) {
         BathroomTurnResponseDTO created = bathroomTurnService.save(dto);
@@ -66,6 +70,7 @@ public class BathroomTurnController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<BathroomTurnResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody BathroomTurnUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class BathroomTurnController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<BathroomTurnResponseDTO>> delete(@PathVariable Integer id) {
         BathroomTurnResponseDTO deleted = bathroomTurnService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("BathroomTurn", "id", id));

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.treatments.MedicationRequestDTO;
@@ -34,6 +35,7 @@ public class MedicationController {
     private final MedicationService medicationService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<MedicationResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<MedicationResponseDTO> page = medicationService.findAll(pageable);
@@ -45,6 +47,7 @@ public class MedicationController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<MedicationResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<MedicationResponseDTO> page = medicationService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class MedicationController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<MedicationResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<MedicationResponseDTO> page = medicationService.findAllIncludingInactive(pageable);
@@ -67,6 +71,7 @@ public class MedicationController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<MedicationResponseDTO>> findById(@PathVariable Integer id) {
         MedicationResponseDTO dto = medicationService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Medication", "id", id));
@@ -77,6 +82,7 @@ public class MedicationController {
     }
 
     @GetMapping("/user/{userId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<MedicationResponseDTO>>> findByUser(
             @PathVariable Integer userId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -89,6 +95,7 @@ public class MedicationController {
     }
 
     @GetMapping("/expiring-soon")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<MedicationResponseDTO>>> findExpiringSoon(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<MedicationResponseDTO> page = medicationService.findExpiringSoon(pageable);
@@ -100,6 +107,7 @@ public class MedicationController {
     }
 
     @GetMapping("/low-stock")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<MedicationResponseDTO>>> findLowStock(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<MedicationResponseDTO> page = medicationService.findLowStock(pageable);
@@ -111,6 +119,7 @@ public class MedicationController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'ENFERMERO', 'FISIO', 'TO', 'TS', 'PSICO', 'TAS')")
     public ResponseEntity<ApiDataResponse<MedicationResponseDTO>> create(
             @Valid @RequestBody MedicationRequestDTO dto) {
         MedicationResponseDTO created = medicationService.save(dto);
@@ -122,6 +131,7 @@ public class MedicationController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'ENFERMERO', 'FISIO', 'TO', 'TS', 'PSICO', 'TAS')")
     public ResponseEntity<ApiDataResponse<MedicationResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody MedicationUpdateDTO dto) {
@@ -134,6 +144,7 @@ public class MedicationController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<MedicationResponseDTO>> delete(@PathVariable Integer id) {
         MedicationResponseDTO deleted = medicationService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Medication", "id", id));

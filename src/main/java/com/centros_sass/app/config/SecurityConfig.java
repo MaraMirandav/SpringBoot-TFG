@@ -54,7 +54,7 @@ public class SecurityConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Todos los endpoints
-                        .allowedOriginPatterns("*") // Permitir cualquier origen // Alternativa .allowed.Origins("http://localhost:4200")
+                        .allowedOrigins("http://localhost:4200") // Frontend Angular
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);

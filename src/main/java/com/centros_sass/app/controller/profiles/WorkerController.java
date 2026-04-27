@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.worker.WorkerRequestDTO;
@@ -35,6 +36,7 @@ public class WorkerController {
     private final WorkerService workerService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<WorkerResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable,
             @RequestParam(required = false) String search
@@ -48,6 +50,7 @@ public class WorkerController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<WorkerResponseDTO>>> findAllInactive(
             @PageableDefault(size = 6) Pageable pageable,
             @RequestParam(required = false) String search
@@ -61,6 +64,7 @@ public class WorkerController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<WorkerResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 6) Pageable pageable) {
         Page<WorkerResponseDTO> page = workerService.findAllIncludingInactive(pageable);
@@ -72,6 +76,7 @@ public class WorkerController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<WorkerResponseDTO>> findById(@PathVariable Integer id) {
         WorkerResponseDTO worker = workerService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Worker", "id", id));
@@ -82,6 +87,7 @@ public class WorkerController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<WorkerResponseDTO>> create(
             @Valid @RequestBody WorkerRequestDTO dto) {
         WorkerResponseDTO created = workerService.save(dto);
@@ -93,6 +99,7 @@ public class WorkerController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<WorkerResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody WorkerUpdateDTO dto) {
@@ -105,6 +112,7 @@ public class WorkerController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<WorkerResponseDTO>> delete(@PathVariable Integer id) {
         WorkerResponseDTO deleted = workerService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Worker", "id", id));

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.belongings.UserBelongingRequestDTO;
@@ -34,6 +35,7 @@ public class UserBelongingController {
     private final UserBelongingService userBelongingService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserBelongingResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserBelongingResponseDTO> page = userBelongingService.findAll(pageable);
@@ -45,6 +47,7 @@ public class UserBelongingController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserBelongingResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserBelongingResponseDTO> page = userBelongingService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class UserBelongingController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserBelongingResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserBelongingResponseDTO> page = userBelongingService.findAllIncludingInactive(pageable);
@@ -67,6 +71,7 @@ public class UserBelongingController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserBelongingResponseDTO>> findById(@PathVariable Integer id) {
         UserBelongingResponseDTO belonging = userBelongingService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserBelonging", "id", id));
@@ -77,6 +82,7 @@ public class UserBelongingController {
     }
 
     @GetMapping("/user/{userId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserBelongingResponseDTO>>> findByUser(
             @PathVariable Integer userId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -89,6 +95,7 @@ public class UserBelongingController {
     }
 
     @GetMapping("/worker/{workerId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserBelongingResponseDTO>>> findByWorker(
             @PathVariable Integer workerId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -101,6 +108,7 @@ public class UserBelongingController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'TAS')")
     public ResponseEntity<ApiDataResponse<UserBelongingResponseDTO>> create(
             @Valid @RequestBody UserBelongingRequestDTO dto) {
         UserBelongingResponseDTO created = userBelongingService.save(dto);
@@ -112,6 +120,7 @@ public class UserBelongingController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'TAS')")
     public ResponseEntity<ApiDataResponse<UserBelongingResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody UserBelongingUpdateDTO dto) {
@@ -124,6 +133,7 @@ public class UserBelongingController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<UserBelongingResponseDTO>> delete(@PathVariable Integer id) {
         UserBelongingResponseDTO deleted = userBelongingService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserBelonging", "id", id));
