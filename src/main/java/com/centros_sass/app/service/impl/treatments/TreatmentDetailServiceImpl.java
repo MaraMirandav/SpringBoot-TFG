@@ -84,16 +84,10 @@ public class TreatmentDetailServiceImpl implements TreatmentDetailService {
         TreatmentDetail detail = treatmentDetailMapper.toEntity(dto);
         detail.setIsActive(true);
 
-        TreatmentDetail saved = treatmentDetailRepository.save(detail);
+        assignMedications(detail, dto.medicationIds());
+        assignUserIllnesses(detail, dto.userIllnessIds());
 
-        if (dto.medicationIds() != null && !dto.medicationIds().isEmpty()) {
-            assignMedications(saved, dto.medicationIds());
-        }
-
-        if (dto.userIllnessIds() != null && !dto.userIllnessIds().isEmpty()) {
-            assignUserIllnesses(saved, dto.userIllnessIds());
-        }
-
+        TreatmentDetail saved = treatmentDetailRepository.saveAndFlush(detail);
         return treatmentDetailMapper.toResponse(saved);
     }
 
@@ -139,25 +133,27 @@ public class TreatmentDetailServiceImpl implements TreatmentDetailService {
     }
 
     private void assignMedications(TreatmentDetail detail, Set<Integer> medicationIds) {
-        detail.getMedications().clear();
-        if (!medicationIds.isEmpty()) {
-            List<Medication> medications = medicationRepository.findAllById(medicationIds);
-            if (medications.size() != medicationIds.size()) {
-                throw new BadRequestException("Uno o más medicamentos no existen");
-            }
-            medications.forEach(detail.getMedications()::add);
+        if (medicationIds == null || medicationIds.isEmpty()) {
+            return;
         }
+        List<Medication> medications = medicationRepository.findAllById(medicationIds);
+        if (medications.size() != medicationIds.size()) {
+            throw new BadRequestException("Uno o más medicamentos no existen");
+        }
+        detail.getMedications().clear();
+        medications.forEach(detail.getMedications()::add);
     }
 
     private void assignUserIllnesses(TreatmentDetail detail, Set<Integer> userIllnessIds) {
-        detail.getUserIllnesses().clear();
-        if (!userIllnessIds.isEmpty()) {
-            List<UserIllness> illnesses = userIllnessRepository.findAllById(userIllnessIds);
-            if (illnesses.size() != userIllnessIds.size()) {
-                throw new BadRequestException("Una o más enfermedades de usuario no existen");
-            }
-            illnesses.forEach(detail.getUserIllnesses()::add);
+        if (userIllnessIds == null || userIllnessIds.isEmpty()) {
+            return;
         }
+        List<UserIllness> illnesses = userIllnessRepository.findAllById(userIllnessIds);
+        if (illnesses.size() != userIllnessIds.size()) {
+            throw new BadRequestException("Una o más enfermedades de usuario no existen");
+        }
+        detail.getUserIllnesses().clear();
+        illnesses.forEach(detail.getUserIllnesses()::add);
     }
 
 }
