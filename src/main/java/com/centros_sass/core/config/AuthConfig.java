@@ -1,7 +1,7 @@
 package com.centros_sass.core.config;
 
 import com.centros_sass.app.model.profiles.workers.Worker;
-import com.centros_sass.app.repository.WorkerRepository;
+import com.centros_sass.app.repository.profiles.WorkerRepository;
 import com.centros_sass.core.security.WorkerSecurity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

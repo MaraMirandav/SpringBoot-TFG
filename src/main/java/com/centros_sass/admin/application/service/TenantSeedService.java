@@ -1,9 +1,9 @@
 package com.centros_sass.admin.application.service;
 
-import com.centros_sass.app.model.catalogs.fixed.organization.Role;
+import com.centros_sass.app.model.catalogs.organization.Role;
 import com.centros_sass.app.model.profiles.workers.Worker;
-import com.centros_sass.app.repository.RoleRepository;
-import com.centros_sass.app.repository.WorkerRepository;
+import com.centros_sass.app.repository.catalogs.organization.RoleRepository;
+import com.centros_sass.app.repository.profiles.WorkerRepository;
 import com.centros_sass.core.tenant.TenantContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

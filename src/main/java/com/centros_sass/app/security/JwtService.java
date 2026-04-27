@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.centros_sass.app.model.catalogs.organization.Role;
 import com.centros_sass.app.model.profiles.workers.Worker;
+import com.centros_sass.core.security.WorkerSecurity;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

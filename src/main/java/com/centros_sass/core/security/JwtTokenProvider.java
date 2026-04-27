@@ -1,6 +1,6 @@
 package com.centros_sass.core.security;
 
-import com.centros_sass.app.model.catalogs.fixed.organization.Role;
+import com.centros_sass.app.model.catalogs.organization.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
