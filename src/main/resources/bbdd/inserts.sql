@@ -894,22 +894,22 @@ VALUES
 -- 2. INVENTARIO DE MEDICAMENTOS (Medications)
 -- ============================================================
 
-INSERT INTO medications (medication_name_id, dose, reception_date, expiration_date, storage_condition_id, medication_application_id, created_at, updated_at, created_by, updated_by)
+INSERT INTO medications (user_id, medication_name_id, dose, reception_date, expiration_date, storage_condition_id, medication_application_id, stock, created_at, updated_at, created_by, updated_by)
 VALUES
-    -- 1. Sintrom
-    (1, '4mg (Según pauta)', '2025-01-01', '2026-06-01', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    -- 2. Omeprazol
-    (2, '20mg', '2025-01-01', '2027-01-01', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    -- 3. Enalapril
-    (3, '20mg', '2025-01-05', '2026-12-01', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    -- 4. Insulina Lantus
-    (4, 'Pluma precargada', '2025-01-10', '2025-06-10', 2, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    -- 5. Paracetamol
-    (5, '1g', '2025-01-01', '2028-01-01', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    -- 6. Amoxicilina
-    (9, '500mg', '2025-01-01', '2026-01-01', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    -- 7. Ebastina (Para la alergia) -> Medication Name ID 10
-    (10, '10mg Desayuno', '2025-02-01', '2026-02-01', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    -- 1. Sintrom (Usuario 1)
+    (1, 1, '4mg (Según pauta)', '2025-01-01', '2026-06-01', 1, 1, 30, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 2. Omeprazol (Usuario 1)
+    (1, 2, '20mg', '2025-01-01', '2027-01-01', 1, 1, 60, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 3. Enalapril (Usuario 2)
+    (2, 3, '20mg', '2025-01-05', '2026-12-01', 1, 1, 90, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 4. Insulina Lantus (Usuario 3 - caduca pronto)
+    (3, 4, 'Pluma precargada', '2025-01-10', '2025-06-10', 2, 2, 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 5. Paracetamol (Usuario 2)
+    (2, 5, '1g', '2025-01-01', '2028-01-01', 1, 1, 20, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 6. Amoxicilina (Usuario 4)
+    (4, 9, '500mg', '2025-01-01', '2026-01-01', 1, 1, 15, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 7. Ebastina (Usuario 5 - stock bajo)
+    (5, 10, '10mg Desayuno', '2025-02-01', '2026-02-01', 1, 1, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- ============================================================
 -- 3. HISTORIAL MÉDICO DE USUARIOS (user_medical_info)

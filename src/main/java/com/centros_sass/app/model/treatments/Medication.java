@@ -8,6 +8,7 @@ import com.centros_sass.app.model.base.BaseEntity;
 import com.centros_sass.app.model.catalogs.treatments.MedicationApplication;
 import com.centros_sass.app.model.catalogs.treatments.MedicationName;
 import com.centros_sass.app.model.catalogs.treatments.StorageCondition;
+import com.centros_sass.app.model.profiles.users.User;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,6 +45,11 @@ public class Medication extends BaseEntity {
 
     @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @NonNull
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "medication_name_id", nullable = false)
     private MedicationName medicationName;
 
@@ -68,6 +74,10 @@ public class Medication extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "medication_application_id", nullable = false)
     private MedicationApplication medicationApplication;
+
+    @NonNull
+    @Column(name = "stock", nullable = false)
+    private Integer stock;
 
     // RELATIONS
     // // TreatmentDetails

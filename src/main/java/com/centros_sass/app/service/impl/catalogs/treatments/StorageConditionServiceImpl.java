@@ -1,4 +1,3 @@
-/*
 package com.centros_sass.app.service.impl.catalogs.treatments;
 
 import java.util.Optional;
@@ -86,4 +85,3 @@ public class StorageConditionServiceImpl implements StorageConditionService {
 
 }
 
-*/
