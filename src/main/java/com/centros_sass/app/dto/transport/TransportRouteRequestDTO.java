@@ -1,7 +1,6 @@
 package com.centros_sass.app.dto.transport;
 
 import java.time.LocalTime;
-import java.util.Set;
 
 import jakarta.validation.constraints.NotNull;
 

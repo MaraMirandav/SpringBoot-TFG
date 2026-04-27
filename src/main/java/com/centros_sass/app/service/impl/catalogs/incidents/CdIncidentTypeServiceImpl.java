@@ -1,4 +1,3 @@
-/*
 package com.centros_sass.app.service.impl.catalogs.incidents;
 
 import java.util.Optional;
@@ -85,5 +84,3 @@ public class CdIncidentTypeServiceImpl implements CdIncidentTypeService {
     }
 
 }
-
-*/
