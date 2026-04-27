@@ -187,8 +187,8 @@ public class UserIncidentServiceImpl implements UserIncidentService {
         String newName = newStatus.getStatusName();
 
         if (newName.equals("Cerrada") || newName.equals("Cancelada")) {
-            if (!isCurrentUserAdmin()) {
-                throw new BadRequestException("Solo un administrador puede cerrar o cancelar una incidencia");
+            if (!canCloseOrCancelIncident()) {
+                throw new BadRequestException("Solo un administrador o director puede cerrar o cancelar una incidencia");
             }
         }
 
@@ -205,10 +205,11 @@ public class UserIncidentServiceImpl implements UserIncidentService {
         }
     }
 
-    private boolean isCurrentUserAdmin() {
+    private boolean canCloseOrCancelIncident() {
         Worker currentWorker = getCurrentWorker();
         return currentWorker.getRoles().stream()
-                .anyMatch(role -> "ROLE_ADMIN".equals(role.getRoleName()));
+                .anyMatch(role -> "ROLE_ADMIN".equals(role.getRoleName())
+                        || "ROLE_DIRECTOR".equals(role.getRoleName()));
     }
 
     private Worker getCurrentWorker() {
