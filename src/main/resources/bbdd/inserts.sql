@@ -908,8 +908,8 @@ VALUES
     (2, 5, '1g', '2025-01-01', '2028-01-01', 1, 1, 20, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     -- 6. Amoxicilina (Usuario 4)
     (4, 9, '500mg', '2025-01-01', '2026-01-01', 1, 1, 15, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    -- 7. Ebastina (Usuario 5 - stock bajo)
-    (5, 10, '10mg Desayuno', '2025-02-01', '2026-02-01', 1, 1, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+    -- 7. Ebastina (Usuario 4 - stock bajo)
+    (4, 10, '10mg Desayuno', '2025-02-01', '2026-02-01', 1, 1, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- ============================================================
 -- 3. HISTORIAL MÉDICO DE USUARIOS (user_medical_info)
