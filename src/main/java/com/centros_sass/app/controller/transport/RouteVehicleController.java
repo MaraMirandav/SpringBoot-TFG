@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.vehicle.RouteVehicleRequestDTO;
@@ -34,6 +35,7 @@ public class RouteVehicleController {
     private final RouteVehicleService routeVehicleService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<RouteVehicleResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<RouteVehicleResponseDTO> page = routeVehicleService.findAll(pageable);
@@ -45,6 +47,7 @@ public class RouteVehicleController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<RouteVehicleResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<RouteVehicleResponseDTO> page = routeVehicleService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class RouteVehicleController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<RouteVehicleResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<RouteVehicleResponseDTO> page = routeVehicleService.findAllIncludingInactive(pageable);
@@ -67,6 +71,7 @@ public class RouteVehicleController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<RouteVehicleResponseDTO>> findById(@PathVariable Integer id) {
         RouteVehicleResponseDTO vehicle = routeVehicleService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("RouteVehicle", "id", id));
@@ -77,6 +82,7 @@ public class RouteVehicleController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<RouteVehicleResponseDTO>> create(
             @Valid @RequestBody RouteVehicleRequestDTO dto) {
         RouteVehicleResponseDTO created = routeVehicleService.save(dto);
@@ -88,6 +94,7 @@ public class RouteVehicleController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<RouteVehicleResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody RouteVehicleUpdateDTO dto) {
@@ -100,6 +107,7 @@ public class RouteVehicleController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<RouteVehicleResponseDTO>> delete(@PathVariable Integer id) {
         RouteVehicleResponseDTO deleted = routeVehicleService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("RouteVehicle", "id", id));
