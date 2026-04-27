@@ -24,7 +24,7 @@ import com.centros_sass.app.model.profiles.workers.WorkerScheduleRecord;
 import com.centros_sass.app.repository.WorkerRepository;
 import com.centros_sass.app.repository.WorkerScheduleRecordRepository;
 import com.centros_sass.app.repository.WorkerScheduleRepository;
-import com.centros_sass.app.security.WorkerSecurity;
+import com.centros_sass.core.security.WorkerSecurity;
 import com.centros_sass.app.service.WorkerScheduleRecordService;
 
 import lombok.RequiredArgsConstructor;

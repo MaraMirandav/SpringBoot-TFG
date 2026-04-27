@@ -8,6 +8,8 @@ public record LoginRequest(
     @Email(message = "Debes ingresar un correo electrónico válido")
     String email,
 
+    String tenantId,
+
     @NotBlank(message = "La contraseña es obligatoria")
     String password
 ) {}
