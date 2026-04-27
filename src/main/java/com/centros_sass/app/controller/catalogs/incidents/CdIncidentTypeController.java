@@ -1,4 +1,3 @@
-/*
 package com.centros_sass.app.controller.catalogs.incidents;
 
 import java.util.List;
@@ -87,5 +86,3 @@ public class CdIncidentTypeController {
     }
 
 }
-
-*/

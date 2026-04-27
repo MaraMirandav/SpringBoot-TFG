@@ -12,4 +12,6 @@ public interface IncidentStatusRepository extends JpaRepository<IncidentStatus, 
 
     boolean existsByStatusNameAndIdNot(String statusName, Integer id);
 
+    java.util.Optional<IncidentStatus> findByStatusName(String statusName);
+
 }
