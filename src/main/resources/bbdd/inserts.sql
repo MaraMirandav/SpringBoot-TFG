@@ -927,23 +927,23 @@ VALUES
 -- ============================================================
 
 -- Enfermedades
-INSERT INTO user_illnesses (user_medical_info_id, illness_id, created_at, updated_at, created_by, updated_by) VALUES (1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'); -- Antonio (Hipertensión)
-INSERT INTO user_illnesses (user_medical_info_id, illness_id, created_at, updated_at, created_by, updated_by) VALUES (2, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'); -- María (Diabetes)
-INSERT INTO user_illnesses (user_medical_info_id, illness_id, created_at, updated_at, created_by, updated_by) VALUES (2, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'); -- María (Alzheimer)
-INSERT INTO user_illnesses (user_medical_info_id, illness_id, created_at, updated_at, created_by, updated_by) VALUES (3, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'); -- José (Artrosis)
+INSERT INTO user_illnesses (user_medical_info_id, illness_id, is_active, created_at, updated_at, created_by, updated_by) VALUES (1, 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'); -- Antonio (Hipertensión)
+INSERT INTO user_illnesses (user_medical_info_id, illness_id, is_active, created_at, updated_at, created_by, updated_by) VALUES (2, 2, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'); -- María (Diabetes)
+INSERT INTO user_illnesses (user_medical_info_id, illness_id, is_active, created_at, updated_at, created_by, updated_by) VALUES (2, 3, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'); -- María (Alzheimer)
+INSERT INTO user_illnesses (user_medical_info_id, illness_id, is_active, created_at, updated_at, created_by, updated_by) VALUES (3, 4, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'); -- José (Artrosis)
 
 -- Alergias (¡Ojo al orden para los IDs!)
 -- 1. José -> Penicilina (Generará ID 1)
-INSERT INTO user_allergies (user_medical_info_id, allergy_id, comment, created_at, updated_at, created_by, updated_by)
-VALUES (3, 1, 'Reacción cutánea grave.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+INSERT INTO user_allergies (user_medical_info_id, allergy_id, comment, is_active, created_at, updated_at, created_by, updated_by)
+VALUES (3, 1, 'Reacción cutánea grave.', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- 2. Dolores -> Lactosa (Generará ID 2)
-INSERT INTO user_allergies (user_medical_info_id, allergy_id, comment, created_at, updated_at, created_by, updated_by)
-VALUES (4, 3, 'Intolerancia digestiva severa.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+INSERT INTO user_allergies (user_medical_info_id, allergy_id, comment, is_active, created_at, updated_at, created_by, updated_by)
+VALUES (4, 3, 'Intolerancia digestiva severa.', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- 3. Antonio -> Polen (Generará ID 3)
-INSERT INTO user_allergies (user_medical_info_id, allergy_id, comment, created_at, updated_at, created_by, updated_by)
-VALUES (1, 5, 'Rinitis estacional fuerte en primavera.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+INSERT INTO user_allergies (user_medical_info_id, allergy_id, comment, is_active, created_at, updated_at, created_by, updated_by)
+VALUES (1, 5, 'Rinitis estacional fuerte en primavera.', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
 
 -- ============================================================
 -- 5. TRATAMIENTOS (treatment_details)

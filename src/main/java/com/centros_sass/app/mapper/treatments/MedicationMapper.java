@@ -20,14 +20,14 @@ import com.centros_sass.app.utils.MapperHelper;
 )
 public interface MedicationMapper {
 
-    @Mapping(target = "userId", expression = "java(medication.getUser() != null ? medication.getUser().getId() : null)")
+    @Mapping(target = "userId", source = "user.id")
     @Mapping(target = "userFullName", expression = "java(MapperHelper.buildFullName(medication.getUser()))")
-    @Mapping(target = "medicationNameId", expression = "java(medication.getMedicationName() != null ? medication.getMedicationName().getId() : null)")
-    @Mapping(target = "medicationName", expression = "java(medication.getMedicationName() != null ? medication.getMedicationName().getMedicationName() : null)")
-    @Mapping(target = "storageConditionId", expression = "java(medication.getStorageCondition() != null ? medication.getStorageCondition().getId() : null)")
-    @Mapping(target = "storageConditionName", expression = "java(medication.getStorageCondition() != null ? medication.getStorageCondition().getStorageName() : null)")
-    @Mapping(target = "medicationApplicationId", expression = "java(medication.getMedicationApplication() != null ? medication.getMedicationApplication().getId() : null)")
-    @Mapping(target = "medicationApplicationName", expression = "java(medication.getMedicationApplication() != null ? medication.getMedicationApplication().getMedicationApplicationName() : null)")
+    @Mapping(target = "medicationNameId", source = "medicationName.id")
+    @Mapping(target = "medicationName", source = "medicationName.medicationName")
+    @Mapping(target = "storageConditionId", source = "storageCondition.id")
+    @Mapping(target = "storageConditionName", source = "storageCondition.storageName")
+    @Mapping(target = "medicationApplicationId", source = "medicationApplication.id")
+    @Mapping(target = "medicationApplicationName", source = "medicationApplication.medicationApplicationName")
     @Mapping(target = "createdAt", expression = "java(MapperHelper.formatDateTime(medication.getCreatedAt()))")
     @Mapping(target = "updatedAt", expression = "java(MapperHelper.formatDateTime(medication.getUpdatedAt()))")
     MedicationResponseDTO toResponse(Medication medication);
