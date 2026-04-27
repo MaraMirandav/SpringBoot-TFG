@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.people.SexRequestDTO;
@@ -34,6 +35,7 @@ public class SexController {
     private final SexService sexService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<SexResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<SexResponseDTO> page = sexService.findAll(pageable);
@@ -45,6 +47,7 @@ public class SexController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<SexResponseDTO>> findById(@PathVariable Integer id) {
         SexResponseDTO sex = sexService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Sex", "id", id));
@@ -55,6 +58,7 @@ public class SexController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<SexResponseDTO>> create(
             @Valid @RequestBody SexRequestDTO dto) {
         SexResponseDTO created = sexService.save(dto);
@@ -66,6 +70,7 @@ public class SexController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<SexResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody SexUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class SexController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         sexService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

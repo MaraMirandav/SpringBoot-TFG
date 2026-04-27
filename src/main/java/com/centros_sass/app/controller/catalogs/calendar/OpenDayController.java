@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.calendar.OpenDayRequestDTO;
@@ -34,6 +35,7 @@ public class OpenDayController {
     private final OpenDayService openDayService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<OpenDayResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<OpenDayResponseDTO> page = openDayService.findAll(pageable);
@@ -45,6 +47,7 @@ public class OpenDayController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<OpenDayResponseDTO>> findById(@PathVariable Integer id) {
         OpenDayResponseDTO dto = openDayService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("OpenDay", "id", id));
@@ -55,6 +58,7 @@ public class OpenDayController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<OpenDayResponseDTO>> create(
             @Valid @RequestBody OpenDayRequestDTO dto) {
         OpenDayResponseDTO created = openDayService.save(dto);
@@ -66,6 +70,7 @@ public class OpenDayController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<OpenDayResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody OpenDayUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class OpenDayController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         openDayService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

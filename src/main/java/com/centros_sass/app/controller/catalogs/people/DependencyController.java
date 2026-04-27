@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.people.DependencyRequestDTO;
@@ -34,6 +35,7 @@ public class DependencyController {
     private final DependencyService dependencyService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<DependencyResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<DependencyResponseDTO> page = dependencyService.findAll(pageable);
@@ -45,6 +47,7 @@ public class DependencyController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<DependencyResponseDTO>> findById(@PathVariable Integer id) {
         DependencyResponseDTO dependency = dependencyService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Dependency", "id", id));
@@ -55,6 +58,7 @@ public class DependencyController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<DependencyResponseDTO>> create(
             @Valid @RequestBody DependencyRequestDTO dto) {
         DependencyResponseDTO created = dependencyService.save(dto);
@@ -66,6 +70,7 @@ public class DependencyController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<DependencyResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody DependencyUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class DependencyController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         dependencyService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

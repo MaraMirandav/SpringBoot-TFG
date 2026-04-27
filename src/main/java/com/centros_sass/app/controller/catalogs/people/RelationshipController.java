@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.people.RelationshipRequestDTO;
@@ -34,6 +35,7 @@ public class RelationshipController {
     private final RelationshipService relationshipService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<RelationshipResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<RelationshipResponseDTO> page = relationshipService.findAll(pageable);
@@ -45,6 +47,7 @@ public class RelationshipController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<RelationshipResponseDTO>> findById(@PathVariable Integer id) {
         RelationshipResponseDTO relationship = relationshipService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Relationship", "id", id));
@@ -55,6 +58,7 @@ public class RelationshipController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<RelationshipResponseDTO>> create(
             @Valid @RequestBody RelationshipRequestDTO dto) {
         RelationshipResponseDTO created = relationshipService.save(dto);
@@ -66,6 +70,7 @@ public class RelationshipController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<RelationshipResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody RelationshipUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class RelationshipController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         relationshipService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

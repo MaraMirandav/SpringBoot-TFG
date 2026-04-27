@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.incidents.CenterIncidentCommentRequestDTO;
@@ -31,6 +32,7 @@ public class CenterIncidentCommentController {
     private final CenterIncidentCommentService commentService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<CenterIncidentCommentResponseDTO>>> findByIncidentId(
             @PathVariable Integer incidentId) {
         List<CenterIncidentCommentResponseDTO> comments = commentService.findByIncidentId(incidentId);
@@ -42,6 +44,7 @@ public class CenterIncidentCommentController {
     }
 
     @PostMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<CenterIncidentCommentResponseDTO>> create(
             @PathVariable Integer incidentId,
             @Valid @RequestBody CenterIncidentCommentRequestDTO dto) {
@@ -54,6 +57,7 @@ public class CenterIncidentCommentController {
     }
 
     @PutMapping("/{commentId}")
+    @PreAuthorize("@securityService.isCommentAuthorOrAdmin(#commentId) or hasAnyRole('COORDINADOR')")
     public ResponseEntity<ApiDataResponse<CenterIncidentCommentResponseDTO>> update(
             @PathVariable Integer incidentId,
             @PathVariable Integer commentId,
@@ -67,6 +71,7 @@ public class CenterIncidentCommentController {
     }
 
     @DeleteMapping("/{commentId}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(
             @PathVariable Integer incidentId,
             @PathVariable Integer commentId) {
