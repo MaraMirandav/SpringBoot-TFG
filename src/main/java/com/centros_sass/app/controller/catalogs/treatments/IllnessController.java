@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.treatments.IllnessRequestDTO;
@@ -34,6 +35,7 @@ public class IllnessController {
     private final IllnessService illnessService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<IllnessResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<IllnessResponseDTO> page = illnessService.findAll(pageable);
@@ -45,6 +47,7 @@ public class IllnessController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<IllnessResponseDTO>> findById(@PathVariable Integer id) {
         IllnessResponseDTO dto = illnessService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Illness", "id", id));
@@ -55,6 +58,7 @@ public class IllnessController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<IllnessResponseDTO>> create(
             @Valid @RequestBody IllnessRequestDTO dto) {
         IllnessResponseDTO created = illnessService.save(dto);
@@ -66,6 +70,7 @@ public class IllnessController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<IllnessResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody IllnessUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class IllnessController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         illnessService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

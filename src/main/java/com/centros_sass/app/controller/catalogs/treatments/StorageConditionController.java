@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.treatments.StorageConditionRequestDTO;
@@ -34,6 +35,7 @@ public class StorageConditionController {
     private final StorageConditionService storageConditionService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<StorageConditionResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<StorageConditionResponseDTO> page = storageConditionService.findAll(pageable);
@@ -45,6 +47,7 @@ public class StorageConditionController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<StorageConditionResponseDTO>> findById(@PathVariable Integer id) {
         StorageConditionResponseDTO dto = storageConditionService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("StorageCondition", "id", id));
@@ -55,6 +58,7 @@ public class StorageConditionController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<StorageConditionResponseDTO>> create(
             @Valid @RequestBody StorageConditionRequestDTO dto) {
         StorageConditionResponseDTO created = storageConditionService.save(dto);
@@ -66,6 +70,7 @@ public class StorageConditionController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<StorageConditionResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody StorageConditionUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class StorageConditionController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         storageConditionService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

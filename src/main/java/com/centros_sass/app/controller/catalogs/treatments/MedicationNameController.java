@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.treatments.MedicationNameRequestDTO;
@@ -34,6 +35,7 @@ public class MedicationNameController {
     private final MedicationNameService medicationNameService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<MedicationNameResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<MedicationNameResponseDTO> page = medicationNameService.findAll(pageable);
@@ -45,6 +47,7 @@ public class MedicationNameController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<MedicationNameResponseDTO>> findById(@PathVariable Integer id) {
         MedicationNameResponseDTO dto = medicationNameService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("MedicationName", "id", id));
@@ -55,6 +58,7 @@ public class MedicationNameController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<MedicationNameResponseDTO>> create(
             @Valid @RequestBody MedicationNameRequestDTO dto) {
         MedicationNameResponseDTO created = medicationNameService.save(dto);
@@ -66,6 +70,7 @@ public class MedicationNameController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<MedicationNameResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody MedicationNameUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class MedicationNameController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         medicationNameService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(
