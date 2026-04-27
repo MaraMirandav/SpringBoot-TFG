@@ -11,7 +11,9 @@ import com.centros_sass.app.dto.user.UserUpdateDTO;
 
 public interface UserService {
 
-    Page<UserResponseDTO> findAll(Pageable pageable);
+    Page<UserResponseDTO> findAll(Pageable pageable, String search);
+
+    Page<UserResponseDTO> findAllInactive(Pageable pageable, String search);
 
     Page<UserResponseDTO> findAllIncludingInactive(Pageable pageable);
 

@@ -15,6 +15,8 @@ public interface WorkerScheduleService {
 
     Page<WorkerScheduleResponseDTO> findAll(Pageable pageable);
 
+    Page<WorkerScheduleResponseDTO> findAllInactive(Pageable pageable);
+
     Optional<WorkerScheduleResponseDTO> findById(Integer id);
 
     WorkerScheduleResponseDTO save(WorkerScheduleRequestDTO dto);

@@ -1,7 +1,7 @@
 package com.centros_sass.app.model.incidents;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.fixed.incidents.IncidentStatus;
+import com.centros_sass.app.model.catalogs.incidents.IncidentStatus;
 import com.centros_sass.app.model.profiles.workers.Worker;
 
 import jakarta.persistence.Column;

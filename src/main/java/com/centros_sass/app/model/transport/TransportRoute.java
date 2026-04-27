@@ -5,10 +5,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.fixed.transport.RouteShift;
-import com.centros_sass.app.model.profiles.users.User;
+import com.centros_sass.app.model.catalogs.transport.RouteShift;
 import com.centros_sass.app.model.profiles.workers.Worker;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,9 +16,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -79,12 +78,17 @@ public class TransportRoute extends BaseEntity {
     @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
     private Boolean isActive = true;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "transport_routes_user",
-        joinColumns = @JoinColumn(name = "route_id"),
-        inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private Set<User> users = new HashSet<>();
+    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<TransportRouteUser> passengers = new HashSet<>();
+
+    public void addPassenger(TransportRouteUser passenger) {
+        passengers.add(passenger);
+        passenger.setRoute(this);
+    }
+
+    public void removePassenger(TransportRouteUser passenger) {
+        passengers.remove(passenger);
+        passenger.setRoute(null);
+    }
 
 }

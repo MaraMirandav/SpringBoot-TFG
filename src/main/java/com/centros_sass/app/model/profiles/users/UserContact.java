@@ -1,7 +1,7 @@
 package com.centros_sass.app.model.profiles.users;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.fixed.people.Relationship;
+import com.centros_sass.app.model.catalogs.people.Relationship;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

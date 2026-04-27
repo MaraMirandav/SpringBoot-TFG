@@ -5,10 +5,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.fixed.people.Dependency;
-import com.centros_sass.app.model.catalogs.fixed.people.Sex;
+import com.centros_sass.app.model.catalogs.people.Dependency;
+import com.centros_sass.app.model.catalogs.people.Sex;
 import com.centros_sass.app.model.treatments.UserMedicalInfo;
+import com.centros_sass.app.model.bathroom.BathroomSchedule;
+import com.centros_sass.app.model.belongings.UserBelonging;
 import com.centros_sass.app.model.incidents.user.UserIncident;
+import com.centros_sass.app.model.transport.TransportRouteUser;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -170,5 +173,47 @@ public class User extends BaseEntity {
     public void removeUserIncident(UserIncident userIncident) {
         userIncidents.remove(userIncident);
         userIncident.setUser(null);
+    }
+
+    // // BathroomSchedule
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<BathroomSchedule> bathroomSchedules = new HashSet<>();
+
+    public void addBathroomSchedule(BathroomSchedule bathroomSchedule) {
+        bathroomSchedules.add(bathroomSchedule);
+        bathroomSchedule.setUser(this);
+    }
+
+    public void removeBathroomSchedule(BathroomSchedule bathroomSchedule) {
+        bathroomSchedules.remove(bathroomSchedule);
+        bathroomSchedule.setUser(null);
+    }
+
+    // // UserBelonging
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<UserBelonging> userBelongings = new HashSet<>();
+
+    public void addUserBelonging(UserBelonging userBelonging) {
+        userBelongings.add(userBelonging);
+        userBelonging.setUser(this);
+    }
+
+    public void removeUserBelonging(UserBelonging userBelonging) {
+        userBelongings.remove(userBelonging);
+        userBelonging.setUser(null);
+    }
+
+    // // TransportRouteUser
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<TransportRouteUser> routePassengers = new HashSet<>();
+
+    public void addRoutePassenger(TransportRouteUser routePassenger) {
+        routePassengers.add(routePassenger);
+        routePassenger.setUser(this);
+    }
+
+    public void removeRoutePassenger(TransportRouteUser routePassenger) {
+        routePassengers.remove(routePassenger);
+        routePassenger.setUser(null);
     }
 }

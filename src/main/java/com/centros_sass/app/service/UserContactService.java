@@ -11,6 +11,8 @@ public interface UserContactService {
 
     List<UserContactResponseDTO> findAll();
 
+    List<UserContactResponseDTO> findAllInactive();
+
     List<UserContactResponseDTO> findAllIncludingInactive();
 
     Optional<UserContactResponseDTO> findById(Integer id);

@@ -6,15 +6,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-/**
- * DTO de solicitud para crear un trabajador en el sistema.
- *
- * Utiliza Java Record para inmutabilidad y reducción de boilerplate.
- *
- * @author Equipo de Desarrollo
- * @version 1.0.0
- * @since 1.0.0
- */
 public record WorkerRequestDTO(
     @NotBlank(message = "El primer nombre es obligatorio")
     @Size(max = 25, message = "El primer nombre no puede exceder los 25 caracteres")

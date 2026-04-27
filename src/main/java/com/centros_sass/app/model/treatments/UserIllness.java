@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.centros_sass.app.model.base.BaseEntity;
-import com.centros_sass.app.model.catalogs.dynamic.treatments.Illness;
+import com.centros_sass.app.model.catalogs.treatments.Illness;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

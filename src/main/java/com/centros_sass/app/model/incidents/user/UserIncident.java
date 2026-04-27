@@ -3,8 +3,8 @@ package com.centros_sass.app.model.incidents.user;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.centros_sass.app.model.catalogs.fixed.incidents.user.UserIncidentType;
-import com.centros_sass.app.model.catalogs.fixed.incidents.user.UserSignificanceType;
+import com.centros_sass.app.model.catalogs.incidents.user.UserIncidentType;
+import com.centros_sass.app.model.catalogs.incidents.user.UserSignificanceType;
 import com.centros_sass.app.model.incidents.Incident;
 import com.centros_sass.app.model.profiles.users.User;
 

@@ -15,6 +15,8 @@ public interface WorkerScheduleRecordService {
 
     Page<WorkerScheduleRecordResponseDTO> findAll(Pageable pageable);
 
+    Page<WorkerScheduleRecordResponseDTO> findAllInactive(Pageable pageable);
+
     Optional<WorkerScheduleRecordResponseDTO> findById(Integer id);
 
     WorkerScheduleRecordResponseDTO clockInToday();
