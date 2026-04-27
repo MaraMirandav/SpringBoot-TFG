@@ -34,7 +34,7 @@ public class WorkerScheduleRecordController {
     private final WorkerScheduleRecordService recordService;
 
     @GetMapping
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<List<WorkerScheduleRecordResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<WorkerScheduleRecordResponseDTO> page = recordService.findAll(pageable);
@@ -46,7 +46,7 @@ public class WorkerScheduleRecordController {
     }
 
     @GetMapping("/inactive")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<List<WorkerScheduleRecordResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<WorkerScheduleRecordResponseDTO> page = recordService.findAllInactive(pageable);
@@ -71,7 +71,7 @@ public class WorkerScheduleRecordController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("@securityService.isRecordOwnerOrAdmin(#id)")
     public ResponseEntity<ApiDataResponse<WorkerScheduleRecordResponseDTO>> findById(@PathVariable Integer id) {
         WorkerScheduleRecordResponseDTO record = recordService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("WorkerScheduleRecord", "id", id));

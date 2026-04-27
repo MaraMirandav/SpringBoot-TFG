@@ -57,7 +57,7 @@ public class UserIncidentCommentController {
     }
 
     @PutMapping("/{commentId}")
-    @PreAuthorize("@securityService.isCommentAuthorOrAdmin(#commentId) or hasAnyRole('COORDINADOR')")
+    @PreAuthorize("@securityService.isUserCommentAuthorOrAdmin(#commentId) or hasAnyRole('COORDINADOR')")
     public ResponseEntity<ApiDataResponse<UserIncidentCommentResponseDTO>> update(
             @PathVariable Integer incidentId,
             @PathVariable Integer commentId,
