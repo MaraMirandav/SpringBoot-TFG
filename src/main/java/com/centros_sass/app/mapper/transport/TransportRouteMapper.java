@@ -12,8 +12,8 @@ import org.mapstruct.ReportingPolicy;
 import com.centros_sass.app.dto.transport.TransportRouteRequestDTO;
 import com.centros_sass.app.dto.transport.TransportRouteResponseDTO;
 import com.centros_sass.app.dto.transport.TransportRouteUpdateDTO;
-import com.centros_sass.app.model.profiles.users.User;
 import com.centros_sass.app.model.transport.TransportRoute;
+import com.centros_sass.app.model.transport.TransportRouteUser;
 import com.centros_sass.app.utils.MapperHelper;
 
 @Mapper(
@@ -33,7 +33,7 @@ public interface TransportRouteMapper {
     @Mapping(target = "copilotId", expression = "java(route.getCopilot() != null ? route.getCopilot().getId() : null)")
     @Mapping(target = "copilotFullName", expression = "java(MapperHelper.buildFullName(route.getCopilot()))")
     @Mapping(target = "userIds", expression = "java(extractUserIds(route))")
-    @Mapping(target = "userCount", expression = "java(route.getUsers() != null ? route.getUsers().size() : 0)")
+    @Mapping(target = "userCount", expression = "java(route.getPassengers() != null ? route.getPassengers().size() : 0)")
     @Mapping(target = "createdAt", expression = "java(MapperHelper.formatDateTime(route.getCreatedAt()))")
     @Mapping(target = "updatedAt", expression = "java(MapperHelper.formatDateTime(route.getUpdatedAt()))")
     TransportRouteResponseDTO toResponse(TransportRoute route);
@@ -44,7 +44,7 @@ public interface TransportRouteMapper {
     @Mapping(target = "routeVehicle", ignore = true)
     @Mapping(target = "driver", ignore = true)
     @Mapping(target = "copilot", ignore = true)
-    @Mapping(target = "users", ignore = true)
+    @Mapping(target = "passengers", ignore = true)
     TransportRoute toEntity(TransportRouteRequestDTO dto);
 
     @Mapping(target = "id", ignore = true)
@@ -52,16 +52,17 @@ public interface TransportRouteMapper {
     @Mapping(target = "routeVehicle", ignore = true)
     @Mapping(target = "driver", ignore = true)
     @Mapping(target = "copilot", ignore = true)
-    @Mapping(target = "users", ignore = true)
+    @Mapping(target = "passengers", ignore = true)
     void updateFromDto(TransportRouteUpdateDTO dto, @MappingTarget TransportRoute route);
 
     default Set<Integer> extractUserIds(TransportRoute route) {
-        Set<User> users = route.getUsers();
-        if (users == null) {
+        Set<TransportRouteUser> passengers = route.getPassengers();
+        if (passengers == null) {
             return Set.of();
         }
-        return users.stream()
-                .map(User::getId)
+        return passengers.stream()
+                .map(p -> p.getUser() != null ? p.getUser().getId() : null)
+                .filter(id -> id != null)
                 .collect(Collectors.toSet());
     }
 

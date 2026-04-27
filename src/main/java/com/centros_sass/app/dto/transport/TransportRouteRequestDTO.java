@@ -26,8 +26,6 @@ public record TransportRouteRequestDTO(
     Integer driverId,
 
     @NotNull(message = "El copiloto es obligatorio")
-    Integer copilotId,
-
-    Set<Integer> userIds
+    Integer copilotId
 
 ) {}
