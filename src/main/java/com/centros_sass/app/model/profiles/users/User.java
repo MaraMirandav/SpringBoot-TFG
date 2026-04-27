@@ -11,6 +11,7 @@ import com.centros_sass.app.model.treatments.UserMedicalInfo;
 import com.centros_sass.app.model.bathroom.BathroomSchedule;
 import com.centros_sass.app.model.belongings.UserBelonging;
 import com.centros_sass.app.model.incidents.user.UserIncident;
+import com.centros_sass.app.model.transport.TransportRouteUser;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -200,5 +201,19 @@ public class User extends BaseEntity {
     public void removeUserBelonging(UserBelonging userBelonging) {
         userBelongings.remove(userBelonging);
         userBelonging.setUser(null);
+    }
+
+    // // TransportRouteUser
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<TransportRouteUser> routePassengers = new HashSet<>();
+
+    public void addRoutePassenger(TransportRouteUser routePassenger) {
+        routePassengers.add(routePassenger);
+        routePassenger.setUser(this);
+    }
+
+    public void removeRoutePassenger(TransportRouteUser routePassenger) {
+        routePassengers.remove(routePassenger);
+        routePassenger.setUser(null);
     }
 }

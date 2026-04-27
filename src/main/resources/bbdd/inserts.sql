@@ -731,13 +731,13 @@ VALUES
 -- --------------------------------------------------------
 TRUNCATE TABLE transport_routes_user CASCADE;
 
-INSERT INTO transport_routes_user (route_id, user_id) VALUES
+INSERT INTO transport_routes_user (route_id, user_id, arrival_time, uses_wheelchair, comment, created_at, updated_at, created_by, updated_by) VALUES
     -- Ruta 101 (Mañana): Van Antonio (1) y María (2)
-    (1, 1),
-    (1, 2),
+    (1, 1, '09:30:00', false, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (1, 2, '09:45:00', true, 'Entra por la puerta trasera', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     -- Ruta 102 (Tarde): Vuelven los mismos
-    (2, 1),
-    (2, 2)
+    (2, 1, '18:00:00', false, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (2, 2, '18:15:00', true, 'Entra por la puerta trasera', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system')
 ON CONFLICT DO NOTHING;
 
 -- --------------------------------------------------------

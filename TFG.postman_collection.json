@@ -16046,7 +16046,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"routeNumber\": 1,\n  \"startTime\": \"08:00:00\",\n  \"endTime\": \"09:30:00\",\n  \"routeShiftId\": 1,\n  \"routeVehicleId\": 1,\n  \"driverId\": 2,\n  \"copilotId\": 3,\n  \"userIds\": [1, 2]\n}",
+              "raw": "{\n  \"routeNumber\": 1,\n  \"startTime\": \"08:00:00\",\n  \"endTime\": \"09:30:00\",\n  \"routeShiftId\": 1,\n  \"routeVehicleId\": 1,\n  \"driverId\": 2,\n  \"copilotId\": 3\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -16086,7 +16086,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"routeNumber\": 101,\n  \"startTime\": \"08:30:00\",\n  \"endTime\": \"10:00:00\",\n  \"routeShiftId\": 1,\n  \"routeVehicleId\": 1,\n  \"driverId\": 2,\n  \"copilotId\": 3,\n  \"userIds\": [1, 2, 3]\n}",
+              "raw": "{\n  \"routeNumber\": 101,\n  \"startTime\": \"08:30:00\",\n  \"endTime\": \"10:00:00\",\n  \"routeShiftId\": 1,\n  \"routeVehicleId\": 1,\n  \"driverId\": 2,\n  \"copilotId\": 3\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -16137,6 +16137,192 @@
                 "v1",
                 "transport-routes",
                 "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/transport-routes/:routeId/passengers",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/transport-routes/1/passengers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "transport-routes",
+                "1",
+                "passengers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/transport-routes/:routeId/passengers/:userId",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/transport-routes/1/passengers/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "transport-routes",
+                "1",
+                "passengers",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/transport-routes/:routeId/passengers",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 5,\n  \"arrivalTime\": \"09:30:00\",\n  \"usesWheelchair\": true,\n  \"comment\": \"Entra por la puerta trasera\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/transport-routes/1/passengers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "transport-routes",
+                "1",
+                "passengers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/transport-routes/:routeId/passengers/:userId",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"arrivalTime\": \"09:45:00\",\n  \"usesWheelchair\": true,\n  \"comment\": \"Entra por la puerta trasera - actualizado\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5555/api/v1/transport-routes/1/passengers/5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "transport-routes",
+                "1",
+                "passengers",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/transport-routes/:routeId/passengers/:userId",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/api/v1/transport-routes/1/passengers/5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5555",
+              "path": [
+                "api",
+                "v1",
+                "transport-routes",
+                "1",
+                "passengers",
+                "5"
               ]
             }
           },

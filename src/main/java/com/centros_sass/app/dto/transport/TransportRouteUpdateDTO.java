@@ -29,8 +29,6 @@ public class TransportRouteUpdateDTO {
 
     private Integer copilotId;
 
-    private Set<Integer> userIds;
-
     private Boolean isActive;
 
 }

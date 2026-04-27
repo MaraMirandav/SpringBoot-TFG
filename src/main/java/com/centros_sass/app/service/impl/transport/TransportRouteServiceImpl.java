@@ -2,7 +2,6 @@ package com.centros_sass.app.service.impl.transport;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,14 +15,12 @@ import com.centros_sass.app.exception.BadRequestException;
 import com.centros_sass.app.exception.ResourceNotFoundException;
 import com.centros_sass.app.mapper.transport.TransportRouteMapper;
 import com.centros_sass.app.model.catalogs.transport.RouteShift;
-import com.centros_sass.app.model.profiles.users.User;
 import com.centros_sass.app.model.profiles.workers.Worker;
 import com.centros_sass.app.model.transport.RouteVehicle;
 import com.centros_sass.app.model.transport.TransportRoute;
 import com.centros_sass.app.repository.catalogs.transport.RouteShiftRepository;
 import com.centros_sass.app.repository.transport.RouteVehicleRepository;
 import com.centros_sass.app.repository.transport.TransportRouteRepository;
-import com.centros_sass.app.repository.profiles.UserRepository;
 import com.centros_sass.app.repository.profiles.WorkerRepository;
 import com.centros_sass.app.service.TransportRouteService;
 
@@ -37,7 +34,6 @@ public class TransportRouteServiceImpl implements TransportRouteService {
     private final RouteShiftRepository routeShiftRepository;
     private final RouteVehicleRepository routeVehicleRepository;
     private final WorkerRepository workerRepository;
-    private final UserRepository userRepository;
     private final TransportRouteMapper transportRouteMapper;
 
     @Override
@@ -108,7 +104,6 @@ public class TransportRouteServiceImpl implements TransportRouteService {
 
         TransportRoute route = transportRouteMapper.toEntity(dto);
         assignRelations(route, dto.routeShiftId(), dto.routeVehicleId(), dto.driverId(), dto.copilotId());
-        assignUsers(route, dto.userIds());
 
         TransportRoute saved = transportRouteRepository.save(route);
         return transportRouteMapper.toResponse(saved);
@@ -167,10 +162,6 @@ public class TransportRouteServiceImpl implements TransportRouteService {
                 existing.setCopilot(copilot);
             }
 
-            if (dto.getUserIds() != null) {
-                assignUsers(existing, dto.getUserIds());
-            }
-
             TransportRoute saved = transportRouteRepository.saveAndFlush(existing);
             return transportRouteMapper.toResponse(saved);
         });
@@ -204,17 +195,6 @@ public class TransportRouteServiceImpl implements TransportRouteService {
         Worker copilot = workerRepository.findById(copilotId)
                 .orElseThrow(() -> new ResourceNotFoundException("Worker", "id", copilotId));
         route.setCopilot(copilot);
-    }
-
-    private void assignUsers(TransportRoute route, Set<Integer> userIds) {
-        route.getUsers().clear();
-        if (userIds != null && !userIds.isEmpty()) {
-            List<User> users = userRepository.findAllById(userIds);
-            if (users.size() != userIds.size()) {
-                throw new BadRequestException("Uno o más usuarios no existen");
-            }
-            users.forEach(route.getUsers()::add);
-        }
     }
 
 }

@@ -666,17 +666,31 @@
     {
       "id": "V3MQ48PKkAgXxCwQy3fws",
       "name": "transport_routes_user",
-      "x": 120,
-      "y": 2520,
+      "x": 103.17187499999997,
+      "y": 2494.4739583333335,
       "locked": false,
       "fields": [
+        {
+          "id": "gijO7XjScRUG8vHB1LWwa",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
         {
           "id": "AfjbmmB2-PXqgmA-kJXFE",
           "name": "route_id",
           "type": "INTEGER",
           "default": "",
           "check": "",
-          "primary": true,
+          "primary": false,
           "unique": false,
           "notNull": true,
           "increment": false,
@@ -690,17 +704,68 @@
           "type": "INTEGER",
           "default": "",
           "check": "",
-          "primary": true,
+          "primary": false,
           "unique": false,
           "notNull": true,
           "increment": false,
           "comment": "",
           "size": "",
           "values": []
+        },
+        {
+          "id": "4qwCBToHQTmw_RUo9dAEa",
+          "name": "arrival_time",
+          "type": "TIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "3o4N46qTPZHqVuyGKmeUg",
+          "name": "uses_wheelchair",
+          "type": "BOOLEAN",
+          "default": "false",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "lj-4Sg-GSYVf5Wvl-E_it",
+          "name": "comment",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 500
         }
       ],
       "comment": "",
-      "indices": [],
+      "indices": [
+        {
+          "id": 0,
+          "name": "transport_routes_user_index_0",
+          "unique": true,
+          "fields": [
+            "route_id",
+            "user_id"
+          ]
+        }
+      ],
       "color": "#175e7a"
     },
     {
@@ -800,8 +865,8 @@
     {
       "id": "BbsBxBFkSzU3OSNGBBRqH",
       "name": "transport_routes",
-      "x": 123.38015195068363,
-      "y": 2731.0242682617186,
+      "x": 117.07806861735025,
+      "y": 2780.404476595052,
       "locked": false,
       "fields": [
         {
@@ -931,7 +996,8 @@
       ],
       "comment": "",
       "indices": [],
-      "color": "#175e7a"
+      "color": "#175e7a",
+      "hidden": false
     },
     {
       "id": "SXBfpuVNhv3zjE5pWvzBo",
@@ -2010,8 +2076,8 @@
     {
       "id": "mQzdypd4gra2N-NXSHohM",
       "name": "medications",
-      "x": 1273.8894949694823,
-      "y": 1471.4232961120606,
+      "x": 1284.1863699694823,
+      "y": 1588.9232961120606,
       "locked": false,
       "fields": [
         {
@@ -2025,6 +2091,20 @@
           "increment": true,
           "comment": "",
           "id": "dZe1l9hyQpKfU3r18zZYk"
+        },
+        {
+          "id": "2pzYYj0P0kRLYdMqzCEnn",
+          "name": "user_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
         },
         {
           "id": "4x_P-N24NGOm2GdqdPf7r",
@@ -2111,6 +2191,20 @@
           "values": []
         },
         {
+          "id": "2i0LZ__0zvH0URv8qsHEI",
+          "name": "stock",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
           "id": "RVCUQAfOWm81Q18vhilL8",
           "name": "is_active",
           "type": "BOOLEAN",
@@ -2132,8 +2226,8 @@
     {
       "id": "1oFqmidkJ2V7WnuEb_3yR",
       "name": "medication_names_enum",
-      "x": 1296,
-      "y": 1848,
+      "x": 1215.6953125,
+      "y": 2201.4687499999995,
       "locked": false,
       "fields": [
         {
@@ -2161,20 +2255,6 @@
           "comment": "",
           "size": 100,
           "values": []
-        },
-        {
-          "id": "mQRouJcS6gOclZ-GX310B",
-          "name": "is_active",
-          "type": "BOOLEAN",
-          "default": "true",
-          "check": "",
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "increment": false,
-          "comment": "",
-          "size": "",
-          "values": []
         }
       ],
       "comment": "",
@@ -2184,8 +2264,8 @@
     {
       "id": "JqKz3zk5vppPrKD4D7hc4",
       "name": "storage_conditions_enum",
-      "x": 1236.2200351318356,
-      "y": 2209.1060536376954,
+      "x": 777.6887851318356,
+      "y": 1961.9341786376951,
       "locked": false,
       "fields": [
         {
@@ -2213,20 +2293,6 @@
           "comment": "",
           "size": 100,
           "values": []
-        },
-        {
-          "id": "t_ghLFnk9id9S1U1W9D1B",
-          "name": "is_active",
-          "type": "BOOLEAN",
-          "default": "true",
-          "check": "",
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "increment": false,
-          "comment": "",
-          "size": "",
-          "values": []
         }
       ],
       "comment": "",
@@ -2236,8 +2302,8 @@
     {
       "id": "lJXkDN1dNFMt7j0xqBcJE",
       "name": "medication_applications_enum",
-      "x": 1266.665779310303,
-      "y": 2032.0191188598637,
+      "x": 814.6110918103034,
+      "y": 2106.105056359863,
       "locked": false,
       "fields": [
         {
@@ -2264,20 +2330,6 @@
           "increment": false,
           "comment": "",
           "size": 100,
-          "values": []
-        },
-        {
-          "id": "tI6Jxjxe9hU2ITvMr3YTG",
-          "name": "is_active",
-          "type": "BOOLEAN",
-          "default": "true",
-          "check": "",
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "increment": false,
-          "comment": "",
-          "size": "",
           "values": []
         }
       ],
@@ -2317,20 +2369,6 @@
           "comment": "",
           "size": 100,
           "values": []
-        },
-        {
-          "id": "1DekkgRWLCAndYs-z--Fj",
-          "name": "is_active",
-          "type": "BOOLEAN",
-          "default": "true",
-          "check": "",
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "increment": false,
-          "comment": "",
-          "size": "",
-          "values": []
         }
       ],
       "comment": "",
@@ -2368,20 +2406,6 @@
           "increment": false,
           "comment": "",
           "size": 100,
-          "values": []
-        },
-        {
-          "id": "ewOuh9g6GbeNPZ5bIEDts",
-          "name": "is_active",
-          "type": "BOOLEAN",
-          "default": "true",
-          "check": "",
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "increment": false,
-          "comment": "",
-          "size": "",
           "values": []
         }
       ],
@@ -2703,20 +2727,6 @@
           "comment": "",
           "size": 50,
           "values": []
-        },
-        {
-          "id": "znIY5q-LrURJALPMo8Yah",
-          "name": "is_active",
-          "type": "BOOLEAN",
-          "default": "true",
-          "check": "",
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "increment": false,
-          "comment": "",
-          "size": "",
-          "values": []
         }
       ],
       "comment": "",
@@ -2835,20 +2845,6 @@
           "comment": "",
           "size": 20,
           "values": []
-        },
-        {
-          "id": "od0HcPk7liwvbyphB-fCm",
-          "name": "is_active",
-          "type": "BOOLEAN",
-          "default": "true",
-          "check": "",
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "increment": false,
-          "comment": "",
-          "size": "",
-          "values": []
         }
       ],
       "comment": "",
@@ -2886,20 +2882,6 @@
           "increment": false,
           "comment": "",
           "size": 50,
-          "values": []
-        },
-        {
-          "id": "60rlgHTQoU48XflV4385O",
-          "name": "is_active",
-          "type": "BOOLEAN",
-          "default": "true",
-          "check": "",
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "increment": false,
-          "comment": "",
-          "size": "",
           "values": []
         }
       ],
@@ -3061,20 +3043,6 @@
           "comment": "",
           "size": 50,
           "values": []
-        },
-        {
-          "id": "KzQrpEWgoOQCbPB5KZXWG",
-          "name": "is_active",
-          "type": "BOOLEAN",
-          "default": "true",
-          "check": "",
-          "primary": false,
-          "unique": false,
-          "notNull": false,
-          "increment": false,
-          "comment": "",
-          "size": "",
-          "values": []
         }
       ],
       "comment": "",
@@ -3193,20 +3161,6 @@
           "comment": "",
           "size": 50,
           "values": []
-        },
-        {
-          "id": "sRnESOIkYip_4-7bZlL7a",
-          "name": "is_active",
-          "type": "BOOLEAN",
-          "default": "true",
-          "check": "",
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "increment": false,
-          "comment": "",
-          "size": "",
-          "values": []
         }
       ],
       "comment": "",
@@ -3244,20 +3198,6 @@
           "increment": false,
           "comment": "",
           "size": 50,
-          "values": []
-        },
-        {
-          "id": "j-w95sH59b2NdLId1j-_I",
-          "name": "is_active",
-          "type": "BOOLEAN",
-          "default": "true",
-          "check": "",
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "increment": false,
-          "comment": "",
-          "size": "",
           "values": []
         }
       ],
@@ -4667,6 +4607,17 @@
       "deleteConstraint": "No action",
       "name": "fk_cd_incidents_incident_status_id_incident_status_enum",
       "id": "iEcivxBIQ8ud-SHaTe2-r"
+    },
+    {
+      "startTableId": "mQzdypd4gra2N-NXSHohM",
+      "startFieldId": "2pzYYj0P0kRLYdMqzCEnn",
+      "endTableId": "DA1dEP7XVGUfAvZRDq1v1",
+      "endFieldId": "NHddghREkUH11A32Fyi-P",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_medications_user_id_users",
+      "id": "f3K7q-pc2JP8cVTY3b3yV"
     }
   ],
   "notes": [
@@ -4746,6 +4697,17 @@
       "color": "#fcf7ac",
       "height": 258,
       "width": 287.1
+    },
+    {
+      "id": 7,
+      "x": 1166.1230080556093,
+      "y": 1141.2128055860062,
+      "title": "IMPORTANTE POR HACER:",
+      "content": "",
+      "locked": false,
+      "color": "#acb9fc",
+      "height": 66,
+      "width": 381.7740375
     }
   ],
   "subjectAreas": [
@@ -4833,5 +4795,5 @@
   "database": "postgresql",
   "types": [],
   "enums": [],
-  "title": "TFG postgreSQL dec_24"
+  "title": "TFG postgreSQL"
 }
