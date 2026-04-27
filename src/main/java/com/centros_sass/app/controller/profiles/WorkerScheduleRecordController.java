@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.workerschedulerecord.WorkerScheduleRecordResponseDTO;
@@ -33,6 +34,7 @@ public class WorkerScheduleRecordController {
     private final WorkerScheduleRecordService recordService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<WorkerScheduleRecordResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<WorkerScheduleRecordResponseDTO> page = recordService.findAll(pageable);
@@ -44,6 +46,7 @@ public class WorkerScheduleRecordController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<WorkerScheduleRecordResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<WorkerScheduleRecordResponseDTO> page = recordService.findAllInactive(pageable);
@@ -55,6 +58,7 @@ public class WorkerScheduleRecordController {
     }
 
     @GetMapping("/worker/{workerId}")
+    @PreAuthorize("@securityService.isOwnerOrAdmin(#workerId)")
     public ResponseEntity<ApiDataResponse<List<WorkerScheduleRecordResponseDTO>>> findByWorkerId(
             @PathVariable Integer workerId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -67,6 +71,7 @@ public class WorkerScheduleRecordController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<WorkerScheduleRecordResponseDTO>> findById(@PathVariable Integer id) {
         WorkerScheduleRecordResponseDTO record = recordService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("WorkerScheduleRecord", "id", id));
@@ -77,6 +82,7 @@ public class WorkerScheduleRecordController {
     }
 
     @PostMapping("/clock-in/today")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<WorkerScheduleRecordResponseDTO>> clockInToday() {
         WorkerScheduleRecordResponseDTO created = recordService.clockInToday();
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -87,6 +93,7 @@ public class WorkerScheduleRecordController {
     }
 
     @PostMapping("/clock-out/today")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<WorkerScheduleRecordResponseDTO>> clockOutToday() {
         WorkerScheduleRecordResponseDTO updated = recordService.clockOutToday()
                 .orElseThrow(() -> new ResourceNotFoundException("Fichaje abierto", "worker", "actual"));
@@ -97,6 +104,7 @@ public class WorkerScheduleRecordController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<WorkerScheduleRecordResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody WorkerScheduleRecordUpdateDTO dto) {
@@ -109,6 +117,7 @@ public class WorkerScheduleRecordController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<WorkerScheduleRecordResponseDTO>> delete(@PathVariable Integer id) {
         WorkerScheduleRecordResponseDTO deleted = recordService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("WorkerScheduleRecord", "id", id));
@@ -119,6 +128,7 @@ public class WorkerScheduleRecordController {
     }
 
     @GetMapping("/worker/{workerId}/active")
+    @PreAuthorize("@securityService.isOwnerOrAdmin(#workerId)")
     public ResponseEntity<ApiDataResponse<List<WorkerScheduleRecordResponseDTO>>> findActiveClockIns(
             @PathVariable Integer workerId) {
         List<WorkerScheduleRecordResponseDTO> active = recordService.findActiveClockIns(workerId);

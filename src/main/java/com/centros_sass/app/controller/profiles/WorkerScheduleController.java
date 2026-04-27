@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.workerschedule.WorkerScheduleRequestDTO;
@@ -34,6 +35,7 @@ public class WorkerScheduleController {
     private final WorkerScheduleService workerScheduleService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<WorkerScheduleResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<WorkerScheduleResponseDTO> page = workerScheduleService.findAll(pageable);
@@ -45,6 +47,7 @@ public class WorkerScheduleController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<WorkerScheduleResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<WorkerScheduleResponseDTO> page = workerScheduleService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class WorkerScheduleController {
     }
 
     @GetMapping("/worker/{workerId}")
+    @PreAuthorize("@securityService.isOwnerOrAdmin(#workerId)")
     public ResponseEntity<ApiDataResponse<List<WorkerScheduleResponseDTO>>> findByWorkerId(
             @PathVariable Integer workerId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -68,6 +72,7 @@ public class WorkerScheduleController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<WorkerScheduleResponseDTO>> findById(@PathVariable Integer id) {
         WorkerScheduleResponseDTO schedule = workerScheduleService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("WorkerSchedule", "id", id));
@@ -78,6 +83,7 @@ public class WorkerScheduleController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<WorkerScheduleResponseDTO>> create(
             @Valid @RequestBody WorkerScheduleRequestDTO dto) {
         WorkerScheduleResponseDTO created = workerScheduleService.save(dto);
@@ -89,6 +95,7 @@ public class WorkerScheduleController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<WorkerScheduleResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody WorkerScheduleUpdateDTO dto) {
@@ -101,6 +108,7 @@ public class WorkerScheduleController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<WorkerScheduleResponseDTO>> delete(@PathVariable Integer id) {
         WorkerScheduleResponseDTO deleted = workerScheduleService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("WorkerSchedule", "id", id));
