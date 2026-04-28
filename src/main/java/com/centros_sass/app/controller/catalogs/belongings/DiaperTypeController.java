@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.belongings.DiaperTypeRequestDTO;
@@ -34,6 +35,7 @@ public class DiaperTypeController {
     private final DiaperTypeService diaperTypeService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<DiaperTypeResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<DiaperTypeResponseDTO> page = diaperTypeService.findAll(pageable);
@@ -47,6 +49,7 @@ public class DiaperTypeController {
 
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<DiaperTypeResponseDTO>> findById(@PathVariable Integer id) {
         DiaperTypeResponseDTO type = diaperTypeService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("DiaperType", "id", id));
@@ -57,6 +60,7 @@ public class DiaperTypeController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<DiaperTypeResponseDTO>> create(
             @Valid @RequestBody DiaperTypeRequestDTO dto) {
         DiaperTypeResponseDTO created = diaperTypeService.save(dto);
@@ -68,6 +72,7 @@ public class DiaperTypeController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<DiaperTypeResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody DiaperTypeUpdateDTO dto) {
@@ -80,6 +85,7 @@ public class DiaperTypeController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         diaperTypeService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

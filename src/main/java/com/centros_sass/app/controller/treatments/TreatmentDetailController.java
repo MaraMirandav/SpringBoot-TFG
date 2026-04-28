@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.treatments.TreatmentDetailRequestDTO;
@@ -34,6 +35,7 @@ public class TreatmentDetailController {
     private final TreatmentDetailService treatmentDetailService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<TreatmentDetailResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<TreatmentDetailResponseDTO> page = treatmentDetailService.findAll(pageable);
@@ -45,6 +47,7 @@ public class TreatmentDetailController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<TreatmentDetailResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<TreatmentDetailResponseDTO> page = treatmentDetailService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class TreatmentDetailController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<TreatmentDetailResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<TreatmentDetailResponseDTO> page = treatmentDetailService.findAllIncludingInactive(pageable);
@@ -67,6 +71,7 @@ public class TreatmentDetailController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<TreatmentDetailResponseDTO>> findById(@PathVariable Integer id) {
         TreatmentDetailResponseDTO dto = treatmentDetailService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("TreatmentDetail", "id", id));
@@ -77,6 +82,7 @@ public class TreatmentDetailController {
     }
 
     @GetMapping("/active")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<TreatmentDetailResponseDTO>>> findActive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<TreatmentDetailResponseDTO> page = treatmentDetailService.findActive(pageable);
@@ -88,6 +94,7 @@ public class TreatmentDetailController {
     }
 
     @GetMapping("/medication/{medicationId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<TreatmentDetailResponseDTO>>> findByMedication(
             @PathVariable Integer medicationId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -100,6 +107,7 @@ public class TreatmentDetailController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'ENFERMERO', 'FISIO', 'TO', 'TS', 'PSICO', 'TAS')")
     public ResponseEntity<ApiDataResponse<TreatmentDetailResponseDTO>> create(
             @Valid @RequestBody TreatmentDetailRequestDTO dto) {
         TreatmentDetailResponseDTO created = treatmentDetailService.save(dto);
@@ -111,6 +119,7 @@ public class TreatmentDetailController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR', 'ENFERMERO', 'FISIO', 'TO', 'TS', 'PSICO', 'TAS')")
     public ResponseEntity<ApiDataResponse<TreatmentDetailResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody TreatmentDetailUpdateDTO dto) {
@@ -123,6 +132,7 @@ public class TreatmentDetailController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<TreatmentDetailResponseDTO>> delete(@PathVariable Integer id) {
         TreatmentDetailResponseDTO deleted = treatmentDetailService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("TreatmentDetail", "id", id));

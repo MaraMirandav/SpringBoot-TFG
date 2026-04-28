@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.address.RegionRequestDTO;
@@ -34,6 +35,7 @@ public class RegionController {
     private final RegionService regionService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<RegionResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<RegionResponseDTO> page = regionService.findAll(pageable);
@@ -45,6 +47,7 @@ public class RegionController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<RegionResponseDTO>> findById(@PathVariable Integer id) {
         RegionResponseDTO dto = regionService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Region", "id", id));
@@ -55,6 +58,7 @@ public class RegionController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<RegionResponseDTO>> create(
             @Valid @RequestBody RegionRequestDTO dto) {
         RegionResponseDTO created = regionService.save(dto);
@@ -66,6 +70,7 @@ public class RegionController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<RegionResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody RegionUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class RegionController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         regionService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

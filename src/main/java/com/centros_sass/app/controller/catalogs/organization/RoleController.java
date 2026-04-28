@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.organization.RoleRequestDTO;
@@ -31,6 +32,7 @@ public class RoleController {
     private final RoleService roleService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<RoleResponseDTO>>> findAll() {
         List<RoleResponseDTO> roles = roleService.findAll();
         return ResponseEntity.ok(new ApiDataResponse<>(
@@ -41,6 +43,7 @@ public class RoleController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<RoleResponseDTO>> findById(@PathVariable Integer id) {
         RoleResponseDTO role = roleService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Role", "id", id));
@@ -51,6 +54,7 @@ public class RoleController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<RoleResponseDTO>> create(
             @Valid @RequestBody RoleRequestDTO dto) {
         RoleResponseDTO created = roleService.save(dto);
@@ -62,6 +66,7 @@ public class RoleController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<RoleResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody RoleUpdateDTO dto) {
@@ -74,6 +79,7 @@ public class RoleController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<RoleResponseDTO>> delete(@PathVariable Integer id) {
         RoleResponseDTO deleted = roleService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Role", "id", id));

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.incidents.CdIncidentTypeRequestDTO;
@@ -34,6 +35,7 @@ public class CdIncidentTypeController {
     private final CdIncidentTypeService cdIncidentTypeService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<CdIncidentTypeResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<CdIncidentTypeResponseDTO> page = cdIncidentTypeService.findAll(pageable);
@@ -45,6 +47,7 @@ public class CdIncidentTypeController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<CdIncidentTypeResponseDTO>> findById(@PathVariable Integer id) {
         CdIncidentTypeResponseDTO dto = cdIncidentTypeService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("CdIncidentType", "id", id));
@@ -55,6 +58,7 @@ public class CdIncidentTypeController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<CdIncidentTypeResponseDTO>> create(
             @Valid @RequestBody CdIncidentTypeRequestDTO dto) {
         CdIncidentTypeResponseDTO created = cdIncidentTypeService.save(dto);
@@ -66,6 +70,7 @@ public class CdIncidentTypeController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<CdIncidentTypeResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody CdIncidentTypeUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class CdIncidentTypeController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         cdIncidentTypeService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

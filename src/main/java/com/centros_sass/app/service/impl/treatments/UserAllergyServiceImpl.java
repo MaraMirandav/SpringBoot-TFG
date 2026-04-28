@@ -80,7 +80,7 @@ public class UserAllergyServiceImpl implements UserAllergyService {
         assignMedications(allergy, dto.medicationIds());
         allergy.setIsActive(true);
 
-        UserAllergy saved = userAllergyRepository.save(allergy);
+        UserAllergy saved = userAllergyRepository.saveAndFlush(allergy);
         return userAllergyMapper.toResponse(saved);
     }
 
@@ -131,14 +131,15 @@ public class UserAllergyServiceImpl implements UserAllergyService {
     }
 
     private void assignMedications(UserAllergy allergy, Set<Integer> medicationIds) {
-        allergy.getMedications().clear();
-        if (medicationIds != null && !medicationIds.isEmpty()) {
-            List<Medication> medications = medicationRepository.findAllById(medicationIds);
-            if (medications.size() != medicationIds.size()) {
-                throw new BadRequestException("Uno o más medicamentos no existen");
-            }
-            medications.forEach(allergy.getMedications()::add);
+        if (medicationIds == null || medicationIds.isEmpty()) {
+            return;
         }
+        List<Medication> medications = medicationRepository.findAllById(medicationIds);
+        if (medications.size() != medicationIds.size()) {
+            throw new BadRequestException("Uno o más medicamentos no existen");
+        }
+        allergy.getMedications().clear();
+        medications.forEach(allergy.getMedications()::add);
     }
 
 }

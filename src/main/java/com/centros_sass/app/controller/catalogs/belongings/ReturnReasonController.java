@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.belongings.ReturnReasonRequestDTO;
@@ -34,6 +35,7 @@ public class ReturnReasonController {
     private final ReturnReasonService returnReasonService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<ReturnReasonResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<ReturnReasonResponseDTO> page = returnReasonService.findAll(pageable);
@@ -47,6 +49,7 @@ public class ReturnReasonController {
 
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<ReturnReasonResponseDTO>> findById(@PathVariable Integer id) {
         ReturnReasonResponseDTO reason = returnReasonService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("ReturnReason", "id", id));
@@ -57,6 +60,7 @@ public class ReturnReasonController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<ReturnReasonResponseDTO>> create(
             @Valid @RequestBody ReturnReasonRequestDTO dto) {
         ReturnReasonResponseDTO created = returnReasonService.save(dto);
@@ -68,6 +72,7 @@ public class ReturnReasonController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<ReturnReasonResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody ReturnReasonUpdateDTO dto) {
@@ -80,6 +85,7 @@ public class ReturnReasonController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         returnReasonService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(

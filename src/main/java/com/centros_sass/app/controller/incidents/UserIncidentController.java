@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.incidents.UserIncidentRequestDTO;
@@ -34,6 +35,7 @@ public class UserIncidentController {
     private final UserIncidentService userIncidentService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserIncidentResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserIncidentResponseDTO> page = userIncidentService.findAll(pageable);
@@ -45,6 +47,7 @@ public class UserIncidentController {
     }
 
     @GetMapping("/inactive")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserIncidentResponseDTO>>> findAllInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserIncidentResponseDTO> page = userIncidentService.findAllInactive(pageable);
@@ -56,6 +59,7 @@ public class UserIncidentController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserIncidentResponseDTO>>> findAllIncludingInactive(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserIncidentResponseDTO> page = userIncidentService.findAllIncludingInactive(pageable);
@@ -67,6 +71,7 @@ public class UserIncidentController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserIncidentResponseDTO>> findById(@PathVariable Integer id) {
         UserIncidentResponseDTO dto = userIncidentService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserIncident", "id", id));
@@ -77,6 +82,7 @@ public class UserIncidentController {
     }
 
     @GetMapping("/user/{userId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserIncidentResponseDTO>>> findByUserId(
             @PathVariable Integer userId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -89,6 +95,7 @@ public class UserIncidentController {
     }
 
     @GetMapping("/reported-by/{workerId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserIncidentResponseDTO>>> findByReportedById(
             @PathVariable Integer workerId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -101,6 +108,7 @@ public class UserIncidentController {
     }
 
     @GetMapping("/status/{statusId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserIncidentResponseDTO>>> findByIncidentStatusId(
             @PathVariable Integer statusId,
             @PageableDefault(size = 20) Pageable pageable) {
@@ -113,6 +121,7 @@ public class UserIncidentController {
     }
 
     @PostMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserIncidentResponseDTO>> create(
             @Valid @RequestBody UserIncidentRequestDTO dto) {
         UserIncidentResponseDTO created = userIncidentService.save(dto);
@@ -124,6 +133,7 @@ public class UserIncidentController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserIncidentResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody UserIncidentUpdateDTO dto) {
@@ -136,6 +146,7 @@ public class UserIncidentController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<UserIncidentResponseDTO>> delete(@PathVariable Integer id) {
         UserIncidentResponseDTO deleted = userIncidentService.delete(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserIncident", "id", id));

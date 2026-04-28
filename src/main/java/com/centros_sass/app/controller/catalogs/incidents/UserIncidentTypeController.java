@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.centros_sass.app.dto.catalogs.incidents.UserIncidentTypeRequestDTO;
@@ -34,6 +35,7 @@ public class UserIncidentTypeController {
     private final UserIncidentTypeService userIncidentTypeService;
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<List<UserIncidentTypeResponseDTO>>> findAll(
             @PageableDefault(size = 20) Pageable pageable) {
         Page<UserIncidentTypeResponseDTO> page = userIncidentTypeService.findAll(pageable);
@@ -45,6 +47,7 @@ public class UserIncidentTypeController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiDataResponse<UserIncidentTypeResponseDTO>> findById(@PathVariable Integer id) {
         UserIncidentTypeResponseDTO dto = userIncidentTypeService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserIncidentType", "id", id));
@@ -55,6 +58,7 @@ public class UserIncidentTypeController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<UserIncidentTypeResponseDTO>> create(
             @Valid @RequestBody UserIncidentTypeRequestDTO dto) {
         UserIncidentTypeResponseDTO created = userIncidentTypeService.save(dto);
@@ -66,6 +70,7 @@ public class UserIncidentTypeController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR', 'COORDINADOR')")
     public ResponseEntity<ApiDataResponse<UserIncidentTypeResponseDTO>> update(
             @PathVariable Integer id,
             @Valid @RequestBody UserIncidentTypeUpdateDTO dto) {
@@ -78,6 +83,7 @@ public class UserIncidentTypeController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DIRECTOR')")
     public ResponseEntity<ApiDataResponse<Void>> delete(@PathVariable Integer id) {
         userIncidentTypeService.delete(id);
         return ResponseEntity.ok(new ApiDataResponse<>(
