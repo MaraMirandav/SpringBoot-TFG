@@ -19,7 +19,7 @@ import com.centros_sass.app.model.profiles.workers.Worker;
 import com.centros_sass.app.repository.incidents.CenterIncidentCommentRepository;
 import com.centros_sass.app.repository.incidents.CenterIncidentRepository;
 import com.centros_sass.app.repository.profiles.WorkerRepository;
-import com.centros_sass.app.security.WorkerSecurity;
+import com.centros_sass.core.security.WorkerSecurity;
 import com.centros_sass.app.service.CenterIncidentCommentService;
 
 import lombok.RequiredArgsConstructor;

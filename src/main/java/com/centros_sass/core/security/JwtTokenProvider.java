@@ -59,6 +59,7 @@ public class JwtTokenProvider {
      *   - sub: email del worker (subject — identificador único)
      *   - id: ID del worker en BD
      *   - tenant_id: slug del tenant (CRUCIAL — lo lee JwtTenantResolver)
+     *   - plan_slug: plan contratado del tenant (basico, profesional, enterprise)
      *   - roles: lista de nombres de rol (ej: ["ROLE_TAS", "ROLE_ADMIN"])
      *   - firstName: nombre del worker
      *   - firstSurname: primer apellido
@@ -68,7 +69,7 @@ public class JwtTokenProvider {
      * @param workerSecurity UserDetails que envuelve el Worker con tenant_id
      * @return token JWT firmado (compact serialization)
      */
-    public String generateToken(WorkerSecurity workerSecurity) {
+    public String generateToken(WorkerSecurity workerSecurity, String planSlug) {
         Map<String, Object> extraClaims = new HashMap<>();
         extraClaims.put("id", workerSecurity.getWorker().getId());
 
@@ -81,6 +82,11 @@ public class JwtTokenProvider {
         }
         extraClaims.put("tenant_id", tenantId);
 
+        // plan_slug: opcional, añadido desde TenantProvisioningService
+        if (planSlug != null && !planSlug.isBlank()) {
+            extraClaims.put("plan_slug", planSlug);
+        }
+
         List<String> roles = workerSecurity.getWorker().getRoles().stream()
                 .map(Role::getRoleName)
                 .toList();
@@ -90,6 +96,16 @@ public class JwtTokenProvider {
         extraClaims.put("firstSurname", workerSecurity.getWorker().getFirstSurname());
 
         return buildToken(extraClaims, workerSecurity.getUsername());
+    }
+
+    /**
+     * Genera un token JWT para un WorkerSecurity (sin plan_slug).
+     *
+     * @deprecated Usar generateToken(WorkerSecurity, String) para incluir plan_slug.
+     */
+    @Deprecated
+    public String generateToken(WorkerSecurity workerSecurity) {
+        return generateToken(workerSecurity, null);
     }
 
     /**

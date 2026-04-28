@@ -67,6 +67,13 @@ public class TenantEntity {
     private TenantStatus status;
 
     /**
+     * Plan contratado del tenant (basico, profesional, enterprise).
+     * Determina los límites y features disponibles.
+     */
+    @Column(name = "plan_slug", nullable = false, length = 50)
+    private String planSlug;
+
+    /**
      * Timestamp de creación — Spring Data lo asigna automáticamente al primer save().
      * updatable = false: la fecha de creación nunca debe cambiar.
      */

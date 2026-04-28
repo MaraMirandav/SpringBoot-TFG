@@ -299,7 +299,9 @@ CREATE TABLE bathroom_turns (
     start_at    TIME NOT NULL,
     end_at      TIME NOT NULL,
     created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by  VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by  VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- ═══════════════════════════════════════════════════════════════════════
@@ -323,7 +325,9 @@ CREATE TABLE users (
     dependency_id INTEGER      NOT NULL REFERENCES user_dependency_enum(id),
     is_active      BOOLEAN      NOT NULL DEFAULT TRUE,
     created_at     TIMESTAMPTZ  NOT NULL DEFAULT NOW(),
-    updated_at     TIMESTAMPTZ  NOT NULL DEFAULT NOW()
+    updated_at     TIMESTAMPTZ  NOT NULL DEFAULT NOW(),
+    created_by     VARCHAR(50)  NOT NULL DEFAULT 'system',
+    updated_by     VARCHAR(50)  NOT NULL DEFAULT 'system'
 );
 
 -- workers → FK: NONE (solo auditing)
@@ -355,7 +359,9 @@ CREATE TABLE route_vehicles (
     wheelchair_capacity INTEGER,
     is_active       BOOLEAN NOT NULL DEFAULT TRUE,
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by      VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by      VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- ═══════════════════════════════════════════════════════════════════════
@@ -374,7 +380,9 @@ CREATE TABLE user_contacts (
     is_contact_main      BOOLEAN NOT NULL DEFAULT FALSE,
     is_active            BOOLEAN NOT NULL DEFAULT TRUE,
     created_at            TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at            TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at            TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by            VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by            VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- user_addresses → FK: users, cities_enum, provinces_enum, regions_enum
@@ -388,7 +396,9 @@ CREATE TABLE user_addresses (
     region_id      INTEGER NOT NULL REFERENCES regions_enum(id),
     is_active     BOOLEAN     NOT NULL DEFAULT TRUE,
     created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by    VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by    VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- user_attendance_days → FK: users, open_days
@@ -400,7 +410,9 @@ CREATE TABLE user_attendance_days (
     end_at        TIME NOT NULL,
     is_active     BOOLEAN NOT NULL DEFAULT TRUE,
     created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by    VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by    VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- user_attendance_records → FK: users, user_attendance_days
@@ -410,7 +422,9 @@ CREATE TABLE user_attendance_records (
     attendance_day_id INTEGER NOT NULL REFERENCES user_attendance_days(id),
     is_present        BOOLEAN NOT NULL,
     created_at       TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by       VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by       VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- workers_roles (junction) → FK: workers, roles_enum
@@ -461,7 +475,9 @@ CREATE TABLE transport_routes (
     worker_copilot_id INTEGER NOT NULL REFERENCES workers(id),
     is_active       BOOLEAN NOT NULL DEFAULT TRUE,
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by      VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by      VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- transport_routes_user (junction) → FK: transport_routes, users
@@ -482,7 +498,9 @@ CREATE TABLE cd_incidents (
     incident_status_id INTEGER NOT NULL REFERENCES incident_status_enum(id),
     is_active       BOOLEAN NOT NULL DEFAULT TRUE,
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by      VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by      VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- incidents_cd_comments → FK: cd_incidents, workers
@@ -492,7 +510,9 @@ CREATE TABLE incidents_cd_comments (
     worker_id       INTEGER NOT NULL REFERENCES workers(id),
     comment_text   TEXT NOT NULL,
     created_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by     VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by     VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- users_incidents → FK: users, workers, incidents_user_enum, significances_user_enum, incident_status_enum
@@ -506,7 +526,9 @@ CREATE TABLE users_incidents (
     incident_status_id INTEGER NOT NULL REFERENCES incident_status_enum(id),
     is_active         BOOLEAN NOT NULL DEFAULT TRUE,
     created_at       TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by       VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by       VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- incidents_users_comments → FK: users_incidents, workers
@@ -516,7 +538,9 @@ CREATE TABLE incidents_users_comments (
     worker_id       INTEGER NOT NULL REFERENCES workers(id),
     comment_text     TEXT NOT NULL,
     created_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by     VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by     VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- bathroom_schedules → FK: users, bathroom_turns, bathroom_tasks_enum
@@ -527,7 +551,9 @@ CREATE TABLE bathroom_schedules (
     bathroom_task_id INTEGER NOT NULL REFERENCES bathroom_tasks_enum(id),
     is_active       BOOLEAN NOT NULL DEFAULT TRUE,
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by      VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by      VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- user_clothings → FK: clothing_types_enum, return_reasons_enum
@@ -541,7 +567,9 @@ CREATE TABLE user_clothings (
     return_reason_id INTEGER NOT NULL REFERENCES return_reasons_enum(id),
     is_active     BOOLEAN NOT NULL DEFAULT TRUE,
     created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at   TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by    VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by    VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- user_objects → FK: item_conditions_enum, object_types_enum
@@ -552,7 +580,9 @@ CREATE TABLE user_objects (
     comment          TEXT,
     is_active       BOOLEAN NOT NULL DEFAULT TRUE,
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by      VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by      VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- user_diapers → FK: diaper_sizes_enum, diaper_types_enum
@@ -563,7 +593,9 @@ CREATE TABLE user_diapers (
     quantity        INTEGER NOT NULL,
     is_active       BOOLEAN NOT NULL DEFAULT TRUE,
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by      VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by      VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- user_belongings → FK: users, (user_clothings|user_objects|user_diapers), workers
@@ -578,7 +610,9 @@ CREATE TABLE user_belongings (
     is_request     BOOLEAN NOT NULL,
     is_active     BOOLEAN NOT NULL DEFAULT TRUE,
     created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at   TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by    VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by    VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- user_medical_info → FK: users, workers
@@ -588,7 +622,9 @@ CREATE TABLE user_medical_info (
     worker_id     INTEGER NOT NULL REFERENCES workers(id),
     is_active     BOOLEAN NOT NULL DEFAULT TRUE,
     created_at   TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at   TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by   VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by   VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- user_allergies → FK: user_medical_info, allergies_enum
@@ -599,7 +635,9 @@ CREATE TABLE user_allergies (
     comment            TEXT,
     is_active         BOOLEAN NOT NULL DEFAULT TRUE,
     created_at       TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by       VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by       VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- user_illnesses → FK: user_medical_info, illnesses_enum
@@ -609,7 +647,9 @@ CREATE TABLE user_illnesses (
     illness_id          INTEGER NOT NULL REFERENCES illnesses_enum(id),
     is_active         BOOLEAN NOT NULL DEFAULT TRUE,
     created_at       TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by       VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by       VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- medications → FK: medication_names_enum, medication_applications_enum, storage_conditions_enum
@@ -623,7 +663,9 @@ CREATE TABLE medications (
     storage_condition_id  INTEGER NOT NULL REFERENCES storage_conditions_enum(id),
     is_active              BOOLEAN NOT NULL DEFAULT TRUE,
     created_at             TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at            TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at            TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by             VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by             VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- treatment_details → FK: NONE (solo auditing)
@@ -634,7 +676,9 @@ CREATE TABLE treatment_details (
     is_active  BOOLEAN NOT NULL DEFAULT TRUE,
     comment    TEXT,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_by VARCHAR(50) NOT NULL DEFAULT 'system',
+    updated_by VARCHAR(50) NOT NULL DEFAULT 'system'
 );
 
 -- treatment_details_medication (junction) → FK: treatment_details, medications

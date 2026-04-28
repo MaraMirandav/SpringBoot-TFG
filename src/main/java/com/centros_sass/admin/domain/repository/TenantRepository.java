@@ -3,11 +3,14 @@ package com.centros_sass.admin.domain.repository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.centros_sass.admin.domain.model.TenantEntity;
 import com.centros_sass.admin.domain.model.TenantStatus;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,6 +74,20 @@ public interface TenantRepository extends JpaRepository<TenantEntity, Long> {
      * @return página de tenants con ese estado
      */
     Page<TenantEntity> findByStatus(TenantStatus status, Pageable pageable);
+
+    long countByStatus(TenantStatus status);
+
+    List<TenantEntity> findTop5ByOrderByCreatedAtDesc();
+
+    @Query("""
+        SELECT FUNCTION('to_char', t.createdAt, 'YYYY-MM') as month, 
+               COUNT(t) as count
+        FROM TenantEntity t
+        WHERE t.createdAt >= :from
+        GROUP BY FUNCTION('to_char', t.createdAt, 'YYYY-MM')
+        ORDER BY month ASC
+    """)
+    List<Object[]> countByMonth(@Param("from") Instant from);
 }
 
 // ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────────────────────

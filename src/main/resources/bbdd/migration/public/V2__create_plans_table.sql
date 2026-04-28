@@ -49,7 +49,7 @@ CREATE INDEX idx_plans_status ON plans(status);
 INSERT INTO plans (name, slug, price_monthly, max_users, features, status) VALUES
     ('Free',       'free',       0.00,   5,   '{"api_access": false, "export_csv": false}', 'ACTIVE'),
     ('Pro',        'pro',        49.00,  50,  '{"api_access": true,  "export_csv": true}',  'ACTIVE'),
-    ('Enterprise', 'enterprise', 199.00, -1,  '{"api_access": true,  "export_csv": true, "custom_domain": true}', 'ACTIVE');
+    ('Enterprise', 'enterprise', 199.00, 100,  '{"api_access": true,  "export_csv": true, "custom_domain": true}', 'ACTIVE');
 
 COMMENT ON TABLE plans IS 'Catálogo global de planes de suscripción. Cada tenant se suscribe a un plan.';
 COMMENT ON COLUMN plans.features IS 'Mapa de features habilitadas para este plan en formato JSONB';

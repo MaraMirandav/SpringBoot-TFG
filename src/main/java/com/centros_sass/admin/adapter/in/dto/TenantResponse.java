@@ -14,5 +14,6 @@ public record TenantResponse(
     String slug,
     String adminEmail,
     String status,
+    String planSlug,
     Instant createdAt
 ) {}

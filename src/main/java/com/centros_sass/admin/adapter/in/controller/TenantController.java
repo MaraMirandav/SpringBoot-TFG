@@ -153,4 +153,5 @@ public class TenantController {
         return ResponseEntity.ok(new ApiDataResponse<>(
                 "Tenant cancelado (soft delete)", null, 200));
     }
+
 }

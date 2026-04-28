@@ -35,7 +35,9 @@ public class TenantProvisioningService {
         // 1. Guardar registro en PUBLIC
         TenantEntity tenant = TenantEntity.builder()
                 .name(name).slug(slug).adminEmail(adminEmail)
-                .status(TenantStatus.ACTIVE).build();
+                .status(TenantStatus.ACTIVE)
+                .planSlug(planSlug != null ? planSlug : "basico")
+                .build();
         tenant = tenantRepository.save(tenant);
         log.info("PROVISIONING: 1. Registro creado en schema public");
 

@@ -73,7 +73,7 @@ public class AuthServiceImpl implements AuthService {
             workerRepository.save(worker);
 
             var workerSecurity = new WorkerSecurity(worker);
-            String token = jwtTokenProvider.generateToken(workerSecurity);
+            String token = jwtTokenProvider.generateToken(workerSecurity, null);
             return new AuthResponse(token);
 
         } finally {
@@ -127,7 +127,7 @@ public class AuthServiceImpl implements AuthService {
 
             // 4. Credenciales correctas → generar JWT con los datos del worker.
             var workerSecurity = new WorkerSecurity(worker);
-            String token = jwtTokenProvider.generateToken(workerSecurity);
+            String token = jwtTokenProvider.generateToken(workerSecurity, null);
 
             log.info("LOGIN_SUCCESS tenant={} ip={}", slug, ip);
             return new AuthResponse(token);
