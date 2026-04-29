@@ -18,7 +18,7 @@ import com.centros_sass.app.model.profiles.workers.Worker;
 import com.centros_sass.app.repository.incidents.UserIncidentCommentRepository;
 import com.centros_sass.app.repository.incidents.UserIncidentRepository;
 import com.centros_sass.app.repository.profiles.WorkerRepository;
-import com.centros_sass.app.security.WorkerSecurity;
+import com.centros_sass.core.security.WorkerSecurity;
 import com.centros_sass.app.service.UserIncidentCommentService;
 
 import lombok.RequiredArgsConstructor;

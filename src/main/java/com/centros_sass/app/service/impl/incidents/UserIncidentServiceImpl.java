@@ -26,7 +26,7 @@ import com.centros_sass.app.repository.catalogs.incidents.UserSignificanceTypeRe
 import com.centros_sass.app.repository.incidents.UserIncidentRepository;
 import com.centros_sass.app.repository.profiles.UserRepository;
 import com.centros_sass.app.repository.profiles.WorkerRepository;
-import com.centros_sass.app.security.WorkerSecurity;
+import com.centros_sass.core.security.WorkerSecurity;
 import com.centros_sass.app.service.UserIncidentService;
 
 import lombok.RequiredArgsConstructor;

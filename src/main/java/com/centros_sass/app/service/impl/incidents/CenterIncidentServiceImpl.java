@@ -24,7 +24,7 @@ import com.centros_sass.app.repository.catalogs.incidents.CdSignificanceTypeRepo
 import com.centros_sass.app.repository.catalogs.incidents.IncidentStatusRepository;
 import com.centros_sass.app.repository.incidents.CenterIncidentRepository;
 import com.centros_sass.app.repository.profiles.WorkerRepository;
-import com.centros_sass.app.security.WorkerSecurity;
+import com.centros_sass.core.security.WorkerSecurity;
 import com.centros_sass.app.service.CenterIncidentService;
 
 import lombok.RequiredArgsConstructor;

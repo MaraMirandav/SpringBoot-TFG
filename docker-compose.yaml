@@ -3,6 +3,8 @@ services:
     image: postgres:18
     container_name: centro_dia_db
     restart: always
+    env_file:
+      - .env
     environment:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}

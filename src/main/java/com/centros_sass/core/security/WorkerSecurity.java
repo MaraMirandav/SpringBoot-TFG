@@ -1,4 +1,4 @@
-package com.centros_sass.app.security;
+package com.centros_sass.core.security;
 
 import java.util.Collection;
 

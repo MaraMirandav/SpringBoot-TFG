@@ -44,6 +44,10 @@ public class Worker extends BaseEntity {
     private Integer id;
 
     @NonNull
+    @Column(name = "tenant_id", nullable = false, updatable = false)
+    private String tenantId;
+
+    @NonNull
     @Column(name = "first_name", nullable = false,length = 25, columnDefinition = "VARCHAR")
     private String firstName;
 

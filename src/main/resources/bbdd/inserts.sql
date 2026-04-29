@@ -5,17 +5,17 @@
 INSERT INTO workers
 (first_name, second_name, first_surname, second_surname, dni_nie, email, password, main_phone, second_phone, is_active, created_at, updated_at, created_by, updated_by)
 VALUES
-    -- 1. Trabajadora con todos los datos completos (password: contraseña123)
+    -- 1. Trabajadora con todos los datos completos (contraseña generada con BCrypt work factor 12)
     ('Ana', 'María', 'García', 'López', 'Z2033087A', 'ana.garcia@email.com', '$2b$10$idCkCcq8viMSAB/sIETuO.FQ5u/OnCFmNuEOPe7.J2niz9iOFqrxq', '600123456', '911223344', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    -- 2. Trabajador sin segundo nombre ni segundo teléfono (password: claveSegura2025)
+    -- 2. Trabajador sin segundo nombre ni segundo teléfono (contraseña generada con BCrypt work factor 12)
     ('Carlos', NULL, 'Rodríguez', 'Sánchez', 'Z2333087A', 'carlos.rod@email.com', '$2b$10$pVUEZn161eRBU.rnXAr4mO8QdY26m2PbnnCfCDhCCySo1iQw9PQ8m', '655987654', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    -- 3. Trabajadora sin segundo apellido (password: admin1234)
+    -- 3. Trabajadora sin segundo apellido (contraseña generada con BCrypt work factor 12)
     ('Lucía', 'Carmen', 'Fernández', NULL, 'Z2033037C', 'lucia.fer@email.com', '$2b$10$IO/SgO96W7t7Mb6axDzbB.Vf6sMbXc54bj6bktX0ms4SEpx5bCkBO', '611222333', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    -- 4. Trabajador inactivo (password: passMiguel)
+    -- 4. Trabajador inactivo (contraseña generada con BCrypt work factor 12)
     ('Miguel', NULL, 'Torres', 'Ruiz', 'Z2033083J', 'miguel.torres@email.com', '$2b$10$s9atu2Rpd0raJyPcxn8JY.HsMxLb/mL0fVLy7.jDqh4EhzSSabe/6', '699888777', '933445566', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    -- 5. Trabajadora estándar (password: elena2025)
+    -- 5. Trabajadora estándar (contraseña generada con BCrypt work factor 12)
     ('Elena', NULL, 'Moreno', 'Díaz', 'Z2343087A', 'elena.moreno@email.com', '$2b$10$q.JNT8Q6f5T3MCblU4MM4.awqW5xT2P37GNDIPgPAekzjKxKYVO22', '622333444', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
-    -- 6-16. Trabajadores estándar (password: pass123)
+    -- 6-16. Trabajadores estándar (contraseña generada con BCrypt work factor 12)
     ('Roberto', NULL, 'Sanz', 'Gil', 'Z2033547T', 'roberto.rrhh@email.com', '$2b$10$f50Z1zgFXvMZfLcvJ0mikuzssO52Huv/tea7U82eNlM5IFpatY3DG', '600666666', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Beatriz', NULL, 'Molina', 'Pérez', 'Z2036687F', 'bea.recep@email.com', '$2b$10$f50Z1zgFXvMZfLcvJ0mikuzssO52Huv/tea7U82eNlM5IFpatY3DG', '600777777', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     ('Laura', NULL, 'Ruiz', 'Giménez', 'Z2273087A', 'laura.fisio@email.com', '$2b$10$f50Z1zgFXvMZfLcvJ0mikuzssO52Huv/tea7U82eNlM5IFpatY3DG', '600888888', NULL, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),

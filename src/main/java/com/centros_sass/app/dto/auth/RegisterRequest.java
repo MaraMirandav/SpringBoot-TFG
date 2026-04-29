@@ -9,6 +9,9 @@ public record RegisterRequest(
     @Email(message = "Debes ingresar un correo electrónico válido")
     String email,
 
+    @NotBlank(message = "El identificador del centro es obligatorio")
+    String tenantId,
+
     @NotBlank(message = "La contraseña es obligatoria")
     @Size(min = 8, message = "La contraseña debe tener al menos 8 caracteres")
     String password,
