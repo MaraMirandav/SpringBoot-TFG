@@ -8,7 +8,7 @@ public record UpdatePlanRequest(
     @NotBlank String name,
     @NotBlank String slug,
     @NotNull @PositiveOrZero BigDecimal priceMonthly,
-    @NotNull Integer maxWorkers,
+    Integer maxWorkers,
     @NotNull Integer maxUsers,
     Map<String, Boolean> features,
     String status

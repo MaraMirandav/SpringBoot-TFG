@@ -56,6 +56,12 @@ public class TenantSeedService {
                     .orElseThrow(() -> new IllegalStateException(
                             "ERROR: ROLE_DIRECTOR no encontrado en el schema del tenant " + slug));
 
+            // ROLE_ADMIN se añade junto a ROLE_DIRECTOR para que el director
+            // pueda gestionar todo el tenant sin restricciones de SecurityService.
+            Role adminRole = roleRepository.findByRoleName("ROLE_ADMIN")
+                    .orElseThrow(() -> new IllegalStateException(
+                            "ERROR: ROLE_ADMIN no encontrado en el schema del tenant " + slug));
+
             log.info("SEED-STEP 4: Creando entidad Worker");
             Worker director = new Worker();
             director.setTenantId(slug);
@@ -63,11 +69,12 @@ public class TenantSeedService {
             director.setFirstSurname(firstSurname);
             director.setDni(dni);
             director.setMainPhone(phone);
-            director.setEmail(email);
+            director.setEmail(email.trim().toLowerCase());
             director.setPassword(passwordEncoder.encode(password));
             director.setIsActive(true);
 
             director.getRoles().add(directorRole);
+            director.getRoles().add(adminRole);
 
             log.info("SEED-STEP 5: Guardando director...");
             director = workerRepository.save(director);

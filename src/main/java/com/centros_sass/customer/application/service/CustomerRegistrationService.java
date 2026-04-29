@@ -52,7 +52,7 @@ public class CustomerRegistrationService {
 
         TenantContext.set(request.slug());
         try {
-            Worker worker = workerRepository.findByEmailWithRoles(request.directorEmail().toLowerCase())
+            Worker worker = workerRepository.findByEmailWithRoles(request.directorEmail().trim().toLowerCase())
                     .orElseThrow(() -> new RuntimeException("Director no encontrado"));
 
             String token = jwtTokenProvider.generateToken(

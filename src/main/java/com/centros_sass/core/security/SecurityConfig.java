@@ -12,8 +12,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
-import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
 
 import org.springframework.web.cors.CorsConfiguration;
@@ -24,6 +25,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -169,28 +171,58 @@ public class SecurityConfig {
     }
 
     /**
-     * JwtAuthenticationConverter — extrae authorities del claim "role" en el JWT.
+     * JwtAuthenticationConverter — extrae authorities de DOS claims distintos según el tipo de usuario.
      *
-     * El JWT del admin contiene claim "role": "SUPER_ADMIN" (sin prefijo ROLE_).
-     * Spring Security espera authorities con prefijo "ROLE_" para hasRole() funcione.
+     * Problema que resuelve: el sistema tiene dos tipos de usuarios con JWTs diferentes:
+     *   - Workers (trabajadores del tenant): token con claim "roles" = ["ROLE_DIRECTOR", "ROLE_ADMIN"]
+     *     → array de strings, prefijo ROLE_ ya incluido en el token
+     *   - Admins internos (panel de SaasCon): token con claim "role" = "SUPER_ADMIN"
+     *     → string único, SIN prefijo ROLE_ → hay que añadirlo aquí
      *
-     * JwtGrantedAuthoritiesConverter:
-     *   - authoritiesClaimName("role") → lee el claim "role"
-     *   - authorityPrefix("ROLE_") → añade prefijo "ROLE_" al valor
+     * Por qué no se usa JwtGrantedAuthoritiesConverter:
+     *   Solo sabe leer UN claim de un formato fijo. Aquí necesitamos leer dos claims
+     *   con formatos diferentes (array vs string) y transformarlos distinto.
+     *   La lambda (jwt -> ...) nos da control total sobre la lógica de extracción.
      *
-     * Esto permite usar hasAnyRole("ADMIN", "SUPER_ADMIN", "SUPPORT").
-     *
-     * @return converter configurado
+     * @return converter configurado con lógica dual de authorities
      */
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter() {
-        JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
-        grantedAuthoritiesConverter.setAuthoritiesClaimName("role");
-        grantedAuthoritiesConverter.setAuthorityPrefix("ROLE_");
+        JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
 
-        JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
-        jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
-        return jwtAuthenticationConverter;
+        // setJwtGrantedAuthoritiesConverter acepta una función: Jwt → Collection<GrantedAuthority>
+        // Aquí pasamos una lambda que implementa esa función con lógica para ambos tipos de JWT
+        converter.setJwtGrantedAuthoritiesConverter(jwt -> {
+            List<GrantedAuthority> authorities = new ArrayList<>();
+
+            // ── Claim "roles" (array) — workers del tenant ─────────────────────
+            // El JWT del worker incluye roles con prefijo ROLE_ ya incluido.
+            // jwt.getClaim() devuelve Object porque Nimbus no sabe el tipo en tiempo de compilación.
+            // Comprobamos con instanceof antes de castear para evitar ClassCastException.
+            // Ejemplo de claim: "roles": ["ROLE_DIRECTOR", "ROLE_ENFERMERO"]
+            Object roles = jwt.getClaim("roles");
+            if (roles instanceof List<?> rolesList) {
+                rolesList.stream()
+                        // Filtrar por seguridad: solo procesar elementos que sean String
+                        .filter(r -> r instanceof String)
+                        // SimpleGrantedAuthority es la implementación estándar de GrantedAuthority
+                        .map(r -> new SimpleGrantedAuthority((String) r))
+                        .forEach(authorities::add);
+            }
+
+            // ── Claim "role" (string) — admins internos de SaasCon ─────────────
+            // El JWT del admin NO incluye prefijo ROLE_ — Spring Security lo necesita
+            // para que hasRole("SUPER_ADMIN") funcione → lo añadimos aquí manualmente.
+            // Ejemplo de claim: "role": "SUPER_ADMIN" → authority: "ROLE_SUPER_ADMIN"
+            String role = jwt.getClaim("role");
+            if (role != null && !role.isBlank()) {
+                authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
+            }
+
+            return authorities;
+        });
+
+        return converter;
     }
 
     /**

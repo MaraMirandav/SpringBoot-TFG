@@ -20,6 +20,7 @@ import com.centros_sass.app.model.profiles.workers.Worker;
 import com.centros_sass.app.repository.catalogs.organization.RoleRepository;
 import com.centros_sass.app.repository.profiles.WorkerRepository;
 import com.centros_sass.app.service.WorkerService;
+import com.centros_sass.core.tenant.TenantContext;
 
 import lombok.RequiredArgsConstructor;
 
@@ -86,6 +87,7 @@ public class WorkerServiceImpl implements WorkerService {
         Worker worker = workerMapper.toEntity(dto);
         worker.setEmail(normalizedEmail);
         worker.setPassword(passwordEncoder.encode(dto.password()));
+        worker.setTenantId(TenantContext.get());
 
         assignRoles(worker, dto.roleIds());
 

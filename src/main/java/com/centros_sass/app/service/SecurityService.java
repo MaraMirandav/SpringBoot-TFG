@@ -14,8 +14,6 @@ import com.centros_sass.app.repository.incidents.CenterIncidentCommentRepository
 import com.centros_sass.app.repository.incidents.UserIncidentCommentRepository;
 import com.centros_sass.app.repository.profiles.WorkerScheduleRecordRepository;
 import com.centros_sass.app.repository.profiles.WorkerScheduleRepository;
-import com.centros_sass.app.security.WorkerSecurity;
-
 import lombok.RequiredArgsConstructor;
 
 @Service("securityService")
@@ -29,17 +27,26 @@ public class SecurityService {
 
     public boolean isOwnerOrAdmin(Integer workerId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return false;
-        }
-        Object principal = authentication.getPrincipal();
-        if (principal instanceof WorkerSecurity workerSecurity) {
-            Integer currentWorkerId = workerSecurity.getWorker().getId();
+        if (authentication == null || !authentication.isAuthenticated()) return false;
 
-            if (currentWorkerId != null && currentWorkerId.equals(workerId)) {
-                return true;
+        // Los roles con privilegios de gestión pasan directamente sin comprobar ownership.
+        // Con OAuth2 Resource Server el principal es un Jwt, no un UserDetails/WorkerSecurity.
+        if (hasRole(authentication, "ROLE_ADMIN")
+                || hasRole(authentication, "ROLE_DIRECTOR")
+                || hasRole(authentication, "ROLE_COORDINADOR")) {
+            return true;
+        }
+
+        // Para roles sin privilegios de gestión, comparar el claim "id" del JWT
+        // con el workerId recibido — permite que un worker acceda solo a sus propios datos.
+        Object principal = authentication.getPrincipal();
+        if (principal instanceof org.springframework.security.oauth2.jwt.Jwt jwt) {
+            Object idClaim = jwt.getClaim("id");
+            if (idClaim != null) {
+                // getClaim devuelve Number (puede ser Integer o Long según Nimbus)
+                Integer jwtWorkerId = ((Number) idClaim).intValue();
+                return jwtWorkerId.equals(workerId);
             }
-            return hasRole(authentication, "ROLE_ADMIN") || hasRole(authentication, "ROLE_DIRECTOR");
         }
         return false;
     }
@@ -105,16 +112,20 @@ public class SecurityService {
     }
 
     private boolean isCurrentWorkerOrAdmin(Authentication authentication, Integer ownerWorkerId) {
+        if (hasRole(authentication, "ROLE_ADMIN")
+                || hasRole(authentication, "ROLE_DIRECTOR")
+                || hasRole(authentication, "ROLE_COORDINADOR")) {
+            return true;
+        }
         Object principal = authentication.getPrincipal();
-        if (principal instanceof WorkerSecurity workerSecurity) {
-            Integer currentWorkerId = workerSecurity.getWorker().getId();
-            if (currentWorkerId != null && currentWorkerId.equals(ownerWorkerId)) {
-                return true;
+        if (principal instanceof org.springframework.security.oauth2.jwt.Jwt jwt) {
+            Object idClaim = jwt.getClaim("id");
+            if (idClaim != null) {
+                Integer jwtWorkerId = ((Number) idClaim).intValue();
+                return jwtWorkerId.equals(ownerWorkerId);
             }
         }
-        return hasRole(authentication, "ROLE_ADMIN")
-                || hasRole(authentication, "ROLE_DIRECTOR")
-                || hasRole(authentication, "ROLE_COORDINADOR");
+        return false;
     }
 
     private boolean hasRole(Authentication authentication, String role) {

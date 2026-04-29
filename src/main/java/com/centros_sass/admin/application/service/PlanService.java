@@ -53,7 +53,7 @@ public class PlanService {
                 .orElseThrow(() -> new RuntimeException("Plan no encontrado"));
         existing.setName(request.name());
         existing.setPriceMonthly(request.priceMonthly());
-        existing.setMaxWorkers(request.maxWorkers());
+        if (request.maxWorkers() != null) existing.setMaxWorkers(request.maxWorkers());
         existing.setMaxUsers(request.maxUsers());
         existing.setFeatures(request.features());
         if (request.status() != null) existing.setStatus(request.status());
