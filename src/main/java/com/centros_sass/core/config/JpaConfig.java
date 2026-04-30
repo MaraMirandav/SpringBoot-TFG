@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  *
  * SOLUCIÓN:
  * Al declarar @EnableJpaRepositories y @EntityScan con basePackages = "com.centros_sass",
- * le decimos explícitamente a Spring Data que escanee TODO el proyecto:
+ * le decimos explícitamente a Spring Data que escanee ALL el proyecto:
  *   - com.centros_sass.app.repository.*    ← repositorios del módulo app
  *   - com.centros_sass.core.audit.*        ← AuditLogRepository
  *   - cualquier repositorio futuro en core.* o customer.*

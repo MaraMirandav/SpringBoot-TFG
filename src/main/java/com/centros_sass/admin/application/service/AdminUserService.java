@@ -5,7 +5,6 @@ import com.centros_sass.admin.adapter.in.dto.AdminUserResponse;
 import com.centros_sass.admin.adapter.in.dto.CreateAdminUserRequest;
 import com.centros_sass.admin.adapter.in.dto.UpdateAdminProfileRequest;
 import com.centros_sass.admin.domain.model.AdminUserEntity;
-import com.centros_sass.admin.domain.model.AdminUserRole;
 import com.centros_sass.admin.domain.model.AdminUserStatus;
 import com.centros_sass.admin.domain.repository.AdminUserRepository;
 import lombok.RequiredArgsConstructor;

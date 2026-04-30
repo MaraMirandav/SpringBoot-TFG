@@ -2,9 +2,6 @@ package com.centros_sass.customer.adapter.in.dto;
 
 import jakarta.validation.constraints.*;
 
-import java.math.BigDecimal;
-import java.util.Map;
-
 public record CustomerRegisterRequest(
     @NotBlank @Size(max = 100) String centerName,
     @NotBlank @Pattern(regexp = "^[a-z0-9-]+$") @Size(min = 3, max = 50) String slug,
