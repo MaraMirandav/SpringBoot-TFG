@@ -737,3 +737,384 @@ VALUES
     (4, 4, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
     -- 5. ANTONIO (ID 1): Higiene bucal después de comer (ID 4).
     (1, 2, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+
+
+-- ═══════════════════════════════════════════════════════════════════════
+-- NUEVOS REGISTROS DE SEED (Usuarios adicionales y datos relacionados)
+-- ═══════════════════════════════════════════════════════════════════════
+
+-- --------------------------------------------------------
+-- 1. USUARIOS (10 registros nuevos - IDs 5 al 14)
+-- --------------------------------------------------------
+INSERT INTO users
+    (first_name, second_name, first_surname, second_surname, alias, email, phone, cellphone, dni_nie, birth_date, is_active, sex_id, dependency_id, created_at, updated_at, created_by, updated_by)
+VALUES
+    -- 5. Francisco: Hombre (1), Sin Dependencia (4)
+    ('Francisco', 'José', 'Martín', 'Ortega', 'Paco', NULL, NULL, NULL, '33445566G', '1945-08-20', true, 1, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 6. Isabel: Mujer (2), Dependencia Media (2)
+    ('Isabel', 'María', 'Sánchez', 'Vega', 'Isa', NULL, NULL, NULL, '44556677H', '1952-04-10', true, 2, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 7. Pedro: Hombre (1), Dependencia Baja (1)
+    ('Pedro', 'Antonio', 'López', 'García', 'Perico', NULL, NULL, NULL, '55667788I', '1938-12-05', true, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 8. Carmen: Mujer (2), Dependencia Alta (3)
+    ('Carmen', 'Rosa', 'Ruiz', 'Moreno', 'Carmela', NULL, NULL, NULL, '66778899J', '1949-06-18', true, 2, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 9. Luis: Hombre (1), Sin Dependencia (4)
+    ('Luis', 'Fernando', 'Gómez', 'Serrano', 'Luichi', NULL, NULL, NULL, '77889900K', '1942-11-30', false, 1, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 10. Rosa María: Mujer (2), Dependencia Media (2)
+    ('Rosa', 'María', 'Díaz', 'Jiménez', 'Rosi', NULL, NULL, NULL, '88990011L', '1955-03-22', true, 2, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 11. Juan: Hombre (1), Dependencia Alta (3)
+    ('Juan', 'Carlos', 'Hernández', 'Torres', 'Juanca', NULL, NULL, NULL, '99001122M', '1947-09-14', true, 1, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 12. Teresa: Mujer (2), Dependencia Baja (1)
+    ('Teresa', NULL, 'Vidal', 'Castillo', 'Tere', NULL, NULL, NULL, '00112233N', '1950-01-08', true, 2, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 13. Andrés: Hombre (1), Dependencia Media (2)
+    ('Andrés', 'Manuel', 'Flores', 'Romero', 'Andresito', NULL, NULL, NULL, '11223344O', '1944-07-25', true, 1, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 14. Pilar: Mujer (2), Sin Dependencia (4)
+    ('Pilar', NULL, 'Navarro', 'Gil', 'Pili', NULL, NULL, NULL, '22334455P', '1953-10-01', true, 2, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+
+-- --------------------------------------------------------
+-- 2. DIRECCIONES DE USUARIOS (8 registros)
+-- --------------------------------------------------------
+INSERT INTO user_addresses (user_id, address, postal_code, city_id, province_id, region_id, created_at, updated_at, created_by, updated_by)
+VALUES
+    -- 5. Francisco (Móstoles, Madrid)
+    (5, 'Calle Mayor, 12, 2ºB', '28931', 1, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 6. Isabel (Alcalá de Henares)
+    (6, 'Calle del Carmen, 34', '28801', 2, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 7. Pedro (Móstoles)
+    (7, 'Calle del Dos de Mayo, 23, Bajo A', '28932', 1, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 8. Carmen (Sevilla)
+    (8, 'Calle Sierpes, 21, 1º', '41004', 3, 2, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 9. Luis (Móstoles)
+    (9, 'Plaza de la Constitución, 8', '28933', 1, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 10. Rosa (Alcalá)
+    (10, 'Calle de los Colegios, 19', '28802', 2, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 11. Juan (Móstoles)
+    (11, 'Calle del Prado, 67', '28934', 1, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 12. Teresa (Sevilla)
+    (12, 'Avenida de la Constitución, 22', '41001', 3, 2, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+
+-- --------------------------------------------------------
+-- 3. CONTACTOS DE USUARIOS (12 registros)
+-- --------------------------------------------------------
+INSERT INTO user_contacts (user_id, contact_name, contact_phone, contact_email, contact_relationship_id, is_contact_main, contact_note, created_at, updated_at, created_by, updated_by)
+VALUES
+    -- Contactos de Francisco (ID 5)
+    (5, 'Ana Martín', '600123123', 'ana.martin@email.com', 1, true, 'Hija mayor, vive cerca.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (5, 'Luis Ortega', '600456456', 'luis.ortega@email.com', 3, false, 'Hermano, contactar fines de semana.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- Contactos de Isabel (ID 6)
+    (6, 'Carlos Sánchez', '611789789', 'carlos.sanchez@email.com', 2, true, 'Esposo, teléfono de empresa.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- Contactos de Pedro (ID 7)
+    (7, 'María López', '622333444', 'maria.lopez@email.com', 4, true, 'Nieta, estudia en la universidad.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (7, 'José López', '622555666', 'jose.lopez@email.com', 1, false, 'Hijo, suele estar de viaje.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- Contactos de Carmen (ID 8)
+    (8, 'Lucía Ruiz', '633777888', 'lucia.ruiz@email.com', 5, true, 'Sobrina, vive en el mismo edificio.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- Contactos de Luis (ID 9)
+    (9, 'Fernando Gómez', '644999000', 'fernando.gomez@email.com', 6, true, 'Amigo de la residencia.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- Contactos de Rosa (ID 10)
+    (10, 'Marta Díaz', '655111222', 'marta.diaz@email.com', 1, true, 'Hija, médico de cabecera.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (10, 'Pablo Jiménez', '655333444', 'pablo.jimenez@email.com', 3, false, 'Hermano, vive en Barcelona.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- Contactos de Juan (ID 11)
+    (11, 'Elena Hernández', '666555444', 'elena.hernandez@email.com', 2, true, 'Esposa, jubilada.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- Contactos de Teresa (ID 12)
+    (12, 'Sonia Vidal', '677444333', 'sonia.vidal@email.com', 4, true, 'Nieta, trabaja por las tardes.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- Contactos de Pilar (ID 14)
+    (14, 'Raquel Navarro', '688333222', 'raquel.navarro@email.com', 1, true, 'Hija, tiene llaves del piso.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+
+-- --------------------------------------------------------
+-- 4. DÍAS DE ASISTENCIA DE USUARIOS (28 registros)
+-- --------------------------------------------------------
+INSERT INTO user_attendance_days (user_id, day_id, start_at, end_at, created_at, updated_at, created_by, updated_by)
+VALUES
+    -- 5. FRANCISCO: Lunes, Miércoles, Viernes (IDs 15-17)
+    (5, 1, '09:00:00', '17:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (5, 3, '09:00:00', '17:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (5, 5, '09:00:00', '17:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 6. ISABEL: Martes, Jueves (IDs 18-19)
+    (6, 2, '10:00:00', '18:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (6, 4, '10:00:00', '18:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 7. PEDRO: Todos los días (IDs 20-24)
+    (7, 1, '08:30:00', '14:30:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (7, 2, '08:30:00', '14:30:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (7, 3, '08:30:00', '14:30:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (7, 4, '08:30:00', '14:30:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (7, 5, '08:30:00', '14:30:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 8. CARMEN: Lunes, Martes (IDs 25-26)
+    (8, 1, '09:00:00', '13:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (8, 2, '09:00:00', '13:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 9. LUIS: Miércoles, Jueves, Viernes (IDs 27-29)
+    (9, 3, '10:00:00', '16:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (9, 4, '10:00:00', '16:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (9, 5, '10:00:00', '16:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 10. ROSA: Lunes (ID 30)
+    (10, 1, '09:00:00', '17:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 11. JUAN: Martes, Miércoles, Jueves, Viernes (IDs 31-34)
+    (11, 2, '08:00:00', '14:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (11, 3, '08:00:00', '14:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (11, 4, '08:00:00', '14:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (11, 5, '08:00:00', '14:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 12. TERESA: Lunes, Viernes (IDs 35-36)
+    (12, 1, '09:30:00', '15:30:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (12, 5, '09:30:00', '15:30:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 13. ANDRÉS: Miércoles (ID 37)
+    (13, 3, '10:00:00', '14:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- 14. PILAR: Lunes a Viernes (IDs 38-42)
+    (14, 1, '08:00:00', '18:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (14, 2, '08:00:00', '18:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (14, 3, '08:00:00', '18:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (14, 4, '08:00:00', '18:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (14, 5, '08:00:00', '18:00:00', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+
+-- --------------------------------------------------------
+-- 5. REGISTROS DE ASISTENCIA REAL (10 registros)
+-- --------------------------------------------------------
+INSERT INTO user_attendance_records (user_id, attendance_day_id, is_present, created_at, updated_at, created_by, updated_by)
+VALUES
+    -- Francisco (ID 5): Vino Lunes y Miércoles, faltó Viernes
+    (5, 15, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (5, 16, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- Isabel (ID 6): Vino Martes
+    (6, 18, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- Pedro (ID 7): Vino Lunes y Miércoles
+    (7, 20, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (7, 22, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- Carmen (ID 8): No vino el Lunes
+    (8, 25, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- Luis (ID 9): Vino Miércoles
+    (9, 27, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- Rosa (ID 10): Vino Lunes
+    (10, 30, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- Juan (ID 11): Vino Martes
+    (11, 31, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    -- Teresa (ID 12): Vino Lunes
+    (12, 35, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+
+-- --------------------------------------------------------
+-- 6. HISTORIAL MÉDICO (user_medical_info - 10 registros, IDs 5-14)
+-- --------------------------------------------------------
+INSERT INTO user_medical_info (user_id, worker_id, is_active, created_at, updated_at, created_by, updated_by)
+VALUES
+    (5, 5, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (6, 5, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (7, 5, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (8, 5, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (9, 5, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (10, 5, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (11, 5, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (12, 5, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (13, 5, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (14, 5, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+
+-- --------------------------------------------------------
+-- 7. ENFERMEDADES (user_illnesses - 8 registros, IDs 5-12)
+-- --------------------------------------------------------
+INSERT INTO user_illnesses (user_medical_info_id, illness_id, is_active, created_at, updated_at, created_by, updated_by)
+VALUES
+    (5, 6, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Francisco: Insuficiencia Cardíaca
+    (6, 7, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Isabel: EPOC
+    (7, 5, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Pedro: Artrosis
+    (8, 4, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Carmen: Demencia / Alzheimer
+    (9, 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Luis: Hipertensión
+    (10, 2, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- Rosa: Diabetes Tipo 1
+    (11, 8, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- Juan: Ictus
+    (12, 9, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'); -- Teresa: Parkinson
+
+-- --------------------------------------------------------
+-- 8. ALERGIAS (user_allergies - 5 registros, IDs 4-8)
+-- --------------------------------------------------------
+INSERT INTO user_allergies (user_medical_info_id, allergy_id, comment, is_active, created_at, updated_at, created_by, updated_by)
+VALUES
+    (5, 2, 'Evitar todo tipo de antiinflamatorios.', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- Francisco: AINEs
+    (6, 5, 'Rinitis y ojos llorosos en primavera.', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- Isabel: Polen
+    (7, 8, 'Reacción en la piel al contacto con guantes.', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- Pedro: Látex
+    (8, 3, 'Evitar lácteos en la dieta.', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- Carmen: Lactosa
+    (9, 10, 'No consumir mariscos bajo ningún concepto.', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'); -- Luis: Marisco
+
+-- --------------------------------------------------------
+-- 9. MEDICAMENTOS (medications - 8 registros, IDs 8-15)
+-- --------------------------------------------------------
+INSERT INTO medications (user_id, medication_name_id, dose, reception_date, expiration_date, storage_condition_id, medication_application_id, stock, created_at, updated_at, created_by, updated_by)
+VALUES
+    (5, 6, '100mg', '2025-01-01', '2027-01-01', 1, 1, 60, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Francisco: Adiro
+    (5, 7, '40mg', '2025-01-01', '2026-06-01', 1, 1, 30, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),   -- Francisco: Furosemida
+    (6, 8, 'Inhalador 100mcg', '2025-01-10', '2026-12-01', 1, 5, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- Isabel: Ventolín
+    (7, 15, '50mg', '2025-02-01', '2027-02-01', 1, 1, 40, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Pedro: Tramadol
+    (8, 14, '30mg', '2025-01-15', '2026-01-15', 1, 1, 25, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Carmen: Mirtazapina
+    (9, 11, '50mg', '2025-01-05', '2027-05-05', 1, 1, 90, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Luis: Metoprolol
+    (10, 12, '20mg', '2025-01-20', '2027-01-20', 1, 1, 30, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- Rosa: Atorvastatina
+    (11, 13, '75mcg', '2025-01-12', '2026-06-12', 1, 1, 60, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'); -- Juan: Levotiroxina
+
+-- --------------------------------------------------------
+-- 10. TRATAMIENTOS (treatment_details - 5 registros, IDs 4-8)
+-- --------------------------------------------------------
+INSERT INTO treatment_details (start_date, end_date, is_active, comment, created_at, updated_at, created_by, updated_by)
+VALUES
+    ('2024-03-01', NULL, true, 'Control cardíaco y diuréticos.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),      -- ID 4 (Francisco)
+    ('2024-08-15', NULL, true, 'Tratamiento mantenimiento EPOC.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),     -- ID 5 (Isabel)
+    ('2025-02-01', '2025-05-01', true, 'Fisioterapia y analgesia.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- ID 6 (Pedro)
+    ('2024-11-01', NULL, true, 'Seguimiento neurológico y psiquiátrico.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- ID 7 (Carmen)
+    ('2025-01-15', NULL, true, 'Control de hipertensión arterial.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');  -- ID 8 (Luis)
+
+-- --------------------------------------------------------
+-- 11. RELACIONES MANY-TO-MANY (Tratamientos)
+-- --------------------------------------------------------
+
+-- A. Enfermedad <-> Tratamiento
+INSERT INTO user_illness_treatment_details (user_illness_id, treatment_detail_id) VALUES
+(5, 4),
+(6, 5),
+(7, 6),
+(8, 7),
+(9, 8)
+ON CONFLICT DO NOTHING;
+
+-- B. Tratamiento <-> Medicamento
+INSERT INTO treatment_details_medication (treatment_detail_id, medication_id) VALUES
+(4, 8),  -- Francisco: Adiro
+(4, 9),  -- Francisco: Furosemida
+(5, 10), -- Isabel: Ventolín
+(6, 11), -- Pedro: Tramadol
+(7, 12), -- Carmen: Mirtazapina
+(8, 13)  -- Luis: Metoprolol
+ON CONFLICT DO NOTHING;
+
+-- --------------------------------------------------------
+-- 12. ROPA FÍSICA (UserClothes - 8 registros, IDs 6-13)
+-- --------------------------------------------------------
+INSERT INTO user_clothings (clothing_type_id, is_clean, is_returned, received_at, returned_at, return_reason_id, is_active, created_at, updated_at, created_by, updated_by)
+VALUES
+    (1, true, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- ID 6: Pantalón
+    (2, true, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- ID 7: Camisa
+    (3, false, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- ID 8: Chaqueta
+    (4, true, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- ID 9: Ropa interior
+    (5, true, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- ID 10: Chándal
+    (6, true, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- ID 11: Calcetines
+    (7, false, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- ID 12: Zapatos
+    (1, true, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');  -- ID 13: Pantalón
+
+-- --------------------------------------------------------
+-- 13. OBJETOS FÍSICOS (UserObject - 6 registros, IDs 5-10)
+-- --------------------------------------------------------
+INSERT INTO user_objects (object_type_id, item_condition_id, comment, created_at, updated_at, created_by, updated_by)
+VALUES
+    (6, 2, 'Móvil Nokia con teclas grandes.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),        -- ID 5: Móvil
+    (7, 1, 'Cartera de piel marrón con cremallera.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- ID 6: Cartera
+    (1, 2, 'Gafas de lectura, montura metálica.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),     -- ID 7: Gafas
+    (2, 3, 'Bastón de aluminio, punta de goma desgastada.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- ID 8: Bastón
+    (5, 2, 'Audífono izquierdo, marca Oticon.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),       -- ID 9: Audífono
+    (4, 1, 'Neceser con productos de aseo personal.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'); -- ID 10: Neceser
+
+-- --------------------------------------------------------
+-- 14. PAÑALES FÍSICOS (UserDiapers - 5 registros, IDs 4-8)
+-- --------------------------------------------------------
+INSERT INTO user_diapers (diaper_size_id, diaper_type_id, quantity, created_at, updated_at, created_by, updated_by)
+VALUES
+    (4, 1, 20, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- ID 4: L, Elástico
+    (3, 2, 15, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- ID 5: M, Braga-pañol
+    (2, 3, 25, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- ID 6: S, Anatómico
+    (5, 4, 10, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- ID 7: XL, Con pestaña
+    (6, 1, 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');   -- ID 8: XXL, Elástico
+
+-- --------------------------------------------------------
+-- 15. PERTENENCIAS (user_belongings - 10 registros, IDs 5-14)
+-- --------------------------------------------------------
+INSERT INTO user_belongings
+(user_id, user_clothing_id, user_object_id, user_diaper_id, worker_id, comment, is_request, created_at, updated_at, created_by, updated_by)
+VALUES
+    (5, 6, 5, NULL, 5, 'Pantalón gris y móvil para llamar a su hija.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (6, 7, NULL, NULL, 8, 'Camisa de flores y cartera.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (7, NULL, 6, NULL, 9, 'Cartera y gafas de lectura.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (8, 8, NULL, 7, 10, 'Chaqueta de abrigo y pañales talla XL.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (9, 9, 7, NULL, 11, 'Ropa interior de repuesto y gafas.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (10, NULL, 8, 5, 12, 'Bastón y pañales talla M.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (11, 10, NULL, NULL, 5, 'Chándal deportivo para gimnasia.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (12, NULL, 9, 6, 6, 'Audífono y pañales talla S.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (13, 11, NULL, NULL, 13, 'Calcetines de lana, los traen su hija.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (14, 12, 10, 8, 7, 'Zapatos nuevos, neceser y pañales XXL.', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+
+-- --------------------------------------------------------
+-- 16. HORARIOS DE USO DE BAÑO (bathroom_schedule - 14 registros, IDs 6-19)
+-- --------------------------------------------------------
+INSERT INTO bathroom_schedules (user_id, bathroom_turn_id, bathroom_task_id, created_at, updated_at, created_by, updated_by)
+VALUES
+    (5, 1, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Francisco: Llegada, Cambio de pañal
+    (5, 3, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Francisco: Post-siesta, WC
+    (6, 2, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Isabel: Pre-comida, Higiene bucal
+    (7, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Pedro: Llegada, Aseo lavabo
+    (7, 4, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Pedro: Pre-salida, Aseo lavabo
+    (8, 3, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Carmen: Post-siesta, Cambio de pañal
+    (9, 2, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Luis: Pre-comida, WC
+    (9, 4, 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),  -- Luis: Pre-salida, Cambio de ropa
+    (10, 1, 6, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- Rosa: Llegada, Corte de uñas
+    (11, 2, 7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- Juan: Pre-comida, Peinado
+    (11, 3, 8, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- Juan: Post-siesta, Afeitado
+    (12, 4, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- Teresa: Pre-salida, Higiene bucal
+    (13, 1, 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'), -- Andrés: Llegada, Cambio de ropa
+    (14, 2, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'); -- Pilar: Pre-comida, Aseo lavabo
+
+-- --------------------------------------------------------
+-- 17. VEHÍCULOS (route_vehicles - 2 registros, IDs 4-5)
+-- --------------------------------------------------------
+INSERT INTO route_vehicles (license_plate, capacity, has_wheelchair, wheelchair_capacity, is_active, created_at, updated_at, created_by, updated_by)
+VALUES
+    ('1111-AAA', 10, true, 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    ('2222-BBB', 6, false, 0, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system')
+    ON CONFLICT (license_plate) DO NOTHING;
+
+-- --------------------------------------------------------
+-- 18. RUTAS DE TRANSPORTE (transport_routes - 2 registros, IDs 3-4)
+-- --------------------------------------------------------
+INSERT INTO transport_routes (route_number, start_time, end_time, route_shift_id, route_vehicle_id, worker_driver_id, worker_copilot_id, is_active, created_at, updated_at, created_by, updated_by)
+VALUES
+    (103, '08:15:00', '09:45:00', 1, 4, 14, 15, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (104, '17:15:00', '18:45:00', 2, 5, 15, 14, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system');
+
+-- --------------------------------------------------------
+-- 19. ASIGNACIÓN DE PASAJEROS (transport_routes_user - 6 registros, IDs 5-10)
+-- --------------------------------------------------------
+INSERT INTO transport_routes_user (route_id, user_id, arrival_time, uses_wheelchair, comment, created_at, updated_at, created_by, updated_by)
+VALUES
+    (3, 5, '09:45:00', false, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (3, 6, '09:50:00', true, 'Silla plegable, necesita rampa.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (3, 7, '10:00:00', false, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (4, 8, '18:00:00', false, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (4, 9, '18:10:00', true, 'Rampas necesarias.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system'),
+    (4, 10, '18:20:00', false, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'system', 'system')
+ON CONFLICT DO NOTHING;
+
+-- --------------------------------------------------------
+-- 20. INCIDENCIAS DE CENTRO (cd_incidents - 3 registros, IDs 3-5)
+-- --------------------------------------------------------
+INSERT INTO cd_incidents
+(incident_cd_id, significance_cd_id, reported_by_id, incident_status_id, comment, is_active, created_at, updated_at, created_by, updated_by)
+VALUES
+    (3, 2, 7, 1, 'Falta papel higiénico en los baños de planta baja.', true, '2025-01-20 10:00:00', CURRENT_TIMESTAMP, 'system', 'system'),
+    (1, 1, 6, 2, 'Bombilla fundida en el pasillo principal.', true, '2025-01-21 08:30:00', CURRENT_TIMESTAMP, 'system', 'system'),
+    (2, 3, 16, 1, 'Derrame de aceite en la cocina, suelo resbaladizo.', true, '2025-01-22 14:00:00', CURRENT_TIMESTAMP, 'system', 'system');
+
+-- --------------------------------------------------------
+-- 21. INCIDENCIAS DE USUARIO (users_incidents - 3 registros, IDs 3-5)
+-- --------------------------------------------------------
+INSERT INTO users_incidents (user_id, incident_user_id, significance_user_id, reported_by_id, incident_status_id, comment, is_active, created_at, updated_at, created_by, updated_by)
+VALUES
+    (5, 1, 2, 5, 1, 'Francisco se resbaló en el baño. Sin heridas visibles.', true, '2025-01-20 11:00:00', CURRENT_TIMESTAMP, 'system', 'system'),
+    (6, 2, 1, 8, 2, 'Isabel se negó a tomar la medicación de la mañana.', true, '2025-01-21 09:15:00', CURRENT_TIMESTAMP, 'system', 'system'),
+    (7, 3, 2, 9, 1, 'Pedro presenta dolor de cabeza persistente desde ayer.', true, '2025-01-22 16:30:00', CURRENT_TIMESTAMP, 'system', 'system');
+
+-- --------------------------------------------------------
+-- 22. COMENTARIOS EN INCIDENCIAS DE CENTRO (4 registros, IDs 7-10)
+-- --------------------------------------------------------
+INSERT INTO incidents_cd_comments (cd_incident_id, worker_id, comment, created_at, updated_at, created_by, updated_by)
+VALUES
+    (3, 16, 'Voy a revisar el almacén de limpieza.', '2025-01-20 10:05:00', CURRENT_TIMESTAMP, 'system', 'system'),
+    (3, 7, 'Confirmado, quedan solo 3 rollos. Hay que hacer pedido.', '2025-01-20 10:15:00', CURRENT_TIMESTAMP, 'system', 'system'),
+    (4, 6, 'Llamado al electricista, confirma que viene mañana por la mañana.', '2025-01-21 08:45:00', CURRENT_TIMESTAMP, 'system', 'system'),
+    (5, 1, 'Necesitamos señalizar la zona hasta que se limpie bien.', '2025-01-22 14:10:00', CURRENT_TIMESTAMP, 'system', 'system');
+
+-- --------------------------------------------------------
+-- 23. COMENTARIOS EN INCIDENCIAS DE USUARIO (4 registros, IDs 7-10)
+-- --------------------------------------------------------
+INSERT INTO incidents_users_comments (user_incident_id, worker_id, comment, created_at, updated_at, created_by, updated_by)
+VALUES
+    (3, 5, '¿Necesita que le hagamos alguna prueba o revisión médica?', '2025-01-20 11:05:00', CURRENT_TIMESTAMP, 'system', 'system'),
+    (3, 2, 'No, solo un susto. Le hemos ayudado a levantarse y está bien.', '2025-01-20 11:12:00', CURRENT_TIMESTAMP, 'system', 'system'),
+    (4, 1, '¿Se le ofreció en zumo o algo para acompañar la medicación?', '2025-01-21 09:20:00', CURRENT_TIMESTAMP, 'system', 'system'),
+    (5, 5, 'Tomará paracetamol a las 15:00 si persiste el dolor.', '2025-01-22 16:45:00', CURRENT_TIMESTAMP, 'system', 'system');
