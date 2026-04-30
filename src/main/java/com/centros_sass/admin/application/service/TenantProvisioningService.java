@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -90,6 +91,7 @@ public class TenantProvisioningService {
                 .dataSource(dataSource)
                 .schemas(schemaName)
                 .locations("classpath:bbdd/migration/tenant")
+                .placeholders(Map.of("tenantId", slug))
                 .load();
         flyway.migrate();
     }
