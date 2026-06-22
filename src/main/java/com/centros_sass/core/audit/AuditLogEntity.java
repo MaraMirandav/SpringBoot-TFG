@@ -77,16 +77,3 @@ public class AuditLogEntity {
     @Column(name = "details", columnDefinition = "jsonb")
     private String details;
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────────────────────
-// 1. schema = "public" en @Table: obliga a Hibernate a usar el schema global
-//    aunque esté configurado para multitenancy — auditoría siempre es global
-// 2. @Builder de Lombok: AuditLogEntity.builder().tenantId("x").operation("CREATE").build()
-//    sin constructor de 8 parámetros — mucho más legible
-// 3. @CreatedDate: Spring Data audita el timestamp automáticamente al primer save()
-//    Requiere @EntityListeners(AuditingEntityListener.class) en la entidad
-//    y @EnableJpaAuditing en algún @Configuration (se agrega en pasos futuros)
-// 4. columnDefinition = "jsonb": tipo específico de PostgreSQL — más eficiente que TEXT
-//    para datos JSON porque permite queries dentro del JSON con operador ->
-// 5. Inmutabilidad: updatable = false en timestamp — un log de auditoría no se edita
-// ─────────────────────────────────────────────────────────────────────────────
