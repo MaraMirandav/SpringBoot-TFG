@@ -229,8 +229,8 @@ La colección completa de Postman con todos los endpoints documentados y ejemplo
 | **Fase 3** — Usuarios/Pacientes (CRUD, Contactos, Direcciones, Asistencia) | ✅ Completada |
 | **Fase 4** — Core del Negocio (Medicación, Transporte, Incidencias, Higiene, Pertenencias) | ✅ Completada |
 | **Fase 5** — Super Admin Multi-tenant | ✅ Completada |
-| **Fase 6** — Planificación y Calendario | ❌ Pendiente |
-| **Fase 7** — Comunicaciones y Notificaciones | ❌ Pendiente |
+| **Fase 6** — feature Planificación y Calendario | ❌ Pendiente |
+| **Fase 7** — feature Comunicaciones y Notificaciones | ❌ Pendiente |
 
 ---
 
