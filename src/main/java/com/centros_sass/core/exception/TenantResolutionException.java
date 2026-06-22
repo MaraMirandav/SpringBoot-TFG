@@ -39,10 +39,3 @@ public class TenantResolutionException extends RuntimeException {
         super(message, cause);
     }
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────
-// 1. RuntimeException (unchecked): no obliga a declarar "throws" en cada método
-// 2. Dos constructores: con mensaje solo vs. mensaje + causa — preservar stack trace
-// 3. Excepciones específicas > genéricas: "TenantResolutionException" es más clara que "IllegalStateException"
-// 4. Esta excepción será capturada por @ControllerAdvice para devolver HTTP 401/400
-// ──────────────────────────────────────────────────────────────

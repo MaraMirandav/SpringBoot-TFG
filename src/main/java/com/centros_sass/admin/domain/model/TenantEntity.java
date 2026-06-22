@@ -88,16 +88,3 @@ public class TenantEntity {
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────────────────────
-// 1. schema = "public" OBLIGATORIO: sin esto Hibernate usaría el tenant activo
-//    del ThreadLocal — los tenants son datos globales, no por-tenant
-// 2. @Enumerated(EnumType.STRING): siempre STRING, nunca ORDINAL
-//    Si reordenas los valores del enum con ORDINAL, los datos en BD cambian de significado
-// 3. @CreatedDate + @LastModifiedDate: Spring Data audita timestamps automáticamente
-//    Requiere @EnableJpaAuditing en algún @Configuration (se agrega en un paso futuro)
-// 4. unique = true en slug: documenta el invariante en el código Java, no solo en SQL
-//    Hibernate también crea una constraint si se usa schema generation
-// 5. @Builder + @NoArgsConstructor + @AllArgsConstructor: los tres juntos son necesarios
-//    @Builder necesita @AllArgsConstructor; JPA necesita @NoArgsConstructor sin argumentos
-// ─────────────────────────────────────────────────────────────────────────────

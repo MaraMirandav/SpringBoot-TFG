@@ -171,23 +171,3 @@ public class AdminUserSecurity implements UserDetails {
         return adminUser;
     }
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────────────────────
-// 1. Patrón Adapter: AdminUserSecurity adapta AdminUserEntity (mundo de negocio)
-//    a UserDetails (mundo de Spring Security) sin modificar ninguno de los dos.
-//    Es un ejemplo clásico del patrón de diseño Adapter.
-//
-// 2. UserDetails vs Entity: nunca exponer el entity directamente a Spring Security.
-//    El adapter controla exactamente qué datos son visibles para el framework.
-//
-// 3. isEnabled() como soft delete: en vez de borrar registros, desactivarlos.
-//    Preserva la integridad referencial en audit_log y el historial completo.
-//
-// 4. Un rol vs múltiples roles: los admins internos tienen jerarquía clara
-//    (SUPER_ADMIN > ADMIN > SUPPORT) → un solo rol es suficiente y más simple.
-//    Los workers del centro pueden tener múltiples roles simultáneos → colección.
-//
-// 5. AdminUserSecurity vs WorkerSecurity: misma interfaz, mundos distintos.
-//    WorkerSecurity → tenant-scoped, JWT con tenant_id
-//    AdminUserSecurity → global, JWT sin tenant_id
-// ─────────────────────────────────────────────────────────────────────────────

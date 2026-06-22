@@ -73,7 +73,7 @@ public class AdminAuthServiceImpl implements AdminAuthService {
 
         // Verificar que la cuenta esté activa
         if (!adminUser.isEnabled()) {
-             log.warn("Intento de login fallido — cuenta inactiva");
+            log.warn("Intento de login fallido — cuenta inactiva");
             throw new BadCredentialsException("Credenciales inválidas");
         }
 
@@ -85,18 +85,3 @@ public class AdminAuthServiceImpl implements AdminAuthService {
         return new AuthResponse(token);
     }
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ───��────────────────────────────────────────────
-// 1. Mismo mensaje de error para email y password incorrectos:
-//    Previene enumeration attacks — el atacante no sabe qué cuentas existen.
-// 2. Tres verificaciones secuenciales:
-//    a) Email existe → si no, error inmediato
-//    b) Password correcta → si no, error
-//    c) Cuenta activa → si no, error
-//    El orden importa: verificar password ANTES de isEnabled() permite
-//    intentar credenciales de cuentas inactivas (para debugging).
-// 3. generateAdminToken() vs generateToken(): no incluye tenant_id
-//    porque admins operan en schema "public" (global).
-// 4. @Transactional(readOnly = true): el login no modifica BD,
-//    solo consulta → mejor rendimiento.
-// ─────────────────────────────────────────────────────────────────────────────

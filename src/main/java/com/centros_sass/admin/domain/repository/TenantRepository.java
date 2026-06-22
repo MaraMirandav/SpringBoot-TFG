@@ -5,7 +5,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
 import com.centros_sass.admin.domain.model.TenantEntity;
 import com.centros_sass.admin.domain.model.TenantStatus;
@@ -21,7 +20,6 @@ import java.util.Optional;
  * la implementación la genera Spring Data en tiempo de ejecución.
  * Los use cases dependen de esta interfaz, no de JPA directamente.
  */
-@Repository
 public interface TenantRepository extends JpaRepository<TenantEntity, Long> {
 
     /**
@@ -80,8 +78,8 @@ public interface TenantRepository extends JpaRepository<TenantEntity, Long> {
     List<TenantEntity> findTop5ByOrderByCreatedAtDesc();
 
     @Query("""
-        SELECT FUNCTION('to_char', t.createdAt, 'YYYY-MM') as month, 
-               COUNT(t) as count
+        SELECT FUNCTION('to_char', t.createdAt, 'YYYY-MM') as month,
+            COUNT(t) as count
         FROM TenantEntity t
         WHERE t.createdAt >= :from
         GROUP BY FUNCTION('to_char', t.createdAt, 'YYYY-MM')
@@ -89,14 +87,3 @@ public interface TenantRepository extends JpaRepository<TenantEntity, Long> {
     """)
     List<Object[]> countByMonth(@Param("from") Instant from);
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────────────────────
-// 1. Optional<TenantEntity> findBySlug: fuerza al caller a manejar "no encontrado"
-//    Si devolviera TenantEntity directamente, Spring lanzaría null → NPE en producción
-//    entity.orElseThrow(() -> new TenantNotFoundException(slug)) es el patrón correcto
-// 2. existsBySlug: genera SELECT COUNT(*) > 0 — más eficiente que findBySlug().isPresent()
-//    porque no carga toda la entidad de la BD, solo verifica existencia
-// 3. Output port hexagonal: esta interfaz define QUÉ necesita el dominio del almacenamiento
-//    Spring Data JpaRepository es el adaptador que LO IMPLEMENTA automáticamente
-// 4. findByStatus: query derivado del nombre — Spring genera WHERE status = ? automáticamente
-// ─────────────────────────────────────────────────────────────────────────────

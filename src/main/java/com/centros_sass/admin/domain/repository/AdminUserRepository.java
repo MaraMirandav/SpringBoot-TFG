@@ -1,7 +1,6 @@
 package com.centros_sass.admin.domain.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,7 +13,6 @@ import com.centros_sass.admin.domain.model.*;
  * Separado de TenantRepository aunque ambos estén en el mismo módulo admin:
  * cada entidad tiene su propio repositorio — principio de responsabilidad única.
  */
-@Repository
 public interface AdminUserRepository extends JpaRepository<AdminUserEntity, Long> {
 
     /**
@@ -54,14 +52,3 @@ public interface AdminUserRepository extends JpaRepository<AdminUserEntity, Long
      */
     boolean existsByEmail(String email);
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────────────────────
-// 1. Un repositorio por entidad: TenantRepository para TenantEntity,
-//    AdminUserRepository para AdminUserEntity — cada uno con sus queries específicos
-// 2. findByEmail devuelve Optional: el login use case maneja "no encontrado" con gracia
-//    entity.orElseThrow(() -> new UsernameNotFoundException(...)) es el patrón Spring Security
-// 3. existsByEmail: verificación antes de insertar — evita DataIntegrityViolationException
-//    Mejor UX: devolver "email ya registrado" (400) que un 500 por constraint violation
-// 4. Todos los queries son derivados del nombre — cero SQL para operaciones simples
-//    Solo se necesita @Query para joins complejos o condiciones múltiples (OR, LIKE, etc.)
-// ─────────────────────────────────────────────────────────────────────────────

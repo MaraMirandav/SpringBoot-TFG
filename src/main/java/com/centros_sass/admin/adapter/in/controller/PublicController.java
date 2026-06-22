@@ -66,13 +66,3 @@ public class PublicController {
                         planService.findAllActive(), 200));
     }
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────
-// 1. Orden de matchers en Spring Security: el primer matcher que coincide gana.
-//    /api/v1/admin/** con hasAnyRole() se registra antes que permitAll() en un wildcard
-//    que incluye subrutas — el resultado es siempre 401. Solución: ruta fuera del wildcard.
-// 2. Separación de responsabilidades en controllers: un controller = una zona de seguridad.
-//    Mezclar rutas públicas y privadas en el mismo controller complica las reglas de acceso.
-// 3. DTO mínimo para endpoints públicos: exponer solo los campos necesarios reduce la
-//    superficie de ataque — un atacante no obtiene adminEmail ni fechas de creación.
-// ──────────────────────────────────────────────────────────────

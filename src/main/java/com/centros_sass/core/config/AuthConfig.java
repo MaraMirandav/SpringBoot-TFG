@@ -111,13 +111,3 @@ public class AuthConfig {
         return config.getAuthenticationManager();
     }
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────────────────────
-// 1. PasswordEncoder NO se duplica — se referencia del bean existente en SecurityConfig
-// 2. @Bean en método: permite inyección limpia sin anotaciones de campo
-// 3. DaoAuthenticationProvider: implementación estándar que maneja todo el flujo
-//    auth → UserDetailsService.loadUserByUsername() → PasswordEncoder.matches()
-// 4. @Configuration vs @Component: ambos funcionan, @Configuration indica
-//    que esta clase es pura configuración de Spring (no es un servicio)
-// 5. El log NO incluye email — es PII (Personally Identifiable Information)
-// ──────────────────────────────────────────────────────────────────────────────

@@ -65,13 +65,3 @@ public final class TenantContext {
         CURRENT.remove(); // eliminar completamente — no solo poner null
     }
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────
-// 1. ThreadLocal: cada hilo tiene su propia copia — fundamental para concurrencia
-// 2. Patrón Utility Class: clase final + constructor privado = no se instancia
-// 3. Static vs Bean: TenantContext NO es @Component porque un singleton compartido
-//    rompería el aislamiento entre tenants en requests concurrentes
-// 4. .remove() > .set(null): eliminar del hilo vs. dejar con valor null (memory leak)
-// 5. El ciclo de vida: set() en TenantFilter.doFilterInternal() → get() en Hibernate
-//    → clear() en el finally del filtro
-// ──────────────────────────────────────────────────────────────

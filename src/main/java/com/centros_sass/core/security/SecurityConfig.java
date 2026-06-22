@@ -254,19 +254,3 @@ public class SecurityConfig {
         return source;
     }
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────────────────────
-// 1. SecurityFilterChain: define reglas HTTP en vez de extender WebSecurityConfigurerAdapter
-//    (patrón moderno desde Spring Security 5.7 — el adapter está deprecado)
-// 2. STATELESS vs STATEFUL: APIs REST son stateless → no hay sesiones → JWT en cada request
-// 3. CSRF: solo importa con sesiones/cookies; JWT en header Authorization no necesita CSRF
-// 4. Orden de requestMatchers: de MÁS específico a MENOS — "public antes que authenticated"
-// 5. HMAC vs RSA: simétrica (misma clave) para monolito; asimétrica para microservicios
-// 6. OAuth2ResourceServer: Spring intercepta el JWT automáticamente → no necesitas JwtFilter manual
-// 7. @EnableMethodSecurity: permite seguridad a nivel de método con @PreAuthorize
-// 8. allowedOriginPatterns vs allowedOrigins: usar siempre allowedOriginPatterns
-//    cuando allowCredentials=true — allowedOrigins("*") con credentials es inválido
-//    según la spec CORS y los browsers lo rechazan con error
-// 9. setMaxAge(3600L): cachea el preflight OPTIONS 1 hora — sin esto el browser
-//    hace un request OPTIONS antes de CADA petición POST/PUT/DELETE → 2x latencia
-// ─────────────────────────────────────────────────────────────────────────────

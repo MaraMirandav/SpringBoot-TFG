@@ -103,14 +103,3 @@ public class TenantFilter extends OncePerRequestFilter {
             || path.startsWith("/actuator");      // health checks
     }
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────
-// 1. OncePerRequestFilter: garantiza ejecución única por request — base de todos los filtros de seguridad
-// 2. @Order: los filtros forman una cadena ordenada; el orden importa (JWT primero, luego Tenant)
-// 3. try/finally en filtros: el finally es OBLIGATORIO para limpiar estado del hilo
-// 4. shouldNotFilter(): patrón para excluir rutas públicas — evita NPE en endpoints sin JWT
-// 5. chain.doFilter(): pasar el control al siguiente eslabón de la cadena — sin esto el request muere aquí
-// 6. log.warn en catch: los intentos con tokens sin tenant_id quedan registrados
-//    — en producción esto alimenta sistemas de detección de intrusiones (SIEM)
-//    — sin este log, los ataques son invisibles en los logs del servidor
-// ──────────────────────────────────────────────────────────────

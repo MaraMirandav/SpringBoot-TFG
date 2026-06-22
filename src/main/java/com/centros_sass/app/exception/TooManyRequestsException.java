@@ -27,12 +27,3 @@ public class TooManyRequestsException extends RuntimeException {
         super(message);
     }
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────
-// 1. RuntimeException: no obliga a declarar "throws" en cada método que la use
-//    (unchecked exception) — adecuada para errores de negocio en Spring
-// 2. Excepción de dominio vs. excepción HTTP: LoginRateLimiter lanza esta excepción,
-//    GlobalExceptionHandler la convierte en 429 — separación de responsabilidades
-// 3. Patrón exception-per-concept: una clase por tipo de error de negocio,
-//    en vez de reutilizar RuntimeException con distintos mensajes
-// ──────────────────────────────────────────────────────────────

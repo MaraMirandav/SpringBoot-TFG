@@ -56,13 +56,3 @@ public class JwtTenantResolver {
         throw new TenantResolutionException("No tenant_id claim found in JWT");
     }
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────
-// 1. SecurityContextHolder: dónde Spring guarda la autenticación del request actual
-// 2. JwtAuthenticationToken vs Authentication: siempre usar la implementación concreta
-//    cuando necesitas acceder a métodos específicos (getToken())
-// 3. Pattern matching con instanceof (Java 16+): if (auth instanceof JwtAuthenticationToken jwtAuth)
-//    — más limpio que el cast explícito: (JwtAuthenticationToken) auth
-// 4. Esta clase necesita spring-boot-starter-oauth2-resource-server en el pom.xml
-//    porque JwtAuthenticationToken viene de ese módulo, no del starter-security base
-// ──────────────────────────────────────────────────────────────

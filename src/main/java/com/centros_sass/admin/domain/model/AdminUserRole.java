@@ -36,14 +36,3 @@ public enum AdminUserRole {
      */
     SUPPORT
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────────────────────
-// 1. Roles admin ≠ roles tenant: confundirlos es el error más común en SaaS multitenant
-//    AdminUserRole (quién gestiona la plataforma) ≠ roles en tenant_*.users
-// 2. Principio de menor privilegio: DEFAULT 'SUPPORT' en SQL → acceso mínimo por defecto
-//    Si el código de provisioning no especifica el rol, el admin no puede hacer daño
-// 3. Documentación como código: el enum es más expresivo que una tabla en Confluence
-//    Al leer el código sabes exactamente qué puede hacer cada rol
-// 4. Futuro: @PreAuthorize("hasRole('SUPER_ADMIN')") en métodos críticos del panel
-//    Spring Security usa este enum (como string) para verificar permisos en runtime
-// ─────────────────────────────────────────────────────────────────────────────

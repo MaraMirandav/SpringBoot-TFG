@@ -91,16 +91,3 @@ public class HibernateConfig {
         return em;
     }
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────
-// 1. @Configuration: clase de configuración de Spring — los @Bean que define reemplazan
-//    la auto-configuración de Spring Boot cuando hay conflicto de tipo
-// 2. LocalContainerEntityManagerFactoryBean: la forma Spring de crear EntityManagerFactory
-//    — es el punto de entrada de JPA/Hibernate en Spring
-// 3. Environment.MULTI_TENANT_*: constantes de Hibernate para registrar los dos componentes
-//    de multitenancy — sin estas dos líneas, Hibernate opera en modo single-tenant
-// 4. setPackagesToScan("com.centros_sass"): escanea todos los módulos — si solo pones "com.centros_sass.core"
-//    las entidades de admin, customer y app no serían detectadas
-// 5. Este bean "toma el control" de JPA: Spring Boot ve que ya existe un EntityManagerFactory
-//    definido y no crea el suyo — por eso debemos configurar todo manualmente aquí
-// ──────────────────────────────────────────────────────────────

@@ -254,17 +254,3 @@ public class JwtTokenProvider {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ──────────────────────────────────────────────────
-// 1. Coherencia de clave: getSigningKey() DEBE usar getBytes(UTF_8)
-//    porque NimbusJwtDecoder en SecurityConfig usa el mismo método.
-//    Usar Decoders.BASE64.decode() rompería la validación del token.
-// 2. tenant_id en claims: es OBLIGATORIO — lo extrae JwtTenantResolver
-//    en cada request protegido para llamar TenantContext.set().
-// 3. Paquete core.security: disponible para todos los módulos
-//    (admin, customer, app) — no duplicar lógica de JWT.
-// 4. jjwt vs Nimbus: jjwt para GENERAR tokens (necesita la clave secreta),
-//    Nimbus para VALIDAR (Spring Security lo hace automáticamente).
-// 5. Keys.hmacShaKeyFor(): crea la clave HMAC desde bytes — requiere
-//    al menos 32 bytes para HS256.
-// ─────────────────────────────────────────────────────────────────────────────

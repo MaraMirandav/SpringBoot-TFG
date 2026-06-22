@@ -81,13 +81,3 @@ public class AdminUserEntity {
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────────────────────
-// 1. NUNCA exponer en API responses: tiene passwordHash — usar AdminUserMapper
-//    que mapee a AdminUserResponse (DTO sin el campo password)
-// 2. INACTIVE vs DELETE: conservar el registro garantiza que audit_log
-//    mantenga la referencia "quién hizo qué" → integridad del historial
-// 3. Dos enums distintos: AdminUserRole (qué puede hacer) y AdminUserStatus (activo/inactivo)
-//    Son conceptos independientes — no mezclarlos en un solo campo
-// 4. schema = "public" obligatorio igual que TenantEntity — admin_users no es por-tenant
-// ─────────────────────────────────────────────────────────────────────────────

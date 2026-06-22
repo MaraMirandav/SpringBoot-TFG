@@ -27,13 +27,3 @@ public enum TenantStatus {
     /** Contrato terminado. El tenant abandonó la plataforma o fue dado de baja. */
     CANCELLED
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────────────────────
-// 1. Enum en Java: tipo seguro — el compilador rechaza "ACTIVO" o cualquier typo
-//    Vs. String status: con String puedes guardar "activo", "ACTIVE" o "Activo" sin error
-// 2. @Enumerated(EnumType.STRING) en la entidad: guarda "ACTIVE" no 0 (índice ordinal)
-//    EnumType.ORDINAL es peligroso — si reordenas el enum, los datos cambian de significado
-// 3. Ciclo de vida SaaS: ACTIVE → SUSPENDED ↔ ACTIVE → CANCELLED
-//    Este flujo define las reglas de negocio: qué puede hacer el tenant según su estado
-// 4. VARCHAR(20) en BD + STRING en JPA: siempre coinciden → lectura directa sin mapeo extra
-// ─────────────────────────────────────────────────────────────────────────────

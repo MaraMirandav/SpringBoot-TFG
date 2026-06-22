@@ -43,7 +43,7 @@ public class TenantIdentifierResolver implements CurrentTenantIdentifierResolver
         String tenant = TenantContext.get();
 
         System.out.println(">>> RESOLVER: tenant=" + tenant +
-                           " thread=" + Thread.currentThread().getName());
+                        " thread=" + Thread.currentThread().getName());
 
         // Si hay tenant activo, usarlo; si no (null), usar el schema global "public"
         // El schema "public" contiene las tablas globales: tenants, plans, audit_log
@@ -64,15 +64,3 @@ public class TenantIdentifierResolver implements CurrentTenantIdentifierResolver
         return true; // seguridad: validar siempre que la sesión pertenece al tenant correcto
     }
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────
-// 1. CurrentTenantIdentifierResolver<String>: punto de extensión de Hibernate para multitenancy
-//    — implementar esta interfaz es lo que "conecta" TenantContext con Hibernate
-// 2. Genéricos en Hibernate 6: siempre usar <String> (o el tipo de tu identificador)
-//    para evitar raw type warnings — diferencia importante con Hibernate 5
-// 3. Fallback a "public": nunca retornar null desde resolveCurrentTenantIdentifier()
-//    — null causaría NullPointerException dentro de Hibernate
-// 4. TenantContext.get() como llamada estática: esta clase usa TenantContext correctamente,
-//    sin inyectarlo como bean (lo que fallaría con NoSuchBeanDefinitionException)
-// 5. validateExistingCurrentSessions() = true: opción más segura en producción
-// ──────────────────────────────────────────────────────────────

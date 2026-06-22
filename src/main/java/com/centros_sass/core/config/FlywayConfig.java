@@ -6,12 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
-/**
- * FlywayConfig — configuración explícita de Flyway para garantizar migraciones.
- *
- * PROBLEMA: Flyway no se está ejecutando automáticamente.
- * SOLUCIÓN: Configuremos Flyway programáticamente.
- */
 @Configuration
 public class FlywayConfig {
 
@@ -25,9 +19,9 @@ public class FlywayConfig {
                 .baselineOnMigrate(true)
                 .table("flyway_schema_history")
                 .load();
-        
+
         flyway.migrate();
-        
+
         return flyway;
     }
 }

@@ -103,16 +103,3 @@ public class AuditService {
         return (auth != null && auth.getName() != null) ? auth.getName() : "system";
     }
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────────────────────
-// 1. TenantContext.get() es ESTÁTICO: igual que Math.abs() — no se inyecta como bean
-//    Patrón Utility Class: constructor privado, solo métodos estáticos, sin @Component
-// 2. SecurityContextHolder: ThreadLocal de Spring Security — similar a TenantContext
-//    Cada hilo tiene su Authentication sin interferir con otros requests simultáneos
-// 3. Sobrecarga de métodos: dos versiones de log() — con y sin "details"
-//    Más limpio que un parámetro @Nullable String details: el caller elige la firma
-// 4. @Slf4j genera: private static final Logger log = LoggerFactory.getLogger(AuditService.class)
-//    Lombok elimina ese boilerplate repetitivo en cada clase con logging
-// 5. Constructor injection + @RequiredArgsConstructor: patrón recomendado en AGENTS.md
-//    Spring inyecta auditLogRepository por constructor, no por campo
-// ─────────────────────────────────────────────────────────────────────────────

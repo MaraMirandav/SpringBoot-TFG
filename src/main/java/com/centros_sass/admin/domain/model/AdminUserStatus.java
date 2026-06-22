@@ -21,10 +21,3 @@ public enum AdminUserStatus {
      */
     INACTIVE
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────────────────────
-// 1. Soft delete vs hard delete: desactivar (INACTIVE) es mejor que borrar
-//    en sistemas con auditoría — borrar rompe la referencia en audit_log
-// 2. Enums pequeños también valen: aunque solo tiene 2 valores, evita que alguien
-//    guarde "Inactive", "inactive" o "DISABLED" por error en el código
-// ─────────────────────────────────────────────────────────────────────────────

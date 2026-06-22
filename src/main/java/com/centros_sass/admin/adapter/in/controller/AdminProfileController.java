@@ -91,16 +91,3 @@ public class AdminProfileController {
         );
     }
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────
-// 1. SecurityContextHolder: punto de acceso al usuario autenticado
-//    getAuthentication().getName() devuelve el "sub" del JWT (el email)
-// 2. Patrón Adapter en Controllers: el controller es "adaptador" entre
-//    el protocolo HTTP y la lógica de negocio (servicio)
-// 3. @Valid en @RequestBody: activa la validación de Bean Validation
-//    defined en el record DTO (notas @Size, @NotBlank, etc)
-// 4. @Transactional en el servicio: la escritura a BD requiere transacción
-//    El controller NO tiene @Transactional — esa responsabilidad es del servicio
-// 5. Omitir información sensible: nunca devolvemos passwordHash en respuestas
-//    Creamos AdminProfileResponse que excluye ese campo por diseño
-// ─────────────────────────────────────────────────────────────

@@ -1,7 +1,6 @@
 package com.centros_sass.core.audit;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.time.Instant;
 import java.util.List;
@@ -18,7 +17,6 @@ import java.util.List;
  *
  * Los registros de auditoría son INMUTABLES: nunca se llama update() aquí.
  */
-@Repository
 public interface AuditLogRepository extends JpaRepository<AuditLogEntity, Long> {
 
     /**
@@ -51,15 +49,3 @@ public interface AuditLogRepository extends JpaRepository<AuditLogEntity, Long> 
      */
     List<AuditLogEntity> findByTimestampBetween(Instant start, Instant end);
 }
-
-// ─── ¿QUÉ APRENDER DE ESTA CLASE? ────────────────────────────────────────────
-// 1. JpaRepository<T, ID>: T = tipo de entidad, ID = tipo de su PK
-//    Hereda automáticamente: save(), findById(), findAll(), deleteById(), count()
-// 2. Query derivado del nombre del método (Spring Data magic):
-//    findByTenantId() → Spring genera SELECT * FROM audit_log WHERE tenant_id = ?
-//    No necesitas @Query ni SQL manual para queries simples
-// 3. findByEntityTypeAndEntityId: "And" en el nombre = WHERE entity_type = ? AND entity_id = ?
-//    Spring Data lee el nombre y genera el WHERE automáticamente
-// 4. @Repository: convierte excepciones JDBC/JPA a DataAccessException de Spring
-//    Hace el código más portable — no depende de excepciones específicas de PostgreSQL
-// ─────────────────────────────────────────────────────────────────────────────
