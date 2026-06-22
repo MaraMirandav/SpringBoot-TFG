@@ -42,8 +42,7 @@ public class TenantIdentifierResolver implements CurrentTenantIdentifierResolver
         // TenantContext.get() es una llamada estática — no inyectada como bean
         String tenant = TenantContext.get();
 
-        System.out.println(">>> RESOLVER: tenant=" + tenant +
-                        " thread=" + Thread.currentThread().getName());
+        // System.out.println(">>> RESOLVER: tenant=" + tenant + " thread=" + Thread.currentThread().getName());
 
         // Si hay tenant activo, usarlo; si no (null), usar el schema global "public"
         // El schema "public" contiene las tablas globales: tenants, plans, audit_log
